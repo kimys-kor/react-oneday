@@ -1,16 +1,20 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-const Div = styled.div`
-  background-color: black;
-`;
+import { Routes, Route } from "react-router-dom";
+
+import Login from "./components/Login";
+import Oneday from "./components/Oneday";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <div className="App">
-      <Div>dkssud</Div>
+      <Routes>
+        <Route path="/" element={<Login />}></Route>
+        <Route path="/oneday/*" element={<Oneday />}></Route>
+      </Routes>
     </div>
   );
 }
