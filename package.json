@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/react-router-dom": "^5.3.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.43.9",
@@ -15,7 +16,8 @@
     "react-js-pagination": "^3.0.3",
     "react-router-dom": "^6.10.0",
     "react-ts-pagination": "^0.2.0",
-    "styled-components": "^5.3.9"
+    "styled-components": "^5.3.9",
+    "zustand": "^4.3.7"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",

@@ -1,5 +1,7 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
+
+import { useUserStore } from "@/data/status/status";
 
 import { useForm, Resolver } from "react-hook-form";
 
@@ -36,7 +38,7 @@ const Rightbox = styled.div`
   align-items: center;
 `;
 
-const Loginbox = styled.div`
+const Form = styled.form`
   background-color: #f7f7f9;
   width: 50%;
   height: 300px;
@@ -59,7 +61,7 @@ const Input = styled.input`
 const Submitbutton = styled.input`
   margin-top: 30px;
   border: none;
-  width: 100px;
+  width: 80%;
   height: 50px;
   color: #9f8add;
   font-size: 14px;
@@ -77,43 +79,59 @@ const Submitbutton = styled.input`
   }
 `;
 
-// type FormData = {
-//   email: string;
-//   lastName: string;
-// };
+type FormData = {
+  email: string;
+  password: string;
+};
 
-// const resolver: Resolver<FormData> = async (values) => {
-//   return {
-//     values: values.email ? values : {},
-//     errors: !values.email
-//       ? {
-//           email: {
-//             type: "required",
-//             message: "This is required.",
-//           },
-//         }
-//       : {},
-//   };
-// };
-
-// const {
-//   register,
-//   handleSubmit,
-//   formState: { errors },
-// } = useForm<FormData>({ resolver });
-// const onSubmit = handleSubmit((data) => console.log(data));
+const resolver: Resolver<FormData> = async (values) => {
+  return {
+    values: values.email ? values : {},
+    errors: !values.email
+      ? {
+          email: {
+            type: "required",
+            message: "This is required.",
+          },
+        }
+      : {},
+  };
+};
 
 function Login() {
+  const { isLoggedIn, setIsLoggedIn } = useUserStore();
+  console.log(isLoggedIn);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({ resolver });
+
+  const onSubmit = handleSubmit((data) => {
+    setIsLoggedIn(true);
+    console.log(data);
+  });
+
   return (
     <Layout>
       <Leftbox></Leftbox>
       <Rightbox>
-        <Loginbox>
-          <Titlebox>로그인</Titlebox>
-          <Input placeholder="이메일을 입력하세요" type="text"></Input>
-          <Input placeholder="비밀번호를 입력하세요"></Input>
+        <Form onSubmit={onSubmit}>
+          <Titlebox>원데이{isLoggedIn}</Titlebox>
+
+          <Input
+            {...register("email")}
+            placeholder="이메일을 입력하세요"
+            type="text"
+          ></Input>
+          <Input
+            {...register("password")}
+            placeholder="비밀번호를 입력하세요"
+            type="password"
+          ></Input>
           <Submitbutton type="submit" value="로그인"></Submitbutton>
-        </Loginbox>
+        </Form>
       </Rightbox>
     </Layout>
   );

@@ -5,6 +5,7 @@ import { shoplocation } from "@/data/shop/shopData";
 import { useForm, Resolver } from "react-hook-form";
 
 import Board from "@common/Board";
+import { useUserStore } from "@data/status/status";
 
 type FormData = {
   firstName: string;
@@ -46,7 +47,10 @@ function Shop() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({ resolver });
-  const onSubmit = handleSubmit((data) => console.log(data));
+
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
 
   return (
     <Shopbox>
