@@ -13,12 +13,19 @@ const Layout = styled.div`
 
 const Leftbox = styled.div`
   width: 50%;
-  background-color: #62c8fd;
+  background-color: #f2f3f7;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const Leftwrapper = styled.div``;
+
+const LoginIcon = styled.img`
+  width: 404px;
+  height: 404px;
 `;
 
 const Titlebox = styled.div`
@@ -29,7 +36,7 @@ const Titlebox = styled.div`
 
 const Rightbox = styled.div`
   width: 50%;
-  background-color: #baaede;
+  background-color: #fff;
 
   display: flex;
 
@@ -115,7 +122,11 @@ function Login() {
 
   return (
     <Layout>
-      <Leftbox></Leftbox>
+      <Leftbox>
+        <Leftwrapper>
+          <LoginIcon></LoginIcon>
+        </Leftwrapper>
+      </Leftbox>
       <Rightbox>
         <Form onSubmit={onSubmit}>
           <Titlebox>원데이{isLoggedIn}</Titlebox>
