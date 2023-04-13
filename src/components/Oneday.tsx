@@ -4,17 +4,14 @@ import { useRef, useState } from "react";
 import styled from "styled-components";
 
 import Sidebar from "@common/Sidebar";
-import Header from "@common/Header";
 
 import Dashboard from "@components/Dashboard";
-import Application from "@/components/Application";
+import Shop from "@/components/Shop";
 import Product from "@components/Product";
-import Saving from "@/components/Saving";
-import Chart from "@/components/Statistics";
+import Riders from "@components/Riders";
+import Statistics from "@/components/Statistics";
 import Member from "@components/Member";
-import AdminUser from "@/components/AdminUser";
-import Another from "@components/Another";
-import MemberDetail from "./MemberDetail";
+import Orders from "@/components/Orders";
 
 const Onedaybox = styled.div`
   width: 100%;
@@ -54,17 +51,14 @@ function Oneday() {
           width: `calc(100% - ${width2})`,
         }}
       >
-        {/* <Header toggleMenu={toggleMenu}></Header> */}
-
         <Routes>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="member" element={<Member />} />
-          <Route path="application" element={<Application />} />
+          <Route path="shop" element={<Shop />} />
           <Route path="product" element={<Product />} />
-          <Route path="saving" element={<Saving />} />
-          <Route path="chart" element={<Chart />} />
-          <Route path="adminuser" element={<AdminUser />} />
-          <Route path="another" element={<Another />} />
+          <Route path="riders" element={<Riders />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="statistics" element={<Statistics />} />
         </Routes>
       </Onedaybox>
     </>

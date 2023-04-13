@@ -32,41 +32,7 @@ const resolver: Resolver<FormData> = async (values) => {
   };
 };
 
-function Application() {
-  const [isModalOpen, setModalOpen] = useState(false);
-
-  const handleModalOpen = () => {
-    setModalOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setModalOpen(false);
-  };
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({ resolver });
-
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
-  });
-
-  const [apps, setApps] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://dev.syurl.co.kr:8083/api/app/list", {
-        headers: {
-          "X-AUTH-TOKEN":
-            "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJpYXQiOjE2ODAxNjA1MDAsImV4cCI6MTcxMTY5NjUwMH0.Sjxhi55B7FNqDbKL1Qc7hu5qlcJUCD4ptJv86C6KLJ8",
-        },
-      })
-      .then(function (response) {
-        setApps(response.data.data.appList);
-      });
-  }, [apps]);
-
+function Shop() {
   return (
     <Shopbox>
       <MenuTable>
@@ -79,106 +45,59 @@ function Application() {
           <AddAppButton>+서비스 추가하기</AddAppButton>
         </tr>
       </MenuTable>
-      <AppList apps={apps} />
     </Shopbox>
   );
 }
 
-export default Application;
-
-const AppList = ({ apps })=> {
-    const pointSum = new Array(apps.length);
-    return(
-    <div>
-    {apps.map((item, index)=>(
-        axios.get('http://dev.syurl.co.kr:8083/api/app/point/list?AppId='+item.id, {
-                            headers:{'X-AUTH-TOKEN': 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJpYXQiOjE2ODAxNjA1MDAsImV4cCI6MTcxMTY5NjUwMH0.Sjxhi55B7FNqDbKL1Qc7hu5qlcJUCD4ptJv86C6KLJ8'}
-                            }).then(function(response){
-                                if (pointSum[index] == null){
-                                    pointSum[index] = response.data.data.pointSum;
-                                    const point = document.getElementById("appContent"+index);
-                                    point.innerHTML = pointSum[index];
-                                }
-                            }),
-       <AppLayout id = {'appLayout'+index}>
-            <AppIconLayout >
-                <img src = {item.fileName != null?
-                'http://dev.syurl.co.kr/images/profile/'+item.fileName:vector}
-                style = {{marginLeft: item.fileName != null?'0px':'18.75px'}}/>
-            </AppIconLayout>
-            <table>
-                <tr>
-                    <td colspan='14'><AppName>{item.appName}</AppName></td>
-                </tr>
-                <tr>
-                    <td><AppNumberTitle>앱 번호</AppNumberTitle></td>
-                    <td><Line></Line></td>
-                    <td><AppContent>{item.appCode}</AppContent></td>
-                    <td><AppNumberTitle>활성 유저</AppNumberTitle></td>
-                    <td><Line></Line></td>
-                    <td><AppContent>{item.userCnt}</AppContent></td>
-                    <td><AppNumberTitle>누적 적립금액</AppNumberTitle></td>
-                    <td><Line></Line></td>
-                    <td><AppContent id={'appContent'+index}></AppContent></td>
-                    <td><AppNumberTitle>스토어</AppNumberTitle></td>
-                    <td><Line></Line></td>
-                    {item.store&&<td><AppContent>구글스토어</AppContent></td>}
-                    {item.oneStore&&<td><AppContent>원스토어</AppContent></td>}
-                    {item.appStore&&<td><AppContent>앱스토어</AppContent></td>}
-                </tr>
-            </table>
-       </AppLayout>
-    ))}
-    </div>);
-  }
+export default Shop;
 
 const AppContent = styled.div`
-    margin-left: 8px;
-    font-family: "Minsans-Regular";
-    font-size: 16px;
-    color:#43454b;
+  margin-left: 8px;
+  font-family: "Minsans-Regular";
+  font-size: 16px;
+  color: #43454b;
 `;
 
 const Line = styled.div`
-    margin-left: 8px;
-    background: #dbddeb;
-    width:1px;
-    height:14px;
+  margin-left: 8px;
+  background: #dbddeb;
+  width: 1px;
+  height: 14px;
 `;
 
 const AppNumberTitle = styled.div`
-    margin-left: 20px;
-    font-family: "Minsans-Regular";
-    font-size: 16px;
-    color:#a8adc0;
+  margin-left: 20px;
+  font-family: "Minsans-Regular";
+  font-size: 16px;
+  color: #a8adc0;
 `;
 
 const AppName = styled.div`
-    margin-left: 20px;
-    display: inline-block;
-    white-space: nowrap;
-    color:#1e2026;
-    font-family: "Minsans-Regular";
-    font-size: 16px;
+  margin-left: 20px;
+  display: inline-block;
+  white-space: nowrap;
+  color: #1e2026;
+  font-family: "Minsans-Regular";
+  font-size: 16px;
 `;
 
 const AppIconLayout = styled.div`
-    display: flex;
-    margin-left: 24px;
-    align-items: center;
-    width: 60px;
-    height: 60px;
+  display: flex;
+  margin-left: 24px;
+  align-items: center;
+  width: 60px;
+  height: 60px;
 `;
 
 const AppLayout = styled.div`
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-    border-width: 1px;
-    border-color: #bbbbcf;
-    background: #ffffff;
-    width: 100%;
-    height: 108px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  border-width: 1px;
+  border-color: #bbbbcf;
+  background: #ffffff;
+  width: 100%;
+  height: 108px;
 `;
 
 const Shopbox = styled.div`
