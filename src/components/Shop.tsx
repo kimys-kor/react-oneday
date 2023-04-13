@@ -33,20 +33,7 @@ const resolver: Resolver<FormData> = async (values) => {
 };
 
 function Shop() {
-  return (
-    <Shopbox>
-      <MenuTable>
-        <tr>
-          <AppInfoMenu>앱 정보 관리</AppInfoMenu>
-          <LimitPriceMenu>목표 금액 관리</LimitPriceMenu>
-          <AdvMenu>노출 대행사 관리</AdvMenu>
-          {/*서비스 추가하기 노출 대행사 관리 간격 설정하는 부분*/}
-          <td width="35%"></td>
-          <AddAppButton>+서비스 추가하기</AddAppButton>
-        </tr>
-      </MenuTable>
-    </Shopbox>
-  );
+  return <Shopbox>상점 관리</Shopbox>;
 }
 
 export default Shop;
