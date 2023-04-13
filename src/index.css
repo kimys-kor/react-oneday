@@ -15,6 +15,23 @@
   src: url("@statics/fonts/Pretendard-SemiBold.ttf");
 }
 
+@font-face {
+  font-family: "MinSans-Bold";
+  src: url("@statics/fonts/MinSans-Bold.ttf");
+}
+@font-face {
+  font-family: "MinSans-Regular";
+  src: url("@statics/fonts/MinSans-Regular.ttf");
+}
+@font-face {
+  font-family: "Montserrat-Bold";
+  src: url("@statics/fonts/Montserrat-Bold.ttf");
+}
+@font-face {
+  font-family: "Montserrat-Regular";
+  src: url("@statics/fonts/Montserrat-Regular.ttf");
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -29,11 +46,8 @@ input[type="number"] {
 
 body {
   margin: 0;
-  background-color: #f5f5f5;
-}
-
-.App {
-  font-family: "PretendardM";
+  background-color: #f4f5f9;
+  overflow-x: hidden;
 }
 
 a {

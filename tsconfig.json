@@ -9,6 +9,7 @@
       "@models/*": ["./src/models/*"],
       "@pages/*": ["./src/pages/*"],
       "@statics/*": ["./src/statics/*"],
+      "@images/*": ["./src/statics/images/*"],
       "@styles/*": ["./src/styles/*"],
       "@utils/*": ["./src/utils/*"]
     },
@@ -27,6 +28,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

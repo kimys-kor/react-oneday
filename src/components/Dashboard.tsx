@@ -1,8 +1,105 @@
 import styled from "styled-components";
+import Barchart from "@components/chart/Barchart";
+
+import Piechart from "@components/chart/Piechart";
+import Linechart from "@components/chart//Linechart";
+
+import Summary from "@components/common/Summary";
+import CustomSelect from "@/styles/selectbox/CustomSelect";
+
+import { corpOptions, summaryList } from "@data/dashboard/dashboardData";
+import { pointOccupationData, color } from "@/data/chart/piechartData";
+
+function Dashboard() {
+  return (
+    <Dashboardbox>
+      <Headerbox>
+        <Selectbox>
+          <CustomSelect
+            width={275}
+            height={53}
+            title={"회사"}
+            optionData={corpOptions}
+          ></CustomSelect>
+        </Selectbox>
+        <Summarybox>
+          <Summary
+            title="대기 중인 상품권 처리"
+            subTitle1="승인 대기중"
+            subTitle2="13건"
+          />
+          <Summary
+            title="대기 중인 상품권 처리"
+            subTitle1="승인 대기중"
+            subTitle2="13건"
+          />
+          <Summary
+            title="대기 중인 상품권 처리"
+            subTitle1="승인 대기중"
+            subTitle2="13건"
+          />
+          <Summary
+            title="대기 중인 상품권 처리"
+            subTitle1="승인 대기중"
+            subTitle2="13건"
+          />
+        </Summarybox>
+      </Headerbox>
+
+      <Chartbox1>
+        <Indicatorcard>
+          <IndicatorTitlebox>
+            <IndicatorTitle>
+              최근 일주일 광고 적립금 현황<Greyfont>단위:원</Greyfont>
+            </IndicatorTitle>
+            <Detailbutton>자세히 &gt;</Detailbutton>
+          </IndicatorTitlebox>
+          <Linechart></Linechart>
+        </Indicatorcard>
+      </Chartbox1>
+
+      <Chartbox2>
+        <Barcard>
+          <IndicatorTitlebox>
+            <IndicatorTitle>
+              최근 일주일 광고 적립금 현황<Greyfont>단위:원</Greyfont>
+            </IndicatorTitle>
+            <Detailbutton>자세히 &gt;</Detailbutton>
+          </IndicatorTitlebox>
+          <Barchart></Barchart>
+        </Barcard>
+
+        <Piecard>
+          <IndicatorTitlebox>
+            <IndicatorTitle>
+              최근 일주일 광고 적립금 현황<Greyfont>단위:원</Greyfont>
+            </IndicatorTitle>
+            <Detailbutton>자세히 &gt;</Detailbutton>
+          </IndicatorTitlebox>
+          <Piechart Data={pointOccupationData} color={color}></Piechart>
+        </Piecard>
+      </Chartbox2>
+
+      <Chartbox3>
+        <Indicatorcard>
+          <IndicatorTitlebox>
+            <IndicatorTitle>
+              최근 일주일 신규 회원 현황<Greyfont>단위:1명</Greyfont>
+            </IndicatorTitle>
+            <Detailbutton>자세히 &gt;</Detailbutton>
+          </IndicatorTitlebox>
+          <Linechart></Linechart>
+        </Indicatorcard>
+      </Chartbox3>
+    </Dashboardbox>
+  );
+}
+
+export default Dashboard;
 
 const Dashboardbox = styled.div`
-  margin-top: 20px;
-  width: 90%;
+  width: 100%;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -10,101 +107,133 @@ const Dashboardbox = styled.div`
   border-radius: 9px;
 `;
 
-const Shipbox = styled.div`
+const Headerbox = styled.div`
   width: 100%;
   height: 300px;
   display: flex;
-  gap: 3rem;
+  flex-direction: column;
   justify-content: center;
-`;
-
-const Indicatorbox = styled.div`
-  margin-top: 20px;
-  width: 100%;
-  height: 100px;
-  display: flex;
-  gap: 3rem;
-  justify-content: center;
-`;
-
-const Chartbox = styled.div`
-  margin-top: 20px;
-  width: 100%;
-  height: 200px;
-  display: flex;
-  gap: 3rem;
-  justify-content: center;
-`;
-
-const Detailbox = styled.div`
-  margin-top: 20px;
-  margin-bottom: 30px;
-  width: 100%;
-  height: 300px;
-  display: flex;
-  gap: 3rem;
-  justify-content: center;
-`;
-
-const Shipcard = styled.div`
-  border-radius: 6px;
-  width: 49%;
-  height: 100%;
+  align-items: flex-start;
   background-color: #fff;
+`;
+
+const Chartbox1 = styled.div`
+  margin-top: 12px;
+  width: 100%;
+  height: 619px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+`;
+
+const Chartbox2 = styled.div`
+  margin-top: 12px;
+  width: 100%;
+  height: 619px;
+
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  background-color: #fff;
+`;
+
+const Chartbox3 = styled.div`
+  margin-top: 12px;
+  width: 100%;
+  height: 635px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  background-color: #fff;
+`;
+
+const Selectbox = styled.div`
+  margin-left: 68px;
+  width: 586px;
+  height: 53px;
+
+  display: flex;
+  gap: 36px;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const Summarybox = styled.div`
+  margin-left: 70px;
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-around;
+  gap: 1.5rem;
+  justify-content: center;
+`;
+
+const Titlebox = styled.div`
+  width: 80%;
+  height: 100%;
+  border-bottom: 1px solid #bbbbcf;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const SummaryDetail = styled.div`
+  font-size: 13px;
+  display: inline;
+  color: #898ea1;
+`;
+
+const IndicatorTitlebox = styled.div`
+  margin-top: 50px;
+  margin-bottom: 36px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Indicatorcard = styled.div`
-  border-radius: 6px;
-  width: 33%;
-  height: 100%;
-  background-color: #fff;
+  margin-top: 5px;
+  width: 90%;
+  height: 484px;
 `;
 
-const Chartcard = styled.div`
-  border-radius: 6px;
-  width: 49%;
-  height: 100%;
-  background-color: #fff;
+const IndicatorTitle = styled.div`
+  font-family: "MinSans-Regular";
+  font-weight: 900;
+  font-size: 17px;
 `;
 
-const Orderscard = styled.div`
-  border-radius: 6px;
-  width: 70%;
-  height: 100%;
-  background-color: #fff;
-`;
-const Membercard = styled.div`
-  border-radius: 6px;
-  width: 30%;
-  height: 100%;
-  background-color: #fff;
+const Greyfont = styled.p`
+  margin-left: 10px;
+  font-family: "MinSans-Regular";
+  color: #7b829b;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  display: inline;
 `;
 
-function Dashboard() {
-  return (
-    <Dashboardbox>
-      <Shipbox>
-        <Shipcard>배차완료주문</Shipcard>
-        <Shipcard>배차미완료주문</Shipcard>
-      </Shipbox>
+const Detailbutton = styled.div`
+  width: 82px;
+  height: 31px;
+  background-color: #ff6622;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+`;
 
-      <Indicatorbox>
-        <Indicatorcard>매출</Indicatorcard>
-        <Indicatorcard>수익</Indicatorcard>
-        <Indicatorcard>주문건수</Indicatorcard>
-      </Indicatorbox>
+const Barcard = styled.div`
+  width: 60%;
+  height: 484px;
+`;
 
-      <Chartbox>
-        <Chartcard>매출차트</Chartcard>
-        <Chartcard>주문차트</Chartcard>
-      </Chartbox>
-
-      <Detailbox>
-        <Orderscard>최근주문내역</Orderscard>
-        <Membercard>가입회원</Membercard>
-      </Detailbox>
-    </Dashboardbox>
-  );
-}
-
-export default Dashboard;
+const Piecard = styled.div`
+  width: 27%;
+  height: 484px;
+`;

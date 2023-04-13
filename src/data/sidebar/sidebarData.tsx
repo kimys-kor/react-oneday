@@ -1,44 +1,65 @@
-import sidebarModel from "@/models/sidebar/sidebarModel";
+import { sidebarModel } from "@/models/sidebar/sidebarModel";
 
-import {
-  MdDashboard,
-  MdBorderAll,
-  MdCalculate,
-  MdPeople,
-} from "react-icons/md";
-import { AiOutlineShop, AiOutlineShoppingCart } from "react-icons/ai";
-import { CiDeliveryTruck } from "react-icons/ci";
+import { ReactComponent as DashboardIcon } from "@statics/images/sidebar/dashboardicon.svg";
+import { ReactComponent as MemberIcon } from "@statics/images/sidebar/membericon.svg";
+import { ReactComponent as AppIcon } from "@statics/images/sidebar/appicon.svg";
+import { ReactComponent as GiftcardIcon } from "@statics/images/sidebar/giftcardicon.svg";
+import { ReactComponent as SavingIcon } from "@statics/images/sidebar/savingicon.svg";
+import { ReactComponent as ChartIcon } from "@statics/images/sidebar/charticon.svg";
+import { ReactComponent as AdminUserIcon } from "@statics/images/sidebar/adminusericon.svg";
+import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anothericon.svg";
 
-export const sidebarMenu: Array<sidebarModel> = [
-  {
-    logo: <MdDashboard color="white" size="26" />,
-    name: "대시보드",
-    path: "dashboard",
-  },
-  {
-    logo: <AiOutlineShop color="white" size="26" />,
-    name: "상점관리",
-    path: "shop",
-  },
-  {
-    logo: <AiOutlineShoppingCart color="white" size="26" />,
-    name: "상품관리",
-    path: "product",
-  },
-  {
-    logo: <CiDeliveryTruck color="white" size="26" />,
-    name: "기사관리",
-    path: "rider",
-  },
-  {
-    logo: <MdBorderAll color="white" size="26" />,
-    name: "주문현황",
-    path: "orders",
-  },
-  { logo: <MdCalculate color="white" size="26" />, name: "정산", path: "" },
-  {
-    logo: <MdPeople color="white" size="26" />,
-    name: "회원관리",
-    path: "member",
-  },
+export const sidebarMenu: Array<Array<sidebarModel>> = [
+  [
+    {
+      logo: <DashboardIcon color="#7B829B" size="26" />,
+      name: "대시보드",
+      path: "dashboard",
+      pathname: "/oneday/dashboard",
+    },
+    {
+      logo: <MemberIcon color="#7B829B" size="26" />,
+      name: "유저 관리",
+      path: "member",
+      pathname: "/oneday/member",
+    },
+    {
+      logo: <AppIcon color="#7B829B" size="26" />,
+      name: "앱 관리",
+      path: "application",
+      pathname: "/oneday/application",
+    },
+    {
+      logo: <GiftcardIcon color="#7B829B" size="26" />,
+      name: "상품권 관리",
+      path: "product",
+      pathname: "/oneday/product",
+    },
+    {
+      logo: <SavingIcon color="#7B829B" size="26" />,
+      name: "적립 이력",
+      path: "saving",
+      pathname: "/oneday/saving",
+    },
+    {
+      logo: <ChartIcon color="#7B829B" size="26" />,
+      name: "통계",
+      path: "chart",
+      pathname: "/oneday/chart",
+    },
+  ],
+  [
+    {
+      logo: <AdminUserIcon color="#7B829B" size="26" />,
+      name: "어드민 관리",
+      path: "adminuser",
+      pathname: "/oneday/adminuser",
+    },
+    {
+      logo: <AnotherIcon color="#7B829B" size="26" />,
+      name: "더보기",
+      path: "another",
+      pathname: "/oneday/another",
+    },
+  ],
 ];

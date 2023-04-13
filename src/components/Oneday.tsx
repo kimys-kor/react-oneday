@@ -7,20 +7,19 @@ import Sidebar from "@common/Sidebar";
 import Header from "@common/Header";
 
 import Dashboard from "@components/Dashboard";
-import Shop from "@components/Shop";
+import Application from "@/components/Application";
 import Product from "@components/Product";
-import Rider from "@components/Rider";
-import Orders from "@components/Orders";
+import Saving from "@/components/Saving";
+import Chart from "@/components/Statistics";
 import Member from "@components/Member";
+import AdminUser from "@/components/AdminUser";
+import Another from "@components/Another";
+import MemberDetail from "./MemberDetail";
 
 const Onedaybox = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
   position: absolute;
-  top: 20px;
   right: 0;
   transition: 0.19s ease;
 `;
@@ -55,15 +54,17 @@ function Oneday() {
           width: `calc(100% - ${width2})`,
         }}
       >
-        <Header toggleMenu={toggleMenu}></Header>
+        {/* <Header toggleMenu={toggleMenu}></Header> */}
 
         <Routes>
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="shop" element={<Shop />} />
-          <Route path="product" element={<Product />} />
-          <Route path="rider" element={<Rider />} />
-          <Route path="orders" element={<Orders />} />
           <Route path="member" element={<Member />} />
+          <Route path="application" element={<Application />} />
+          <Route path="product" element={<Product />} />
+          <Route path="saving" element={<Saving />} />
+          <Route path="chart" element={<Chart />} />
+          <Route path="adminuser" element={<AdminUser />} />
+          <Route path="another" element={<Another />} />
         </Routes>
       </Onedaybox>
     </>
