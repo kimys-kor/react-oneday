@@ -86,7 +86,7 @@ function Shop() {
       <Headerbox>
         <Fillter>
           <BorderButton
-            width={101}
+            width={76}
             titles={dateFilter}
             activeIndex={dateIndex}
             handleButtonClick={setDate}
@@ -146,9 +146,12 @@ function Shop() {
 
       <Content>
         <Title>상점 관리</Title>
-        <Addbutton onClick={handleAddShop}>상점 추가</Addbutton>
 
         <Layout>
+          <Rightbox>
+            <Addbutton onClick={handleAddShop}>상점 추가</Addbutton>
+          </Rightbox>
+
           <MemberBoard
             boardMenu={memberBoardTitle}
             boardData={memberBoardData}
@@ -165,7 +168,10 @@ function Shop() {
       >
         <Modal onClick={(e) => e.stopPropagation()}>
           <Formbox>
-            <Title>상점등록</Title>
+            <div>
+              <Title>상점등록</Title>
+            </div>
+
             <Form onSubmit={onSubmit}>
               <div>
                 <Inputbox>
@@ -268,7 +274,7 @@ const Content = styled.div`
 
 const Layout = styled.div`
   margin-top: 54px;
-  width: 90%;
+  width: 95%;
 `;
 
 const Fillter = styled.div`
@@ -420,19 +426,25 @@ const Flex = styled.div`
   justify-content: center;
 `;
 
-const Addbutton = styled.span`
-  width: 100px;
-  height: 50px;
-  color: #fff;
-  font-size: 14px;
-  letter-spacing: 0.2rem;
-  background-color: #304ffd;
-  border-radius: 5px;
+const Rightbox = styled.div`
+  margin-bottom: 20px;
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+`;
+
+const Addbutton = styled.span`
+  line-height: 37px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 300;
+  width: 100px;
+  height: 37px;
+
+  border: 1px solid #bbbbcf;
+  background-color: #ffffff;
   cursor: pointer;
-  &:hover {
-    background-color: #1536f5;
-  }
+  margin-right: 0; // remove the margin on the last button
+  border-color: #ff6622; // set border color to #ff6622 for active button
+  color: #ff6622;
 `;

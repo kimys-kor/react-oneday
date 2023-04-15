@@ -37,7 +37,7 @@ export default SearchInput;
 const InputContainer = styled.div`
   margin-left: 50px;
   position: relative;
-  width: 509px;
+  width: 300px;
   height: 39px;
 
   display: flex;
