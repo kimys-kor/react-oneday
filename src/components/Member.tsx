@@ -50,83 +50,68 @@ function Member() {
   return (
     <Memberbox>
       <Headerbox>
-        <Selectbox>
-          <CustomSelect
-            width={275}
-            height={53}
-            title={"회사"}
-            optionData={corpOptions}
-          ></CustomSelect>
-          <CustomSelect
-            width={275}
-            height={53}
-            title={"서비스"}
-            optionData={appOptions}
-          ></CustomSelect>
-        </Selectbox>
+        <Fillter>
+          <BorderButton
+            width={101}
+            titles={dateFilter}
+            activeIndex={dateIndex}
+            handleButtonClick={setDate}
+          ></BorderButton>
+          <Datebox>
+            <DatePicker
+              locale={ko}
+              closeOnScroll={(e) => e.target === document}
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              selectsStart
+              startDate={startDate}
+              endDate={endDate}
+              dateFormat="yyyy-MM-dd"
+              customInput={
+                // 날짜 뜨는 인풋 커스텀
+                <Input />
+              }
+            />
+          </Datebox>
+          ~
+          <Datebox>
+            <DatePicker
+              locale={ko}
+              closeOnScroll={(e) => e.target === document}
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+              selectsEnd
+              startDate={startDate}
+              endDate={endDate}
+              minDate={startDate}
+              dateFormat="yyyy-MM-dd"
+              customInput={
+                // 날짜 뜨는 인풋 커스텀
+                <Input />
+              }
+            />
+          </Datebox>
+          <Buttonbox>
+            <BorderButton
+              width={76}
+              titles={memberFilter}
+              activeIndex={memberFilterIndex}
+              handleButtonClick={handleMemberFilter}
+            ></BorderButton>
+          </Buttonbox>
+          <SearchInput></SearchInput>
+          <Selectbox>
+            <CustomSelect
+              width={99}
+              height={37}
+              optionData={eaOptions}
+            ></CustomSelect>
+          </Selectbox>
+        </Fillter>
       </Headerbox>
 
       <Content>
         <Layout>
-          <Fillter>
-            <BorderButton
-              width={101}
-              titles={dateFilter}
-              activeIndex={dateIndex}
-              handleButtonClick={setDate}
-            ></BorderButton>
-            <Datebox>
-              <DatePicker
-                locale={ko}
-                closeOnScroll={(e) => e.target === document}
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-                selectsStart
-                startDate={startDate}
-                endDate={endDate}
-                dateFormat="yyyy-MM-dd"
-                customInput={
-                  // 날짜 뜨는 인풋 커스텀
-                  <Input />
-                }
-              />
-            </Datebox>
-            ~
-            <Datebox>
-              <DatePicker
-                locale={ko}
-                closeOnScroll={(e) => e.target === document}
-                selected={endDate}
-                onChange={(date) => setEndDate(date)}
-                selectsEnd
-                startDate={startDate}
-                endDate={endDate}
-                minDate={startDate}
-                dateFormat="yyyy-MM-dd"
-                customInput={
-                  // 날짜 뜨는 인풋 커스텀
-                  <Input />
-                }
-              />
-            </Datebox>
-            <Buttonbox>
-              <BorderButton
-                width={76}
-                titles={memberFilter}
-                activeIndex={memberFilterIndex}
-                handleButtonClick={handleMemberFilter}
-              ></BorderButton>
-            </Buttonbox>
-            <SearchInput></SearchInput>
-            <Selectbox>
-              <CustomSelect
-                width={99}
-                height={37}
-                optionData={eaOptions}
-              ></CustomSelect>
-            </Selectbox>
-          </Fillter>
-
           <MemberBoard
             boardMenu={memberBoardTitle}
             boardData={memberBoardData}
@@ -151,6 +136,8 @@ const Memberbox = styled.div`
 `;
 
 const Headerbox = styled.div`
+  box-sizing: border-box;
+  padding-left: 60px;
   width: 100%;
   height: 125px;
   display: flex;
