@@ -26,11 +26,11 @@ const Barchart = () => {
          * chart에 사용될 데이터
          */
         data={[
-          { bottle: "캐시문상", cola: 1200 },
-          { bottle: "핏츠", cidar: 2000 },
-          { bottle: "언어의정원", fanta: 3100 },
-          { bottle: "로또서치", milkis: 3100 },
-          { bottle: "모이리", sunup: 3200 },
+          { bottle: "4/15", cola: 1200 },
+          { bottle: "4/14", cidar: 2000 },
+          { bottle: "4/13", fanta: 3100 },
+          { bottle: "4/12", milkis: 3100 },
+          { bottle: "4/11", sunup: 3200 },
         ]}
         /**
          * chart에 보여질 데이터 key (측정되는 값)

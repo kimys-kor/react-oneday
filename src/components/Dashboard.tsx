@@ -14,32 +14,24 @@ function Dashboard() {
   return (
     <Dashboardbox>
       <Headerbox>
-        <Selectbox>
-          <CustomSelect
-            width={275}
-            height={53}
-            title={"회사"}
-            optionData={corpOptions}
-          ></CustomSelect>
-        </Selectbox>
         <Summarybox>
           <Summary
-            title="대기 중인 상품권 처리"
+            title="접수 중인 주문"
             subTitle1="승인 대기중"
             subTitle2="13건"
           />
           <Summary
-            title="대기 중인 상품권 처리"
+            title="배달 중인 주문"
             subTitle1="승인 대기중"
             subTitle2="13건"
           />
           <Summary
-            title="대기 중인 상품권 처리"
+            title="배달완료 주문"
             subTitle1="승인 대기중"
             subTitle2="13건"
           />
           <Summary
-            title="대기 중인 상품권 처리"
+            title="불편 접수 주문"
             subTitle1="승인 대기중"
             subTitle2="13건"
           />
@@ -50,7 +42,7 @@ function Dashboard() {
         <Indicatorcard>
           <IndicatorTitlebox>
             <IndicatorTitle>
-              최근 일주일 광고 적립금 현황<Greyfont>단위:원</Greyfont>
+              최근 일주일 주문량<Greyfont>단위:건</Greyfont>
             </IndicatorTitle>
             <Detailbutton>자세히 &gt;</Detailbutton>
           </IndicatorTitlebox>
@@ -62,7 +54,7 @@ function Dashboard() {
         <Barcard>
           <IndicatorTitlebox>
             <IndicatorTitle>
-              최근 일주일 광고 적립금 현황<Greyfont>단위:원</Greyfont>
+              최근 5일 주문금액 <Greyfont>단위:원</Greyfont>
             </IndicatorTitle>
             <Detailbutton>자세히 &gt;</Detailbutton>
           </IndicatorTitlebox>
@@ -72,7 +64,7 @@ function Dashboard() {
         <Piecard>
           <IndicatorTitlebox>
             <IndicatorTitle>
-              최근 일주일 광고 적립금 현황<Greyfont>단위:원</Greyfont>
+              최근 일주일 불편 신고<Greyfont>단위:건</Greyfont>
             </IndicatorTitle>
             <Detailbutton>자세히 &gt;</Detailbutton>
           </IndicatorTitlebox>
@@ -111,6 +103,7 @@ const Headerbox = styled.div`
   width: 100%;
   height: 300px;
   display: flex;
+
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
