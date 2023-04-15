@@ -1,16 +1,27 @@
-import axios from "axios";
-import { useState, useEffect, Suspense, lazy } from "react";
 import styled from "styled-components";
-import { AiOutlinePlus } from "react-icons/ai";
-import { shoplocation } from "@/data/shop/shopData";
-import { useForm, Resolver } from "react-hook-form";
-import vector from "@images/app/Vector.png";
+import { useState } from "react";
 
-import Board from "@/components/common/board/MemberBoard";
+import CustomSelect from "@/styles/selectbox/CustomSelect";
+import SearchInput from "@components/common/SearchInput";
+
+import MemberDetail from "@components/MemberDetail";
+import MemberBoard from "@/components/common/board/MemberBoard";
+import { useForm, Resolver } from "react-hook-form";
+
+import {
+  eaOptions,
+  dateFilter,
+  memberFilter,
+  memberBoardTitle,
+  memberBoardData,
+} from "@data/member/memberData";
+import BorderButton from "@/styles/button/BorderButton";
+
+import DatePicker from "react-datepicker";
+import { ko } from "date-fns/esm/locale";
+import "react-datepicker/dist/react-datepicker.css";
 
 type FormData = {
-  firstName: string;
-  lastName: string;
   shopName: string;
   businessNumber: number;
   ownerName: string;
@@ -20,10 +31,10 @@ type FormData = {
 
 const resolver: Resolver<FormData> = async (values) => {
   return {
-    values: values.firstName ? values : {},
-    errors: !values.firstName
+    values: values.shopName ? values : {},
+    errors: !values.shopName
       ? {
-          firstName: {
+          shopName: {
             type: "required",
             message: "This is required.",
           },
@@ -33,180 +44,272 @@ const resolver: Resolver<FormData> = async (values) => {
 };
 
 function Shop() {
-  return <Shopbox>상점 관리</Shopbox>;
+  const [dateIndex, setDateIndex] = useState<number | null>(0);
+  const setDate = (index: number) => {
+    setDateIndex(index === dateIndex ? null : index);
+  };
+
+  const [memberFilterIndex, setMemberFilterIndex] = useState<number | null>(0);
+  const handleMemberFilter = (index: number) => {
+    setMemberFilterIndex(index === memberFilterIndex ? null : index);
+  };
+
+  const [startDate, setStartDate] = useState<Date | null>(new Date());
+  const [endDate, setEndDate] = useState<Date | null>(new Date());
+
+  const [isModalOpen, setModalOpen] = useState(false);
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+  const handleModalClose = () => {
+    console.log("헬로");
+    setModalOpen(false);
+  };
+
+  const [isAddShopOpen, setAddShopOpen] = useState(false);
+  const handleAddShop = () => {
+    setAddShopOpen((prev) => !prev);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({ resolver });
+
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
+
+  return (
+    <Shopbox>
+      <Headerbox>
+        <Fillter>
+          <BorderButton
+            width={101}
+            titles={dateFilter}
+            activeIndex={dateIndex}
+            handleButtonClick={setDate}
+          ></BorderButton>
+          <Datebox>
+            <DatePicker
+              locale={ko}
+              closeOnScroll={(e) => e.target === document}
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              selectsStart
+              startDate={startDate}
+              endDate={endDate}
+              dateFormat="yyyy-MM-dd"
+              customInput={
+                // 날짜 뜨는 인풋 커스텀
+                <DateInput />
+              }
+            />
+          </Datebox>
+          ~
+          <Datebox>
+            <DatePicker
+              locale={ko}
+              closeOnScroll={(e) => e.target === document}
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+              selectsEnd
+              startDate={startDate}
+              endDate={endDate}
+              minDate={startDate}
+              dateFormat="yyyy-MM-dd"
+              customInput={
+                // 날짜 뜨는 인풋 커스텀
+                <DateInput />
+              }
+            />
+          </Datebox>
+          <Buttonbox>
+            <BorderButton
+              width={76}
+              titles={memberFilter}
+              activeIndex={memberFilterIndex}
+              handleButtonClick={handleMemberFilter}
+            ></BorderButton>
+          </Buttonbox>
+          <SearchInput></SearchInput>
+          <Selectbox>
+            <CustomSelect
+              width={99}
+              height={37}
+              optionData={eaOptions}
+            ></CustomSelect>
+          </Selectbox>
+        </Fillter>
+      </Headerbox>
+
+      <Content>
+        <Title>상점 관리</Title>
+        <Addbutton onClick={handleAddShop}>상점 추가</Addbutton>
+
+        <Layout>
+          <MemberBoard
+            boardMenu={memberBoardTitle}
+            boardData={memberBoardData}
+            handleModalOpen={handleModalOpen}
+          ></MemberBoard>
+        </Layout>
+      </Content>
+      <MemberDetail onClose={handleModalClose} isModalOpen={isModalOpen} />
+
+      {/* 상점등록 모달 */}
+      <Wrapper
+        onClick={handleModalClose}
+        style={{ display: isAddShopOpen ? "flex" : "none" }}
+      >
+        <Modal onClick={(e) => e.stopPropagation()}>
+          <Formbox>
+            <Title>상점등록</Title>
+            <Form onSubmit={onSubmit}>
+              <div>
+                <Inputbox>
+                  <label>
+                    상점명<Star>*</Star>
+                  </label>{" "}
+                  <Input type="text" {...register("shopName")}></Input>
+                </Inputbox>
+
+                <Inputbox>
+                  <label>
+                    사업자번호<Star>*</Star>
+                  </label>{" "}
+                  <Input type="number" {...register("businessNumber")}></Input>
+                </Inputbox>
+
+                <Inputbox>
+                  <label>
+                    대표자명<Star>*</Star>
+                  </label>
+                  <Input type="text" {...register("ownerName")}></Input>
+                </Inputbox>
+
+                <Inputbox>
+                  <label>
+                    주소<Star>*</Star>
+                  </label>
+                  <Input type="text" {...register("shopAddress")}></Input>
+                </Inputbox>
+
+                <Inputbox>
+                  <label>
+                    연락처<Star>*</Star>
+                  </label>
+                  <Input type="number" {...register("shopContact")}></Input>
+                </Inputbox>
+              </div>
+
+              <Flex>
+                <Canclebutton onClick={handleAddShop}>취소</Canclebutton>
+                <Submitbutton type="submit" value="저장" />
+              </Flex>
+            </Form>
+          </Formbox>
+        </Modal>
+      </Wrapper>
+    </Shopbox>
+  );
 }
 
 export default Shop;
 
-const AppContent = styled.div`
-  margin-left: 8px;
-  font-family: "Minsans-Regular";
-  font-size: 16px;
-  color: #43454b;
-`;
-
-const Line = styled.div`
-  margin-left: 8px;
-  background: #dbddeb;
-  width: 1px;
-  height: 14px;
-`;
-
-const AppNumberTitle = styled.div`
-  margin-left: 20px;
-  font-family: "Minsans-Regular";
-  font-size: 16px;
-  color: #a8adc0;
-`;
-
-const AppName = styled.div`
-  margin-left: 20px;
-  display: inline-block;
-  white-space: nowrap;
-  color: #1e2026;
-  font-family: "Minsans-Regular";
-  font-size: 16px;
-`;
-
-const AppIconLayout = styled.div`
-  display: flex;
-  margin-left: 24px;
-  align-items: center;
-  width: 60px;
-  height: 60px;
-`;
-
-const AppLayout = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-  border-width: 1px;
-  border-color: #bbbbcf;
-  background: #ffffff;
-  width: 100%;
-  height: 108px;
-`;
-
 const Shopbox = styled.div`
-  margin-top: 20px;
-  width: 90%;
-  height: 66px;
-`;
-
-const Title = styled.p`
-  font-size: 35px;
-`;
-
-const MenuTable = styled.table`
-  margin-top: 63px;
-  text-align: center;
-  line-height: 37px;
-  font-size: 16px;
-  font-family: "Minsans-Regular";
-`;
-
-const AppInfoMenu = styled.td`
-  margin-left: 5px;
-  width: 152px;
-  height: 37px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #ff6622;
-  color: #ff6622;
-  background: #ffffff;
-`;
-
-const LimitPriceMenu = styled.td`
-  width: 152px;
-  height: 37px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #bbbbcf;
-  color: #bbbbcf;
-  background: #ffffff;
-`;
-
-const AdvMenu = styled.td`
-  width: 152px;
-  height: 37px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #bbbbcf;
-  color: #bbbbcf;
-  background: #ffffff;
-`;
-
-const AddAppButton = styled.td`
-  width: 183px;
-  height: 37px;
-  color: #ffffff;
-  background: #ff6622;
-`;
-
-const Flexbox = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Flex = styled.div`
-  display: flex;
-  gap: 4rem;
-  justify-content: center;
-`;
-
-const Fillterbox = styled.div`
-  height: 52px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const Fillterbutton = styled.div`
-  color: #8a9099;
-  width: 70px;
-  height: 50px;
-  color: #8a9099;
-  font-size: 17px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid transparent;
-  cursor: pointer;
-  &:hover {
-    border-bottom: 1px solid #304ffd;
-  }
-`;
-
-const Addbutton = styled.span`
-  width: 100px;
-  height: 50px;
-  color: #fff;
-  font-size: 14px;
-  letter-spacing: 0.2rem;
-  background-color: #304ffd;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  &:hover {
-    background-color: #1536f5;
-  }
-`;
-
-const Plus = styled(AiOutlinePlus)`
-  margin-right: 5px;
-`;
-
-const Card = styled.div`
-  margin-top: 50px;
   width: 100%;
 
-  background-color: #fff;
-  border-radius: 5px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 9px;
+`;
+
+const Headerbox = styled.div`
+  box-sizing: border-box;
+  padding-left: 60px;
+  width: 100%;
+  height: 125px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  background-color: #fff;
+`;
+
+const Title = styled.div`
+  margin-top: 10px;
+  font-size: 25px;
+`;
+const Selectbox = styled.div`
+  margin-left: 68px;
+  width: 586px;
+  height: 53px;
+
+  display: flex;
+  gap: 36px;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const Content = styled.div`
+  margin-top: 12px;
+  width: 100%;
+  min-height: 1000px;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+`;
+
+const Layout = styled.div`
+  margin-top: 54px;
+  width: 90%;
+`;
+
+const Fillter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .react-datepicker-wrapper {
+    width: 156px;
+  }
+  .react-datepicker__calendar-icon {
+    fill: #bbbbcf;
+  }
+  .react-datepicker__calendar-icon {
+    position: absolute;
+    top: 3px;
+  }
+`;
+
+const Datebox = styled.div`
+  margin-left: 12px;
+`;
+
+const DateInput = styled.input`
+  box-sizing: border-box;
+  width: 156px;
+  height: 37px;
+  padding: 5px 10px;
+  background: #fff;
+  border: 1px solid #bbbbcf;
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
+  color: #bbbbcf;
+  line-height: 37px;
+  text-align: center;
+`;
+
+const Buttonbox = styled.div`
+  margin-left: 24px;
+  display: flex;
 `;
 
 const Wrapper = styled.div`
@@ -223,30 +326,16 @@ const Wrapper = styled.div`
 
 const Modal = styled.div`
   width: 500px;
-  height: 600px;
   background-color: white;
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-
-  display: flex;
-  justify-content: center;
-`;
-
-const CloseButton = styled.button`
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: transparent;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
+  transition: 0.5s ease; /* add transition property */
 `;
 
 const Form = styled.form`
   width: 90%;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -254,6 +343,7 @@ const Form = styled.form`
 
 const Formbox = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -264,7 +354,6 @@ const Inputbox = styled.div`
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
-
   label {
     width: 20%;
   }
@@ -318,4 +407,32 @@ const Star = styled.p`
   display: inline;
   margin-left: 3px;
   color: red;
+`;
+
+const Flexbox = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Flex = styled.div`
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+`;
+
+const Addbutton = styled.span`
+  width: 100px;
+  height: 50px;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.2rem;
+  background-color: #304ffd;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+    background-color: #1536f5;
+  }
 `;

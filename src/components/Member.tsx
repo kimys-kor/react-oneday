@@ -111,6 +111,7 @@ function Member() {
       </Headerbox>
 
       <Content>
+        <Title>회원 관리</Title>
         <Layout>
           <MemberBoard
             boardMenu={memberBoardTitle}
@@ -145,6 +146,11 @@ const Headerbox = styled.div`
   justify-content: center;
   align-items: flex-start;
   background-color: #fff;
+`;
+
+const Title = styled.div`
+  margin-top: 10px;
+  font-size: 25px;
 `;
 
 const Selectbox = styled.div`
