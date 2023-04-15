@@ -43,6 +43,10 @@ const Button = styled.div<ButtonProps>`
   width: ${({ width }) => width}px;
   height: 37px;
 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
   border: 1px solid #bbbbcf;
   background-color: #ffffff;
   cursor: pointer;

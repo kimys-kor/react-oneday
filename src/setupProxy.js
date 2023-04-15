@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     "/contactus",
     createProxyMiddleware({
-      target: "http://dev.syurl.co.kr:8083",
+      target: "localhost:8083",
       changeOrigin: true,
     })
   );

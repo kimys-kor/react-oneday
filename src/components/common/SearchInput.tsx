@@ -37,10 +37,14 @@ export default SearchInput;
 const InputContainer = styled.div`
   margin-left: 50px;
   position: relative;
-  width: 300px;
+  width: 230px;
   height: 39px;
 
   display: flex;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const Input = styled.input`

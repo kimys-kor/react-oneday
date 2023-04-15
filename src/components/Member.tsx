@@ -52,7 +52,7 @@ function Member() {
       <Headerbox>
         <Fillter>
           <BorderButton
-            width={101}
+            width={70}
             titles={dateFilter}
             activeIndex={dateIndex}
             handleButtonClick={setDate}

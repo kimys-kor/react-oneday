@@ -84,70 +84,73 @@ function Shop() {
   return (
     <Shopbox>
       <Headerbox>
-        <Fillter>
-          <BorderButton
-            width={76}
-            titles={dateFilter}
-            activeIndex={dateIndex}
-            handleButtonClick={setDate}
-          ></BorderButton>
-          <Datebox>
-            <DatePicker
-              locale={ko}
-              closeOnScroll={(e) => e.target === document}
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              selectsStart
-              startDate={startDate}
-              endDate={endDate}
-              dateFormat="yyyy-MM-dd"
-              customInput={
-                // 날짜 뜨는 인풋 커스텀
-                <DateInput />
-              }
-            />
-          </Datebox>
-          ~
-          <Datebox>
-            <DatePicker
-              locale={ko}
-              closeOnScroll={(e) => e.target === document}
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
-              selectsEnd
-              startDate={startDate}
-              endDate={endDate}
-              minDate={startDate}
-              dateFormat="yyyy-MM-dd"
-              customInput={
-                // 날짜 뜨는 인풋 커스텀
-                <DateInput />
-              }
-            />
-          </Datebox>
-          <Buttonbox>
+        <Layout>
+          <HeaderContent>
             <BorderButton
               width={76}
-              titles={memberFilter}
-              activeIndex={memberFilterIndex}
-              handleButtonClick={handleMemberFilter}
+              titles={dateFilter}
+              activeIndex={dateIndex}
+              handleButtonClick={setDate}
             ></BorderButton>
-          </Buttonbox>
-          <SearchInput></SearchInput>
-          <Selectbox>
+
+            <Flexbox>
+              <Datebox>
+                <DatePicker
+                  locale={ko}
+                  closeOnScroll={(e) => e.target === document}
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  selectsStart
+                  startDate={startDate}
+                  endDate={endDate}
+                  dateFormat="yyyy-MM-dd"
+                  customInput={
+                    // 날짜 뜨는 인풋 커스텀
+                    <DateInput />
+                  }
+                />
+              </Datebox>
+              <Datebox>
+                <DatePicker
+                  locale={ko}
+                  closeOnScroll={(e) => e.target === document}
+                  selected={endDate}
+                  onChange={(date) => setEndDate(date)}
+                  selectsEnd
+                  startDate={startDate}
+                  endDate={endDate}
+                  minDate={startDate}
+                  dateFormat="yyyy-MM-dd"
+                  customInput={
+                    // 날짜 뜨는 인풋 커스텀
+                    <DateInput />
+                  }
+                />
+              </Datebox>
+            </Flexbox>
+
+            <Buttonbox>
+              <BorderButton
+                width={80}
+                titles={memberFilter}
+                activeIndex={memberFilterIndex}
+                handleButtonClick={handleMemberFilter}
+              ></BorderButton>
+            </Buttonbox>
+            <SearchInput></SearchInput>
+
             <CustomSelect
-              width={99}
+              width={90}
               height={37}
               optionData={eaOptions}
             ></CustomSelect>
-          </Selectbox>
-        </Fillter>
+          </HeaderContent>
+        </Layout>
       </Headerbox>
 
       <Content>
-        <Title>상점 관리</Title>
-
         <Layout>
+          <Title>상점 관리</Title>
           <Rightbox>
             <Addbutton onClick={handleAddShop}>상점 추가</Addbutton>
           </Rightbox>
@@ -225,6 +228,7 @@ function Shop() {
 export default Shop;
 
 const Shopbox = styled.div`
+  box-sizing: border-box;
   width: 100%;
 
   display: flex;
@@ -234,30 +238,14 @@ const Shopbox = styled.div`
 `;
 
 const Headerbox = styled.div`
-  box-sizing: border-box;
-  padding-left: 60px;
   width: 100%;
   height: 125px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  background-color: #fff;
-`;
-
-const Title = styled.div`
-  margin-top: 10px;
-  font-size: 25px;
-`;
-const Selectbox = styled.div`
-  margin-left: 68px;
-  width: 586px;
-  height: 53px;
-
-  display: flex;
-  gap: 36px;
-  justify-content: flex-start;
   align-items: center;
+  background-color: #fff;
 `;
 
 const Content = styled.div`
@@ -273,11 +261,27 @@ const Content = styled.div`
 `;
 
 const Layout = styled.div`
+  box-sizing: border-box;
   margin-top: 54px;
   width: 95%;
 `;
 
-const Fillter = styled.div`
+const Title = styled.div`
+  margin-top: 10px;
+  font-size: 25px;
+`;
+const Selectbox = styled.div`
+  width: 586px;
+  height: 53px;
+
+  display: flex;
+  gap: 36px;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const HeaderContent = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
