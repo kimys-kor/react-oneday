@@ -57,7 +57,7 @@ function Login() {
       <Leftbox>
         <Leftwrapper>
           <Loginicon src={loginicon}></Loginicon>
-          <Leftfont1>간편한 통합 관리 대시보드</Leftfont1>
+          <Leftfont1>원데이 통합 관리 대시보드</Leftfont1>
           <Leftfont2>{text1}</Leftfont2>
           <Leftfont2>{text2}</Leftfont2>
           <Footer>
@@ -70,7 +70,7 @@ function Login() {
       <Rightbox>
         <Form onSubmit={onSubmit}>
           <Titlebox>
-            <Title>Admin Login to ITSY</Title>
+            <Title>Admin Login to ONEDAY</Title>
             <Divide>━━━━━━━━━━━━━</Divide>
           </Titlebox>
 

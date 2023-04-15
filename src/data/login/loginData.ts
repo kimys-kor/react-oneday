@@ -1,8 +1,8 @@
-export const text1 = "유저,수익,통계,관리부터 실시간 모니터링까지";
-export const text2 = " 통합 대시보드를 통해간편한게 관리해 보세요";
+export const text1 = "간편하게 클릭하나만으로";
+export const text2 = "필요한 물품을 하루내에 배송까지";
 export const footertext1 =
-  "주식회사 에스와이컴퍼니 | 대표자:설영은 | 사업자등록번호:157-87-00817";
+  "주식회사 원데이컴퍼니 | 대표자:김영승 | 사업자등록번호:111-111-1111";
 export const footertext2 =
-  "고객센터: sy@syai.kr 062-952-6380(평일 오전 09시~오후 18시)";
+  "고객센터: 11@1111.kr 062-111-1111(평일 오전 09시~오후 18시)";
 export const footertext3 =
-  "2023. Copyright© by SYCOMPANY Inc. All rights reserved";
+  "2023. Copyright© by ONEDAYCOMPANY Inc. All rights reserved";
