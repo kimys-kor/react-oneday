@@ -86,14 +86,12 @@ function Shop() {
       <Headerbox>
         <Layout>
           <HeaderContent>
-            <Buttonbox>
-              <BorderButton
-                width={76}
-                titles={dateFilter}
-                activeIndex={dateIndex}
-                handleButtonClick={setDate}
-              ></BorderButton>
-            </Buttonbox>
+            <BorderButton
+              width={76}
+              titles={dateFilter}
+              activeIndex={dateIndex}
+              handleButtonClick={setDate}
+            ></BorderButton>
 
             <Flexbox>
               <Datebox>
@@ -139,9 +137,7 @@ function Shop() {
                 handleButtonClick={handleMemberFilter}
               ></BorderButton>
             </Buttonbox>
-            <Buttonbox>
-              <SearchInput></SearchInput>
-            </Buttonbox>
+            <SearchInput></SearchInput>
 
             <CustomSelect
               width={90}
