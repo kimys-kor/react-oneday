@@ -292,6 +292,14 @@ const Titlebox = styled.div`
   justify-content: space-between;
 `;
 
+const RightContent = styled.div`
+  box-sizing: border-box;
+  margin-top: 20px;
+  width: 100%;
+
+  overflow: hidden;
+`;
+
 const Right = styled.div`
   width: 63%;
 `;
@@ -451,10 +459,4 @@ const Option = styled.div`
   &:hover {
     color: #ff6622;
   }
-`;
-
-const RightContent = styled.div`
-  box-sizing: border-box;
-  margin-top: 20px;
-  width: 100%;
 `;

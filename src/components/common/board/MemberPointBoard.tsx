@@ -68,7 +68,7 @@ function MemberPointBoard({ index, boardMenu, boardData }: BoardProps) {
 export default MemberPointBoard;
 
 const Table = styled.div`
-  width: 860px;
+  width: 100%;
   border: 1px solid #bbbbcf;
   box-sizing: border-box;
 `;
@@ -105,7 +105,6 @@ const Tr = styled.li`
 
 const TitleTd = styled.div`
   box-sizing: border-box;
-  width: 130px;
   height: 56px;
   line-height: 56px;
 
@@ -118,7 +117,6 @@ const TitleTd = styled.div`
 
 const Td = styled.div`
   box-sizing: border-box;
-  width: 130px;
   line-height: 62px;
 
   overflow: hidden;
