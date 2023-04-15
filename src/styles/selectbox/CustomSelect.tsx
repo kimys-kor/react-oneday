@@ -90,7 +90,6 @@ const SelectWrapper = styled.div<WidthOptionProps>`
   font-size: 16px;
   color: 1e2026;
 
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 

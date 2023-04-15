@@ -86,12 +86,14 @@ function Shop() {
       <Headerbox>
         <Layout>
           <HeaderContent>
-            <BorderButton
-              width={76}
-              titles={dateFilter}
-              activeIndex={dateIndex}
-              handleButtonClick={setDate}
-            ></BorderButton>
+            <Buttonbox>
+              <BorderButton
+                width={76}
+                titles={dateFilter}
+                activeIndex={dateIndex}
+                handleButtonClick={setDate}
+              ></BorderButton>
+            </Buttonbox>
 
             <Flexbox>
               <Datebox>
@@ -137,7 +139,9 @@ function Shop() {
                 handleButtonClick={handleMemberFilter}
               ></BorderButton>
             </Buttonbox>
-            <SearchInput></SearchInput>
+            <Buttonbox>
+              <SearchInput></SearchInput>
+            </Buttonbox>
 
             <CustomSelect
               width={90}
@@ -269,15 +273,6 @@ const Layout = styled.div`
 const Title = styled.div`
   margin-top: 10px;
   font-size: 25px;
-`;
-const Selectbox = styled.div`
-  width: 586px;
-  height: 53px;
-
-  display: flex;
-  gap: 36px;
-  justify-content: flex-start;
-  align-items: center;
 `;
 
 const HeaderContent = styled.div`

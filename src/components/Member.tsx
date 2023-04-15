@@ -50,64 +50,68 @@ function Member() {
   return (
     <Memberbox>
       <Headerbox>
-        <Fillter>
-          <BorderButton
-            width={70}
-            titles={dateFilter}
-            activeIndex={dateIndex}
-            handleButtonClick={setDate}
-          ></BorderButton>
-          <Datebox>
-            <DatePicker
-              locale={ko}
-              closeOnScroll={(e) => e.target === document}
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              selectsStart
-              startDate={startDate}
-              endDate={endDate}
-              dateFormat="yyyy-MM-dd"
-              customInput={
-                // 날짜 뜨는 인풋 커스텀
-                <Input />
-              }
-            />
-          </Datebox>
-          ~
-          <Datebox>
-            <DatePicker
-              locale={ko}
-              closeOnScroll={(e) => e.target === document}
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
-              selectsEnd
-              startDate={startDate}
-              endDate={endDate}
-              minDate={startDate}
-              dateFormat="yyyy-MM-dd"
-              customInput={
-                // 날짜 뜨는 인풋 커스텀
-                <Input />
-              }
-            />
-          </Datebox>
-          <Buttonbox>
+        <Layout>
+          <HeaderContent>
             <BorderButton
               width={76}
-              titles={memberFilter}
-              activeIndex={memberFilterIndex}
-              handleButtonClick={handleMemberFilter}
+              titles={dateFilter}
+              activeIndex={dateIndex}
+              handleButtonClick={setDate}
             ></BorderButton>
-          </Buttonbox>
-          <SearchInput></SearchInput>
-          <Selectbox>
+
+            <Flexbox>
+              <Datebox>
+                <DatePicker
+                  locale={ko}
+                  closeOnScroll={(e) => e.target === document}
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  selectsStart
+                  startDate={startDate}
+                  endDate={endDate}
+                  dateFormat="yyyy-MM-dd"
+                  customInput={
+                    // 날짜 뜨는 인풋 커스텀
+                    <DateInput />
+                  }
+                />
+              </Datebox>
+              <Datebox>
+                <DatePicker
+                  locale={ko}
+                  closeOnScroll={(e) => e.target === document}
+                  selected={endDate}
+                  onChange={(date) => setEndDate(date)}
+                  selectsEnd
+                  startDate={startDate}
+                  endDate={endDate}
+                  minDate={startDate}
+                  dateFormat="yyyy-MM-dd"
+                  customInput={
+                    // 날짜 뜨는 인풋 커스텀
+                    <DateInput />
+                  }
+                />
+              </Datebox>
+            </Flexbox>
+
+            <Buttonbox>
+              <BorderButton
+                width={80}
+                titles={memberFilter}
+                activeIndex={memberFilterIndex}
+                handleButtonClick={handleMemberFilter}
+              ></BorderButton>
+            </Buttonbox>
+            <SearchInput></SearchInput>
+
             <CustomSelect
-              width={99}
+              width={90}
               height={37}
               optionData={eaOptions}
             ></CustomSelect>
-          </Selectbox>
-        </Fillter>
+          </HeaderContent>
+        </Layout>
       </Headerbox>
 
       <Content>
@@ -137,31 +141,19 @@ const Memberbox = styled.div`
 `;
 
 const Headerbox = styled.div`
-  box-sizing: border-box;
-  padding-left: 60px;
   width: 100%;
   height: 125px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   background-color: #fff;
 `;
 
 const Title = styled.div`
   margin-top: 10px;
   font-size: 25px;
-`;
-
-const Selectbox = styled.div`
-  margin-left: 68px;
-  width: 586px;
-  height: 53px;
-
-  display: flex;
-  gap: 36px;
-  justify-content: flex-start;
-  align-items: center;
 `;
 
 const Content = styled.div`
@@ -177,11 +169,13 @@ const Content = styled.div`
 `;
 
 const Layout = styled.div`
+  box-sizing: border-box;
   margin-top: 54px;
-  width: 90%;
+  width: 95%;
 `;
 
-const Fillter = styled.div`
+const HeaderContent = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -198,11 +192,16 @@ const Fillter = styled.div`
   }
 `;
 
+const Flexbox = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const Datebox = styled.div`
   margin-left: 12px;
 `;
 
-const Input = styled.input`
+const DateInput = styled.input`
   box-sizing: border-box;
   width: 156px;
   height: 37px;
