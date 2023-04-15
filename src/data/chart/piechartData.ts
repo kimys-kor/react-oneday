@@ -32,39 +32,19 @@ export const color = [
 
 export const memberOccupationData: Array<piechartModel> = [
   {
-    id: "언어의정원",
+    id: "배달지연",
     occupation: "45%",
     value: 3000,
   },
   {
-    id: "캐시문상",
+    id: "물건누락",
     occupation: "45%",
     value: 4000,
   },
   {
-    id: "로또서치",
+    id: "결제실패",
     occupation: "45%",
     value: 2000,
-  },
-  {
-    id: "행복로또",
-    occupation: "45%",
-    value: 200,
-  },
-  {
-    id: "핏츠",
-    occupation: "45%",
-    value: 500,
-  },
-  {
-    id: "에이바",
-    occupation: "45%",
-    value: 600,
-  },
-  {
-    id: "티티고",
-    occupation: "45%",
-    value: 100,
   },
 ];
 
