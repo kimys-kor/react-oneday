@@ -86,7 +86,7 @@ const SelectWrapper = styled.div<WidthOptionProps>`
 
   background-color: #fff;
   font-family: "MinSans-Regular";
-  font-weight: 600;
+
   font-size: 16px;
   color: 1e2026;
 
@@ -103,6 +103,7 @@ const SelectWrapper = styled.div<WidthOptionProps>`
 const Label = styled.label`
   margin-left: 4px;
   cursor: pointer;
+  color: #a8adc0;
 `;
 
 const Greyfont1 = styled.p`

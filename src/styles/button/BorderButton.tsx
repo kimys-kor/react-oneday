@@ -38,7 +38,6 @@ export default BorderButton;
 const Button = styled.div<ButtonProps>`
   line-height: 37px;
   text-align: center;
-  font-family: "MinSans-Regular";
   font-size: 16px;
   font-weight: 300;
   width: ${({ width }) => width}px;

@@ -74,17 +74,6 @@ function Statistics() {
 
   return (
     <Box>
-      <Headerbox>
-        <Selectbox>
-          <CustomSelect
-            width={275}
-            height={53}
-            title={"회사"}
-            optionData={corpOptions}
-          ></CustomSelect>
-        </Selectbox>
-      </Headerbox>
-
       <Wrapper>
         <Layout>
           <Tabbox>
@@ -321,31 +310,12 @@ export default Statistics;
 
 const Box = styled.div`
   width: 100%;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 9px;
-`;
-
-const Headerbox = styled.div`
-  width: 100%;
-  height: 125px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  background-color: #fff;
-`;
-
-const Selectbox = styled.div`
-  margin-left: 68px;
-  width: 586px;
-
-  display: flex;
-  gap: 36px;
-  justify-content: flex-start;
-  align-items: center;
 `;
 
 const Flexbox = styled.div`
@@ -354,9 +324,8 @@ const Flexbox = styled.div`
 `;
 
 const Wrapper = styled.div`
-  margin-top: 12px;
   width: 100%;
-  min-height: 1000px;
+  min-height: 1150px;
   height: 100%;
 
   display: flex;
@@ -429,7 +398,6 @@ const Searchbox = styled.div`
 
 const Amount = styled.div`
   margin-left: 24px;
-  font-family: "MinSans-Regular";
   font-weight: 500;
   color: #ff6622;
   border: 1px solid #ff6622;

@@ -1,8 +1,8 @@
-export const titleStatistics = ["광고 적립금 통계", "서비스 통계"];
+export const titleStatistics = ["주문건수 통계", "주문금액 통계"];
 
 export const dateFilter = ["일별", "월별", "기간별"];
 
-export const searchFilter = ["전체", "회사", "회원"];
+export const searchFilter = ["전체", "주문완료", "주문취소"];
 
 export const chartFilter = ["누적회원점유율", "누적적립금점유율"];
 
