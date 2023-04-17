@@ -5,7 +5,6 @@ import BorderButton from "@/styles/button/BorderButton";
 import CustomSelect from "@/styles/selectbox/CustomSelect";
 import { useForm, Resolver } from "react-hook-form";
 import { eaOptions } from "@data/member/memberData";
-import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anothericon.svg";
 
 import { member } from "@/models/member/memberModel";
 
@@ -13,8 +12,6 @@ import MemberPointBoard from "@common/board/MemberPointBoard";
 import {
   savePointBoardData,
   savePointBoardTitle,
-  usePointBoardData,
-  usePointBoardTitle,
 } from "@data/member/memberData";
 
 interface MemberDetailProps {
@@ -88,13 +85,12 @@ function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
 
                 <Row>
                   <Greyfont1>이메일</Greyfont1>
-                  <Emailbox>
-                    <Blackfont1>{member?.email}</Blackfont1>
-                  </Emailbox>
+
+                  <Blackfont1>{member?.email}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont2>닉네임</Greyfont2>
+                  <Greyfont1>닉네임</Greyfont1>
                   <Blackfont1>{member?.nickname}</Blackfont1>
                 </Row>
                 <Row>
@@ -109,24 +105,20 @@ function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
                 <Divide></Divide>
 
                 <Row>
-                  <Greyfont2>총 주문 횟수</Greyfont2>
+                  <Greyfont1>총 주문 횟수</Greyfont1>
                   <Blackfont1>{member?.orderCount}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont2>총 주문 금액</Greyfont2>
+                  <Greyfont1>총 주문 금액</Greyfont1>
                   <Blackfont1>{member?.orderAmount}</Blackfont1>
                 </Row>
 
                 <Divide></Divide>
 
                 <Row>
-                  <Greyfont3>현재 보유 포인트</Greyfont3>
+                  <Greyfont1>현재 보유 포인트</Greyfont1>
                   <Blackfont1>{member?.id}</Blackfont1>
-                </Row>
-
-                <Row>
-                  <Greyfont3>{member?.id}</Greyfont3>
                 </Row>
 
                 <Row>
@@ -325,53 +317,13 @@ const Iconbox = styled.div`
 
 const Greyfont1 = styled.div`
   color: #a8adc0;
-  width: 100px;
+  width: 120px;
   height: 30px;
 
   line-height: 100%;
   font-family: "MinSans-Bold";
   font-size: 16px;
   letter-spacing: -0.04em;
-
-  &::after {
-    content: "|";
-    font-family: "MinSans-Regular";
-    float: right;
-  }
-`;
-
-const Greyfont2 = styled.div`
-  color: #a8adc0;
-  width: 180px;
-  height: 30px;
-
-  font-family: "MinSans-Bold";
-  line-height: 100%;
-  font-size: 16px;
-  letter-spacing: -0.04em;
-
-  &::after {
-    content: "|";
-    font-family: "MinSans-Regular";
-    float: right;
-  }
-`;
-
-const Greyfont3 = styled.div`
-  color: #a8adc0;
-  width: 130px;
-  height: 30px;
-
-  font-family: "MinSans-Bold";
-  line-height: 100%;
-  font-size: 16px;
-  letter-spacing: -0.04em;
-
-  &::after {
-    content: "|";
-    font-family: "MinSans-Regular";
-    float: right;
-  }
 `;
 
 const Blackfont1 = styled.div`
