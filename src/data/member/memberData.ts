@@ -4,6 +4,8 @@ import {
   eaOption,
 } from "@/models/selectbox/selectboxModel";
 
+import { member } from "@/models/member/memberModel";
+
 export const corpOptions: Array<corpOption> = [
   { key: 0, value: "주식회사 에스와이컴퍼니" },
   { key: 1, value: "주식회사 아이티앱스" },
@@ -32,39 +34,49 @@ export const memberBoardTitle = [
   "구분",
   "핸드폰",
   "이메일",
+  "닉네임",
   "가입일",
   "보유 포인트",
   "상태",
   "상세 정보",
 ];
 
-export const memberBoardData = [
+export const memberData: member[] = [
   {
-    key: 1,
-    phone: "010-1111-1111",
-    email: "wefk@gmail.com",
-    creteadDt: "2022-12-19",
-    point: 0,
-    stats: 0,
-    detail: "null",
+    status: "정상",
+    id: 0,
+    phone: "01012345678",
+    email: "wwkwk@naver.com",
+    nickname: "부끄러운어피치",
+    creteadDt: "2020-03-01",
+    lastloginDt: "2023-04-17",
+    orderCount: 2645,
+    orderAmount: 1204044,
+    point: 2700,
   },
   {
-    key: 1,
-    phone: "010-1111-1111",
-    email: "wefk@gmail.com",
-    creteadDt: "2022-12-19",
-    point: 0,
-    stats: 0,
-    detail: "null",
+    status: "정상",
+    id: 1,
+    phone: "01012345678",
+    email: "wwkwk@naver.com",
+    nickname: "라이언과함께",
+    creteadDt: "2020-03-01",
+    lastloginDt: "2023-04-17",
+    orderCount: 2645,
+    orderAmount: 1204044,
+    point: 2700,
   },
   {
-    key: 1,
-    phone: "010-1111-1111",
-    email: "wefk@gmail.com",
-    creteadDt: "2022-12-19",
-    point: 0,
-    stats: 0,
-    detail: "null",
+    status: "정상",
+    id: 2,
+    phone: "01012345678",
+    email: "wwkwk@naver.com",
+    nickname: "콜라좋아",
+    creteadDt: "2020-03-01",
+    lastloginDt: "2023-04-17",
+    orderCount: 2645,
+    orderAmount: 1204044,
+    point: 2700,
   },
 ];
 

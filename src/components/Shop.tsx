@@ -4,8 +4,8 @@ import { useState } from "react";
 import CustomSelect from "@/styles/selectbox/CustomSelect";
 import SearchInput from "@components/common/SearchInput";
 
-import MemberDetail from "@components/MemberDetail";
-import MemberBoard from "@/components/common/board/MemberBoard";
+import ShopDetail from "@components/ShopDetail";
+import ShopBoard from "@/components/common/board/ShopBoard";
 import { useForm, Resolver } from "react-hook-form";
 
 import {
@@ -13,7 +13,7 @@ import {
   dateFilter,
   memberFilter,
   memberBoardTitle,
-  memberBoardData,
+  memberData,
 } from "@data/member/memberData";
 import BorderButton from "@/styles/button/BorderButton";
 
@@ -155,14 +155,14 @@ function Shop() {
             <Addbutton onClick={handleAddShop}>상점 추가</Addbutton>
           </Rightbox>
 
-          <MemberBoard
+          <ShopBoard
             boardMenu={memberBoardTitle}
-            boardData={memberBoardData}
+            boardData={memberData}
             handleModalOpen={handleModalOpen}
-          ></MemberBoard>
+          ></ShopBoard>
         </Layout>
       </Content>
-      <MemberDetail onClose={handleModalClose} isModalOpen={isModalOpen} />
+      <ShopDetail onClose={handleModalClose} isModalOpen={isModalOpen} />
 
       {/* 상점등록 모달 */}
       <Wrapper

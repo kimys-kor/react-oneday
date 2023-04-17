@@ -14,7 +14,7 @@ import {
   dateFilter,
   memberFilter,
   memberBoardTitle,
-  memberBoardData,
+  memberData,
 } from "@data/member/memberData";
 import BorderButton from "@/styles/button/BorderButton";
 
@@ -23,28 +23,34 @@ import { ko } from "date-fns/esm/locale";
 import "react-datepicker/dist/react-datepicker.css";
 
 function Member() {
+  // 필터
   const [dateIndex, setDateIndex] = useState<number | null>(0);
   const setDate = (index: number) => {
     setDateIndex(index === dateIndex ? null : index);
   };
-
   const [memberFilterIndex, setMemberFilterIndex] = useState<number | null>(0);
   const handleMemberFilter = (index: number) => {
     setMemberFilterIndex(index === memberFilterIndex ? null : index);
   };
-
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(new Date());
 
-  const [isModalOpen, setModalOpen] = useState(false);
-
-  const handleModalOpen = () => {
-    setModalOpen(true);
+  // 디테일 모달 상태
+  const [isDetailOpen, setDetailOpen] = useState(false);
+  const handleDetailOpen = (index: number) => {
+    setDetailOpen(true);
+    console.log(index);
+  };
+  const handleDetailClose = () => {
+    setDetailOpen(false);
   };
 
-  const handleModalClose = () => {
-    console.log("헬로");
-    setModalOpen(false);
+  const [activeMember, setActiveMember] = useState(0);
+
+  const [openAnother, setOpenAnother] = useState(-1);
+  const handleOpenIndex = (index: number) => {
+    setActiveMember(openAnother);
+    setOpenAnother(index);
   };
 
   return (
@@ -119,12 +125,18 @@ function Member() {
         <Layout>
           <MemberBoard
             boardMenu={memberBoardTitle}
-            boardData={memberBoardData}
-            handleModalOpen={handleModalOpen}
+            memberData={memberData}
+            handleDetailOpen={handleDetailOpen}
+            openAnother={openAnother}
+            handleOpenIndex={handleOpenIndex}
           ></MemberBoard>
         </Layout>
       </Content>
-      <MemberDetail onClose={handleModalClose} isModalOpen={isModalOpen} />
+      <MemberDetail
+        onClose={handleDetailClose}
+        isDetailOpen={isDetailOpen}
+        member={memberData[activeMember]}
+      />
     </Memberbox>
   );
 }

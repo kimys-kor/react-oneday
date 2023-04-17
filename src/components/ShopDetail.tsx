@@ -7,8 +7,6 @@ import { useForm, Resolver } from "react-hook-form";
 import { eaOptions } from "@data/member/memberData";
 import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anothericon.svg";
 
-import { member } from "@/models/member/memberModel";
-
 import MemberPointBoard from "@common/board/MemberPointBoard";
 import {
   savePointBoardData,
@@ -19,8 +17,7 @@ import {
 
 interface MemberDetailProps {
   onClose: () => void;
-  isDetailOpen: boolean;
-  member: member | undefined;
+  isModalOpen: boolean;
 }
 
 type FormData = {
@@ -41,12 +38,17 @@ const resolver: Resolver<FormData> = async (values) => {
   };
 };
 
-function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
-  console.log(member, "하이");
+function ShopDetail({ onClose, isModalOpen }: MemberDetailProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const handleButtonClick = (index: number) => {
     setActiveIndex(index === activeIndex ? null : index);
   };
+
+  const handleModalClose = () => {
+    onClose();
+  };
+
+  const [showHideDiv, setShowHideDiv] = useState(false);
 
   const {
     register,
@@ -59,74 +61,85 @@ function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
   });
 
   return (
-    <Wrapper isDetailOpen={isDetailOpen}>
-      <Modal isDetailOpen={isDetailOpen} onClick={(e) => e.stopPropagation()}>
+    <Wrapper isModalOpen={isModalOpen}>
+      <Modal isModalOpen={isModalOpen} onClick={(e) => e.stopPropagation()}>
         <Layout>
           <Headerbox>
-            <Button onClick={onClose}>&lt;</Button>
+            <Button onClick={handleModalClose}>&lt;</Button>
           </Headerbox>
 
           <Content>
             <Left>
               <Titlebox>
-                <LeftButton>회원 정보</LeftButton>
+                <LeftButton>상점 정보</LeftButton>
               </Titlebox>
               <LeftContent>
                 <Row>
-                  <Greyfont1>상태</Greyfont1>
-                  <Blackfont1>{member?.status}</Blackfont1>
+                  <Greyfont1>상점명</Greyfont1>
+                  <Blackfont1>용만이네 상점</Blackfont1>
+                  <Iconbox>
+                    <AnotherIcon
+                      onClick={() => setShowHideDiv((prev) => !prev)}
+                    ></AnotherIcon>
+                    {showHideDiv && (
+                      <Optionbox>
+                        <Option>활성화</Option>
+                        <Option>비활성화</Option>
+                      </Optionbox>
+                    )}
+                  </Iconbox>
                 </Row>
                 <Row>
                   <Greyfont1>고유 ID</Greyfont1>
-                  <Blackfont1>{member?.id}</Blackfont1>
+                  <Blackfont1>1</Blackfont1>
                 </Row>
 
                 <Row>
                   <Greyfont1>핸드폰 번호</Greyfont1>
-                  <Blackfont1>{member?.phone}</Blackfont1>
+                  <Blackfont1>010-9894-6022</Blackfont1>
                 </Row>
 
                 <Row>
                   <Greyfont1>이메일</Greyfont1>
                   <Emailbox>
-                    <Blackfont1>{member?.email}</Blackfont1>
+                    <Blackfont1>hajogngod50@kakao.com</Blackfont1>
                   </Emailbox>
-                </Row>
-
-                <Row>
-                  <Greyfont2>닉네임</Greyfont2>
-                  <Blackfont1>{member?.nickname}</Blackfont1>
                 </Row>
                 <Row>
                   <Greyfont1>최초 가입일</Greyfont1>
-                  <Blackfont1>{member?.creteadDt}</Blackfont1>
+                  <Blackfont1>2023-03-06 17:39:32</Blackfont1>
                 </Row>
                 <Row>
                   <Greyfont1>최근 접속일</Greyfont1>
-                  <Blackfont1>{member?.lastloginDt}</Blackfont1>
+                  <Blackfont1>2023-03-06 17:39:32</Blackfont1>
                 </Row>
 
                 <Divide></Divide>
 
                 <Row>
                   <Greyfont2>총 주문 횟수</Greyfont2>
-                  <Blackfont1>{member?.orderCount}</Blackfont1>
+                  <Blackfont1>1000P</Blackfont1>
                 </Row>
 
                 <Row>
                   <Greyfont2>총 주문 금액</Greyfont2>
-                  <Blackfont1>{member?.orderAmount}</Blackfont1>
+                  <Blackfont1>100000</Blackfont1>
+                </Row>
+
+                <Row>
+                  <Greyfont2>등급</Greyfont2>
+                  <Blackfont1>플레티넘</Blackfont1>
                 </Row>
 
                 <Divide></Divide>
 
                 <Row>
                   <Greyfont3>현재 보유 포인트</Greyfont3>
-                  <Blackfont1>{member?.id}</Blackfont1>
+                  <Blackfont1>3250P</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont3>{member?.id}</Greyfont3>
+                  <Greyfont3>포인트 적립하기</Greyfont3>
                 </Row>
 
                 <Row>
@@ -173,10 +186,10 @@ function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
   );
 }
 
-export default MemberDetail;
+export default ShopDetail;
 
 interface WrapperProps {
-  isDetailOpen: boolean;
+  isModalOpen: boolean;
 }
 
 const Wrapper = styled.div<WrapperProps>`
@@ -193,9 +206,9 @@ const Wrapper = styled.div<WrapperProps>`
 
   /* add transition and transform properties */
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  opacity: ${({ isDetailOpen }) => (isDetailOpen ? "1" : "0")};
-  transform: ${({ isDetailOpen }) =>
-    isDetailOpen ? "translateX(0%)" : "translateX(100%)"};
+  opacity: ${({ isModalOpen }) => (isModalOpen ? "1" : "0")};
+  transform: ${({ isModalOpen }) =>
+    isModalOpen ? "translateX(0%)" : "translateX(100%)"};
 `;
 
 const Modal = styled.div<WrapperProps>`
@@ -204,8 +217,7 @@ const Modal = styled.div<WrapperProps>`
   display: flex;
   justify-content: center;
 
-  background-color: ${({ isDetailOpen }) =>
-    isDetailOpen ? "#fff" : "#3e4042"};
+  background-color: ${({ isModalOpen }) => (isModalOpen ? "#fff" : "#3e4042")};
   transition: opacity 1.5s ease-out;
 `;
 
