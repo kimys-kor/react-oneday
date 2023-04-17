@@ -93,19 +93,15 @@ function MemberDetail({ onClose, isModalOpen }: MemberDetailProps) {
                   <Greyfont1>고유 ID</Greyfont1>
                   <Blackfont1>1</Blackfont1>
                 </Row>
-                <Row>
-                  <Greyfont1>가입 서비스</Greyfont1>
-                  <Blackfont1>로또서치/캐시문상/핏츠</Blackfont1>
-                </Row>
+
                 <Row>
                   <Greyfont1>핸드폰 번호</Greyfont1>
                   <Blackfont1>010-9894-6022</Blackfont1>
                 </Row>
+
                 <Row>
                   <Greyfont1>이메일</Greyfont1>
                   <Emailbox>
-                    <Blackfont1>hajogngod50@kakao.com</Blackfont1>
-                    <Blackfont1>hajogngod50@kakao.com</Blackfont1>
                     <Blackfont1>hajogngod50@kakao.com</Blackfont1>
                   </Emailbox>
                 </Row>
@@ -119,27 +115,33 @@ function MemberDetail({ onClose, isModalOpen }: MemberDetailProps) {
                 </Row>
 
                 <Divide></Divide>
+
                 <Row>
-                  <Greyfont2>현재 상품권 신청 금액</Greyfont2>
-                  <Blackfont1>1000P</Blackfont1>
-                </Row>
-                <Row>
-                  <Greyfont2>총 상품권 교환 횟수</Greyfont2>
-                  <Blackfont1>1000P</Blackfont1>
-                </Row>
-                <Row>
-                  <Greyfont2>총 상품권 교환 금액</Greyfont2>
+                  <Greyfont2>총 주문 횟수</Greyfont2>
                   <Blackfont1>1000P</Blackfont1>
                 </Row>
 
+                <Row>
+                  <Greyfont2>총 주문 금액</Greyfont2>
+                  <Blackfont1>100000</Blackfont1>
+                </Row>
+
+                <Row>
+                  <Greyfont2>등급</Greyfont2>
+                  <Blackfont1>플레티넘</Blackfont1>
+                </Row>
+
                 <Divide></Divide>
+
                 <Row>
                   <Greyfont3>현재 보유 포인트</Greyfont3>
                   <Blackfont1>3250P</Blackfont1>
                 </Row>
+
                 <Row>
                   <Greyfont3>포인트 적립하기</Greyfont3>
                 </Row>
+
                 <Row>
                   <Form onSubmit={onSubmit}>
                     <PointInput
@@ -152,12 +154,13 @@ function MemberDetail({ onClose, isModalOpen }: MemberDetailProps) {
                 </Row>
               </LeftContent>
             </Left>
+
             <Right>
               <Titlebox>
                 <Buttonbox>
                   <BorderButton
                     width={151}
-                    titles={["포인트 적립 이력", "포인트 사용 이력"]}
+                    titles={["주문내역"]}
                     activeIndex={activeIndex}
                     handleButtonClick={handleButtonClick}
                   ></BorderButton>
@@ -169,19 +172,11 @@ function MemberDetail({ onClose, isModalOpen }: MemberDetailProps) {
                 ></CustomSelect>
               </Titlebox>
               <RightContent>
-                {activeIndex == 0 ? (
-                  <MemberPointBoard
-                    index={0}
-                    boardMenu={savePointBoardTitle}
-                    boardData={savePointBoardData}
-                  ></MemberPointBoard>
-                ) : (
-                  <MemberPointBoard
-                    index={1}
-                    boardMenu={usePointBoardTitle}
-                    boardData={usePointBoardData}
-                  ></MemberPointBoard>
-                )}
+                <MemberPointBoard
+                  index={0}
+                  boardMenu={savePointBoardTitle}
+                  boardData={savePointBoardData}
+                ></MemberPointBoard>
               </RightContent>
             </Right>
           </Content>
@@ -321,7 +316,7 @@ const Row = styled.div`
   width: 100%;
 
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
 `;
 
 const Emailbox = styled.div`
@@ -329,7 +324,7 @@ const Emailbox = styled.div`
 `;
 
 const Iconbox = styled.div`
-  margin-left: 50%;
+  width: 20px;
   cursor: pointer;
   position: relative;
   top: -6px;
@@ -392,7 +387,6 @@ const Greyfont3 = styled.div`
 `;
 
 const Blackfont1 = styled.div`
-  margin-left: 16px;
   color: #43454b;
   height: 30px;
 
