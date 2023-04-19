@@ -100,7 +100,3 @@ export const memberOrdertBoardData: memberOrder[] = [
     orderAmount: 204000,
   },
 ];
-
-export const dateFilter: Array<string> = ["전체"];
-
-export const itemFilter: Array<string> = ["전체", "활성", "비활성", "휴면"];

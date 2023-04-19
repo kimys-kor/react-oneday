@@ -27,9 +27,9 @@ function Member() {
     setDateIndex(index === dateIndex ? null : index);
   };
   // 헤더 멤버상태필터
-  const [memberFilterIndex, setMemberFilterIndex] = useState<number | null>(0);
-  const handleMemberFilter = (index: number) => {
-    setMemberFilterIndex(index === memberFilterIndex ? null : index);
+  const [filterIndex, setFilterIndex] = useState<number | null>(0);
+  const handleFilter = (index: number) => {
+    setFilterIndex(index === filterIndex ? null : index);
   };
   // 헤더 날짜 필터
   const [startDate, setStartDate] = useState<Date | null>(new Date());
@@ -107,8 +107,8 @@ function Member() {
               <BorderButton
                 width={80}
                 titles={itemFilter}
-                activeIndex={memberFilterIndex}
-                handleButtonClick={handleMemberFilter}
+                activeIndex={filterIndex}
+                handleButtonClick={handleFilter}
               ></BorderButton>
             </Buttonbox>
             <SearchInput></SearchInput>

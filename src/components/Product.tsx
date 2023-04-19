@@ -39,16 +39,17 @@ const resolver: Resolver<FormData> = async (values) => {
 };
 
 function Product() {
+  // 헤더 날짜필터
   const [dateIndex, setDateIndex] = useState<number | null>(0);
   const setDate = (index: number) => {
     setDateIndex(index === dateIndex ? null : index);
   };
-
-  const [memberFilterIndex, setMemberFilterIndex] = useState<number | null>(0);
-  const handleMemberFilter = (index: number) => {
-    setMemberFilterIndex(index === memberFilterIndex ? null : index);
+  // 헤더 상태필터
+  const [filterIndex, setFilterIndex] = useState<number | null>(0);
+  const handleFilter = (index: number) => {
+    setFilterIndex(index === filterIndex ? null : index);
   };
-
+  // 헤더 날짜 필터
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(new Date());
 
@@ -139,8 +140,8 @@ function Product() {
               <BorderButton
                 width={80}
                 titles={itemFilter}
-                activeIndex={memberFilterIndex}
-                handleButtonClick={handleMemberFilter}
+                activeIndex={filterIndex}
+                handleButtonClick={handleFilter}
               ></BorderButton>
             </Buttonbox>
             <SearchInput></SearchInput>
