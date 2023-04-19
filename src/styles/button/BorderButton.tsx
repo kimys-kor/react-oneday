@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { Dispatch, SetStateAction } from "react";
 
-import { BorderButtonProps, ButtonProps } from "@/data/button/borderButtonData";
+import { BorderButtonProps, ButtonProps } from "@/data/button/buttonData";
 
 interface LiftedProps {
   activeIndex: number | null;

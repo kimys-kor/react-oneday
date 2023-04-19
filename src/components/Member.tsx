@@ -12,7 +12,7 @@ import {
   eaOptions,
 } from "@/data/selectbox/selectboxData";
 
-import { dateFilter, itemFilter } from "@/data/button/borderButtonData";
+import { dateFilter, itemFilter } from "@/data/button/buttonData";
 import { memberBoardTitle, memberData } from "@data/member/memberData";
 import BorderButton from "@/styles/button/BorderButton";
 

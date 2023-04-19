@@ -7,7 +7,7 @@ import SearchInput from "@components/common/SearchInput";
 import ShopDetail from "@components/ShopDetail";
 import ShopBoard from "@/components/common/board/ShopBoard";
 import { useForm, Resolver } from "react-hook-form";
-import { dateFilter, itemFilter } from "@/data/button/borderButtonData";
+import { dateFilter, itemFilter } from "@/data/button/buttonData";
 import { eaOptions, shopBoardTitle, shopData } from "@data/shop/shopData";
 
 import BorderButton from "@/styles/button/BorderButton";
