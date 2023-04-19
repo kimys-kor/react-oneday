@@ -12,9 +12,10 @@ import {
   eaOptions,
   dateFilter,
   memberFilter,
-  memberBoardTitle,
-  memberData,
-} from "@data/member/memberData";
+  shopBoardTitle,
+  shopBoardData,
+} from "@data/shop/shopData";
+
 import BorderButton from "@/styles/button/BorderButton";
 
 import DatePicker from "react-datepicker";
@@ -156,8 +157,8 @@ function Shop() {
           </Rightbox>
 
           <ShopBoard
-            boardMenu={memberBoardTitle}
-            boardData={memberData}
+            shopboardMenu={shopBoardTitle}
+            shopBoardData={shopBoardData}
             handleModalOpen={handleModalOpen}
           ></ShopBoard>
         </Layout>

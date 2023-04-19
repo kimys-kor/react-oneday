@@ -5,8 +5,8 @@ import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anotheric
 import Paging from "../Paging";
 
 interface BoardProps {
-  boardMenu: Array<string>;
-  boardData: Array<any>;
+  shopboardMenu: Array<string>;
+  shopBoardData: Array<any>;
   handleModalOpen: () => void;
 }
 
@@ -14,24 +14,30 @@ const setPage = function () {
   console.log("온체인지");
 };
 
-function ShopBoard({ boardMenu, boardData, handleModalOpen }: BoardProps) {
+function ShopBoard({
+  shopboardMenu,
+  shopBoardData,
+  handleModalOpen,
+}: BoardProps) {
   return (
     <>
       <Table>
         <Title>
-          {boardMenu.map((item, index) => (
-            <Td key={index}>{item}</Td>
+          {shopboardMenu.map((menu, index) => (
+            <Td key={index}>{menu}</Td>
           ))}
         </Title>
 
-        {boardData.map((item, index) => (
+        {shopBoardData.map((shop, index) => (
           <Tr key={index}>
-            <Td>{index}</Td>
-            <Td>{item.phone}</Td>
-            <Td>{item.email}</Td>
-            <Td>{item.creteadDt}</Td>
-            <Td>{item.point}</Td>
-            <Td>{item.stats}</Td>
+            <Td>{shop.id}</Td>
+            <Td>{shop.shopName}</Td>
+            <Td>{shop.owner}</Td>
+            <Td>{shop.phone}</Td>
+            <Td>{shop.email}</Td>
+            <Td>{shop.createdDt}</Td>
+            <Td>{shop.productNumber}</Td>
+            <Td>{shop.orderCount}</Td>
             <Td>
               <Iconbox onClick={handleModalOpen}>
                 <AnotherIcon></AnotherIcon>
@@ -60,7 +66,7 @@ const Title = styled.li`
   padding: 10px;
   border-bottom: 1px solid #bbbbcf;
 
-  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr;
   div {
     text-align: center;
     font-size: 1rem;
@@ -76,7 +82,7 @@ const Tr = styled.li`
   padding: 10px;
 
   border-top: 1px solid #cfcfcf;
-  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr;
 
   div {
     text-align: center;

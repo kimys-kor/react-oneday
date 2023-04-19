@@ -1,6 +1,6 @@
 import { corpOption } from "@/data/selectbox/selectboxData";
 
-import { summaryProps } from "@/models/summary/summaryModel";
+import { summaryProps } from "@/data/summary/summaryData";
 
 export const corpOptions: Array<corpOption> = [
   { key: 1, value: "주식회사 에스와이컴퍼니" },

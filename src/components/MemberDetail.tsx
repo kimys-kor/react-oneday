@@ -6,7 +6,7 @@ import CustomSelect from "@/styles/selectbox/CustomSelect";
 import { useForm, Resolver } from "react-hook-form";
 import { eaOptions } from "@data/member/memberData";
 
-import { member } from "@/models/member/memberModel";
+import { member } from "@data/member/memberData";
 
 import MemberPointBoard from "@common/board/MemberPointBoard";
 import {

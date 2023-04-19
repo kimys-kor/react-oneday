@@ -28,66 +28,59 @@ export const eaOptions: Array<eaOption> = [
   { key: 4, value: "50개 씩" },
 ];
 
-export const memberBoardTitle = [
+export const shopBoardTitle = [
   "구분",
+  "매장명",
+  "매장점주",
   "핸드폰",
   "이메일",
-  "닉네임",
-  "가입일",
-  "보유 포인트",
-  "상태",
+  "등록일",
+  "상품수",
+  "총주문건수",
   "상세 정보",
 ];
 
-export interface member {
-  status: string;
+export interface shop {
   id: number;
+  shopName: string;
+  owner: string;
   phone: string;
   email: string;
-  nickname: string;
-  creteadDt: string;
-  lastloginDt: string;
+  createdDt: string;
+  productNumber: number;
   orderCount: number;
-  orderAmount: number;
-  point: number;
 }
 
-export const memberData: member[] = [
+export const shopBoardData: shop[] = [
   {
-    status: "정상",
     id: 0,
+    shopName: "용만이네상점1",
+    owner: "김영승",
     phone: "01012345678",
     email: "wwkwk@naver.com",
-    nickname: "부끄러운어피치",
-    creteadDt: "2020-03-01",
-    lastloginDt: "2023-04-17",
+    createdDt: "2020-03-01",
+    productNumber: 2040,
     orderCount: 2645,
-    orderAmount: 1204044,
-    point: 2700,
   },
   {
-    status: "정상",
     id: 1,
+    shopName: "용만이네상점2",
+    owner: "김영승",
     phone: "01012345678",
     email: "wwkwk@naver.com",
-    nickname: "라이언과함께",
-    creteadDt: "2020-03-01",
-    lastloginDt: "2023-04-17",
+    createdDt: "2020-03-01",
+    productNumber: 2040,
     orderCount: 2645,
-    orderAmount: 1204044,
-    point: 2700,
   },
   {
-    status: "정상",
     id: 2,
+    shopName: "용만이네상점3",
+    owner: "김영승",
     phone: "01012345678",
     email: "wwkwk@naver.com",
-    nickname: "콜라좋아",
-    creteadDt: "2020-03-01",
-    lastloginDt: "2023-04-17",
+    createdDt: "2020-03-01",
+    productNumber: 2040,
     orderCount: 2645,
-    orderAmount: 1204044,
-    point: 2700,
   },
 ];
 
