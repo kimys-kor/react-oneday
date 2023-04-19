@@ -1,4 +1,4 @@
-import { corpOption } from "@/models/selectbox/selectboxModel";
+import { corpOption } from "@/data/selectbox/selectboxData";
 
 import { summaryProps } from "@/models/summary/summaryModel";
 

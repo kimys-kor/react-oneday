@@ -2,9 +2,20 @@ import {
   corpOption,
   appOption,
   eaOption,
-} from "@/models/selectbox/selectboxModel";
+} from "@/data/selectbox/selectboxData";
 
-import { member } from "@/models/member/memberModel";
+export interface member {
+  status: string;
+  id: number;
+  phone: string;
+  email: string;
+  nickname: string;
+  creteadDt: string;
+  lastloginDt: string;
+  orderCount: number;
+  orderAmount: number;
+  point: number;
+}
 
 export const corpOptions: Array<corpOption> = [
   { key: 0, value: "주식회사 에스와이컴퍼니" },
