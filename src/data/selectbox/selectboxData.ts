@@ -47,3 +47,19 @@ export const eaOptions: Array<eaOption> = [
   { key: 3, value: "40개 씩" },
   { key: 4, value: "50개 씩" },
 ];
+
+export const cityOptions: Array<corpOption> = [{ key: 0, value: "광주광역시" }];
+
+export const guOptions: Array<corpOption> = [
+  { key: 0, value: "북구" },
+  { key: 1, value: "서구" },
+  { key: 2, value: "광산구" },
+  { key: 3, value: "남구" },
+];
+
+export const dongOptions: Array<corpOption> = [
+  { key: 0, value: "동림동" },
+  { key: 1, value: "운암동" },
+  { key: 2, value: "오치동" },
+  { key: 3, value: "용봉동" },
+];

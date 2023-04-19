@@ -1,16 +1,18 @@
 import styled from "styled-components";
 import { useState } from "react";
 
+import BorderButton from "@/styles/button/BorderButton";
 import CustomSelect from "@/styles/selectbox/CustomSelect";
 import SearchInput from "@components/common/SearchInput";
 
 import ProductDetail from "@components/ProductDetail";
 import ProductBoard from "@/components/common/board/ProductBoard";
 import { useForm, Resolver } from "react-hook-form";
-import { dateFilter, itemFilter } from "@/data/button/buttonData";
-import { eaOptions, shopBoardTitle, shopData } from "@data/shop/shopData";
 
-import BorderButton from "@/styles/button/BorderButton";
+import { dateFilter, itemFilter } from "@/data/button/buttonData";
+
+import { shopBoardTitle, shopData } from "@data/shop/shopData";
+import { eaOptions } from "@data/selectbox/selectboxData";
 
 import DatePicker from "react-datepicker";
 import { ko } from "date-fns/esm/locale";
@@ -157,7 +159,6 @@ function Product() {
 
       <Content>
         <Layout>
-          <Title>상품 관리</Title>
           <Rightbox>
             <Addbutton onClick={handleAddShop}>상점 추가</Addbutton>
           </Rightbox>
@@ -252,7 +253,7 @@ const Shopbox = styled.div`
 
 const Headerbox = styled.div`
   width: 100%;
-  height: 125px;
+  height: 160px;
 
   display: flex;
   flex-direction: column;

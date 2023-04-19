@@ -8,12 +8,15 @@ import ShopDetail from "@components/ShopDetail";
 import ShopBoard from "@/components/common/board/ShopBoard";
 import { useForm, Resolver } from "react-hook-form";
 import { dateFilter, itemFilter } from "@/data/button/buttonData";
-import { eaOptions, shopBoardTitle, shopData } from "@data/shop/shopData";
+import { shopData, shopBoardTitle } from "@data/shop/shopData";
+import { eaOptions } from "@data/selectbox/selectboxData";
 
 import BorderButton from "@/styles/button/BorderButton";
-
-import DatePicker from "react-datepicker";
-import { ko } from "date-fns/esm/locale";
+import {
+  cityOptions,
+  guOptions,
+  dongOptions,
+} from "@data/selectbox/selectboxData";
 import "react-datepicker/dist/react-datepicker.css";
 
 type FormData = {
@@ -73,6 +76,7 @@ function Shop() {
     setOpenAnother(index);
   };
 
+  // 상점 추가 팝업 상태
   const [isAddShopOpen, setAddShopOpen] = useState(false);
   const handleAddShop = () => {
     setAddShopOpen((prev) => !prev);
@@ -91,59 +95,41 @@ function Shop() {
   return (
     <Shopbox>
       <Headerbox>
+        <Title>상점 관리</Title>
+        <Addbutton onClick={handleAddShop}>상점 추가</Addbutton>
+      </Headerbox>
+
+      <Content>
         <Layout>
-          <HeaderContent>
-            <BorderButton
-              width={76}
-              titles={dateFilter}
-              activeIndex={dateIndex}
-              handleButtonClick={setDate}
-            ></BorderButton>
+          <Selectbox>
+            <CustomSelect
+              width={200}
+              height={53}
+              title={"지역"}
+              optionData={cityOptions}
+            ></CustomSelect>
+            <CustomSelect
+              width={200}
+              height={53}
+              title={"구"}
+              optionData={guOptions}
+            ></CustomSelect>
+            <CustomSelect
+              width={200}
+              height={53}
+              title={"동"}
+              optionData={dongOptions}
+            ></CustomSelect>
 
-            <Flexbox>
-              <Datebox>
-                <DatePicker
-                  locale={ko}
-                  closeOnScroll={(e) => e.target === document}
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  selectsStart
-                  startDate={startDate}
-                  endDate={endDate}
-                  dateFormat="yyyy-MM-dd"
-                  customInput={
-                    // 날짜 뜨는 인풋 커스텀
-                    <DateInput />
-                  }
-                />
-              </Datebox>
-              <Datebox>
-                <DatePicker
-                  locale={ko}
-                  closeOnScroll={(e) => e.target === document}
-                  selected={endDate}
-                  onChange={(date) => setEndDate(date)}
-                  selectsEnd
-                  startDate={startDate}
-                  endDate={endDate}
-                  minDate={startDate}
-                  dateFormat="yyyy-MM-dd"
-                  customInput={
-                    // 날짜 뜨는 인풋 커스텀
-                    <DateInput />
-                  }
-                />
-              </Datebox>
-            </Flexbox>
+            <CustomSelect
+              width={300}
+              height={53}
+              title={"상점선택"}
+              optionData={dongOptions}
+            ></CustomSelect>
+          </Selectbox>
 
-            <Buttonbox>
-              <BorderButton
-                width={80}
-                titles={itemFilter}
-                activeIndex={FilterIndex}
-                handleButtonClick={handleFilter}
-              ></BorderButton>
-            </Buttonbox>
+          <FilterContent>
             <SearchInput></SearchInput>
 
             <CustomSelect
@@ -151,16 +137,7 @@ function Shop() {
               height={37}
               optionData={eaOptions}
             ></CustomSelect>
-          </HeaderContent>
-        </Layout>
-      </Headerbox>
-
-      <Content>
-        <Layout>
-          <Title>상점 관리</Title>
-          <Rightbox>
-            <Addbutton onClick={handleAddShop}>상점 추가</Addbutton>
-          </Rightbox>
+          </FilterContent>
 
           <ShopBoard
             boardMenu={shopBoardTitle}
@@ -251,14 +228,21 @@ const Shopbox = styled.div`
 `;
 
 const Headerbox = styled.div`
+  box-sizing: border-box;
+  padding-right: 50px;
   width: 100%;
   height: 125px;
-
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #fff;
+`;
+
+const Title = styled.div`
+  margin-left: 20px;
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Content = styled.div`
@@ -279,12 +263,8 @@ const Layout = styled.div`
   width: 95%;
 `;
 
-const Title = styled.div`
-  margin-top: 10px;
-  font-size: 25px;
-`;
-
-const HeaderContent = styled.div`
+const FilterContent = styled.div`
+  margin-top: 50px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -300,30 +280,6 @@ const HeaderContent = styled.div`
     position: absolute;
     top: 3px;
   }
-`;
-
-const Datebox = styled.div`
-  margin-left: 12px;
-`;
-
-const DateInput = styled.input`
-  box-sizing: border-box;
-  width: 156px;
-  height: 37px;
-  padding: 5px 10px;
-  background: #fff;
-  border: 1px solid #bbbbcf;
-  font-size: 15px;
-  font-weight: 400;
-  text-align: center;
-  color: #bbbbcf;
-  line-height: 37px;
-  text-align: center;
-`;
-
-const Buttonbox = styled.div`
-  margin-left: 24px;
-  display: flex;
 `;
 
 const Wrapper = styled.div`
@@ -423,11 +379,6 @@ const Star = styled.p`
   color: red;
 `;
 
-const Flexbox = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
 const Flex = styled.div`
   display: flex;
   gap: 4rem;
@@ -435,7 +386,6 @@ const Flex = styled.div`
 `;
 
 const Rightbox = styled.div`
-  margin-bottom: 20px;
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -455,4 +405,14 @@ const Addbutton = styled.span`
   margin-right: 0; // remove the margin on the last button
   border-color: #ff6622; // set border color to #ff6622 for active button
   color: #ff6622;
+`;
+
+const Selectbox = styled.div`
+  width: 100%;
+  height: 53px;
+
+  display: flex;
+  gap: 36px;
+  justify-content: flex-start;
+  align-items: center;
 `;

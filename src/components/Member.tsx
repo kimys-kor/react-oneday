@@ -58,8 +58,12 @@ function Member() {
   return (
     <Memberbox>
       <Headerbox>
+        <Title>회원 관리</Title>
+      </Headerbox>
+
+      <Content>
         <Layout>
-          <HeaderContent>
+          <FilterContent>
             <BorderButton
               width={76}
               titles={dateFilter}
@@ -118,13 +122,7 @@ function Member() {
               height={37}
               optionData={eaOptions}
             ></CustomSelect>
-          </HeaderContent>
-        </Layout>
-      </Headerbox>
-
-      <Content>
-        <Title>회원 관리</Title>
-        <Layout>
+          </FilterContent>
           <MemberBoard
             boardMenu={memberBoardTitle}
             boardData={memberData}
@@ -155,19 +153,21 @@ const Memberbox = styled.div`
 `;
 
 const Headerbox = styled.div`
+  box-sizing: border-box;
+  padding-right: 50px;
   width: 100%;
   height: 125px;
-
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #fff;
 `;
 
 const Title = styled.div`
-  margin-top: 10px;
+  margin-left: 20px;
   font-size: 25px;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Content = styled.div`
@@ -188,7 +188,7 @@ const Layout = styled.div`
   width: 95%;
 `;
 
-const HeaderContent = styled.div`
+const FilterContent = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
