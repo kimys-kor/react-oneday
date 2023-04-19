@@ -6,16 +6,14 @@ import SearchInput from "@components/common/SearchInput";
 
 import MemberDetail from "@components/MemberDetail";
 import MemberBoard from "@/components/common/board/MemberBoard";
-
 import {
   corpOptions,
   appOptions,
   eaOptions,
-  dateFilter,
-  memberFilter,
-  memberBoardTitle,
-  memberData,
-} from "@data/member/memberData";
+} from "@/data/selectbox/selectboxData";
+
+import { dateFilter, itemFilter } from "@/data/button/borderButtonData";
+import { memberBoardTitle, memberData } from "@data/member/memberData";
 import BorderButton from "@/styles/button/BorderButton";
 
 import DatePicker from "react-datepicker";
@@ -23,15 +21,17 @@ import { ko } from "date-fns/esm/locale";
 import "react-datepicker/dist/react-datepicker.css";
 
 function Member() {
-  // 필터
+  // 헤더 날짜필터
   const [dateIndex, setDateIndex] = useState<number | null>(0);
   const setDate = (index: number) => {
     setDateIndex(index === dateIndex ? null : index);
   };
+  // 헤더 멤버상태필터
   const [memberFilterIndex, setMemberFilterIndex] = useState<number | null>(0);
   const handleMemberFilter = (index: number) => {
     setMemberFilterIndex(index === memberFilterIndex ? null : index);
   };
+  // 헤더 날짜 필터
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(new Date());
 
@@ -45,9 +45,11 @@ function Member() {
     setDetailOpen(false);
   };
 
+  // 멤버상세창 넘길 멤버
   const [activeMember, setActiveMember] = useState(0);
-
+  // ...클릭시 설정팝업
   const [openAnother, setOpenAnother] = useState(-1);
+  // ...클릭시 팝업,멤버인덱스 설정
   const handleOpenIndex = (index: number) => {
     setActiveMember(openAnother);
     setOpenAnother(index);
@@ -104,7 +106,7 @@ function Member() {
             <Buttonbox>
               <BorderButton
                 width={80}
-                titles={memberFilter}
+                titles={itemFilter}
                 activeIndex={memberFilterIndex}
                 handleButtonClick={handleMemberFilter}
               ></BorderButton>
@@ -125,7 +127,7 @@ function Member() {
         <Layout>
           <MemberBoard
             boardMenu={memberBoardTitle}
-            memberData={memberData}
+            boardData={memberData}
             handleDetailOpen={handleDetailOpen}
             openAnother={openAnother}
             handleOpenIndex={handleOpenIndex}

@@ -7,14 +7,8 @@ import SearchInput from "@components/common/SearchInput";
 import ShopDetail from "@components/ShopDetail";
 import ShopBoard from "@/components/common/board/ShopBoard";
 import { useForm, Resolver } from "react-hook-form";
-
-import {
-  eaOptions,
-  dateFilter,
-  memberFilter,
-  shopBoardTitle,
-  shopBoardData,
-} from "@data/shop/shopData";
+import { dateFilter, itemFilter } from "@/data/button/borderButtonData";
+import { eaOptions, shopBoardTitle, shopData } from "@data/shop/shopData";
 
 import BorderButton from "@/styles/button/BorderButton";
 
@@ -58,13 +52,24 @@ function Shop() {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(new Date());
 
-  const [isModalOpen, setModalOpen] = useState(false);
-  const handleModalOpen = () => {
-    setModalOpen(true);
+  // 디테일 모달 상태
+  const [isDetailOpen, setDetailOpen] = useState(false);
+  const handleDetailOpen = (index: number) => {
+    setDetailOpen(true);
+    console.log(index);
   };
-  const handleModalClose = () => {
-    console.log("헬로");
-    setModalOpen(false);
+  const handleDetailClose = () => {
+    setDetailOpen(false);
+  };
+
+  // 멤버상세창 넘길 멤버
+  const [activeMember, setActiveMember] = useState(0);
+  // ...클릭시 설정팝업
+  const [openAnother, setOpenAnother] = useState(-1);
+  // ...클릭시 팝업,멤버인덱스 설정
+  const handleOpenIndex = (index: number) => {
+    setActiveMember(openAnother);
+    setOpenAnother(index);
   };
 
   const [isAddShopOpen, setAddShopOpen] = useState(false);
@@ -133,7 +138,7 @@ function Shop() {
             <Buttonbox>
               <BorderButton
                 width={80}
-                titles={memberFilter}
+                titles={itemFilter}
                 activeIndex={memberFilterIndex}
                 handleButtonClick={handleMemberFilter}
               ></BorderButton>
@@ -157,17 +162,23 @@ function Shop() {
           </Rightbox>
 
           <ShopBoard
-            shopboardMenu={shopBoardTitle}
-            shopBoardData={shopBoardData}
-            handleModalOpen={handleModalOpen}
+            boardMenu={shopBoardTitle}
+            boardData={shopData}
+            handleDetailOpen={handleDetailOpen}
+            openAnother={openAnother}
+            handleOpenIndex={handleOpenIndex}
           ></ShopBoard>
         </Layout>
       </Content>
-      <ShopDetail onClose={handleModalClose} isModalOpen={isModalOpen} />
+      <ShopDetail
+        onClose={handleDetailClose}
+        isDetailOpen={isDetailOpen}
+        shop={shopData[activeMember]}
+      />
 
       {/* 상점등록 모달 */}
       <Wrapper
-        onClick={handleModalClose}
+        onClick={handleAddShop}
         style={{ display: isAddShopOpen ? "flex" : "none" }}
       >
         <Modal onClick={(e) => e.stopPropagation()}>

@@ -1,33 +1,3 @@
-import {
-  corpOption,
-  appOption,
-  eaOption,
-} from "@/data/selectbox/selectboxData";
-
-export const corpOptions: Array<corpOption> = [
-  { key: 0, value: "주식회사 에스와이컴퍼니" },
-  { key: 1, value: "주식회사 아이티앱스" },
-  { key: 2, value: "코비&클러스터랩" },
-  { key: 3, value: "이노소프트" },
-  { key: 4, value: "윤컴퍼니" },
-  { key: 5, value: "해피케엘비" },
-];
-
-export const appOptions: Array<appOption> = [
-  { key: 0, value: "로또서치" },
-  { key: 1, value: "모이리" },
-  { key: 2, value: "프리수" },
-  { key: 3, value: "펫포션" },
-];
-
-export const eaOptions: Array<eaOption> = [
-  { key: 0, value: "10개 씩" },
-  { key: 1, value: "20개 씩" },
-  { key: 2, value: "30개 씩" },
-  { key: 3, value: "40개 씩" },
-  { key: 4, value: "50개 씩" },
-];
-
 export const memberBoardTitle = [
   "구분",
   "핸드폰",
@@ -91,62 +61,46 @@ export const memberData: member[] = [
   },
 ];
 
-export const savePointBoardTitle = [
-  "구분",
-  "적립계정메일",
-  "적립일",
-  "광고명",
-  "적립대행사",
-  "적립금액",
+export const memberOrderBoardTitle = [
+  "주문번호",
+  "주문일",
+  "상점",
+  "상품명",
+  "주문금액",
 ];
 
-export const savePointBoardData = [
-  {
-    key: 1,
-    email: "wefk@gmail.com",
-    creteadDt: "2022-12-19",
-    advName: "쿠팡 특가 확인만 해도 바로적립",
-    agencyName: "POINTCLICK",
-    point: 150,
-  },
-  {
-    key: 2,
-    email: "wefk@gmail.com",
-    creteadDt: "2022-12-19",
-    advName: "쿠팡 특가 확인만 해도 바로적립",
-    agencyName: "POINTCLICK",
-    point: 150,
-  },
-  {
-    key: 3,
-    email: "wefk@gmail.com",
-    creteadDt: "2022-12-19",
-    advName: "쿠팡 특가 확인만 해도 바로적립",
-    agencyName: "POINTCLICK",
-    point: 150,
-  },
-];
+export interface memberOrder {
+  id: number;
+  creteadDt: string;
+  orderShop: string;
+  orderProducts: string;
+  orderAmount: number;
+}
 
-export const usePointBoardTitle = [
-  "구분",
-  "신청일",
-  "신청핸드폰번호",
-  "상품권명",
-  "신청상태",
-  "승인/거부",
-];
-
-export const usePointBoardData = [
+export const memberOrdertBoardData: memberOrder[] = [
   {
-    key: 1,
+    id: 1,
     creteadDt: "2022-12-19",
-    phone: "010-9894-6022",
-    giftLetter: "컬쳐랜드PIN5천원권컬쳐랜드컬쳐랜드컬쳐랜드",
-    status: "대기 중",
-    agencyName: "POINTCLICK",
+    orderShop: "용만이네상점1",
+    orderProducts: "주방용품 3종세트",
+    orderAmount: 204000,
+  },
+  {
+    id: 1,
+    creteadDt: "2022-12-19",
+    orderShop: "용만이네상점1",
+    orderProducts: "공구용품",
+    orderAmount: 204000,
+  },
+  {
+    id: 1,
+    creteadDt: "2022-12-19",
+    orderShop: "용만이네상점1",
+    orderProducts: "가구",
+    orderAmount: 204000,
   },
 ];
 
 export const dateFilter: Array<string> = ["전체"];
 
-export const memberFilter: Array<string> = ["전체", "활성", "비활성", "휴면"];
+export const itemFilter: Array<string> = ["전체", "활성", "비활성", "휴면"];

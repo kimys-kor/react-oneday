@@ -6,7 +6,7 @@ import Paging from "../Paging";
 
 interface BoardProps {
   boardMenu: Array<string>;
-  memberData: Array<any>;
+  boardData: Array<any>;
   handleDetailOpen: (index: number) => void;
   openAnother: number;
   handleOpenIndex: (index: number) => void;
@@ -18,7 +18,7 @@ const setPage = function () {
 
 function MemberBoard({
   boardMenu,
-  memberData,
+  boardData,
   handleDetailOpen,
   openAnother,
   handleOpenIndex,
@@ -49,7 +49,7 @@ function MemberBoard({
           ))}
         </Title>
 
-        {memberData.map((item, index) => (
+        {boardData.map((item, index) => (
           <Tr key={index}>
             <Td>{item.id}</Td>
             <Td>{item.phone}</Td>

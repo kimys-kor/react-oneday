@@ -1,13 +1,17 @@
 import styled from "styled-components";
 
+import { useRef, useEffect } from "react";
+
 import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anothericon.svg";
 
 import Paging from "../Paging";
 
 interface BoardProps {
-  shopboardMenu: Array<string>;
-  shopBoardData: Array<any>;
-  handleModalOpen: () => void;
+  boardMenu: Array<string>;
+  boardData: Array<any>;
+  handleDetailOpen: (index: number) => void;
+  openAnother: number;
+  handleOpenIndex: (index: number) => void;
 }
 
 const setPage = function () {
@@ -15,20 +19,39 @@ const setPage = function () {
 };
 
 function ShopBoard({
-  shopboardMenu,
-  shopBoardData,
-  handleModalOpen,
+  boardMenu,
+  boardData,
+  handleDetailOpen,
+  openAnother,
+  handleOpenIndex,
 }: BoardProps) {
+  const optionRef = useRef<HTMLDivElement>(null);
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      optionRef.current &&
+      !optionRef.current.contains(event.target as Node)
+    ) {
+      handleOpenIndex(-1);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <Table>
         <Title>
-          {shopboardMenu.map((menu, index) => (
+          {boardMenu.map((menu, index) => (
             <Td key={index}>{menu}</Td>
           ))}
         </Title>
 
-        {shopBoardData.map((shop, index) => (
+        {boardData.map((shop, index) => (
           <Tr key={index}>
             <Td>{shop.id}</Td>
             <Td>{shop.shopName}</Td>
@@ -39,8 +62,26 @@ function ShopBoard({
             <Td>{shop.productNumber}</Td>
             <Td>{shop.orderCount}</Td>
             <Td>
-              <Iconbox onClick={handleModalOpen}>
-                <AnotherIcon></AnotherIcon>
+              <Iconbox>
+                <AnotherIcon
+                  onClick={() =>
+                    handleOpenIndex(openAnother === index ? -1 : index)
+                  }
+                />
+                {openAnother === index && (
+                  <Optionbox
+                    ref={optionRef}
+                    onClick={() =>
+                      handleOpenIndex(openAnother === index ? -1 : index)
+                    }
+                  >
+                    <Option onClick={() => handleDetailOpen(index)}>
+                      상세정보
+                    </Option>
+                    <Option>수정</Option>
+                    <Option>삭제</Option>
+                  </Optionbox>
+                )}
               </Iconbox>
             </Td>
           </Tr>
@@ -103,4 +144,33 @@ const Iconbox = styled.div`
   width: 30px;
   height: 15px;
   cursor: pointer;
+
+  svg {
+    width: 15px;
+    height: 15px;
+  }
+`;
+
+const Optionbox = styled.div`
+  width: 99px;
+
+  border: 1px solid #bbbbcf;
+  box-shadow: 0px 12px 12px rgba(30, 32, 38, 0.1);
+  text-align: center;
+  background-color: #fff;
+
+  position: relative;
+  left: -80px;
+  z-index: 10;
+`;
+
+const Option = styled.div`
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #bbbbcf;
+
+  &:hover {
+    color: #ff6622;
+  }
 `;

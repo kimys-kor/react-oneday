@@ -3,69 +3,30 @@ import styled from "styled-components";
 
 import BorderButton from "@/styles/button/BorderButton";
 import CustomSelect from "@/styles/selectbox/CustomSelect";
-import { useForm, Resolver } from "react-hook-form";
-import { eaOptions } from "@data/member/memberData";
-import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anothericon.svg";
 
-import MemberPointBoard from "@common/board/MemberPointBoard";
-import {
-  savePointBoardData,
-  savePointBoardTitle,
-  usePointBoardData,
-  usePointBoardTitle,
-} from "@data/member/memberData";
+import { eaOptions } from "@/data/selectbox/selectboxData";
+import { shop } from "@/data/shop/shopData";
+import ShopOrderBoard from "@common/board/ShopOrderBoard";
+import { shopOrderBoardTitle, shopOrdertBoardData } from "@data/shop/shopData";
 
-interface MemberDetailProps {
+interface ShopDetailProps {
   onClose: () => void;
-  isModalOpen: boolean;
+  isDetailOpen: boolean;
+  shop: shop | undefined;
 }
 
-type FormData = {
-  savingPoint: number;
-};
-
-const resolver: Resolver<FormData> = async (values) => {
-  return {
-    values: values.savingPoint ? values : {},
-    errors: !values.savingPoint
-      ? {
-          savingPoint: {
-            type: "required",
-            message: "This is required.",
-          },
-        }
-      : {},
-  };
-};
-
-function ShopDetail({ onClose, isModalOpen }: MemberDetailProps) {
+function ShopDetail({ onClose, isDetailOpen, shop }: ShopDetailProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const handleButtonClick = (index: number) => {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
-  const handleModalClose = () => {
-    onClose();
-  };
-
-  const [showHideDiv, setShowHideDiv] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({ resolver });
-
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
-  });
-
   return (
-    <Wrapper isModalOpen={isModalOpen}>
-      <Modal isModalOpen={isModalOpen} onClick={(e) => e.stopPropagation()}>
+    <Wrapper isDetailOpen={isDetailOpen}>
+      <Modal isDetailOpen={isDetailOpen} onClick={(e) => e.stopPropagation()}>
         <Layout>
           <Headerbox>
-            <Button onClick={handleModalClose}>&lt;</Button>
+            <Button onClick={onClose}>&lt;</Button>
           </Headerbox>
 
           <Content>
@@ -75,82 +36,42 @@ function ShopDetail({ onClose, isModalOpen }: MemberDetailProps) {
               </Titlebox>
               <LeftContent>
                 <Row>
-                  <Greyfont1>상점명</Greyfont1>
-                  <Blackfont1>용만이네 상점</Blackfont1>
-                  <Iconbox>
-                    <AnotherIcon
-                      onClick={() => setShowHideDiv((prev) => !prev)}
-                    ></AnotherIcon>
-                    {showHideDiv && (
-                      <Optionbox>
-                        <Option>활성화</Option>
-                        <Option>비활성화</Option>
-                      </Optionbox>
-                    )}
-                  </Iconbox>
+                  <Greyfont1>고유 ID</Greyfont1>
+                  <Blackfont1>{shop?.id}</Blackfont1>
                 </Row>
                 <Row>
-                  <Greyfont1>고유 ID</Greyfont1>
-                  <Blackfont1>1</Blackfont1>
+                  <Greyfont1>매장명</Greyfont1>
+                  <Blackfont1>{shop?.shopName}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont1>핸드폰 번호</Greyfont1>
-                  <Blackfont1>010-9894-6022</Blackfont1>
+                  <Greyfont1>매장점주</Greyfont1>
+                  <Blackfont1>{shop?.owner}</Blackfont1>
+                </Row>
+
+                <Row>
+                  <Greyfont1>핸드폰</Greyfont1>
+                  <Blackfont1>{shop?.phone}</Blackfont1>
                 </Row>
 
                 <Row>
                   <Greyfont1>이메일</Greyfont1>
-                  <Emailbox>
-                    <Blackfont1>hajogngod50@kakao.com</Blackfont1>
-                  </Emailbox>
+                  <Blackfont1>{shop?.email}</Blackfont1>
                 </Row>
                 <Row>
-                  <Greyfont1>최초 가입일</Greyfont1>
-                  <Blackfont1>2023-03-06 17:39:32</Blackfont1>
-                </Row>
-                <Row>
-                  <Greyfont1>최근 접속일</Greyfont1>
-                  <Blackfont1>2023-03-06 17:39:32</Blackfont1>
+                  <Greyfont1>최초 등록일</Greyfont1>
+                  <Blackfont1>{shop?.createdDt}</Blackfont1>
                 </Row>
 
                 <Divide></Divide>
-
                 <Row>
-                  <Greyfont2>총 주문 횟수</Greyfont2>
-                  <Blackfont1>1000P</Blackfont1>
+                  <Greyfont1>상품수</Greyfont1>
+                  <Blackfont1>{shop?.productNumber}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont2>총 주문 금액</Greyfont2>
-                  <Blackfont1>100000</Blackfont1>
-                </Row>
-
-                <Row>
-                  <Greyfont2>등급</Greyfont2>
-                  <Blackfont1>플레티넘</Blackfont1>
-                </Row>
-
-                <Divide></Divide>
-
-                <Row>
-                  <Greyfont3>현재 보유 포인트</Greyfont3>
-                  <Blackfont1>3250P</Blackfont1>
-                </Row>
-
-                <Row>
-                  <Greyfont3>포인트 적립하기</Greyfont3>
-                </Row>
-
-                <Row>
-                  <Form onSubmit={onSubmit}>
-                    <PointInput
-                      placeholder="적립 금액을 입력해 주세요..."
-                      type="number"
-                      {...register("savingPoint")}
-                    ></PointInput>
-                    <Submitbutton type="submit" value="적립" />
-                  </Form>
+                  <Greyfont1>총주문건수</Greyfont1>
+                  <Blackfont1>{shop?.orderCount}</Blackfont1>
                 </Row>
               </LeftContent>
             </Left>
@@ -172,11 +93,11 @@ function ShopDetail({ onClose, isModalOpen }: MemberDetailProps) {
                 ></CustomSelect>
               </Titlebox>
               <RightContent>
-                <MemberPointBoard
+                <ShopOrderBoard
                   index={0}
-                  boardMenu={savePointBoardTitle}
-                  boardData={savePointBoardData}
-                ></MemberPointBoard>
+                  boardMenu={shopOrderBoardTitle}
+                  boardData={shopOrdertBoardData}
+                ></ShopOrderBoard>
               </RightContent>
             </Right>
           </Content>
@@ -189,7 +110,7 @@ function ShopDetail({ onClose, isModalOpen }: MemberDetailProps) {
 export default ShopDetail;
 
 interface WrapperProps {
-  isModalOpen: boolean;
+  isDetailOpen: boolean;
 }
 
 const Wrapper = styled.div<WrapperProps>`
@@ -206,9 +127,9 @@ const Wrapper = styled.div<WrapperProps>`
 
   /* add transition and transform properties */
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  opacity: ${({ isModalOpen }) => (isModalOpen ? "1" : "0")};
-  transform: ${({ isModalOpen }) =>
-    isModalOpen ? "translateX(0%)" : "translateX(100%)"};
+  opacity: ${({ isDetailOpen }) => (isDetailOpen ? "1" : "0")};
+  transform: ${({ isDetailOpen }) =>
+    isDetailOpen ? "translateX(0%)" : "translateX(100%)"};
 `;
 
 const Modal = styled.div<WrapperProps>`
@@ -217,7 +138,8 @@ const Modal = styled.div<WrapperProps>`
   display: flex;
   justify-content: center;
 
-  background-color: ${({ isModalOpen }) => (isModalOpen ? "#fff" : "#3e4042")};
+  background-color: ${({ isDetailOpen }) =>
+    isDetailOpen ? "#fff" : "#3e4042"};
   transition: opacity 1.5s ease-out;
 `;
 
@@ -337,53 +259,13 @@ const Iconbox = styled.div`
 
 const Greyfont1 = styled.div`
   color: #a8adc0;
-  width: 100px;
+  width: 120px;
   height: 30px;
 
   line-height: 100%;
   font-family: "MinSans-Bold";
   font-size: 16px;
   letter-spacing: -0.04em;
-
-  &::after {
-    content: "|";
-    font-family: "MinSans-Regular";
-    float: right;
-  }
-`;
-
-const Greyfont2 = styled.div`
-  color: #a8adc0;
-  width: 180px;
-  height: 30px;
-
-  font-family: "MinSans-Bold";
-  line-height: 100%;
-  font-size: 16px;
-  letter-spacing: -0.04em;
-
-  &::after {
-    content: "|";
-    font-family: "MinSans-Regular";
-    float: right;
-  }
-`;
-
-const Greyfont3 = styled.div`
-  color: #a8adc0;
-  width: 130px;
-  height: 30px;
-
-  font-family: "MinSans-Bold";
-  line-height: 100%;
-  font-size: 16px;
-  letter-spacing: -0.04em;
-
-  &::after {
-    content: "|";
-    font-family: "MinSans-Regular";
-    float: right;
-  }
 `;
 
 const Blackfont1 = styled.div`

@@ -4,21 +4,14 @@ import styled from "styled-components";
 import BorderButton from "@/styles/button/BorderButton";
 import CustomSelect from "@/styles/selectbox/CustomSelect";
 import { useForm, Resolver } from "react-hook-form";
-import { eaOptions } from "@data/member/memberData";
+import { eaOptions } from "@/data/selectbox/selectboxData";
 
 import { member } from "@data/member/memberData";
-
-import MemberPointBoard from "@common/board/MemberPointBoard";
+import MemberPointBoard from "@/components/common/board/MemberOrderBoard";
 import {
-  savePointBoardData,
-  savePointBoardTitle,
+  memberOrderBoardTitle,
+  memberOrdertBoardData,
 } from "@data/member/memberData";
-
-interface MemberDetailProps {
-  onClose: () => void;
-  isDetailOpen: boolean;
-  member: member | undefined;
-}
 
 type FormData = {
   savingPoint: number;
@@ -38,8 +31,13 @@ const resolver: Resolver<FormData> = async (values) => {
   };
 };
 
+interface MemberDetailProps {
+  onClose: () => void;
+  isDetailOpen: boolean;
+  member: member | undefined;
+}
+
 function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
-  console.log(member, "하이");
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const handleButtonClick = (index: number) => {
     setActiveIndex(index === activeIndex ? null : index);
@@ -153,8 +151,8 @@ function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
               <RightContent>
                 <MemberPointBoard
                   index={0}
-                  boardMenu={savePointBoardTitle}
-                  boardData={savePointBoardData}
+                  boardMenu={memberOrderBoardTitle}
+                  boardData={memberOrdertBoardData}
                 ></MemberPointBoard>
               </RightContent>
             </Right>
