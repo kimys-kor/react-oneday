@@ -95,7 +95,7 @@ function ShopBoard({
 export default ShopBoard;
 
 const Table = styled.div`
-  margin-top: 50px;
+  margin-top: 20px;
   width: 100%;
   border: 1px solid #bbbbcf;
   box-sizing: border-box;

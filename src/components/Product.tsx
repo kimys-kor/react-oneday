@@ -1,21 +1,23 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-import BorderButton from "@/styles/button/BorderButton";
 import CustomSelect from "@/styles/selectbox/CustomSelect";
 import SearchInput from "@components/common/SearchInput";
 
-import ProductDetail from "@components/ProductDetail";
-import ProductBoard from "@/components/common/board/ProductBoard";
+import ShopDetail from "@components/ShopDetail";
+import ShopBoard from "@/components/common/board/ShopBoard";
 import { useForm, Resolver } from "react-hook-form";
-
 import { dateFilter, itemFilter } from "@/data/button/buttonData";
-
-import { shopBoardTitle, shopData } from "@data/shop/shopData";
+import { shopData, shopBoardTitle } from "@data/shop/shopData";
 import { eaOptions } from "@data/selectbox/selectboxData";
 
-import DatePicker from "react-datepicker";
-import { ko } from "date-fns/esm/locale";
+import BorderButton from "@/styles/button/BorderButton";
+import {
+  cityOptions,
+  guOptions,
+  dongOptions,
+  shopOptions,
+} from "@data/selectbox/selectboxData";
 import "react-datepicker/dist/react-datepicker.css";
 
 type FormData = {
@@ -41,19 +43,10 @@ const resolver: Resolver<FormData> = async (values) => {
 };
 
 function Product() {
-  // 헤더 날짜필터
-  const [dateIndex, setDateIndex] = useState<number | null>(0);
-  const setDate = (index: number) => {
-    setDateIndex(index === dateIndex ? null : index);
+  const [tabIndex, setTabIndex] = useState<number>(0);
+  const handleTab = (index: number) => {
+    setTabIndex(index);
   };
-  // 헤더 상태필터
-  const [filterIndex, setFilterIndex] = useState<number | null>(0);
-  const handleFilter = (index: number) => {
-    setFilterIndex(index === filterIndex ? null : index);
-  };
-  // 헤더 날짜 필터
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
-  const [endDate, setEndDate] = useState<Date | null>(new Date());
 
   // 디테일 모달 상태
   const [isDetailOpen, setDetailOpen] = useState(false);
@@ -65,7 +58,7 @@ function Product() {
     setDetailOpen(false);
   };
 
-  // 상세창 넘길 아이템
+  // 멤버상세창 넘길 멤버
   const [activeItem, setActiveItem] = useState(0);
   // ...클릭시 설정팝업
   const [openAnother, setOpenAnother] = useState(-1);
@@ -75,6 +68,7 @@ function Product() {
     setOpenAnother(index);
   };
 
+  // 상점 추가 팝업 상태
   const [isAddShopOpen, setAddShopOpen] = useState(false);
   const handleAddShop = () => {
     setAddShopOpen((prev) => !prev);
@@ -93,86 +87,72 @@ function Product() {
   return (
     <Shopbox>
       <Headerbox>
+        <Title>상품 관리</Title>
+        {/* <Addbutton onClick={handleAddShop}>상점 추가</Addbutton> */}
+      </Headerbox>
+
+      <Content>
         <Layout>
-          <HeaderContent>
+          <Tabbox>
             <BorderButton
-              width={76}
-              titles={dateFilter}
-              activeIndex={dateIndex}
-              handleButtonClick={setDate}
+              width={152}
+              titles={["지역선택", "검색하기"]}
+              activeIndex={tabIndex}
+              handleButtonClick={handleTab}
             ></BorderButton>
+          </Tabbox>
+          <Filterbox>
+            {tabIndex == 0 ? (
+              <Selectbox>
+                <CustomSelect
+                  width={200}
+                  height={53}
+                  title={"지역"}
+                  optionData={cityOptions}
+                ></CustomSelect>
+                <CustomSelect
+                  width={200}
+                  height={53}
+                  title={"구"}
+                  optionData={guOptions}
+                ></CustomSelect>
+                <CustomSelect
+                  width={200}
+                  height={53}
+                  title={"동"}
+                  optionData={dongOptions}
+                ></CustomSelect>
 
-            <Flexbox>
-              <Datebox>
-                <DatePicker
-                  locale={ko}
-                  closeOnScroll={(e) => e.target === document}
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  selectsStart
-                  startDate={startDate}
-                  endDate={endDate}
-                  dateFormat="yyyy-MM-dd"
-                  customInput={
-                    // 날짜 뜨는 인풋 커스텀
-                    <DateInput />
-                  }
-                />
-              </Datebox>
-              <Datebox>
-                <DatePicker
-                  locale={ko}
-                  closeOnScroll={(e) => e.target === document}
-                  selected={endDate}
-                  onChange={(date) => setEndDate(date)}
-                  selectsEnd
-                  startDate={startDate}
-                  endDate={endDate}
-                  minDate={startDate}
-                  dateFormat="yyyy-MM-dd"
-                  customInput={
-                    // 날짜 뜨는 인풋 커스텀
-                    <DateInput />
-                  }
-                />
-              </Datebox>
-            </Flexbox>
-
-            <Buttonbox>
-              <BorderButton
-                width={80}
-                titles={itemFilter}
-                activeIndex={filterIndex}
-                handleButtonClick={handleFilter}
-              ></BorderButton>
-            </Buttonbox>
-            <SearchInput></SearchInput>
-
+                <CustomSelect
+                  width={300}
+                  height={53}
+                  title={"상점선택"}
+                  optionData={shopOptions}
+                ></CustomSelect>
+              </Selectbox>
+            ) : (
+              <SearchInput width={"400px"} height={"53px"}></SearchInput>
+            )}
+          </Filterbox>
+          <Betweenbox>
+            <Title>{}</Title>
             <CustomSelect
               width={90}
               height={37}
               optionData={eaOptions}
             ></CustomSelect>
-          </HeaderContent>
-        </Layout>
-      </Headerbox>
+          </Betweenbox>
 
-      <Content>
-        <Layout>
-          <Rightbox>
-            <Addbutton onClick={handleAddShop}>상점 추가</Addbutton>
-          </Rightbox>
-
-          <ProductBoard
+          <ShopBoard
             boardMenu={shopBoardTitle}
             boardData={shopData}
             handleDetailOpen={handleDetailOpen}
             openAnother={openAnother}
             handleOpenIndex={handleOpenIndex}
-          ></ProductBoard>
+          ></ShopBoard>
         </Layout>
       </Content>
-      <ProductDetail
+      <ShopDetail
         onClose={handleDetailClose}
         isDetailOpen={isDetailOpen}
         shop={shopData[activeItem]}
@@ -252,14 +232,21 @@ const Shopbox = styled.div`
 `;
 
 const Headerbox = styled.div`
+  box-sizing: border-box;
+  padding-right: 50px;
   width: 100%;
-  height: 160px;
-
+  height: 125px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #fff;
+`;
+
+const Title = styled.div`
+  margin-left: 20px;
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Content = styled.div`
@@ -280,12 +267,8 @@ const Layout = styled.div`
   width: 95%;
 `;
 
-const Title = styled.div`
-  margin-top: 10px;
-  font-size: 25px;
-`;
-
-const HeaderContent = styled.div`
+const FilterContent = styled.div`
+  margin-top: 50px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -301,30 +284,6 @@ const HeaderContent = styled.div`
     position: absolute;
     top: 3px;
   }
-`;
-
-const Datebox = styled.div`
-  margin-left: 12px;
-`;
-
-const DateInput = styled.input`
-  box-sizing: border-box;
-  width: 156px;
-  height: 37px;
-  padding: 5px 10px;
-  background: #fff;
-  border: 1px solid #bbbbcf;
-  font-size: 15px;
-  font-weight: 400;
-  text-align: center;
-  color: #bbbbcf;
-  line-height: 37px;
-  text-align: center;
-`;
-
-const Buttonbox = styled.div`
-  margin-left: 24px;
-  display: flex;
 `;
 
 const Wrapper = styled.div`
@@ -424,11 +383,6 @@ const Star = styled.p`
   color: red;
 `;
 
-const Flexbox = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
 const Flex = styled.div`
   display: flex;
   gap: 4rem;
@@ -436,7 +390,6 @@ const Flex = styled.div`
 `;
 
 const Rightbox = styled.div`
-  margin-bottom: 20px;
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -456,4 +409,33 @@ const Addbutton = styled.span`
   margin-right: 0; // remove the margin on the last button
   border-color: #ff6622; // set border color to #ff6622 for active button
   color: #ff6622;
+`;
+
+const Filterbox = styled.div`
+  width: 100%;
+  margin-top: 50px;
+`;
+
+const Selectbox = styled.div`
+  width: 100%;
+  height: 53px;
+
+  display: flex;
+  gap: 36px;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const Betweenbox = styled.div`
+  box-sizing: border-box;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Tabbox = styled.div`
+  height: 70px;
+  display: flex;
+  border-bottom: 1px solid #bbbbcf;
 `;

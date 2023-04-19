@@ -16,6 +16,7 @@ import {
   cityOptions,
   guOptions,
   dongOptions,
+  shopOptions,
 } from "@data/selectbox/selectboxData";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -42,19 +43,10 @@ const resolver: Resolver<FormData> = async (values) => {
 };
 
 function Shop() {
-  // 헤더 날짜필터
-  const [dateIndex, setDateIndex] = useState<number | null>(0);
-  const setDate = (index: number) => {
-    setDateIndex(index === dateIndex ? null : index);
+  const [tabIndex, setTabIndex] = useState<number>(0);
+  const handleTab = (index: number) => {
+    setTabIndex(index);
   };
-  // 헤더 상태필터
-  const [FilterIndex, setFilterIndex] = useState<number | null>(0);
-  const handleFilter = (index: number) => {
-    setFilterIndex(index === FilterIndex ? null : index);
-  };
-  // 헤더 날짜 필터
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
-  const [endDate, setEndDate] = useState<Date | null>(new Date());
 
   // 디테일 모달 상태
   const [isDetailOpen, setDetailOpen] = useState(false);
@@ -101,43 +93,55 @@ function Shop() {
 
       <Content>
         <Layout>
-          <Selectbox>
-            <CustomSelect
-              width={200}
-              height={53}
-              title={"지역"}
-              optionData={cityOptions}
-            ></CustomSelect>
-            <CustomSelect
-              width={200}
-              height={53}
-              title={"구"}
-              optionData={guOptions}
-            ></CustomSelect>
-            <CustomSelect
-              width={200}
-              height={53}
-              title={"동"}
-              optionData={dongOptions}
-            ></CustomSelect>
+          <Tabbox>
+            <BorderButton
+              width={152}
+              titles={["지역선택", "검색하기"]}
+              activeIndex={tabIndex}
+              handleButtonClick={handleTab}
+            ></BorderButton>
+          </Tabbox>
+          <Filterbox>
+            {tabIndex == 0 ? (
+              <Selectbox>
+                <CustomSelect
+                  width={200}
+                  height={53}
+                  title={"지역"}
+                  optionData={cityOptions}
+                ></CustomSelect>
+                <CustomSelect
+                  width={200}
+                  height={53}
+                  title={"구"}
+                  optionData={guOptions}
+                ></CustomSelect>
+                <CustomSelect
+                  width={200}
+                  height={53}
+                  title={"동"}
+                  optionData={dongOptions}
+                ></CustomSelect>
 
-            <CustomSelect
-              width={300}
-              height={53}
-              title={"상점선택"}
-              optionData={dongOptions}
-            ></CustomSelect>
-          </Selectbox>
-
-          <FilterContent>
-            <SearchInput></SearchInput>
-
+                <CustomSelect
+                  width={300}
+                  height={53}
+                  title={"상점선택"}
+                  optionData={shopOptions}
+                ></CustomSelect>
+              </Selectbox>
+            ) : (
+              <SearchInput width={"400px"} height={"53px"}></SearchInput>
+            )}
+          </Filterbox>
+          <Betweenbox>
+            <Title>{}</Title>
             <CustomSelect
               width={90}
               height={37}
               optionData={eaOptions}
             ></CustomSelect>
-          </FilterContent>
+          </Betweenbox>
 
           <ShopBoard
             boardMenu={shopBoardTitle}
@@ -407,6 +411,11 @@ const Addbutton = styled.span`
   color: #ff6622;
 `;
 
+const Filterbox = styled.div`
+  width: 100%;
+  margin-top: 50px;
+`;
+
 const Selectbox = styled.div`
   width: 100%;
   height: 53px;
@@ -415,4 +424,18 @@ const Selectbox = styled.div`
   gap: 36px;
   justify-content: flex-start;
   align-items: center;
+`;
+
+const Betweenbox = styled.div`
+  box-sizing: border-box;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Tabbox = styled.div`
+  height: 70px;
+  display: flex;
+  border-bottom: 1px solid #bbbbcf;
 `;

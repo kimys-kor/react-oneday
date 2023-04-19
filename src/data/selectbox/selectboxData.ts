@@ -63,3 +63,10 @@ export const dongOptions: Array<corpOption> = [
   { key: 2, value: "오치동" },
   { key: 3, value: "용봉동" },
 ];
+
+export const shopOptions: Array<corpOption> = [
+  { key: 0, value: "용만이네1" },
+  { key: 1, value: "용만이네2" },
+  { key: 2, value: "용만이네3" },
+  { key: 3, value: "용만이네4" },
+];

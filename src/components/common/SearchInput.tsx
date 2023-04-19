@@ -2,7 +2,12 @@ import React, { useState, useEffect, ChangeEvent, useRef } from "react";
 import styled from "styled-components";
 import { ReactComponent as SearchIcon } from "@statics/images/search/searchicon.svg";
 
-const SearchInput: React.FC = ({}) => {
+interface SearchInputProps {
+  width: string;
+  height: string;
+}
+
+const SearchInput: React.FC<SearchInputProps> = ({ width, height }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -18,7 +23,7 @@ const SearchInput: React.FC = ({}) => {
   };
 
   return (
-    <InputContainer>
+    <InputContainer width={width} height={height}>
       <Input
         type="text"
         placeholder="검색어 입력"
@@ -34,13 +39,15 @@ const SearchInput: React.FC = ({}) => {
 
 export default SearchInput;
 
-const InputContainer = styled.div`
+const InputContainer = styled.div<{ width: string; height: string }>`
   /* margin-left: 50px; */
   position: relative;
-  width: 230px;
-  height: 39px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
 
   display: flex;
+  align-items: center; /* center vertically */
+  justify-content: center; /* center horizontally */
 
   overflow: hidden;
   text-overflow: ellipsis;
@@ -65,7 +72,6 @@ const Input = styled.input`
 const Iconbox = styled.div`
   position: absolute;
   right: 20px;
-  top: 10px;
 
   cursor: pointer;
 `;

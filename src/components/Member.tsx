@@ -115,7 +115,7 @@ function Member() {
                 handleButtonClick={handleFilter}
               ></BorderButton>
             </Buttonbox>
-            <SearchInput></SearchInput>
+            <SearchInput width="150px" height="39px"></SearchInput>
 
             <CustomSelect
               width={90}
