@@ -64,12 +64,12 @@ function Shop() {
   };
 
   // 멤버상세창 넘길 멤버
-  const [activeMember, setActiveMember] = useState(0);
+  const [activeItem, setActiveItem] = useState(0);
   // ...클릭시 설정팝업
   const [openAnother, setOpenAnother] = useState(-1);
-  // ...클릭시 팝업,멤버인덱스 설정
+  // ...클릭시 팝업,상점인덱스 설정
   const handleOpenIndex = (index: number) => {
-    setActiveMember(openAnother);
+    setActiveItem(openAnother);
     setOpenAnother(index);
   };
 
@@ -174,7 +174,7 @@ function Shop() {
       <ShopDetail
         onClose={handleDetailClose}
         isDetailOpen={isDetailOpen}
-        shop={shopData[activeMember]}
+        shop={shopData[activeItem]}
       />
 
       {/* 상점등록 모달 */}

@@ -26,7 +26,7 @@ function Member() {
   const setDate = (index: number) => {
     setDateIndex(index === dateIndex ? null : index);
   };
-  // 헤더 멤버상태필터
+  // 헤더 상태필터
   const [filterIndex, setFilterIndex] = useState<number | null>(0);
   const handleFilter = (index: number) => {
     setFilterIndex(index === filterIndex ? null : index);
@@ -46,12 +46,12 @@ function Member() {
   };
 
   // 멤버상세창 넘길 멤버
-  const [activeMember, setActiveMember] = useState(0);
+  const [activeItem, setActiveItem] = useState(0);
   // ...클릭시 설정팝업
   const [openAnother, setOpenAnother] = useState(-1);
   // ...클릭시 팝업,멤버인덱스 설정
   const handleOpenIndex = (index: number) => {
-    setActiveMember(openAnother);
+    setActiveItem(openAnother);
     setOpenAnother(index);
   };
 
@@ -137,7 +137,7 @@ function Member() {
       <MemberDetail
         onClose={handleDetailClose}
         isDetailOpen={isDetailOpen}
-        member={memberData[activeMember]}
+        member={memberData[activeItem]}
       />
     </Memberbox>
   );
