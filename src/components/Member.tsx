@@ -55,6 +55,8 @@ function Member() {
     setOpenAnother(index);
   };
 
+  const [currentEa, setCurrentEa] = useState(eaOptions[0].value);
+
   return (
     <Memberbox>
       <Headerbox>
@@ -121,6 +123,8 @@ function Member() {
               width={90}
               height={37}
               optionData={eaOptions}
+              currentValue={currentEa}
+              setCurrentValue={setCurrentEa}
             ></CustomSelect>
           </FilterContent>
           <MemberBoard

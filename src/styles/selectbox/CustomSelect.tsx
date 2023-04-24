@@ -11,14 +11,14 @@ const CustomSelect: React.FC<{
   height: number;
   title?: string;
   optionData: corpOption[];
-}> = ({ width, height, title, optionData }) => {
-  const [currentValue, setCurrentValue] = useState(optionData[0].value);
+  currentValue: any;
+  setCurrentValue: (value: any) => void;
+}> = ({ width, height, title, optionData, currentValue, setCurrentValue }) => {
   const [showOptions, setShowOptions] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
 
   const handleOnChangeSelectValue = (e: React.MouseEvent<HTMLLIElement>) => {
     setCurrentValue(e.currentTarget.getAttribute("value") || "");
-    console.log(currentValue);
   };
 
   // 셀렉트 바깥쪽 클릭시 option안보이도록

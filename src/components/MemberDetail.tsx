@@ -43,6 +43,8 @@ function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
+  const [currentEa, setCurrentEa] = useState(eaOptions[0].value);
+
   const {
     register,
     handleSubmit,
@@ -143,9 +145,11 @@ function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
                   ></BorderButton>
                 </Buttonbox>
                 <CustomSelect
-                  width={99}
+                  width={90}
                   height={37}
                   optionData={eaOptions}
+                  currentValue={currentEa}
+                  setCurrentValue={setCurrentEa}
                 ></CustomSelect>
               </Titlebox>
               <RightContent>

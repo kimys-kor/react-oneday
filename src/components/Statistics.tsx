@@ -62,6 +62,9 @@ function Statistics() {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(new Date());
 
+  const [currentYear, setCurrentYear] = useState(yearOptions[0].value);
+  const [currentMonth, setCurrentMonth] = useState(monthOptions[0].value);
+
   const formatAmounts = (data: Array<horizontalModel>) => {
     return data.map((item) => {
       const formattedAmount = item.amount.toLocaleString();
@@ -124,12 +127,16 @@ function Statistics() {
                           height={37}
                           title={"연도"}
                           optionData={yearOptions}
+                          currentValue={currentYear}
+                          setCurrentValue={setCurrentYear}
                         ></CustomSelect>
                         <CustomSelect
                           width={151}
                           height={37}
                           title={"월"}
                           optionData={monthOptions}
+                          currentValue={currentMonth}
+                          setCurrentValue={setCurrentMonth}
                         ></CustomSelect>
                       </Flexbox>
                     </>

@@ -4,10 +4,8 @@ import { useState } from "react";
 import CustomSelect from "@/styles/selectbox/CustomSelect";
 import SearchInput from "@components/common/SearchInput";
 
-import ShopDetail from "@components/ShopDetail";
-import ShopBoard from "@/components/common/board/ShopBoard";
+import ProductDetail from "@components/ProductDetail";
 import { useForm, Resolver } from "react-hook-form";
-import { dateFilter, itemFilter } from "@/data/button/buttonData";
 import { shopData, shopBoardTitle } from "@data/shop/shopData";
 import { eaOptions } from "@data/selectbox/selectboxData";
 
@@ -19,6 +17,7 @@ import {
   shopOptions,
 } from "@data/selectbox/selectboxData";
 import "react-datepicker/dist/react-datepicker.css";
+import ProductBoard from "./common/board/ProductBoard";
 
 type FormData = {
   shopName: string;
@@ -74,6 +73,12 @@ function Product() {
     setAddShopOpen((prev) => !prev);
   };
 
+  const [currentEa, setCurrentEa] = useState(eaOptions[0].value);
+  const [currentCity, setCurrentCity] = useState(cityOptions[0].value);
+  const [currentGu, setCurrentGu] = useState(guOptions[0].value);
+  const [currentDong, setCurrentDong] = useState(dongOptions[0].value);
+  const [currentShop, setCurrentShop] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -109,56 +114,74 @@ function Product() {
                   height={53}
                   title={"지역"}
                   optionData={cityOptions}
+                  currentValue={currentCity}
+                  setCurrentValue={setCurrentCity}
                 ></CustomSelect>
                 <CustomSelect
                   width={200}
                   height={53}
                   title={"구"}
                   optionData={guOptions}
+                  currentValue={currentGu}
+                  setCurrentValue={setCurrentGu}
                 ></CustomSelect>
                 <CustomSelect
                   width={200}
                   height={53}
                   title={"동"}
                   optionData={dongOptions}
+                  currentValue={currentDong}
+                  setCurrentValue={setCurrentDong}
                 ></CustomSelect>
 
                 <CustomSelect
-                  width={300}
+                  width={220}
                   height={53}
                   title={"상점선택"}
                   optionData={shopOptions}
+                  currentValue={currentShop}
+                  setCurrentValue={setCurrentShop}
                 ></CustomSelect>
+                {currentShop && (
+                  <Addbutton onClick={handleAddShop}>상품 추가</Addbutton>
+                )}
               </Selectbox>
             ) : (
               <SearchInput width={"400px"} height={"53px"}></SearchInput>
             )}
           </Filterbox>
-          <Betweenbox>
-            <Title>{}</Title>
-            <CustomSelect
-              width={90}
-              height={37}
-              optionData={eaOptions}
-            ></CustomSelect>
-          </Betweenbox>
 
-          <ShopBoard
-            boardMenu={shopBoardTitle}
-            boardData={shopData}
-            handleDetailOpen={handleDetailOpen}
-            openAnother={openAnother}
-            handleOpenIndex={handleOpenIndex}
-          ></ShopBoard>
+          {currentShop && (
+            <>
+              <Betweenbox>
+                <Title>{}</Title>
+                <CustomSelect
+                  width={90}
+                  height={37}
+                  optionData={eaOptions}
+                  currentValue={currentEa}
+                  setCurrentValue={setCurrentEa}
+                ></CustomSelect>
+              </Betweenbox>
+
+              <ProductBoard
+                boardMenu={shopBoardTitle}
+                boardData={shopData}
+                handleDetailOpen={handleDetailOpen}
+                openAnother={openAnother}
+                handleOpenIndex={handleOpenIndex}
+              ></ProductBoard>
+            </>
+          )}
         </Layout>
       </Content>
-      <ShopDetail
+      <ProductDetail
         onClose={handleDetailClose}
         isDetailOpen={isDetailOpen}
         shop={shopData[activeItem]}
       />
 
-      {/* 상점등록 모달 */}
+      {/* 상품등록 모달 */}
       <Wrapper
         onClick={handleAddShop}
         style={{ display: isAddShopOpen ? "flex" : "none" }}
@@ -166,35 +189,35 @@ function Product() {
         <Modal onClick={(e) => e.stopPropagation()}>
           <Formbox>
             <div>
-              <Title>상점등록</Title>
+              <Title>상품등록</Title>
             </div>
 
             <Form onSubmit={onSubmit}>
               <div>
                 <Inputbox>
                   <label>
-                    상점명<Star>*</Star>
+                    상점<Star>*</Star>
                   </label>{" "}
                   <Input type="text" {...register("shopName")}></Input>
                 </Inputbox>
 
                 <Inputbox>
                   <label>
-                    사업자번호<Star>*</Star>
+                    상품명<Star>*</Star>
                   </label>{" "}
                   <Input type="number" {...register("businessNumber")}></Input>
                 </Inputbox>
 
                 <Inputbox>
                   <label>
-                    대표자명<Star>*</Star>
+                    가격<Star>*</Star>
                   </label>
                   <Input type="text" {...register("ownerName")}></Input>
                 </Inputbox>
 
                 <Inputbox>
                   <label>
-                    주소<Star>*</Star>
+                    옵션<Star>*</Star>
                   </label>
                   <Input type="text" {...register("shopAddress")}></Input>
                 </Inputbox>
@@ -334,7 +357,7 @@ const Inputbox = styled.div`
 `;
 const Input = styled.input`
   border: none;
-  border-bottom: 1px solid #304ffd;
+  border-bottom: 1px solid #f1b59c;
   width: 70%;
 `;
 
@@ -346,14 +369,14 @@ const Canclebutton = styled.div`
   color: #fff;
   font-size: 14px;
   letter-spacing: 0.2rem;
-  background-color: #304ffd;
+  background-color: #ff6622;
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   &:hover {
-    background-color: #1536f5;
+    background-color: #d64d12;
   }
 `;
 const Submitbutton = styled.input`
@@ -361,10 +384,10 @@ const Submitbutton = styled.input`
   border: none;
   width: 100px;
   height: 50px;
-  color: #304ffd;
+  color: #ff6622;
   font-size: 14px;
   letter-spacing: 0.2rem;
-  border: 1px solid #304ffd;
+  border: 1px solid #ff6622;
   background-color: transparent;
   border-radius: 5px;
   display: flex;
@@ -372,7 +395,7 @@ const Submitbutton = styled.input`
   justify-content: center;
   cursor: pointer;
   &:hover {
-    background-color: #1536f5;
+    background-color: #ff6622;
     color: #fff;
   }
 `;
@@ -396,12 +419,12 @@ const Rightbox = styled.div`
 `;
 
 const Addbutton = styled.span`
-  line-height: 37px;
+  line-height: 53px;
   text-align: center;
   font-size: 16px;
   font-weight: 300;
-  width: 100px;
-  height: 37px;
+  width: 150px;
+  height: 53px;
 
   border: 1px solid #bbbbcf;
   background-color: #ffffff;
@@ -427,6 +450,7 @@ const Selectbox = styled.div`
 `;
 
 const Betweenbox = styled.div`
+  margin-top: 30px;
   box-sizing: border-box;
 
   width: 100%;

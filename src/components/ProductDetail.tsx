@@ -21,6 +21,8 @@ function ProductDetail({ onClose, isDetailOpen, shop }: ShopDetailProps) {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
+  const [currentEa, setCurrentEa] = useState(eaOptions[0].value);
+
   return (
     <Wrapper isDetailOpen={isDetailOpen}>
       <Modal isDetailOpen={isDetailOpen} onClick={(e) => e.stopPropagation()}>
@@ -87,9 +89,11 @@ function ProductDetail({ onClose, isDetailOpen, shop }: ShopDetailProps) {
                   ></BorderButton>
                 </Buttonbox>
                 <CustomSelect
-                  width={99}
+                  width={90}
                   height={37}
                   optionData={eaOptions}
+                  currentValue={currentEa}
+                  setCurrentValue={setCurrentEa}
                 ></CustomSelect>
               </Titlebox>
               <RightContent>

@@ -74,6 +74,12 @@ function Shop() {
     setAddShopOpen((prev) => !prev);
   };
 
+  const [currentEa, setCurrentEa] = useState(eaOptions[0].value);
+  const [currentCity, setCurrentCity] = useState(cityOptions[0].value);
+  const [currentGu, setCurrentGu] = useState(guOptions[0].value);
+  const [currentDong, setCurrentDong] = useState(dongOptions[0].value);
+  const [currentShop, setCurrentShop] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -109,25 +115,33 @@ function Shop() {
                   height={53}
                   title={"지역"}
                   optionData={cityOptions}
+                  currentValue={currentCity}
+                  setCurrentValue={setCurrentCity}
                 ></CustomSelect>
                 <CustomSelect
                   width={200}
                   height={53}
                   title={"구"}
                   optionData={guOptions}
+                  currentValue={currentGu}
+                  setCurrentValue={setCurrentGu}
                 ></CustomSelect>
                 <CustomSelect
                   width={200}
                   height={53}
                   title={"동"}
                   optionData={dongOptions}
+                  currentValue={currentDong}
+                  setCurrentValue={setCurrentDong}
                 ></CustomSelect>
 
                 <CustomSelect
-                  width={300}
+                  width={200}
                   height={53}
                   title={"상점선택"}
                   optionData={shopOptions}
+                  currentValue={currentShop}
+                  setCurrentValue={setCurrentShop}
                 ></CustomSelect>
               </Selectbox>
             ) : (
@@ -140,6 +154,8 @@ function Shop() {
               width={90}
               height={37}
               optionData={eaOptions}
+              currentValue={currentEa}
+              setCurrentValue={setCurrentEa}
             ></CustomSelect>
           </Betweenbox>
 
@@ -427,6 +443,7 @@ const Selectbox = styled.div`
 `;
 
 const Betweenbox = styled.div`
+  margin-top: 30px;
   box-sizing: border-box;
 
   width: 100%;

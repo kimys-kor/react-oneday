@@ -6,7 +6,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import avatar1 from "@images/sidebar/avatar/avatar1.png";
 
-import { SidebarProps, BoxProps } from "@models/sidebar/sidebarModel";
+import { SidebarProps, BoxProps } from "@data/sidebar/sidebarData";
 
 function Sidebar({ xPosition }: SidebarProps) {
   const pathName = useLocation().pathname;
