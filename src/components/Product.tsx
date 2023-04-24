@@ -142,9 +142,6 @@ function Product() {
                   currentValue={currentShop}
                   setCurrentValue={setCurrentShop}
                 ></CustomSelect>
-                {currentShop && (
-                  <Addbutton onClick={handleAddShop}>상품 추가</Addbutton>
-                )}
               </Selectbox>
             ) : (
               <SearchInput width={"400px"} height={"53px"}></SearchInput>
@@ -154,7 +151,8 @@ function Product() {
           {currentShop && (
             <>
               <Betweenbox>
-                <Title>{}</Title>
+                <Addbutton onClick={handleAddShop}>상품 추가</Addbutton>
+
                 <CustomSelect
                   width={90}
                   height={37}
@@ -410,12 +408,6 @@ const Flex = styled.div`
   display: flex;
   gap: 4rem;
   justify-content: center;
-`;
-
-const Rightbox = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
 `;
 
 const Addbutton = styled.span`

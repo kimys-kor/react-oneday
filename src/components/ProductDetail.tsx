@@ -73,26 +73,13 @@ function ProductDetail({ onClose, isDetailOpen, product }: ShopDetailProps) {
                 <Buttonbox>
                   <BorderButton
                     width={151}
-                    titles={["주문내역"]}
+                    titles={["상품수정"]}
                     activeIndex={activeIndex}
                     handleButtonClick={handleButtonClick}
                   ></BorderButton>
                 </Buttonbox>
-                <CustomSelect
-                  width={90}
-                  height={37}
-                  optionData={eaOptions}
-                  currentValue={currentEa}
-                  setCurrentValue={setCurrentEa}
-                ></CustomSelect>
               </Titlebox>
-              <RightContent>
-                <ShopOrderBoard
-                  index={0}
-                  boardMenu={shopOrderBoardTitle}
-                  boardData={shopOrdertBoardData}
-                ></ShopOrderBoard>
-              </RightContent>
+              <RightContent></RightContent>
             </Right>
           </Content>
         </Layout>
