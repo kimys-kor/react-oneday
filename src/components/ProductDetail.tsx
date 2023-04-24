@@ -5,17 +5,17 @@ import BorderButton from "@/styles/button/BorderButton";
 import CustomSelect from "@/styles/selectbox/CustomSelect";
 
 import { eaOptions } from "@/data/selectbox/selectboxData";
-import { shop } from "@/data/shop/shopData";
+import { product } from "@/data/product/productData";
 import ShopOrderBoard from "@common/board/ShopOrderBoard";
 import { shopOrderBoardTitle, shopOrdertBoardData } from "@data/shop/shopData";
 
 interface ShopDetailProps {
   onClose: () => void;
   isDetailOpen: boolean;
-  shop: shop | undefined;
+  product: product | undefined;
 }
 
-function ProductDetail({ onClose, isDetailOpen, shop }: ShopDetailProps) {
+function ProductDetail({ onClose, isDetailOpen, product }: ShopDetailProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const handleButtonClick = (index: number) => {
     setActiveIndex(index === activeIndex ? null : index);
@@ -34,46 +34,36 @@ function ProductDetail({ onClose, isDetailOpen, shop }: ShopDetailProps) {
           <Content>
             <Left>
               <Titlebox>
-                <LeftButton>상점 정보</LeftButton>
+                <LeftButton>상품 정보</LeftButton>
               </Titlebox>
               <LeftContent>
                 <Row>
-                  <Greyfont1>고유 ID</Greyfont1>
-                  <Blackfont1>{shop?.id}</Blackfont1>
+                  <Greyfont1>상품 ID</Greyfont1>
+                  <Blackfont1>{product?.id}</Blackfont1>
                 </Row>
                 <Row>
                   <Greyfont1>매장명</Greyfont1>
-                  <Blackfont1>{shop?.shopName}</Blackfont1>
+                  <Blackfont1>{product?.shopName}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont1>매장점주</Greyfont1>
-                  <Blackfont1>{shop?.owner}</Blackfont1>
+                  <Greyfont1>상품명</Greyfont1>
+                  <Blackfont1>{product?.productName}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont1>핸드폰</Greyfont1>
-                  <Blackfont1>{shop?.phone}</Blackfont1>
+                  <Greyfont1>옵션</Greyfont1>
+                  <Blackfont1>{product?.option}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont1>이메일</Greyfont1>
-                  <Blackfont1>{shop?.email}</Blackfont1>
-                </Row>
-                <Row>
-                  <Greyfont1>최초 등록일</Greyfont1>
-                  <Blackfont1>{shop?.createdDt}</Blackfont1>
-                </Row>
-
-                <Divide></Divide>
-                <Row>
-                  <Greyfont1>상품수</Greyfont1>
-                  <Blackfont1>{shop?.productNumber}</Blackfont1>
+                  <Greyfont1>등록일</Greyfont1>
+                  <Blackfont1>{product?.createdDt}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont1>총주문건수</Greyfont1>
-                  <Blackfont1>{shop?.orderCount}</Blackfont1>
+                  <Greyfont1>재고수량</Greyfont1>
+                  <Blackfont1>{product?.inventory}</Blackfont1>
                 </Row>
               </LeftContent>
             </Left>

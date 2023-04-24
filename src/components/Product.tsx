@@ -6,7 +6,7 @@ import SearchInput from "@components/common/SearchInput";
 
 import ProductDetail from "@components/ProductDetail";
 import { useForm, Resolver } from "react-hook-form";
-import { shopData, shopBoardTitle } from "@data/shop/shopData";
+import { productData, productBoardTitle } from "@data/product/productData";
 import { eaOptions } from "@data/selectbox/selectboxData";
 
 import BorderButton from "@/styles/button/BorderButton";
@@ -165,8 +165,8 @@ function Product() {
               </Betweenbox>
 
               <ProductBoard
-                boardMenu={shopBoardTitle}
-                boardData={shopData}
+                boardMenu={productBoardTitle}
+                boardData={productData}
                 handleDetailOpen={handleDetailOpen}
                 openAnother={openAnother}
                 handleOpenIndex={handleOpenIndex}
@@ -178,7 +178,7 @@ function Product() {
       <ProductDetail
         onClose={handleDetailClose}
         isDetailOpen={isDetailOpen}
-        shop={shopData[activeItem]}
+        product={productData[activeItem]}
       />
 
       {/* 상품등록 모달 */}
@@ -451,6 +451,7 @@ const Selectbox = styled.div`
 
 const Betweenbox = styled.div`
   margin-top: 30px;
+  margin-bottom: 10px;
   box-sizing: border-box;
 
   width: 100%;

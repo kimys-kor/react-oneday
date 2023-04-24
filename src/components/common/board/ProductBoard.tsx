@@ -51,16 +51,14 @@ function ProductBoard({
           ))}
         </Title>
 
-        {boardData.map((shop, index) => (
+        {boardData.map((product, index) => (
           <Tr key={index}>
-            <Td>{shop.id}</Td>
-            <Td>{shop.shopName}</Td>
-            <Td>{shop.owner}</Td>
-            <Td>{shop.phone}</Td>
-            <Td>{shop.email}</Td>
-            <Td>{shop.createdDt}</Td>
-            <Td>{shop.productNumber}</Td>
-            <Td>{shop.orderCount}</Td>
+            <Td>{product.id}</Td>
+            <Td>{product.shopName}</Td>
+            <Td>{product.productName}</Td>
+            <Td>{product.option}</Td>
+            <Td>{product.createdDt}</Td>
+            <Td>{product.inventory}</Td>
             <Td>
               <Iconbox>
                 <AnotherIcon
@@ -107,7 +105,7 @@ const Title = styled.li`
   padding: 10px;
   border-bottom: 1px solid #bbbbcf;
 
-  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr;
   div {
     text-align: center;
     font-size: 1rem;
@@ -123,7 +121,7 @@ const Tr = styled.li`
   padding: 10px;
 
   border-top: 1px solid #cfcfcf;
-  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr;
 
   div {
     text-align: center;
