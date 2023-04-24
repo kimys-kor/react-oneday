@@ -8,7 +8,7 @@ import Sidebar from "@common/Sidebar";
 import Dashboard from "@components/Dashboard";
 import Shop from "@/components/Shop";
 import Product from "@components/Product";
-import Riders from "@components/Riders";
+import Rider from "@/components/Rider";
 import Statistics from "@/components/Statistics";
 import Member from "@components/Member";
 import Orders from "@/components/Orders";
@@ -56,7 +56,7 @@ function Oneday() {
           <Route path="member" element={<Member />} />
           <Route path="shop" element={<Shop />} />
           <Route path="product" element={<Product />} />
-          <Route path="riders" element={<Riders />} />
+          <Route path="riders" element={<Rider />} />
           <Route path="orders" element={<Orders />} />
           <Route path="statistics" element={<Statistics />} />
         </Routes>
