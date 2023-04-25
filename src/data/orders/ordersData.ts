@@ -1,11 +1,11 @@
-export const titleApplication: string[] = [
-  "앱 정보 관리",
-  "목표 금액 관리",
-  "가맹점 관리",
-  "노출 대행사 관리",
+export const tabOrders: string[] = [
+  "주문 현황",
+  "일자별 주문 검색",
+  "미완료 주문 관리",
+  "사고 주문 관리",
 ];
 
-export interface app {
+export interface orders {
   id: number;
   name: string;
   user: number;
@@ -22,7 +22,7 @@ export interface app {
   privacy: string;
 }
 
-export const appData: app[] = [
+export const ordersData: orders[] = [
   {
     id: 0,
     name: "캐시문상1",

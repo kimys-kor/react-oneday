@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useForm, Resolver } from "react-hook-form";
 
-import { advList } from "@/data/application/applicationData";
+import { advList } from "@/data/orders/ordersData";
 import Checkbox from "@/styles/checkbox/Checkbox";
 
 type AppFormData = {

@@ -1,21 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 
-import CustomSelect from "@/styles/selectbox/CustomSelect";
 import BorderButton from "@/styles/button/BorderButton";
 
-import { adv } from "@/data/application/applicationData";
-import { corpOptions } from "@/data/dashboard/dashboardData";
-import {
-  titleApplication,
-  appData,
-  advBoardMenu,
-  advBoardData,
-} from "@/data/application/applicationData";
-import { adminBoardTitle, adminBoardData } from "@data/admin/adminData";
+import { tabOrders, ordersData } from "@/data/orders/ordersData";
 import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anothericon.svg";
-
-import appicon from "@statics/images/application/appicon.png";
 
 function Orders() {
   const [tabIndex, setTabIndex] = useState<number>(0);
@@ -77,7 +66,7 @@ function Orders() {
           <Tabbox>
             <BorderButton
               width={152}
-              titles={titleApplication}
+              titles={tabOrders}
               activeIndex={tabIndex}
               handleButtonClick={handleTab}
             ></BorderButton>
@@ -85,15 +74,11 @@ function Orders() {
 
           {tabIndex == 0 && (
             <>
-              <Addbox>
-                <Addbutton onClick={handleAddForm}>+서비스 추가하기</Addbutton>
-              </Addbox>
-              {appData.map((item, index) => (
+              {ordersData.map((item, index) => (
                 <Appbox key={index}>
                   <Flex>
-                    <Img src={appicon}></Img>
                     <Info>
-                      <Title>{item.name}</Title>
+                      <CardTitle>{item.name}</CardTitle>
                       <Detailbox>
                         <Detail>
                           <Greyfont4>앱 번호 |</Greyfont4>{" "}
@@ -142,39 +127,9 @@ function Orders() {
               ))}
             </>
           )}
-          {tabIndex == 1 && (
-            <>
-              {appData.map((item, index) => (
-                <Appbox key={index}>
-                  <Flexbox>
-                    <Info>
-                      <Title>{item.name}</Title>
-                      <AppContent>
-                        {adv.map((item, index) => (
-                          <Inputbox key={index}>
-                            <Greyfont4>{item.name}</Greyfont4>{" "}
-                            <Input defaultValue={item.amount}></Input>
-                          </Inputbox>
-                        ))}
-                      </AppContent>
-                    </Info>
-                    <div>
-                      <Submitbutton type="submit" value="저장" />
-                    </div>
-                  </Flexbox>
-                </Appbox>
-              ))}
-            </>
-          )}
-
-          {tabIndex == 2 && (
-            <>
-              <Addbox>
-                <Addbutton onClick={handleAddForm}>+가맹점 추가하기</Addbutton>
-              </Addbox>
-            </>
-          )}
-          {tabIndex == 3 && <>노출대행사관리</>}
+          {tabIndex == 1 && <></>}
+          {tabIndex == 2 && <></>}
+          {tabIndex == 3 && <></>}
         </Layout>
       </Wrapper>
     </Box>
@@ -284,6 +239,13 @@ const Info = styled.div`
 `;
 
 const Title = styled.div`
+  margin-left: 20px;
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const CardTitle = styled.div`
   color: #1e2026;
   font-size: 16px;
   line-height: 21px;
