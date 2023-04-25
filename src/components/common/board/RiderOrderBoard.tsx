@@ -13,7 +13,7 @@ const setPage = function () {
   console.log("온체인지");
 };
 
-function MemberOrderBoard({ index, boardMenu, boardData }: BoardProps) {
+function RiderOrderBoard({ index, boardMenu, boardData }: BoardProps) {
   return (
     <>
       <Table>
@@ -23,13 +23,13 @@ function MemberOrderBoard({ index, boardMenu, boardData }: BoardProps) {
           ))}
         </Title>
 
-        {boardData.map((memberOrder, index) => (
+        {boardData.map((riderOrder, index) => (
           <Tr key={index}>
             <Td>{index}</Td>
-            <Td>{memberOrder.creteadDt}</Td>
-            <Td>{memberOrder.orderShop}</Td>
-            <Td>{memberOrder.orderProducts}</Td>
-            <Td>{memberOrder.orderAmount}</Td>
+            <Td>{riderOrder.creteadDt}</Td>
+            <Td>{riderOrder.orderShop}</Td>
+            <Td>{riderOrder.orderProducts}</Td>
+            <Td>{riderOrder.address}</Td>
           </Tr>
         ))}
       </Table>
@@ -38,7 +38,7 @@ function MemberOrderBoard({ index, boardMenu, boardData }: BoardProps) {
   );
 }
 
-export default MemberOrderBoard;
+export default RiderOrderBoard;
 
 const Table = styled.div`
   width: 100%;

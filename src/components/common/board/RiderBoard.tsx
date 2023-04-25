@@ -16,7 +16,7 @@ const setPage = function () {
   console.log("온체인지");
 };
 
-function MemberBoard({
+function RiderBoard({
   boardMenu,
   boardData,
   handleDetailOpen,
@@ -52,12 +52,12 @@ function MemberBoard({
         {boardData.map((item, index) => (
           <Tr key={index}>
             <Td>{item.id}</Td>
+            <Td>{item.status}</Td>
             <Td>{item.phone}</Td>
             <Td>{item.email}</Td>
-            <Td>{item.nickname}</Td>
-            <Td>{item.creteadDt}</Td>
+            <Td>{item.name}</Td>
+            <Td>{item.lastorderDt}</Td>
             <Td>{item.point}</Td>
-            <Td>{item.status}</Td>
             <Td>
               <Iconbox>
                 <AnotherIcon
@@ -89,7 +89,7 @@ function MemberBoard({
   );
 }
 
-export default MemberBoard;
+export default RiderBoard;
 
 const Table = styled.div`
   margin-top: 50px;
@@ -105,7 +105,7 @@ const Title = styled.li`
   padding: 10px;
   border-bottom: 1px solid #bbbbcf;
 
-  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr;
   div {
     text-align: center;
     font-size: 1rem;
@@ -121,7 +121,7 @@ const Tr = styled.li`
   padding: 10px;
 
   border-top: 1px solid #cfcfcf;
-  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr;
 
   div {
     text-align: center;

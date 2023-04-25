@@ -7,10 +7,10 @@ import { useForm, Resolver } from "react-hook-form";
 import { eaOptions } from "@/data/selectbox/selectboxData";
 
 import { member } from "@data/member/memberData";
-import MemberPointBoard from "@/components/common/board/MemberOrderBoard";
+import MemberPointBoard from "@/components/common/board/MemberPointBoard";
 import {
-  memberOrderBoardTitle,
-  memberOrdertBoardData,
+  memberPointBoardTitle,
+  memberPointBoardData,
 } from "@data/member/memberData";
 
 type FormData = {
@@ -155,8 +155,8 @@ function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
               <RightContent>
                 <MemberPointBoard
                   index={0}
-                  boardMenu={memberOrderBoardTitle}
-                  boardData={memberOrdertBoardData}
+                  boardMenu={memberPointBoardTitle}
+                  boardData={memberPointBoardData}
                 ></MemberPointBoard>
               </RightContent>
             </Right>

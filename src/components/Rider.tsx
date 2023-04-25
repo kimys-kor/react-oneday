@@ -4,12 +4,12 @@ import { useState } from "react";
 import CustomSelect from "@/styles/selectbox/CustomSelect";
 import SearchInput from "@components/common/SearchInput";
 
-import RiderDetail from "@components/riderDetail";
-import RidersBoard from "@/components/common/board/MemberBoard";
+import RiderDetail from "@/components/RiderDetail";
+import RiderBoard from "@/components/common/board/RiderBoard";
 import { eaOptions } from "@/data/selectbox/selectboxData";
 
 import { dateFilter, itemFilter } from "@/data/button/buttonData";
-import { riderBoardTitle, riderData } from "@data/riders/ridersData";
+import { riderBoardTitle, riderData } from "@/data/rider/riderData";
 import BorderButton from "@/styles/button/BorderButton";
 
 import DatePicker from "react-datepicker";
@@ -124,13 +124,13 @@ function Rider() {
             ></CustomSelect>
           </FilterContent>
 
-          <RidersBoard
+          <RiderBoard
             boardMenu={riderBoardTitle}
             boardData={riderData}
             handleDetailOpen={handleDetailOpen}
             openAnother={openAnother}
             handleOpenIndex={handleOpenIndex}
-          ></RidersBoard>
+          ></RiderBoard>
         </Layout>
       </Content>
       <RiderDetail

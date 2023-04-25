@@ -6,13 +6,12 @@ import CustomSelect from "@/styles/selectbox/CustomSelect";
 import { useForm, Resolver } from "react-hook-form";
 import { eaOptions } from "@/data/selectbox/selectboxData";
 
-import { member } from "@data/member/memberData";
-import MemberPointBoard from "@/components/common/board/MemberOrderBoard";
+import { rider } from "@data/rider/riderData";
+import RiderOrderBoard from "@/components/common/board/RiderOrderBoard";
 import {
-  memberOrderBoardTitle,
-  memberOrdertBoardData,
-} from "@data/member/memberData";
-import { rider } from "@/data/riders/ridersData";
+  riderOrderBoardTitle,
+  riderOrderBoardData,
+} from "@data/rider/riderData";
 
 type FormData = {
   savingPoint: number;
@@ -67,59 +66,59 @@ function RiderDetail({ onClose, isDetailOpen, rider }: MemberDetailProps) {
           <Content>
             <Left>
               <Titlebox>
-                <LeftButton>회원 정보</LeftButton>
+                <LeftButton>기사 정보</LeftButton>
               </Titlebox>
-              {/* <LeftContent>
+              <LeftContent>
                 <Row>
                   <Greyfont1>상태</Greyfont1>
-                  <Blackfont1>{member?.status}</Blackfont1>
+                  <Blackfont1>{rider?.status}</Blackfont1>
                 </Row>
                 <Row>
                   <Greyfont1>고유 ID</Greyfont1>
-                  <Blackfont1>{member?.id}</Blackfont1>
+                  <Blackfont1>{rider?.id}</Blackfont1>
                 </Row>
 
                 <Row>
                   <Greyfont1>핸드폰 번호</Greyfont1>
-                  <Blackfont1>{member?.phone}</Blackfont1>
+                  <Blackfont1>{rider?.phone}</Blackfont1>
                 </Row>
 
                 <Row>
                   <Greyfont1>이메일</Greyfont1>
 
-                  <Blackfont1>{member?.email}</Blackfont1>
+                  <Blackfont1>{rider?.email}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont1>닉네임</Greyfont1>
-                  <Blackfont1>{member?.nickname}</Blackfont1>
+                  <Greyfont1>기사명</Greyfont1>
+                  <Blackfont1>{rider?.name}</Blackfont1>
                 </Row>
                 <Row>
                   <Greyfont1>최초 가입일</Greyfont1>
-                  <Blackfont1>{member?.creteadDt}</Blackfont1>
+                  <Blackfont1>{rider?.creteadDt}</Blackfont1>
                 </Row>
                 <Row>
-                  <Greyfont1>최근 접속일</Greyfont1>
-                  <Blackfont1>{member?.lastloginDt}</Blackfont1>
+                  <Greyfont1>최근 수행일</Greyfont1>
+                  <Blackfont1>{rider?.lastorderDt}</Blackfont1>
                 </Row>
 
                 <Divide></Divide>
 
                 <Row>
-                  <Greyfont1>총 주문 횟수</Greyfont1>
-                  <Blackfont1>{member?.orderCount}</Blackfont1>
+                  <Greyfont1>총 수행 횟수</Greyfont1>
+                  <Blackfont1>{rider?.orderCount}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont1>총 주문 금액</Greyfont1>
-                  <Blackfont1>{member?.orderAmount}</Blackfont1>
+                  <Greyfont1>총 수행 금액</Greyfont1>
+                  <Blackfont1>{rider?.orderAmount}</Blackfont1>
                 </Row>
 
                 <Divide></Divide>
 
                 <Row>
                   <Greyfont1>현재 보유 포인트</Greyfont1>
-                  <Blackfont1>{member?.id}</Blackfont1>
+                  <Blackfont1>{rider?.id}</Blackfont1>
                 </Row>
 
                 <Row>
@@ -132,7 +131,7 @@ function RiderDetail({ onClose, isDetailOpen, rider }: MemberDetailProps) {
                     <Submitbutton type="submit" value="적립" />
                   </Form>
                 </Row>
-              </LeftContent> */}
+              </LeftContent>
             </Left>
 
             <Right>
@@ -140,7 +139,7 @@ function RiderDetail({ onClose, isDetailOpen, rider }: MemberDetailProps) {
                 <Buttonbox>
                   <BorderButton
                     width={151}
-                    titles={["주문내역"]}
+                    titles={["수행내역"]}
                     activeIndex={activeIndex}
                     handleButtonClick={handleButtonClick}
                   ></BorderButton>
@@ -154,11 +153,11 @@ function RiderDetail({ onClose, isDetailOpen, rider }: MemberDetailProps) {
                 ></CustomSelect>
               </Titlebox>
               <RightContent>
-                <MemberPointBoard
+                <RiderOrderBoard
                   index={0}
-                  boardMenu={memberOrderBoardTitle}
-                  boardData={memberOrdertBoardData}
-                ></MemberPointBoard>
+                  boardMenu={riderOrderBoardTitle}
+                  boardData={riderOrderBoardData}
+                ></RiderOrderBoard>
               </RightContent>
             </Right>
           </Content>

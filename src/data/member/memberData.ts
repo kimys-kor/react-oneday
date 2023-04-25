@@ -61,7 +61,7 @@ export const memberData: member[] = [
   },
 ];
 
-export const memberOrderBoardTitle = [
+export const memberPointBoardTitle = [
   "주문번호",
   "주문일",
   "상점",
@@ -69,7 +69,7 @@ export const memberOrderBoardTitle = [
   "주문금액",
 ];
 
-export interface memberOrder {
+export interface memberPoint {
   id: number;
   creteadDt: string;
   orderShop: string;
@@ -77,7 +77,7 @@ export interface memberOrder {
   orderAmount: number;
 }
 
-export const memberOrdertBoardData: memberOrder[] = [
+export const memberPointBoardData: memberPoint[] = [
   {
     id: 1,
     creteadDt: "2022-12-19",
