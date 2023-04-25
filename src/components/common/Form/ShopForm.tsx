@@ -86,7 +86,7 @@ function ShopForm({ handleAddForm, isAddAppOpen }: AdminFormProp) {
         <Formbox>
           <Form onSubmit={onSubmit}>
             <Titlebox>
-              <Title>주식회사 에스와이 컴퍼니에 서비스를 추가합니다</Title>
+              <Title>상점을 추가합니다</Title>
               <Flex>
                 <Canclebutton onClick={() => handleAddForm()}>
                   취소
