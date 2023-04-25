@@ -4,8 +4,6 @@ import styled from "styled-components";
 import CustomSelect from "@/styles/selectbox/CustomSelect";
 import BorderButton from "@/styles/button/BorderButton";
 
-import AppForm from "@/components/common/Form/AppForm";
-
 import { adv } from "@/data/application/applicationData";
 import { corpOptions } from "@/data/dashboard/dashboardData";
 import {
@@ -179,12 +177,6 @@ function Orders() {
           {tabIndex == 3 && <>노출대행사관리</>}
         </Layout>
       </Wrapper>
-
-      {/*앱 추가 창  */}
-      <AppForm
-        isAddAppOpen={isAddAppOpen}
-        handleAddForm={handleAddForm}
-      ></AppForm>
     </Box>
   );
 }

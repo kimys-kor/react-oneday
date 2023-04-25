@@ -40,7 +40,7 @@ interface AdminFormProp {
   isAddAppOpen: boolean;
 }
 
-function AppForm({ handleAddForm, isAddAppOpen }: AdminFormProp) {
+function ShopForm({ handleAddForm, isAddAppOpen }: AdminFormProp) {
   const {
     register,
     handleSubmit,
@@ -188,7 +188,7 @@ function AppForm({ handleAddForm, isAddAppOpen }: AdminFormProp) {
     </FormWrapper>
   );
 }
-export default AppForm;
+export default ShopForm;
 
 const FormWrapper = styled.div`
   display: flex;

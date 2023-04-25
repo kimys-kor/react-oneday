@@ -11,6 +11,8 @@ import { dateFilter, itemFilter } from "@/data/button/buttonData";
 import { shopData, shopBoardTitle } from "@data/shop/shopData";
 import { eaOptions } from "@data/selectbox/selectboxData";
 
+import ShopForm from "@/components/common/Form/ShopForm";
+
 import BorderButton from "@/styles/button/BorderButton";
 import {
   cityOptions,
@@ -90,11 +92,16 @@ function Shop() {
     console.log(data);
   });
 
+  const [isAddAppOpen, setAddAppOpen] = useState(false);
+  const handleAddForm = () => {
+    setAddAppOpen((prev) => !prev);
+  };
+
   return (
     <Shopbox>
       <Headerbox>
         <Title>상점 관리</Title>
-        <Addbutton onClick={handleAddShop}>상점 추가</Addbutton>
+        <Addbutton onClick={handleAddForm}>상점 추가</Addbutton>
       </Headerbox>
 
       <Content>
@@ -175,62 +182,10 @@ function Shop() {
       />
 
       {/* 상점등록 모달 */}
-      <Wrapper
-        onClick={handleAddShop}
-        style={{ display: isAddShopOpen ? "flex" : "none" }}
-      >
-        <Modal onClick={(e) => e.stopPropagation()}>
-          <Formbox>
-            <div>
-              <Title>상점등록</Title>
-            </div>
-
-            <Form onSubmit={onSubmit}>
-              <div>
-                <Inputbox>
-                  <label>
-                    상점명<Star>*</Star>
-                  </label>{" "}
-                  <Input type="text" {...register("shopName")}></Input>
-                </Inputbox>
-
-                <Inputbox>
-                  <label>
-                    사업자번호<Star>*</Star>
-                  </label>{" "}
-                  <Input type="number" {...register("businessNumber")}></Input>
-                </Inputbox>
-
-                <Inputbox>
-                  <label>
-                    대표자명<Star>*</Star>
-                  </label>
-                  <Input type="text" {...register("ownerName")}></Input>
-                </Inputbox>
-
-                <Inputbox>
-                  <label>
-                    주소<Star>*</Star>
-                  </label>
-                  <Input type="text" {...register("shopAddress")}></Input>
-                </Inputbox>
-
-                <Inputbox>
-                  <label>
-                    연락처<Star>*</Star>
-                  </label>
-                  <Input type="number" {...register("shopContact")}></Input>
-                </Inputbox>
-              </div>
-
-              <Flex>
-                <Canclebutton onClick={handleAddShop}>취소</Canclebutton>
-                <Submitbutton type="submit" value="저장" />
-              </Flex>
-            </Form>
-          </Formbox>
-        </Modal>
-      </Wrapper>
+      <ShopForm
+        isAddAppOpen={isAddAppOpen}
+        handleAddForm={handleAddForm}
+      ></ShopForm>
     </Shopbox>
   );
 }
@@ -411,20 +366,22 @@ const Rightbox = styled.div`
   justify-content: flex-end;
 `;
 
-const Addbutton = styled.span`
-  line-height: 37px;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 300;
-  width: 100px;
+const Addbutton = styled.div`
+  width: 183px;
   height: 37px;
-
-  border: 1px solid #bbbbcf;
-  background-color: #ffffff;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2rem;
+  background-color: #ff6622;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  margin-right: 0; // remove the margin on the last button
-  border-color: #ff6622; // set border color to #ff6622 for active button
-  color: #ff6622;
+  border: 1px solid transparent;
+  &:hover {
+    background-color: #f1520e;
+  }
 `;
 
 const Filterbox = styled.div`

@@ -410,20 +410,22 @@ const Flex = styled.div`
   justify-content: center;
 `;
 
-const Addbutton = styled.span`
-  line-height: 53px;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 300;
-  width: 150px;
-  height: 53px;
-
-  border: 1px solid #bbbbcf;
-  background-color: #ffffff;
+const Addbutton = styled.div`
+  width: 183px;
+  height: 37px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2rem;
+  background-color: #ff6622;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  margin-right: 0; // remove the margin on the last button
-  border-color: #ff6622; // set border color to #ff6622 for active button
-  color: #ff6622;
+  border: 1px solid transparent;
+  &:hover {
+    background-color: #f1520e;
+  }
 `;
 
 const Filterbox = styled.div`
