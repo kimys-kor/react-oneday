@@ -77,26 +77,25 @@ function Orders() {
               {ordersData.map((item, index) => (
                 <Appbox key={index}>
                   <Flex>
+                    <Status statusCode={item.statusCode}>{item.status}</Status>
                     <Info>
-                      <CardTitle>{item.name}</CardTitle>
+                      <CardTitle>{item.productName}</CardTitle>
                       <Detailbox>
                         <Detail>
-                          <Greyfont4>앱 번호 |</Greyfont4>{" "}
-                          <span>{item.id}</span>
+                          <Greyfont4>담당기사 |</Greyfont4>{" "}
+                          <span>{item.riderName}</span>
                         </Detail>
                         <Detail>
-                          <Greyfont4>활성 유저 |</Greyfont4>{" "}
-                          <span>{item.user}</span>
+                          <Greyfont4>스토어 |</Greyfont4>{" "}
+                          <span>{item.shopName}</span>
                         </Detail>
                         <Detail>
-                          <Greyfont4>누적 적립금액 |</Greyfont4>{" "}
-                          <span>{item.savedPoint}</span>
+                          <Greyfont4>주문자 |</Greyfont4>{" "}
+                          <span>{item.memberNickname}</span>
                         </Detail>
                         <Detail>
-                          <Greyfont4>스토어 | </Greyfont4>
-                          {item.store.map((item, index) => (
-                            <Store key={index}>{item}</Store>
-                          ))}
+                          <Greyfont4>주문 금액 |</Greyfont4>{" "}
+                          <span>{item.price}</span>
                         </Detail>
                       </Detailbox>
                     </Info>
@@ -271,35 +270,6 @@ const Detail = styled.span`
   margin-top: 16px;
 `;
 
-const Store = styled.span`
-  margin-left: 15px;
-`;
-
-const Addbox = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-`;
-
-const Addbutton = styled.div`
-  width: 183px;
-  height: 37px;
-  color: #fff;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.2rem;
-  background-color: #ff6622;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: 1px solid transparent;
-  &:hover {
-    background-color: #f1520e;
-  }
-`;
-
 const Optionbox = styled.div`
   width: 99px;
 
@@ -362,4 +332,33 @@ const Submitbutton = styled.input`
     color: #ff6622;
     border: 1px solid #ff6622;
   }
+`;
+
+interface statusProps {
+  statusCode: number;
+}
+
+const Status = styled.div<statusProps>`
+  width: 100px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  border-radius: 7px;
+  color: #fff;
+  background-color: ${(statusProps) => {
+    switch (statusProps.statusCode) {
+      case 0:
+        return "green";
+      case 1:
+        return "orange";
+      case 2:
+        return "blue";
+      case 3:
+        return "navy";
+      case 4:
+        return "red";
+      default:
+        return "red";
+    }
+  }};
 `;

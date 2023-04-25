@@ -7,66 +7,62 @@ export const tabOrders: string[] = [
 
 export interface orders {
   id: number;
-  name: string;
-  user: number;
-  savedPoint: number;
-  store: string[];
-
-  appNumber: string;
-  appCode: string;
-  corporation: string;
-
-  appVersion: string;
-  rejoinday: number;
-  terms: string;
-  privacy: string;
+  riderId: number;
+  riderName: string;
+  shopId: number;
+  shopName: string;
+  memberId: number;
+  memberNickname: string;
+  productName: string;
+  price: number;
+  products: number[];
+  statusCode: number;
+  status: string;
 }
 
+// statusCode 0 주문접수, 1 상품준비중, 2 배달중, 3 배달완료, 4 배달지연, 5 배달사고
 export const ordersData: orders[] = [
   {
     id: 0,
-    name: "캐시문상1",
-    user: 32465,
-    savedPoint: 165480350,
-    store: ["원스토어", "구글스토어", "앱스토어"],
-    appNumber: "A001",
-    appCode: "ksfnken",
-    corporation: "에스와이컴퍼니",
-
-    appVersion: "1.0.1",
-    rejoinday: 14,
-    terms: "wekfnweknf",
-    privacy: "dkdkdk",
+    riderId: 1,
+    riderName: "김영승",
+    shopId: 1,
+    shopName: "용만이네1",
+    memberId: 1,
+    memberNickname: "쭈꾸미",
+    price: 12000,
+    productName: "주방용품3종세트",
+    products: [1, 2, 3, 4],
+    statusCode: 1,
+    status: "상품준비중",
   },
   {
     id: 1,
-    name: "캐시문상2",
-    user: 32465,
-    savedPoint: 165480350,
-    store: ["원스토어", "구글스토어", "앱스토어"],
-    appNumber: "A002",
-    appCode: "ksfnken",
-    corporation: "에스와이컴퍼니",
-
-    appVersion: "1.0.1",
-    rejoinday: 14,
-    terms: "wekfnweknf",
-    privacy: "dkdkdk",
+    riderId: 1,
+    riderName: "김영승",
+    shopId: 1,
+    shopName: "용만이네1",
+    memberId: 1,
+    memberNickname: "쭈꾸미",
+    productName: "주방용품3종세트",
+    price: 14000,
+    products: [1, 2, 3, 4],
+    statusCode: 2,
+    status: "배달중",
   },
   {
     id: 2,
-    name: "캐시문상",
-    user: 32465,
-    savedPoint: 165480350,
-    store: ["원스토어", "구글스토어", "앱스토어"],
-    appNumber: "A001",
-    appCode: "ksfnken",
-    corporation: "에스와이컴퍼니",
-
-    appVersion: "1.0.1",
-    rejoinday: 14,
-    terms: "wekfnweknf",
-    privacy: "dkdkdk",
+    riderId: 1,
+    riderName: "김영승",
+    shopId: 2,
+    shopName: "용만이네2",
+    memberId: 1,
+    memberNickname: "쭈꾸미",
+    productName: "주방용품3종세트",
+    price: 22000,
+    products: [1, 2, 3, 4],
+    statusCode: 3,
+    status: "배달완료",
   },
 ];
 
