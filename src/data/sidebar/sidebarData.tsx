@@ -53,8 +53,8 @@ export const sidebarMenu: Array<Array<sidebarModel>> = [
     {
       logo: <GiftcardIcon color="#7B829B" size="26" />,
       name: "기사 관리",
-      path: "riders",
-      pathname: "/oneday/riders",
+      path: "rider",
+      pathname: "/oneday/rider",
     },
     {
       logo: <SavingIcon color="#7B829B" size="26" />,

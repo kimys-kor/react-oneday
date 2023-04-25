@@ -56,7 +56,7 @@ function Oneday() {
           <Route path="member" element={<Member />} />
           <Route path="shop" element={<Shop />} />
           <Route path="product" element={<Product />} />
-          <Route path="riders" element={<Rider />} />
+          <Route path="rider" element={<Rider />} />
           <Route path="orders" element={<Orders />} />
           <Route path="statistics" element={<Statistics />} />
         </Routes>

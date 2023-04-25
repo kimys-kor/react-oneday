@@ -9,7 +9,7 @@ import RiderBoard from "@/components/common/board/RiderBoard";
 import { eaOptions } from "@/data/selectbox/selectboxData";
 
 import { dateFilter, itemFilter } from "@/data/button/buttonData";
-import { riderBoardTitle, riderData } from "@/data/rider/riderData";
+import { riderBoardTitle, riderData } from "@/data/riders/riderData";
 import BorderButton from "@/styles/button/BorderButton";
 
 import DatePicker from "react-datepicker";
@@ -146,7 +146,6 @@ export default Rider;
 
 const Memberbox = styled.div`
   width: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -176,7 +175,6 @@ const Content = styled.div`
   width: 100%;
   min-height: 1000px;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -194,7 +192,6 @@ const FilterContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   .react-datepicker-wrapper {
     width: 156px;
   }

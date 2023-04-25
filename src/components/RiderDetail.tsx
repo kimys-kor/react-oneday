@@ -6,12 +6,12 @@ import CustomSelect from "@/styles/selectbox/CustomSelect";
 import { useForm, Resolver } from "react-hook-form";
 import { eaOptions } from "@/data/selectbox/selectboxData";
 
-import { rider } from "@data/rider/riderData";
+import { rider } from "@/data/riders/riderData";
 import RiderOrderBoard from "@/components/common/board/RiderOrderBoard";
 import {
   riderOrderBoardTitle,
   riderOrderBoardData,
-} from "@data/rider/riderData";
+} from "@/data/riders/riderData";
 
 type FormData = {
   savingPoint: number;
