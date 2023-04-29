@@ -5,13 +5,13 @@ import styled from "styled-components";
 
 import Sidebar from "@common/Sidebar";
 
-import Dashboard from "@components/Dashboard";
-import Shop from "@/components/Shop";
-import Product from "@components/Product";
-import Rider from "@/components/Rider";
-import Statistics from "@/components/Statistics";
-import Member from "@components/Member";
-import Orders from "@/components/Orders";
+import Dashboard from "@components/pages/Dashboard";
+import Shop from "@components/pages/Shop";
+import Product from "@components/pages/Product";
+import Rider from "@components/pages/Rider";
+import Statistics from "@/components/pages/Statistics";
+import Member from "@components/pages/Member";
+import Orders from "@components/pages/Orders";
 
 const Onedaybox = styled.div`
   width: 100%;

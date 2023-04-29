@@ -1,19 +1,19 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-import CustomSelect from "@/styles/selectbox/CustomSelect";
+import CustomSelect from "@styles/selectbox/CustomSelect";
 import SearchInput from "@components/common/SearchInput";
 
-import ShopDetail from "@components/ShopDetail";
-import ShopBoard from "@/components/common/board/ShopBoard";
+import ShopDetail from "@components/details/ShopDetail";
+import ShopBoard from "@components/board/ShopBoard";
 import { useForm, Resolver } from "react-hook-form";
-import { dateFilter, itemFilter } from "@/data/button/buttonData";
+
 import { shopData, shopBoardTitle } from "@data/shop/shopData";
 import { eaOptions } from "@data/selectbox/selectboxData";
 
-import ShopForm from "@/components/common/Form/ShopForm";
+import ShopForm from "@components/Form/ShopForm";
 
-import BorderButton from "@/styles/button/BorderButton";
+import BorderButton from "@styles/button/BorderButton";
 import {
   cityOptions,
   guOptions,

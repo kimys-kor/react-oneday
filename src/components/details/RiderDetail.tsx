@@ -3,25 +3,57 @@ import styled from "styled-components";
 
 import BorderButton from "@/styles/button/BorderButton";
 import CustomSelect from "@/styles/selectbox/CustomSelect";
-
+import { useForm, Resolver } from "react-hook-form";
 import { eaOptions } from "@/data/selectbox/selectboxData";
-import { product } from "@/data/product/productData";
-import ShopOrderBoard from "@common/board/ShopOrderBoard";
-import { shopOrderBoardTitle, shopOrdertBoardData } from "@data/shop/shopData";
 
-interface ShopDetailProps {
+import { rider } from "@/data/riders/riderData";
+import RiderOrderBoard from "@/components/board/RiderOrderBoard";
+import {
+  riderOrderBoardTitle,
+  riderOrderBoardData,
+} from "@/data/riders/riderData";
+
+type FormData = {
+  savingPoint: number;
+};
+
+const resolver: Resolver<FormData> = async (values) => {
+  return {
+    values: values.savingPoint ? values : {},
+    errors: !values.savingPoint
+      ? {
+          savingPoint: {
+            type: "required",
+            message: "This is required.",
+          },
+        }
+      : {},
+  };
+};
+
+interface MemberDetailProps {
   onClose: () => void;
   isDetailOpen: boolean;
-  product: product | undefined;
+  rider: rider | undefined;
 }
 
-function ProductDetail({ onClose, isDetailOpen, product }: ShopDetailProps) {
+function RiderDetail({ onClose, isDetailOpen, rider }: MemberDetailProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const handleButtonClick = (index: number) => {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
   const [currentEa, setCurrentEa] = useState(eaOptions[0].value);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({ resolver });
+
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
 
   return (
     <Wrapper isDetailOpen={isDetailOpen}>
@@ -34,36 +66,70 @@ function ProductDetail({ onClose, isDetailOpen, product }: ShopDetailProps) {
           <Content>
             <Left>
               <Titlebox>
-                <LeftButton>상품 정보</LeftButton>
+                <LeftButton>기사 정보</LeftButton>
               </Titlebox>
               <LeftContent>
                 <Row>
-                  <Greyfont1>상품 ID</Greyfont1>
-                  <Blackfont1>{product?.id}</Blackfont1>
+                  <Greyfont1>상태</Greyfont1>
+                  <Blackfont1>{rider?.status}</Blackfont1>
                 </Row>
                 <Row>
-                  <Greyfont1>매장명</Greyfont1>
-                  <Blackfont1>{product?.shopName}</Blackfont1>
-                </Row>
-
-                <Row>
-                  <Greyfont1>상품명</Greyfont1>
-                  <Blackfont1>{product?.productName}</Blackfont1>
+                  <Greyfont1>고유 ID</Greyfont1>
+                  <Blackfont1>{rider?.id}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont1>옵션</Greyfont1>
-                  <Blackfont1>{product?.option}</Blackfont1>
+                  <Greyfont1>핸드폰 번호</Greyfont1>
+                  <Blackfont1>{rider?.phone}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont1>등록일</Greyfont1>
-                  <Blackfont1>{product?.createdDt}</Blackfont1>
+                  <Greyfont1>이메일</Greyfont1>
+
+                  <Blackfont1>{rider?.email}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont1>재고수량</Greyfont1>
-                  <Blackfont1>{product?.inventory}</Blackfont1>
+                  <Greyfont1>기사명</Greyfont1>
+                  <Blackfont1>{rider?.name}</Blackfont1>
+                </Row>
+                <Row>
+                  <Greyfont1>최초 가입일</Greyfont1>
+                  <Blackfont1>{rider?.creteadDt}</Blackfont1>
+                </Row>
+                <Row>
+                  <Greyfont1>최근 수행일</Greyfont1>
+                  <Blackfont1>{rider?.lastorderDt}</Blackfont1>
+                </Row>
+
+                <Divide></Divide>
+
+                <Row>
+                  <Greyfont1>총 수행 횟수</Greyfont1>
+                  <Blackfont1>{rider?.orderCount}</Blackfont1>
+                </Row>
+
+                <Row>
+                  <Greyfont1>총 수행 금액</Greyfont1>
+                  <Blackfont1>{rider?.orderAmount}</Blackfont1>
+                </Row>
+
+                <Divide></Divide>
+
+                <Row>
+                  <Greyfont1>현재 보유 포인트</Greyfont1>
+                  <Blackfont1>{rider?.id}</Blackfont1>
+                </Row>
+
+                <Row>
+                  <Form onSubmit={onSubmit}>
+                    <PointInput
+                      placeholder="적립 금액을 입력해 주세요..."
+                      type="number"
+                      {...register("savingPoint")}
+                    ></PointInput>
+                    <Submitbutton type="submit" value="적립" />
+                  </Form>
                 </Row>
               </LeftContent>
             </Left>
@@ -73,13 +139,26 @@ function ProductDetail({ onClose, isDetailOpen, product }: ShopDetailProps) {
                 <Buttonbox>
                   <BorderButton
                     width={151}
-                    titles={["상품수정"]}
+                    titles={["수행내역"]}
                     activeIndex={activeIndex}
                     handleButtonClick={handleButtonClick}
                   ></BorderButton>
                 </Buttonbox>
+                <CustomSelect
+                  width={90}
+                  height={37}
+                  optionData={eaOptions}
+                  currentValue={currentEa}
+                  setCurrentValue={setCurrentEa}
+                ></CustomSelect>
               </Titlebox>
-              <RightContent></RightContent>
+              <RightContent>
+                <RiderOrderBoard
+                  index={0}
+                  boardMenu={riderOrderBoardTitle}
+                  boardData={riderOrderBoardData}
+                ></RiderOrderBoard>
+              </RightContent>
             </Right>
           </Content>
         </Layout>
@@ -88,7 +167,7 @@ function ProductDetail({ onClose, isDetailOpen, product }: ShopDetailProps) {
   );
 }
 
-export default ProductDetail;
+export default RiderDetail;
 
 interface WrapperProps {
   isDetailOpen: boolean;

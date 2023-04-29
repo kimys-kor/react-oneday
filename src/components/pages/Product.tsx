@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-import CustomSelect from "@/styles/selectbox/CustomSelect";
+import CustomSelect from "@styles/selectbox/CustomSelect";
 import SearchInput from "@components/common/SearchInput";
 
-import ProductDetail from "@components/ProductDetail";
+import ProductDetail from "@components/details/ProductDetail";
 import { useForm, Resolver } from "react-hook-form";
 import { productData, productBoardTitle } from "@data/product/productData";
 import { eaOptions } from "@data/selectbox/selectboxData";
 
-import BorderButton from "@/styles/button/BorderButton";
+import BorderButton from "@styles/button/BorderButton";
 import {
   cityOptions,
   guOptions,
@@ -17,7 +17,7 @@ import {
   shopOptions,
 } from "@data/selectbox/selectboxData";
 import "react-datepicker/dist/react-datepicker.css";
-import ProductBoard from "./common/board/ProductBoard";
+import ProductBoard from "@components/board/ProductBoard";
 
 type FormData = {
   shopName: string;

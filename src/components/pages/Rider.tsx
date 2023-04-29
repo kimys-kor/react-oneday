@@ -1,26 +1,22 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-import CustomSelect from "@/styles/selectbox/CustomSelect";
+import CustomSelect from "@styles/selectbox/CustomSelect";
 import SearchInput from "@components/common/SearchInput";
 
-import MemberDetail from "@components/MemberDetail";
-import MemberBoard from "@/components/common/board/MemberBoard";
-import {
-  corpOptions,
-  appOptions,
-  eaOptions,
-} from "@/data/selectbox/selectboxData";
+import RiderDetail from "@components/details/RiderDetail";
+import RiderBoard from "@components/board/RiderBoard";
+import { eaOptions } from "@data/selectbox/selectboxData";
 
-import { dateFilter, itemFilter } from "@/data/button/buttonData";
-import { memberBoardTitle, memberData } from "@data/member/memberData";
-import BorderButton from "@/styles/button/BorderButton";
+import { dateFilter, itemFilter } from "@data/button/buttonData";
+import { riderBoardTitle, riderData } from "@/data/riders/riderData";
+import BorderButton from "@styles/button/BorderButton";
 
 import DatePicker from "react-datepicker";
 import { ko } from "date-fns/esm/locale";
 import "react-datepicker/dist/react-datepicker.css";
 
-function Member() {
+function Rider() {
   // 헤더 날짜필터
   const [dateIndex, setDateIndex] = useState<number | null>(0);
   const setDate = (index: number) => {
@@ -60,7 +56,7 @@ function Member() {
   return (
     <Memberbox>
       <Headerbox>
-        <Title>회원 관리</Title>
+        <Title>기사 관리</Title>
       </Headerbox>
 
       <Content>
@@ -127,29 +123,29 @@ function Member() {
               setCurrentValue={setCurrentEa}
             ></CustomSelect>
           </FilterContent>
-          <MemberBoard
-            boardMenu={memberBoardTitle}
-            boardData={memberData}
+
+          <RiderBoard
+            boardMenu={riderBoardTitle}
+            boardData={riderData}
             handleDetailOpen={handleDetailOpen}
             openAnother={openAnother}
             handleOpenIndex={handleOpenIndex}
-          ></MemberBoard>
+          ></RiderBoard>
         </Layout>
       </Content>
-      <MemberDetail
+      <RiderDetail
         onClose={handleDetailClose}
         isDetailOpen={isDetailOpen}
-        member={memberData[activeItem]}
+        rider={riderData[activeItem]}
       />
     </Memberbox>
   );
 }
 
-export default Member;
+export default Rider;
 
 const Memberbox = styled.div`
   width: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,7 +175,6 @@ const Content = styled.div`
   width: 100%;
   min-height: 1000px;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -197,7 +192,6 @@ const FilterContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   .react-datepicker-wrapper {
     width: 156px;
   }

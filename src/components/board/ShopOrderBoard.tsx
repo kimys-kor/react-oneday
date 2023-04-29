@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Paging from "../Paging";
+import Paging from "@components/common/Paging";
 
 interface BoardProps {
   index: number;

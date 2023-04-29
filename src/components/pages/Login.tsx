@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { useUserStore } from "@/data/status/status";
+import { useUserStore } from "@data/status/status";
 import { useForm, Resolver } from "react-hook-form";
 
 import {

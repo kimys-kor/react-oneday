@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Paging from "../Paging";
+import Paging from "@components/common/Paging";
 
 interface BoardProps {
   index: number;
@@ -13,7 +13,7 @@ const setPage = function () {
   console.log("온체인지");
 };
 
-function RiderOrderBoard({ index, boardMenu, boardData }: BoardProps) {
+function MemberPointBoard({ index, boardMenu, boardData }: BoardProps) {
   return (
     <>
       <Table>
@@ -23,13 +23,13 @@ function RiderOrderBoard({ index, boardMenu, boardData }: BoardProps) {
           ))}
         </Title>
 
-        {boardData.map((riderOrder, index) => (
+        {boardData.map((memberOrder, index) => (
           <Tr key={index}>
             <Td>{index}</Td>
-            <Td>{riderOrder.creteadDt}</Td>
-            <Td>{riderOrder.orderShop}</Td>
-            <Td>{riderOrder.orderProducts}</Td>
-            <Td>{riderOrder.address}</Td>
+            <Td>{memberOrder.creteadDt}</Td>
+            <Td>{memberOrder.orderShop}</Td>
+            <Td>{memberOrder.orderProducts}</Td>
+            <Td>{memberOrder.orderAmount}</Td>
           </Tr>
         ))}
       </Table>
@@ -38,7 +38,7 @@ function RiderOrderBoard({ index, boardMenu, boardData }: BoardProps) {
   );
 }
 
-export default RiderOrderBoard;
+export default MemberPointBoard;
 
 const Table = styled.div`
   width: 100%;

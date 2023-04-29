@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ResponsivePie } from "@nivo/pie";
 
-import { piechartModel } from "@/data/chart/piechartData";
+import { piechartModel } from "@data/chart/piechartData";
 
 interface piechartProps {
   Data: piechartModel[];

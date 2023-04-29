@@ -3,9 +3,8 @@ import styled, { css } from "styled-components";
 import DatePicker from "react-datepicker";
 import { ko } from "date-fns/esm/locale";
 
-import CustomSelect from "@/styles/selectbox/CustomSelect";
-import BorderButton from "@/styles/button/BorderButton";
-import { corpOptions } from "@/data/dashboard/dashboardData";
+import CustomSelect from "@styles/selectbox/CustomSelect";
+import BorderButton from "@styles/button/BorderButton";
 
 import { ReactComponent as Viewbar } from "@statics/images/statistics/viewbar.svg";
 import { ReactComponent as Viewnumber } from "@statics/images/statistics/viewnumber.svg";

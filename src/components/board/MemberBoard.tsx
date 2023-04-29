@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useEffect, useRef } from "react";
 import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anothericon.svg";
 
-import Paging from "../Paging";
+import Paging from "@components/common/Paging";
 
 interface BoardProps {
   boardMenu: Array<string>;
@@ -16,7 +16,7 @@ const setPage = function () {
   console.log("온체인지");
 };
 
-function RiderBoard({
+function MemberBoard({
   boardMenu,
   boardData,
   handleDetailOpen,
@@ -52,12 +52,12 @@ function RiderBoard({
         {boardData.map((item, index) => (
           <Tr key={index}>
             <Td>{item.id}</Td>
-            <Td>{item.status}</Td>
             <Td>{item.phone}</Td>
             <Td>{item.email}</Td>
-            <Td>{item.name}</Td>
-            <Td>{item.lastorderDt}</Td>
+            <Td>{item.nickname}</Td>
+            <Td>{item.creteadDt}</Td>
             <Td>{item.point}</Td>
+            <Td>{item.status}</Td>
             <Td>
               <Iconbox>
                 <AnotherIcon
@@ -89,7 +89,7 @@ function RiderBoard({
   );
 }
 
-export default RiderBoard;
+export default MemberBoard;
 
 const Table = styled.div`
   margin-top: 50px;

@@ -1,10 +1,8 @@
 import styled from "styled-components";
-
-import { useRef, useEffect } from "react";
-
+import { useEffect, useRef } from "react";
 import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anothericon.svg";
 
-import Paging from "../Paging";
+import Paging from "@components/common/Paging";
 
 interface BoardProps {
   boardMenu: Array<string>;
@@ -18,7 +16,7 @@ const setPage = function () {
   console.log("온체인지");
 };
 
-function ProductBoard({
+function RiderBoard({
   boardMenu,
   boardData,
   handleDetailOpen,
@@ -46,19 +44,20 @@ function ProductBoard({
     <>
       <Table>
         <Title>
-          {boardMenu.map((menu, index) => (
-            <Td key={index}>{menu}</Td>
+          {boardMenu.map((item, index) => (
+            <Td key={index}>{item}</Td>
           ))}
         </Title>
 
-        {boardData.map((product, index) => (
+        {boardData.map((item, index) => (
           <Tr key={index}>
-            <Td>{product.id}</Td>
-            <Td>{product.shopName}</Td>
-            <Td>{product.productName}</Td>
-            <Td>{product.option}</Td>
-            <Td>{product.createdDt}</Td>
-            <Td>{product.inventory}</Td>
+            <Td>{item.id}</Td>
+            <Td>{item.status}</Td>
+            <Td>{item.phone}</Td>
+            <Td>{item.email}</Td>
+            <Td>{item.name}</Td>
+            <Td>{item.lastorderDt}</Td>
+            <Td>{item.point}</Td>
             <Td>
               <Iconbox>
                 <AnotherIcon
@@ -90,9 +89,10 @@ function ProductBoard({
   );
 }
 
-export default ProductBoard;
+export default RiderBoard;
 
 const Table = styled.div`
+  margin-top: 50px;
   width: 100%;
   border: 1px solid #bbbbcf;
   box-sizing: border-box;
@@ -105,7 +105,7 @@ const Title = styled.li`
   padding: 10px;
   border-bottom: 1px solid #bbbbcf;
 
-  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr;
   div {
     text-align: center;
     font-size: 1rem;
@@ -121,7 +121,7 @@ const Tr = styled.li`
   padding: 10px;
 
   border-top: 1px solid #cfcfcf;
-  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr 3fr 3fr 3fr;
 
   div {
     text-align: center;

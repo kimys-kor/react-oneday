@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 
 import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anothericon.svg";
 
-import Paging from "../Paging";
+import Paging from "@components/common/Paging";
 
 interface BoardProps {
   boardMenu: Array<string>;

@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 import { Routes, Route } from "react-router-dom";
 
-import Login from "./components/Login";
-import Oneday from "./components/Oneday";
+import Login from "@components/pages/Login";
+import Oneday from "@components/pages/Oneday";
 
 function App() {
   const [count, setCount] = useState(0);

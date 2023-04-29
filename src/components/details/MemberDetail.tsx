@@ -1,27 +1,59 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import BorderButton from "@/styles/button/BorderButton";
-import CustomSelect from "@/styles/selectbox/CustomSelect";
+import BorderButton from "@styles/button/BorderButton";
+import CustomSelect from "@styles/selectbox/CustomSelect";
+import { useForm, Resolver } from "react-hook-form";
+import { eaOptions } from "@data/selectbox/selectboxData";
 
-import { eaOptions } from "@/data/selectbox/selectboxData";
-import { shop } from "@/data/shop/shopData";
-import ShopOrderBoard from "@common/board/ShopOrderBoard";
-import { shopOrderBoardTitle, shopOrdertBoardData } from "@data/shop/shopData";
+import { member } from "@data/member/memberData";
+import MemberPointBoard from "@components/board/MemberPointBoard";
+import {
+  memberPointBoardTitle,
+  memberPointBoardData,
+} from "@data/member/memberData";
 
-interface ShopDetailProps {
+type FormData = {
+  savingPoint: number;
+};
+
+const resolver: Resolver<FormData> = async (values) => {
+  return {
+    values: values.savingPoint ? values : {},
+    errors: !values.savingPoint
+      ? {
+          savingPoint: {
+            type: "required",
+            message: "This is required.",
+          },
+        }
+      : {},
+  };
+};
+
+interface MemberDetailProps {
   onClose: () => void;
   isDetailOpen: boolean;
-  shop: shop | undefined;
+  member: member | undefined;
 }
 
-function ShopDetail({ onClose, isDetailOpen, shop }: ShopDetailProps) {
+function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const handleButtonClick = (index: number) => {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
   const [currentEa, setCurrentEa] = useState(eaOptions[0].value);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({ resolver });
+
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
 
   return (
     <Wrapper isDetailOpen={isDetailOpen}>
@@ -34,46 +66,70 @@ function ShopDetail({ onClose, isDetailOpen, shop }: ShopDetailProps) {
           <Content>
             <Left>
               <Titlebox>
-                <LeftButton>상점 정보</LeftButton>
+                <LeftButton>회원 정보</LeftButton>
               </Titlebox>
               <LeftContent>
                 <Row>
+                  <Greyfont1>상태</Greyfont1>
+                  <Blackfont1>{member?.status}</Blackfont1>
+                </Row>
+                <Row>
                   <Greyfont1>고유 ID</Greyfont1>
-                  <Blackfont1>{shop?.id}</Blackfont1>
-                </Row>
-                <Row>
-                  <Greyfont1>매장명</Greyfont1>
-                  <Blackfont1>{shop?.shopName}</Blackfont1>
+                  <Blackfont1>{member?.id}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont1>매장점주</Greyfont1>
-                  <Blackfont1>{shop?.owner}</Blackfont1>
-                </Row>
-
-                <Row>
-                  <Greyfont1>핸드폰</Greyfont1>
-                  <Blackfont1>{shop?.phone}</Blackfont1>
+                  <Greyfont1>핸드폰 번호</Greyfont1>
+                  <Blackfont1>{member?.phone}</Blackfont1>
                 </Row>
 
                 <Row>
                   <Greyfont1>이메일</Greyfont1>
-                  <Blackfont1>{shop?.email}</Blackfont1>
+
+                  <Blackfont1>{member?.email}</Blackfont1>
+                </Row>
+
+                <Row>
+                  <Greyfont1>닉네임</Greyfont1>
+                  <Blackfont1>{member?.nickname}</Blackfont1>
                 </Row>
                 <Row>
-                  <Greyfont1>최초 등록일</Greyfont1>
-                  <Blackfont1>{shop?.createdDt}</Blackfont1>
+                  <Greyfont1>최초 가입일</Greyfont1>
+                  <Blackfont1>{member?.creteadDt}</Blackfont1>
+                </Row>
+                <Row>
+                  <Greyfont1>최근 접속일</Greyfont1>
+                  <Blackfont1>{member?.lastloginDt}</Blackfont1>
                 </Row>
 
                 <Divide></Divide>
+
                 <Row>
-                  <Greyfont1>상품수</Greyfont1>
-                  <Blackfont1>{shop?.productNumber}</Blackfont1>
+                  <Greyfont1>총 주문 횟수</Greyfont1>
+                  <Blackfont1>{member?.orderCount}</Blackfont1>
                 </Row>
 
                 <Row>
-                  <Greyfont1>총주문건수</Greyfont1>
-                  <Blackfont1>{shop?.orderCount}</Blackfont1>
+                  <Greyfont1>총 주문 금액</Greyfont1>
+                  <Blackfont1>{member?.orderAmount}</Blackfont1>
+                </Row>
+
+                <Divide></Divide>
+
+                <Row>
+                  <Greyfont1>현재 보유 포인트</Greyfont1>
+                  <Blackfont1>{member?.id}</Blackfont1>
+                </Row>
+
+                <Row>
+                  <Form onSubmit={onSubmit}>
+                    <PointInput
+                      placeholder="적립 금액을 입력해 주세요..."
+                      type="number"
+                      {...register("savingPoint")}
+                    ></PointInput>
+                    <Submitbutton type="submit" value="적립" />
+                  </Form>
                 </Row>
               </LeftContent>
             </Left>
@@ -97,11 +153,11 @@ function ShopDetail({ onClose, isDetailOpen, shop }: ShopDetailProps) {
                 ></CustomSelect>
               </Titlebox>
               <RightContent>
-                <ShopOrderBoard
+                <MemberPointBoard
                   index={0}
-                  boardMenu={shopOrderBoardTitle}
-                  boardData={shopOrdertBoardData}
-                ></ShopOrderBoard>
+                  boardMenu={memberPointBoardTitle}
+                  boardData={memberPointBoardData}
+                ></MemberPointBoard>
               </RightContent>
             </Right>
           </Content>
@@ -111,7 +167,7 @@ function ShopDetail({ onClose, isDetailOpen, shop }: ShopDetailProps) {
   );
 }
 
-export default ShopDetail;
+export default MemberDetail;
 
 interface WrapperProps {
   isDetailOpen: boolean;
