@@ -66,18 +66,6 @@ export const ordersData: orders[] = [
   },
 ];
 
-export const advList = [
-  "NAS",
-  "OHC",
-  "IVE",
-  "TNK",
-  "POINTCLICK",
-  "IGAWORKS",
-  "PINCRUX",
-  "APALL",
-  "FLEX",
-];
-
 export const adminLogBoardTitle = ["번호", "작업일", "작업 내용"];
 
 export const adminLogBoardData = [

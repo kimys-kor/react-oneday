@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useForm, Resolver } from "react-hook-form";
 
-import { advList } from "@/data/orders/ordersData";
 import Checkbox from "@/styles/checkbox/Checkbox";
 
 type AppFormData = {
@@ -106,82 +105,32 @@ function ShopForm({ handleAddForm, isAddAppOpen }: AdminFormProp) {
 
             <Flex>
               <Thirdinputbox>
-                <Label>앱버전</Label>
+                <Label>매장명</Label>
                 <Input type="text" {...register("version")} />
               </Thirdinputbox>
 
               <Thirdinputbox>
-                <Label>앱 번호</Label>
+                <Label>매장점주</Label>
                 <Input type="text" {...register("number")} />
               </Thirdinputbox>
 
               <Thirdinputbox>
-                <Label>앱 코드</Label>
+                <Label>핸드폰</Label>
                 <Input type="text" {...register("code")} />
               </Thirdinputbox>
             </Flex>
 
             <Flex>
               <Secondinputbox>
-                <Label>앱 이름(국문)</Label>
+                <Label>이메일</Label>
                 <Input type="text" {...register("korname")} />
               </Secondinputbox>
 
               <Secondinputbox>
-                <Label>앱 이름(영문)</Label>
+                <Label>매장주소</Label>
                 <Input type="text" {...register("engname")} />
               </Secondinputbox>
             </Flex>
-
-            <Flex>
-              <Oneinputbox>
-                <Label>재가입 기간</Label>
-                <Input type="number" {...register("rejoinday")} />
-              </Oneinputbox>
-            </Flex>
-
-            <Flex>
-              <Secondinputbox>
-                <Label>서비스 이용약관</Label>
-                <Input type="text" {...register("terms")} />
-              </Secondinputbox>
-
-              <Secondinputbox>
-                <Label>개인정보 처리방침</Label>
-                <Input type="text" {...register("privacy")} />
-              </Secondinputbox>
-            </Flex>
-
-            <Flex>
-              <Thirdinputbox>
-                <Label>구글 스토어 링크</Label>
-                <Input type="text" {...register("google")} />
-              </Thirdinputbox>
-
-              <Thirdinputbox>
-                <Label>원스토어 링크</Label>
-                <Input type="text" {...register("onestore")} />
-              </Thirdinputbox>
-
-              <Thirdinputbox>
-                <Label>앱스토어 링크</Label>
-                <Input type="text" {...register("appstore")} />
-              </Thirdinputbox>
-            </Flex>
-
-            <Authority>
-              <Greyfont4>노출 대행사</Greyfont4>
-              <CheckList>
-                {advList.map((item, index) => (
-                  <Checkbox
-                    key={index}
-                    handleChange={checkHandler}
-                    text={item}
-                    checked={checkedList.includes(item)}
-                  ></Checkbox>
-                ))}
-              </CheckList>
-            </Authority>
           </Form>
         </Formbox>
       </Modal>
@@ -204,7 +153,7 @@ const FormWrapper = styled.div`
 
 const Modal = styled.div`
   width: 53%;
-  height: 85%;
+  height: 35%;
   background-color: white;
   padding: 20px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
