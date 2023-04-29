@@ -7,6 +7,7 @@ import SearchInput from "@components/common/SearchInput";
 import RiderDetail from "@components/details/RiderDetail";
 import RiderBoard from "@components/board/RiderBoard";
 import { eaOptions } from "@data/selectbox/selectboxData";
+import RiderForm from "@components/Form/RiderForm";
 
 import { dateFilter, itemFilter } from "@data/button/buttonData";
 import { riderBoardTitle, riderData } from "@/data/riders/riderData";
@@ -53,10 +54,16 @@ function Rider() {
 
   const [currentEa, setCurrentEa] = useState(eaOptions[0].value);
 
+  const [isAddAppOpen, setAddAppOpen] = useState(false);
+  const handleAddForm = () => {
+    setAddAppOpen((prev) => !prev);
+  };
+
   return (
     <Memberbox>
       <Headerbox>
         <Title>기사 관리</Title>
+        <Addbutton onClick={handleAddForm}>기사 둥록</Addbutton>
       </Headerbox>
 
       <Content>
@@ -138,6 +145,11 @@ function Rider() {
         isDetailOpen={isDetailOpen}
         rider={riderData[activeItem]}
       />
+
+      <RiderForm
+        isAddAppOpen={isAddAppOpen}
+        handleAddForm={handleAddForm}
+      ></RiderForm>
     </Memberbox>
   );
 }
@@ -231,4 +243,22 @@ const DateInput = styled.input`
 const Buttonbox = styled.div`
   margin-left: 24px;
   display: flex;
+`;
+
+const Addbutton = styled.div`
+  width: 183px;
+  height: 37px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2rem;
+  background-color: #ff6622;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  &:hover {
+    background-color: #f1520e;
+  }
 `;
