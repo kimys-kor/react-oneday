@@ -39,7 +39,7 @@ interface AdminFormProp {
   isAddAppOpen: boolean;
 }
 
-function ShopForm({ handleAddForm, isAddAppOpen }: AdminFormProp) {
+function ProductForm({ handleAddForm, isAddAppOpen }: AdminFormProp) {
   const {
     register,
     handleSubmit,
@@ -85,12 +85,12 @@ function ShopForm({ handleAddForm, isAddAppOpen }: AdminFormProp) {
         <Formbox>
           <Form onSubmit={onSubmit}>
             <Titlebox>
-              <Title>상점을 추가합니다</Title>
+              <Title>상품을 추가합니다</Title>
               <Flex>
                 <Canclebutton onClick={() => handleAddForm()}>
                   취소
                 </Canclebutton>
-                <Submitbutton type="submit" value="+상점등록" />
+                <Submitbutton type="submit" value="+상품등록" />
               </Flex>
             </Titlebox>
 
@@ -104,31 +104,25 @@ function ShopForm({ handleAddForm, isAddAppOpen }: AdminFormProp) {
             </Flex>
 
             <Flex>
-              <Thirdinputbox>
-                <Label>매장명</Label>
+              <Secondinputbox>
+                <Label>선택상점</Label>
                 <Input type="text" {...register("version")} />
-              </Thirdinputbox>
+              </Secondinputbox>
 
-              <Thirdinputbox>
-                <Label>매장점주</Label>
+              <Secondinputbox>
+                <Label>상품명</Label>
                 <Input type="text" {...register("number")} />
-              </Thirdinputbox>
-
-              <Thirdinputbox>
-                <Label>핸드폰</Label>
-                <Input type="text" {...register("code")} />
-              </Thirdinputbox>
+              </Secondinputbox>
             </Flex>
 
             <Flex>
               <Secondinputbox>
-                <Label>이메일</Label>
-                <Input type="text" {...register("korname")} />
+                <Label>가격</Label>
+                <Input type="text" {...register("code")} />
               </Secondinputbox>
-
               <Secondinputbox>
-                <Label>매장주소</Label>
-                <Input type="text" {...register("engname")} />
+                <Label>재고수량</Label>
+                <Input type="text" {...register("korname")} />
               </Secondinputbox>
             </Flex>
           </Form>
@@ -137,7 +131,7 @@ function ShopForm({ handleAddForm, isAddAppOpen }: AdminFormProp) {
     </FormWrapper>
   );
 }
-export default ShopForm;
+export default ProductForm;
 
 const FormWrapper = styled.div`
   display: flex;

@@ -9,6 +9,8 @@ import { useForm, Resolver } from "react-hook-form";
 import { productData, productBoardTitle } from "@data/product/productData";
 import { eaOptions } from "@data/selectbox/selectboxData";
 
+import ProductForm from "@components/Form/ProductForm";
+
 import BorderButton from "@styles/button/BorderButton";
 import {
   cityOptions,
@@ -180,62 +182,12 @@ function Product() {
       />
 
       {/* 상품등록 모달 */}
-      <Wrapper
-        onClick={handleAddShop}
-        style={{ display: isAddShopOpen ? "flex" : "none" }}
-      >
-        <Modal onClick={(e) => e.stopPropagation()}>
-          <Formbox>
-            <div>
-              <Title>상품등록</Title>
-            </div>
 
-            <Form onSubmit={onSubmit}>
-              <div>
-                <Inputbox>
-                  <label>
-                    상점<Star>*</Star>
-                  </label>{" "}
-                  <Input type="text" {...register("shopName")}></Input>
-                </Inputbox>
-
-                <Inputbox>
-                  <label>
-                    상품명<Star>*</Star>
-                  </label>{" "}
-                  <Input type="number" {...register("businessNumber")}></Input>
-                </Inputbox>
-
-                <Inputbox>
-                  <label>
-                    가격<Star>*</Star>
-                  </label>
-                  <Input type="text" {...register("ownerName")}></Input>
-                </Inputbox>
-
-                <Inputbox>
-                  <label>
-                    옵션<Star>*</Star>
-                  </label>
-                  <Input type="text" {...register("shopAddress")}></Input>
-                </Inputbox>
-
-                <Inputbox>
-                  <label>
-                    연락처<Star>*</Star>
-                  </label>
-                  <Input type="number" {...register("shopContact")}></Input>
-                </Inputbox>
-              </div>
-
-              <Flex>
-                <Canclebutton onClick={handleAddShop}>취소</Canclebutton>
-                <Submitbutton type="submit" value="저장" />
-              </Flex>
-            </Form>
-          </Formbox>
-        </Modal>
-      </Wrapper>
+      {/* 상점등록 모달 */}
+      <ProductForm
+        isAddAppOpen={isAddShopOpen}
+        handleAddForm={handleAddShop}
+      ></ProductForm>
     </Shopbox>
   );
 }
@@ -286,128 +238,6 @@ const Layout = styled.div`
   box-sizing: border-box;
   margin-top: 54px;
   width: 95%;
-`;
-
-const FilterContent = styled.div`
-  margin-top: 50px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .react-datepicker-wrapper {
-    width: 156px;
-  }
-  .react-datepicker__calendar-icon {
-    fill: #bbbbcf;
-  }
-  .react-datepicker__calendar-icon {
-    position: absolute;
-    top: 3px;
-  }
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-`;
-
-const Modal = styled.div`
-  width: 500px;
-  background-color: white;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-  transition: 0.5s ease; /* add transition property */
-`;
-
-const Form = styled.form`
-  width: 90%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const Formbox = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Inputbox = styled.div`
-  width: 100%;
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  label {
-    width: 20%;
-  }
-`;
-const Input = styled.input`
-  border: none;
-  border-bottom: 1px solid #f1b59c;
-  width: 70%;
-`;
-
-const Canclebutton = styled.div`
-  margin-top: 50px;
-  border: none;
-  width: 100px;
-  height: 50px;
-  color: #fff;
-  font-size: 14px;
-  letter-spacing: 0.2rem;
-  background-color: #ff6622;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  &:hover {
-    background-color: #d64d12;
-  }
-`;
-const Submitbutton = styled.input`
-  margin-top: 50px;
-  border: none;
-  width: 100px;
-  height: 50px;
-  color: #ff6622;
-  font-size: 14px;
-  letter-spacing: 0.2rem;
-  border: 1px solid #ff6622;
-  background-color: transparent;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  &:hover {
-    background-color: #ff6622;
-    color: #fff;
-  }
-`;
-
-const Star = styled.p`
-  display: inline;
-  margin-left: 3px;
-  color: red;
-`;
-
-const Flex = styled.div`
-  display: flex;
-  gap: 4rem;
-  justify-content: center;
 `;
 
 const Addbutton = styled.div`
