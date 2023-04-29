@@ -4,8 +4,7 @@ import { ReactComponent as AppIcon } from "@statics/images/sidebar/appicon.svg";
 import { ReactComponent as GiftcardIcon } from "@statics/images/sidebar/giftcardicon.svg";
 import { ReactComponent as SavingIcon } from "@statics/images/sidebar/savingicon.svg";
 import { ReactComponent as ChartIcon } from "@statics/images/sidebar/charticon.svg";
-import { ReactComponent as AdminUserIcon } from "@statics/images/sidebar/adminusericon.svg";
-import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anothericon.svg";
+import { CiDeliveryTruck } from "react-icons/ci";
 
 import { ReactNode } from "react";
 
@@ -51,7 +50,7 @@ export const sidebarMenu: Array<Array<sidebarModel>> = [
       pathname: "/oneday/product",
     },
     {
-      logo: <GiftcardIcon color="#7B829B" size="26" />,
+      logo: <CiDeliveryTruck color="#7B829B" size="26" />,
       name: "기사 관리",
       path: "rider",
       pathname: "/oneday/rider",
