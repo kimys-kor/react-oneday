@@ -101,19 +101,29 @@ const Dashboardbox = styled.div`
 
 const Headerbox = styled.div`
   width: 100%;
-  height: 300px;
   display: flex;
 
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
   background-color: #fff;
+
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+`;
+
+const Summarybox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+
+  padding-left: 2rem;
+  padding-right: 2rem;
 `;
 
 const Chartbox1 = styled.div`
   margin-top: 12px;
   width: 100%;
-  height: 619px;
+  height: 38.6875rem;
 
   display: flex;
   flex-direction: column;
@@ -124,7 +134,7 @@ const Chartbox1 = styled.div`
 const Chartbox2 = styled.div`
   margin-top: 12px;
   width: 100%;
-  height: 619px;
+  height: 38.6875rem;
 
   display: flex;
   gap: 2rem;
@@ -135,32 +145,12 @@ const Chartbox2 = styled.div`
 const Chartbox3 = styled.div`
   margin-top: 12px;
   width: 100%;
-  height: 635px;
+  height: 39.6875rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
   background-color: #fff;
-`;
-
-const Selectbox = styled.div`
-  margin-left: 68px;
-  width: 586px;
-  height: 53px;
-
-  display: flex;
-  gap: 36px;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
-const Summarybox = styled.div`
-  margin-left: 70px;
-  margin-top: 28px;
-  display: flex;
-  justify-content: space-around;
-  gap: 1.5rem;
-  justify-content: center;
 `;
 
 const Titlebox = styled.div`

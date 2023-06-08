@@ -25,15 +25,15 @@ function Summary({ title, subTitle1, subTitle2 }: SummaryProps) {
 
 const SummaryContainer = styled.div`
   box-sizing: border-box;
-  width: 350px;
-  height: 149px;
+  width: 45rem;
+  height: 9.3125rem;
   border: 1px solid #bbbbcf;
 `;
 
 const SummaryTitle = styled.div`
   width: 100%;
-  height: 48px;
-  font-size: 15px;
+  height: 3rem;
+  font-size: 0.9375rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -45,20 +45,32 @@ const SummaryContent = styled.div`
   text-align: center;
 `;
 
-const Title = styled.div`
+const Title = styled.p`
   font-family: "MinSans-Regular";
   font-weight: 700;
+
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
-const SubTitle1 = styled.div`
+const SubTitle1 = styled.p`
   color: #7b829b;
   font-size: 15px;
+
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
-const SubTitle2 = styled.div`
+const SubTitle2 = styled.p`
   margin-top: 10px;
   color: #ff6622;
   font-size: 20px;
+
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const Titlebox = styled.div`
@@ -70,10 +82,14 @@ const Titlebox = styled.div`
   justify-content: space-between;
 `;
 
-const SummaryDetail = styled.div`
+const SummaryDetail = styled.p`
   font-size: 13px;
   display: inline;
   color: #898ea1;
+
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 export default Summary;
