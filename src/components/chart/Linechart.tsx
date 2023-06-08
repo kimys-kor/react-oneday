@@ -10,8 +10,8 @@ const LineChart = () => {
   return (
     <div
       style={{
-        height: "95%",
-        maxWidth: "100%",
+        height: "30rem",
+        maxWidth: "200rem",
         border: "1px solid #bbbbcf",
       }}
     >

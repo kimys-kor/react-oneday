@@ -14,40 +14,36 @@ function Dashboard() {
   return (
     <Dashboardbox>
       <Headerbox>
-        <Summarybox>
-          <Summary
-            title="접수 중인 주문"
-            subTitle1="승인 대기중"
-            subTitle2="13건"
-          />
-          <Summary
-            title="배달 중인 주문"
-            subTitle1="승인 대기중"
-            subTitle2="13건"
-          />
-          <Summary
-            title="배달완료 주문"
-            subTitle1="승인 대기중"
-            subTitle2="13건"
-          />
-          <Summary
-            title="불편 접수 주문"
-            subTitle1="승인 대기중"
-            subTitle2="13건"
-          />
-        </Summarybox>
+        <Summary
+          title="접수 중인 주문"
+          subTitle1="승인 대기중"
+          subTitle2="13건"
+        />
+        <Summary
+          title="배달 중인 주문"
+          subTitle1="승인 대기중"
+          subTitle2="13건"
+        />
+        <Summary
+          title="배달완료 주문"
+          subTitle1="승인 대기중"
+          subTitle2="13건"
+        />
+        <Summary
+          title="불편 접수 주문"
+          subTitle1="승인 대기중"
+          subTitle2="13건"
+        />
       </Headerbox>
 
       <Chartbox1>
-        <Indicatorcard>
-          <IndicatorTitlebox>
-            <IndicatorTitle>
-              최근 일주일 주문량<Greyfont>단위:건</Greyfont>
-            </IndicatorTitle>
-            <Detailbutton>자세히 &gt;</Detailbutton>
-          </IndicatorTitlebox>
-          <Linechart></Linechart>
-        </Indicatorcard>
+        <IndicatorTitlebox>
+          <IndicatorTitle>
+            최근 일주일 주문량<Greyfont>단위:건</Greyfont>
+          </IndicatorTitle>
+          <Detailbutton>자세히 &gt;</Detailbutton>
+        </IndicatorTitlebox>
+        <Linechart></Linechart>
       </Chartbox1>
 
       <Chartbox2>
@@ -102,33 +98,30 @@ const Dashboardbox = styled.div`
 const Headerbox = styled.div`
   width: 100%;
   display: flex;
-
-  flex-direction: column;
-  justify-content: center;
-  background-color: #fff;
-
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-`;
-
-const Summarybox = styled.div`
-  display: flex;
+  box-sizing: border-box;
   justify-content: space-between;
+  padding: 2rem;
   gap: 1.5rem;
 
-  padding-left: 2rem;
-  padding-right: 2rem;
+  background-color: #fff;
 `;
 
 const Chartbox1 = styled.div`
   margin-top: 12px;
+  box-sizing: border-box;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
   width: 100%;
   height: 38.6875rem;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: #fff;
+`;
+
+const Indicatorcard = styled.div`
+  margin-top: 5px;
+  width: 90%;
+  height: 484px;
 `;
 
 const Chartbox2 = styled.div`
@@ -175,12 +168,6 @@ const IndicatorTitlebox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-const Indicatorcard = styled.div`
-  margin-top: 5px;
-  width: 90%;
-  height: 484px;
 `;
 
 const IndicatorTitle = styled.div`
