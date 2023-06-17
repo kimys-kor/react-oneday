@@ -7,37 +7,37 @@ export interface horizontalModel {
 
 export const horizontalData: Array<horizontalModel> = [
   {
-    apps: "언어의정원",
+    apps: "용만이네상점1",
     amount: 115000,
     color: "#fff",
   },
   {
-    apps: "캐시문상",
+    apps: "용만이네상점2",
     amount: 70000,
     color: "#fff",
   },
   {
-    apps: "로또서치",
+    apps: "용만이네상점3",
     amount: 55000,
     color: "#fff",
   },
   {
-    apps: "행복로또",
+    apps: "용만이네상점4",
     amount: 30000,
     color: "#fff",
   },
   {
-    apps: "핏츠",
+    apps: "용만이네상점5",
     amount: 20000,
     color: "#fff",
   },
   {
-    apps: "에이바",
+    apps: "용만이네상점6",
     amount: 10000,
     color: "#fff",
   },
   {
-    apps: "티티고",
+    apps: "용만이네상점7",
     amount: 5000,
     color: "#fff",
   },
