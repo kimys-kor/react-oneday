@@ -4,7 +4,7 @@ import {
   corpOption,
   SelectOptionsProps,
   WidthOptionProps,
-} from "@/data/selectboxData";
+} from "@/data/common";
 
 const CustomSelect: React.FC<{
   width: number;

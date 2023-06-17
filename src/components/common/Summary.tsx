@@ -25,7 +25,7 @@ function Summary({ title, subTitle1, subTitle2 }: SummaryProps) {
 
 const Wrapper = styled.div`
   box-sizing: border-box;
-  width: 50rem;
+  width: 30rem;
   height: 9.3125rem;
   border: 1px solid #bbbbcf;
   transition: all 0.01s linear;

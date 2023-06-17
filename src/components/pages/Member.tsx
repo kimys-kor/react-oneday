@@ -16,6 +16,7 @@ import BorderButton from "@/styles/BorderButton";
 import DatePicker from "react-datepicker";
 import { ko } from "date-fns/esm/locale";
 import "react-datepicker/dist/react-datepicker.css";
+import Summary from "../common/Summary";
 
 function Member() {
   const [dateFilterIndex, setDateFilterIndex] = useState<number>(0);
@@ -58,11 +59,54 @@ function Member() {
   return (
     <Wrapper>
       <Headerbox>
-        <Title>회원 관리</Title>
+        {/* <Title>회원 관리</Title>
+         */}
+        {/* <Summary
+          title="접수 중인 주문"
+          subTitle1="승인 대기중"
+          subTitle2="13건"
+        />
+        <Summary
+          title="접수 중인 주문"
+          subTitle1="승인 대기중"
+          subTitle2="13건"
+        />
+        <Summary
+          title="접수 중인 주문"
+          subTitle1="승인 대기중"
+          subTitle2="13건"
+        />
+        <Summary
+          title="접수 중인 주문"
+          subTitle1="승인 대기중"
+          subTitle2="13건"
+        /> */}
       </Headerbox>
 
       <Content>
         <Fillter>
+          {/* <Flexbox>
+            <Summary
+              title="접수 중인 주문"
+              subTitle1="승인 대기중"
+              subTitle2="13건"
+            />
+            <Summary
+              title="접수 중인 주문"
+              subTitle1="승인 대기중"
+              subTitle2="13건"
+            />
+            <Summary
+              title="접수 중인 주문"
+              subTitle1="승인 대기중"
+              subTitle2="13건"
+            />
+            <Summary
+              title="접수 중인 주문"
+              subTitle1="승인 대기중"
+              subTitle2="13건"
+            />
+          </Flexbox> */}
           <Flexbox>
             <BorderButton
               width={4.8}
@@ -104,12 +148,12 @@ function Member() {
               />
             </Datebox>
 
-            <BorderButton
+            {/* <BorderButton
               width={4.8}
               titles={itemFilter}
               activeIndex={filterIndex}
               handleButtonClick={handleFilter}
-            ></BorderButton>
+            ></BorderButton> */}
           </Flexbox>
 
           {/* <Flexbox>
@@ -125,13 +169,13 @@ function Member() {
           </Flexbox> */}
         </Fillter>
 
-        <MemberBoard
+        {/* <MemberBoard
           boardMenu={memberBoardTitle}
           boardData={memberData}
           handleDetailOpen={handleDetailOpen}
           openAnother={openAnother}
           handleOpenIndex={handleOpenIndex}
-        ></MemberBoard>
+        ></MemberBoard> */}
       </Content>
 
       {/* <MemberDetail
@@ -211,6 +255,7 @@ const Fillter = styled.div`
 `;
 
 const Flexbox = styled.div`
+  width: 100%;
   display: flex;
   gap: 1rem;
 `;

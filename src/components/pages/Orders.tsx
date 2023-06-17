@@ -65,7 +65,7 @@ function Orders() {
         <Layout>
           <Tabbox>
             <BorderButton
-              width={152}
+              width={9.5}
               titles={tabOrders}
               activeIndex={tabIndex}
               handleButtonClick={handleTab}
