@@ -153,7 +153,7 @@ export const accordionitems = [
   },
 ];
 
-export const dateFilter: Array<string> = ["전체"];
+export const dateFilter: string = "전체";
 
 export const itemFilter: Array<string> = ["전체", "활성", "비활성", "휴면"];
 

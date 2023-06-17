@@ -92,7 +92,7 @@ function Statistics() {
               <DateFilter>
                 <BorderButton
                   width={152}
-                  titles={dateFilter}
+                  title={dateFilter}
                   activeIndex={dateIndex}
                   handleButtonClick={handleDateIndex}
                 ></BorderButton>

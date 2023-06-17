@@ -2,56 +2,35 @@ import styled, { css } from "styled-components";
 import { Dispatch, SetStateAction } from "react";
 
 export interface BorderButtonProps {
-  title: string;
   width: number;
-  active: boolean;
+  title: string;
+  id: number;
+  onClick: (id: number) => void;
+  activeId: number | null;
 }
 
-function BorderButton({ title, width, active }: BorderButtonProps) {
+function BorderButton({
+  title,
+  width,
+  id,
+  onClick,
+  activeId,
+}: BorderButtonProps) {
+  const isActive = id === activeId;
+  const borderColor = isActive ? "border-active" : "border-normal";
+  const fontColor = isActive ? "text-active" : "text-normal";
+
   return (
-    <Button width={width} active={active}>
+    <button
+      className={`text-base font-light w-40 h-10 overflow-hidden whitespace-nowrap border  bg-white cursor-pointer mr-0 
+      hover:text-active hover:border-active
+      ${borderColor}
+      ${fontColor}`}
+      onClick={() => onClick(id)}
+    >
       {title}
-    </Button>
+    </button>
   );
 }
 
 export default BorderButton;
-
-export interface ButtonProps {
-  active: boolean;
-  width: number;
-}
-
-const Button = styled.button<ButtonProps>`
-  text-align: center;
-
-  font-size: 16px;
-  width: ${({ width }) => width}rem;
-  height: 37px;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-  border: 1px solid #bbbbcf;
-  background-color: #ffffff;
-  cursor: pointer;
-  margin-right: 0; // remove the margin on the last button
-  transition: all 0.1s linear;
-
-  &:hover {
-    border-color: #ff6622; // set border color to #ff6622 for active button
-    color: #ff6622;
-  }
-
-  ${({ active }) =>
-    active &&
-    css`
-      border-color: #ff6622; // set border color to #ff6622 for active button
-      color: #ff6622; // set text color to #ff6622 for active button
-    `}
-
-  @media (max-width: 1150px) {
-    width: auto;
-  }
-`;

@@ -69,12 +69,12 @@ function Rider() {
       <Content>
         <Layout>
           <FilterContent>
-            <BorderButton
+            {/* <BorderButton
               width={76}
-              titles={dateFilter}
+              title={"전체"}
               activeIndex={dateIndex}
               handleButtonClick={setDate}
-            ></BorderButton>
+            ></BorderButton> */}
 
             <Flexbox>
               <Datebox>
@@ -113,12 +113,12 @@ function Rider() {
             </Flexbox>
 
             <Buttonbox>
-              <BorderButton
+              {/* <BorderButton
                 width={80}
                 titles={itemFilter}
                 activeIndex={filterIndex}
                 handleButtonClick={handleFilter}
-              ></BorderButton>
+              ></BorderButton> */}
             </Buttonbox>
             <SearchInput></SearchInput>
 

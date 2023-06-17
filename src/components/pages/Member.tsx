@@ -9,7 +9,7 @@ import MemberDetail from "@components/details/MemberDetail";
 import MemberBoard from "@components/board/MemberBoard";
 import { corpOptions, appOptions, eaOptions } from "@/data/common";
 
-import { dateFilter, itemFilter } from "@/data/common";
+import { itemFilter } from "@/data/common";
 import { memberBoardTitle, memberData } from "@/data/common";
 import BorderButton from "@/styles/BorderButton";
 
@@ -56,63 +56,26 @@ function Member() {
 
   const [currentEa, setCurrentEa] = useState(eaOptions[0].value);
 
+  const [activeButton, setActiveButton] = useState<number | null>(0);
+  const handleButtonClick = (id: number) => {
+    setActiveButton(id);
+  };
+
   return (
     <Wrapper>
       <Headerbox>
-        {/* <Title>회원 관리</Title>
-         */}
-        {/* <Summary
-          title="접수 중인 주문"
-          subTitle1="승인 대기중"
-          subTitle2="13건"
-        />
-        <Summary
-          title="접수 중인 주문"
-          subTitle1="승인 대기중"
-          subTitle2="13건"
-        />
-        <Summary
-          title="접수 중인 주문"
-          subTitle1="승인 대기중"
-          subTitle2="13건"
-        />
-        <Summary
-          title="접수 중인 주문"
-          subTitle1="승인 대기중"
-          subTitle2="13건"
-        /> */}
+        <Title>회원 관리</Title>
       </Headerbox>
 
       <Content>
         <Fillter>
-          {/* <Flexbox>
-            <Summary
-              title="접수 중인 주문"
-              subTitle1="승인 대기중"
-              subTitle2="13건"
-            />
-            <Summary
-              title="접수 중인 주문"
-              subTitle1="승인 대기중"
-              subTitle2="13건"
-            />
-            <Summary
-              title="접수 중인 주문"
-              subTitle1="승인 대기중"
-              subTitle2="13건"
-            />
-            <Summary
-              title="접수 중인 주문"
-              subTitle1="승인 대기중"
-              subTitle2="13건"
-            />
-          </Flexbox> */}
           <Flexbox>
             <BorderButton
               width={4.8}
-              titles={dateFilter}
-              activeIndex={dateIndex}
-              handleButtonClick={setDate}
+              title={"전체"}
+              id={1}
+              onClick={handleButtonClick}
+              activeId={activeButton}
             ></BorderButton>
 
             <Datebox>

@@ -103,8 +103,7 @@ function Product() {
           <Tabbox>
             <BorderButton
               width={9.5}
-              titles={["지역선택", "검색하기"]}
-              activeIndex={tabIndex}
+              title={"지역선택"}
               handleButtonClick={handleTab}
             ></BorderButton>
           </Tabbox>
