@@ -68,7 +68,7 @@ function Rider() {
 
       <Content>
         <Layout>
-          <FilterContent>
+          <Fillter>
             {/* <BorderButton
               width={76}
               title={"전체"}
@@ -129,7 +129,7 @@ function Rider() {
               currentValue={currentEa}
               setCurrentValue={setCurrentEa}
             ></CustomSelect>
-          </FilterContent>
+          </Fillter>
 
           <RiderBoard
             boardMenu={riderBoardTitle}
@@ -199,13 +199,15 @@ const Layout = styled.div`
   width: 95%;
 `;
 
-const FilterContent = styled.div`
-  width: 100%;
+const Fillter = styled.div`
+  max-width: 130rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 1rem;
+
   .react-datepicker-wrapper {
-    width: 156px;
+    width: 10rem;
   }
   .react-datepicker__calendar-icon {
     fill: #bbbbcf;
@@ -213,6 +215,11 @@ const FilterContent = styled.div`
   .react-datepicker__calendar-icon {
     position: absolute;
     top: 3px;
+  }
+
+  @media (max-width: 1530px) {
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
 

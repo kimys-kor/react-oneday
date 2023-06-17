@@ -229,7 +229,7 @@ const Title = styled.div`
 `;
 
 const Fillter = styled.div`
-  max-width: 120rem;
+  max-width: 130rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;

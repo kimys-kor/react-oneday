@@ -101,15 +101,15 @@ function Statistics() {
           <Tabbox>
             <BorderButtonLX
               title={"주문건수 통계"}
-              id={1}
-              onClick={handleButtonClick1}
-              activeId={activeButton1}
+              id={0}
+              onClick={handleStatisticsIndex}
+              activeId={statisticsIndex}
             ></BorderButtonLX>
             <BorderButtonLX
               title={"주문금액 통계"}
-              id={2}
-              onClick={handleButtonClick1}
-              activeId={activeButton1}
+              id={1}
+              onClick={handleStatisticsIndex}
+              activeId={statisticsIndex}
             ></BorderButtonLX>
           </Tabbox>
 
@@ -117,10 +117,22 @@ function Statistics() {
             <>
               <DateFilter>
                 <BorderButtonLX
-                  title={"전체"}
+                  title={"일별"}
+                  id={0}
+                  onClick={handleDateIndex}
+                  activeId={dateIndex}
+                ></BorderButtonLX>
+                <BorderButtonLX
+                  title={"월별"}
                   id={1}
-                  onClick={handleButtonClick2}
-                  activeId={activeButton2}
+                  onClick={handleDateIndex}
+                  activeId={dateIndex}
+                ></BorderButtonLX>
+                <BorderButtonLX
+                  title={"기간별"}
+                  id={2}
+                  onClick={handleDateIndex}
+                  activeId={dateIndex}
                 ></BorderButtonLX>
               </DateFilter>
 
@@ -148,16 +160,16 @@ function Statistics() {
                     <>
                       <Flexbox>
                         <CustomSelect
-                          width={151}
-                          height={37}
+                          width={10}
+                          height={2.5}
                           title={"연도"}
                           optionData={yearOptions}
                           currentValue={currentYear}
                           setCurrentValue={setCurrentYear}
                         ></CustomSelect>
                         <CustomSelect
-                          width={151}
-                          height={37}
+                          width={10}
+                          height={2.5}
                           title={"월"}
                           optionData={monthOptions}
                           currentValue={currentMonth}
@@ -207,36 +219,42 @@ function Statistics() {
 
                   <Searchbox>
                     <BorderButtonLX
-                      title={"누적회원점유율"}
-                      id={1}
-                      onClick={handleButtonClick3}
-                      activeId={activeButton3}
+                      title={"전체"}
+                      id={0}
+                      onClick={handleSearchIndex}
+                      activeId={searchIndex}
                     ></BorderButtonLX>
                     <BorderButtonLX
-                      title={"누적적립금점유율"}
+                      title={"주문완료"}
+                      id={1}
+                      onClick={handleSearchIndex}
+                      activeId={searchIndex}
+                    ></BorderButtonLX>
+                    <BorderButtonLX
+                      title={"주문취소"}
                       id={2}
-                      onClick={handleButtonClick3}
-                      activeId={activeButton3}
+                      onClick={handleSearchIndex}
+                      activeId={searchIndex}
                     ></BorderButtonLX>
                   </Searchbox>
                   <Amount>기간통계 | 579,940</Amount>
                 </Datewrapper>
-
-                <Viewbox>
-                  <View
-                    onClick={() => handleViewIndex(0)}
-                    active={viewIndex == 0}
-                  >
-                    <Viewbar color="#BBBBCF"></Viewbar>
-                  </View>
-                  <View
-                    onClick={() => handleViewIndex(1)}
-                    active={viewIndex == 1}
-                  >
-                    <Viewnumber color="#BBBBCF"></Viewnumber>
-                  </View>
-                </Viewbox>
               </Fillter>
+
+              <Viewbox>
+                <View
+                  onClick={() => handleViewIndex(0)}
+                  active={viewIndex == 0}
+                >
+                  <Viewbar color="#BBBBCF"></Viewbar>
+                </View>
+                <View
+                  onClick={() => handleViewIndex(1)}
+                  active={viewIndex == 1}
+                >
+                  <Viewnumber color="#BBBBCF"></Viewnumber>
+                </View>
+              </Viewbox>
 
               <Content>
                 {viewIndex == 0 ? (
@@ -268,15 +286,15 @@ function Statistics() {
                 <Flexbox>
                   <BorderButtonLX
                     title={"누적회원점유율"}
-                    id={1}
-                    onClick={handleButtonClick3}
-                    activeId={activeButton3}
+                    id={0}
+                    onClick={handleChartIndex}
+                    activeId={chartIndex}
                   ></BorderButtonLX>
                   <BorderButtonLX
                     title={"누적적립금점유율"}
-                    id={2}
-                    onClick={handleButtonClick3}
-                    activeId={activeButton3}
+                    id={1}
+                    onClick={handleChartIndex}
+                    activeId={chartIndex}
                   ></BorderButtonLX>
                 </Flexbox>
 
@@ -453,7 +471,10 @@ const Amount = styled.div`
 `;
 
 const Viewbox = styled.div`
+  margin-top: 10px;
+  width: 100%;
   display: flex;
+  justify-content: flex-end;
 `;
 
 export interface ViewProps {
@@ -547,5 +568,4 @@ const ServiceContent = styled.div`
   width: 100%;
   height: 600px;
   min-height: 600px;
-  border: 1px solid #bbbbcf;
 `;

@@ -117,7 +117,7 @@ function Product() {
             {tabIndex == 0 ? (
               <Selectbox>
                 <CustomSelect
-                  width={10}
+                  width={15}
                   height={2.5}
                   title={"지역"}
                   optionData={cityOptions}
@@ -125,7 +125,7 @@ function Product() {
                   setCurrentValue={setCurrentCity}
                 ></CustomSelect>
                 <CustomSelect
-                  width={10}
+                  width={15}
                   height={2.5}
                   title={"구"}
                   optionData={guOptions}
@@ -133,7 +133,7 @@ function Product() {
                   setCurrentValue={setCurrentGu}
                 ></CustomSelect>
                 <CustomSelect
-                  width={10}
+                  width={15}
                   height={2.5}
                   title={"동"}
                   optionData={dongOptions}
@@ -142,7 +142,7 @@ function Product() {
                 ></CustomSelect>
 
                 <CustomSelect
-                  width={10}
+                  width={15}
                   height={2.5}
                   title={"상점선택"}
                   optionData={shopOptions}
@@ -161,8 +161,8 @@ function Product() {
                 <Addbutton onClick={handleAddShop}>상품 추가</Addbutton>
 
                 <CustomSelect
-                  width={90}
-                  height={37}
+                  width={6}
+                  height={2.5}
                   optionData={eaOptions}
                   currentValue={currentEa}
                   setCurrentValue={setCurrentEa}
