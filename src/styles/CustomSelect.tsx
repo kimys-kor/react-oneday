@@ -84,7 +84,7 @@ const SelectWrapper = styled.div<SelectWrapperProps>`
 
   position: relative;
 
-  min-width: ${({ width }) => width}rem;
+  width: ${({ width }) => width}rem;
 
   height: ${({ height }) => height}rem;
   line-height: ${({ height }) => height}rem;
@@ -161,7 +161,7 @@ const SelectOptions = styled.ul<SelectOptionsProps>`
   box-sizing: border-box;
   border: 1px solid #dbddeb;
   top: -3px;
-  left: -1px;
+
   width: ${({ width }) => width}rem;
   display: ${(props) => (props.show ? "block" : "none")};
   padding: 0;
@@ -170,9 +170,9 @@ const SelectOptions = styled.ul<SelectOptionsProps>`
 
 const Option = styled.li<SelectOptionsProps>`
   box-sizing: border-box;
-  width: 100%;
   border-bottom: 0.5px solid #dbddeb;
   text-align: center;
+  width: ${({ width }) => width}rem;
   height: ${({ height }) => height}rem;
   line-height: ${({ height }) => height}rem;
   border: 1px solid transparent;

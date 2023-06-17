@@ -94,7 +94,10 @@ function Member() {
                 dateFormat="yyyy-MM-dd"
                 customInput={
                   // 날짜 뜨는 인풋 커스텀
-                  <DateInput activeIndex={dateFilterIndex} />
+                  <DateInput
+                    onClick={() => handleButtonClick1(2)}
+                    activeId={activeButton1}
+                  />
                 }
               />
 
@@ -110,36 +113,40 @@ function Member() {
                 dateFormat="yyyy-MM-dd"
                 customInput={
                   // 날짜 뜨는 인풋 커스텀
-                  <DateInput activeIndex={dateFilterIndex} />
+                  <DateInput
+                    onClick={() => handleButtonClick1(2)}
+                    activeId={activeButton1}
+                  />
                 }
               />
             </Datebox>
-            <div className="flex w-80">
-              <BorderButton
-                title={"전체"}
-                id={1}
-                onClick={handleButtonClick2}
-                activeId={activeButton2}
-              ></BorderButton>
-              <BorderButton
-                title={"활성"}
-                id={2}
-                onClick={handleButtonClick2}
-                activeId={activeButton2}
-              ></BorderButton>
-              <BorderButton
-                title={"비활성"}
-                id={3}
-                onClick={handleButtonClick2}
-                activeId={activeButton2}
-              ></BorderButton>
-              <BorderButton
-                title={"휴면"}
-                id={4}
-                onClick={handleButtonClick2}
-                activeId={activeButton2}
-              ></BorderButton>
-            </div>
+          </div>
+
+          <div className="flex w-80">
+            <BorderButton
+              title={"전체"}
+              id={1}
+              onClick={handleButtonClick2}
+              activeId={activeButton2}
+            ></BorderButton>
+            <BorderButton
+              title={"활성"}
+              id={2}
+              onClick={handleButtonClick2}
+              activeId={activeButton2}
+            ></BorderButton>
+            <BorderButton
+              title={"비활성"}
+              id={3}
+              onClick={handleButtonClick2}
+              activeId={activeButton2}
+            ></BorderButton>
+            <BorderButton
+              title={"휴면"}
+              id={4}
+              onClick={handleButtonClick2}
+              activeId={activeButton2}
+            ></BorderButton>
           </div>
 
           <div className="flex gap-5">
@@ -251,7 +258,7 @@ const Datebox = styled.div`
 `;
 
 interface inputProp {
-  activeIndex: number;
+  activeId: number;
 }
 
 const DateInput = styled.input<inputProp>`
@@ -268,8 +275,8 @@ const DateInput = styled.input<inputProp>`
   line-height: 37px;
   text-align: center;
 
-  ${({ activeIndex }) =>
-    activeIndex == 1 &&
+  ${({ activeId }) =>
+    activeId === 2 &&
     css`
       border: 1px solid #ff6622;
     `}
