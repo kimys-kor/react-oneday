@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { css } from "styled-components";
 
 import CustomSelect from "@styles/selectbox/CustomSelect";
 import SearchInput from "@components/common/SearchInput";
-
+import Loading from "@components/common/Loading";
 import MemberDetail from "@components/details/MemberDetail";
 import MemberBoard from "@components/board/MemberBoard";
 import {
@@ -21,6 +22,7 @@ import { ko } from "date-fns/esm/locale";
 import "react-datepicker/dist/react-datepicker.css";
 
 function Member() {
+  const [dateFilterIndex, setDateFilterIndex] = useState<number>(0);
   // 헤더 날짜필터
   const [dateIndex, setDateIndex] = useState<number | null>(0);
   const setDate = (index: number) => {
@@ -58,114 +60,132 @@ function Member() {
   const [currentEa, setCurrentEa] = useState(eaOptions[0].value);
 
   return (
-    <Memberbox>
+    <Wrapper>
       <Headerbox>
         <Title>회원 관리</Title>
       </Headerbox>
 
       <Content>
-        <Layout>
-          <FilterContent>
+        <Fillter>
+          <BorderButton
+            width={76}
+            titles={dateFilter}
+            activeIndex={dateIndex}
+            handleButtonClick={setDate}
+          ></BorderButton>
+
+          <Flexbox>
+            <Datebox>
+              <DatePicker
+                locale={ko}
+                closeOnScroll={(e) => e.target === document}
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+                dateFormat="yyyy-MM-dd"
+                customInput={
+                  // 날짜 뜨는 인풋 커스텀
+                  <DateInput activeIndex={dateFilterIndex} />
+                }
+              />
+            </Datebox>
+            <Datebox>
+              <DatePicker
+                locale={ko}
+                closeOnScroll={(e) => e.target === document}
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                minDate={startDate}
+                dateFormat="yyyy-MM-dd"
+                customInput={
+                  // 날짜 뜨는 인풋 커스텀
+                  <DateInput activeIndex={dateFilterIndex} />
+                }
+              />
+            </Datebox>
+          </Flexbox>
+
+          <Buttonbox>
             <BorderButton
-              width={76}
-              titles={dateFilter}
-              activeIndex={dateIndex}
-              handleButtonClick={setDate}
+              width={80}
+              titles={itemFilter}
+              activeIndex={filterIndex}
+              handleButtonClick={handleFilter}
             ></BorderButton>
+          </Buttonbox>
+          <SearchInput width="150px" height="39px"></SearchInput>
 
-            <Flexbox>
-              <Datebox>
-                <DatePicker
-                  locale={ko}
-                  closeOnScroll={(e) => e.target === document}
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  selectsStart
-                  startDate={startDate}
-                  endDate={endDate}
-                  dateFormat="yyyy-MM-dd"
-                  customInput={
-                    // 날짜 뜨는 인풋 커스텀
-                    <DateInput />
-                  }
-                />
-              </Datebox>
-              <Datebox>
-                <DatePicker
-                  locale={ko}
-                  closeOnScroll={(e) => e.target === document}
-                  selected={endDate}
-                  onChange={(date) => setEndDate(date)}
-                  selectsEnd
-                  startDate={startDate}
-                  endDate={endDate}
-                  minDate={startDate}
-                  dateFormat="yyyy-MM-dd"
-                  customInput={
-                    // 날짜 뜨는 인풋 커스텀
-                    <DateInput />
-                  }
-                />
-              </Datebox>
-            </Flexbox>
+          <CustomSelect
+            width={90}
+            height={37}
+            optionData={eaOptions}
+            currentValue={currentEa}
+            setCurrentValue={setCurrentEa}
+          ></CustomSelect>
+        </Fillter>
 
-            <Buttonbox>
-              <BorderButton
-                width={80}
-                titles={itemFilter}
-                activeIndex={filterIndex}
-                handleButtonClick={handleFilter}
-              ></BorderButton>
-            </Buttonbox>
-            <SearchInput width="150px" height="39px"></SearchInput>
-
-            <CustomSelect
-              width={90}
-              height={37}
-              optionData={eaOptions}
-              currentValue={currentEa}
-              setCurrentValue={setCurrentEa}
-            ></CustomSelect>
-          </FilterContent>
-
-          <MemberBoard
-            boardMenu={memberBoardTitle}
-            boardData={memberData}
-            handleDetailOpen={handleDetailOpen}
-            openAnother={openAnother}
-            handleOpenIndex={handleOpenIndex}
-          ></MemberBoard>
-        </Layout>
+        <MemberBoard
+          boardMenu={memberBoardTitle}
+          boardData={memberData}
+          handleDetailOpen={handleDetailOpen}
+          openAnother={openAnother}
+          handleOpenIndex={handleOpenIndex}
+        ></MemberBoard>
       </Content>
       <MemberDetail
         onClose={handleDetailClose}
         isDetailOpen={isDetailOpen}
         member={memberData[activeItem]}
       />
-    </Memberbox>
+    </Wrapper>
   );
 }
 
 export default Member;
 
-const Memberbox = styled.div`
+const Wrapper = styled.div`
   width: 100%;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 9px;
+  gap: 0.75rem;
 `;
 
 const Headerbox = styled.div`
-  box-sizing: border-box;
-  padding-right: 50px;
   width: 100%;
-  height: 125px;
   display: flex;
+  padding: 1.5rem 2.5rem;
+  gap: 1.5rem;
+
   justify-content: space-between;
+  background-color: #fff;
+
+  box-sizing: border-box;
+
+  @media (max-width: 1150px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
+  }
+`;
+
+const Content = styled.div`
+  width: 100%;
+  height: 85vh;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
   align-items: center;
   background-color: #fff;
+  padding: 1.5rem 3rem;
 `;
 
 const Title = styled.div`
@@ -175,39 +195,22 @@ const Title = styled.div`
   justify-content: space-between;
 `;
 
-const Content = styled.div`
-  margin-top: 12px;
-  width: 100%;
-  min-height: 1000px;
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fff;
-`;
-
-const Layout = styled.div`
-  box-sizing: border-box;
-  margin-top: 54px;
-  width: 95%;
-`;
-
-const FilterContent = styled.div`
+const Fillter = styled.div`
   width: 100%;
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
 
   .react-datepicker-wrapper {
-    width: 9.75rem;
+    width: 156px;
   }
   .react-datepicker__calendar-icon {
     fill: #bbbbcf;
   }
   .react-datepicker__calendar-icon {
     position: absolute;
-    top: 0.1875rem;
+    top: 3px;
   }
 `;
 
@@ -216,15 +219,17 @@ const Flexbox = styled.div`
   justify-content: space-between;
 `;
 
-const Datebox = styled.div`
-  margin-left: 12px;
-`;
+const Datebox = styled.div``;
 
-const DateInput = styled.input`
+interface inputProp {
+  activeIndex: number;
+}
+
+const DateInput = styled.input<inputProp>`
   box-sizing: border-box;
-  width: 9.75rem;
-  height: 2.3125rem;
-  padding: 0.3125rem 0.625rem;
+  width: 156px;
+  height: 37px;
+  padding: 5px 10px;
   background: #fff;
   border: 1px solid #bbbbcf;
   font-size: 15px;
@@ -233,6 +238,16 @@ const DateInput = styled.input`
   color: #bbbbcf;
   line-height: 37px;
   text-align: center;
+
+  ${({ activeIndex }) =>
+    activeIndex == 1 &&
+    css`
+      border: 1px solid #ff6622;
+    `}
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const Buttonbox = styled.div`

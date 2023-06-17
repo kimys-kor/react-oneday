@@ -6,7 +6,9 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import avatar1 from "@images/sidebar/avatar/avatar1.png";
 
-import { SidebarProps, BoxProps } from "@data/sidebar/sidebarData";
+export interface SidebarProps {
+  xPosition: number;
+}
 
 function Sidebar({ xPosition }: SidebarProps) {
   const pathName = useLocation().pathname;
@@ -60,54 +62,72 @@ const Flexbox = styled.div`
   transition: 0.19s ease;
   display: flex;
   flex-direction: column;
-  align-items: center;
   background-color: #fff;
 
   position: fixed;
 `;
 
 const Profile = styled.div`
-  width: 80%;
-  height: 144px;
+  height: 9rem;
   display: flex;
   align-items: center;
+  padding: 2rem;
 `;
 
 const Avatar = styled.img`
-  width: 64px;
-  height: 64px;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
 `;
 const Info = styled.div`
-  margin-left: 10px;
+  margin-left: 0.625rem;
+  font-size: 1.0625rem;
+  font-weight: 400;
 `;
 
-const Logout = styled.div`
+const Logout = styled.p`
   cursor: pointer;
   text-decoration: underline;
+
   color: #898ea2;
 `;
 
 const Wrapper = styled.div`
-  width: 80%;
   border-top: 1.5px solid #e3e6f2;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 2rem 0;
+
+  display: flex;
+  flex-direction: column;
 `;
 
 const Menu = styled.div`
-  width: 100%;
-  height: 56px;
+  box-sizing: border-box;
+  padding-left: 2.5rem;
 
-  font-family: "MinSans-Regular";
-  font-weight: 900;
-  font-size: 20px;
   cursor: pointer;
-`;
+  transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: 1px solid transparent;
 
+  &:hover {
+    transform: scale(1.03);
+
+    svg {
+      fill: #ff6622;
+      color: #ff6622;
+      transition: transform 0.2s ease-in-out;
+    }
+    p {
+      color: #ff6622;
+    }
+  }
+`;
+export interface BoxProps {
+  clicked: boolean;
+}
 const Box = styled.div<BoxProps>`
-  margin-bottom: 10px;
+  height: 3.75rem;
   display: flex;
+  gap: 0.75rem;
   align-items: center;
 
   ${({ clicked }) =>
@@ -127,7 +147,7 @@ const Box = styled.div<BoxProps>`
 `;
 
 const Font = styled.p`
-  margin-left: 10px;
   color: #7b829b;
+  font-size: 1.15rem;
   font-weight: 500;
 `;

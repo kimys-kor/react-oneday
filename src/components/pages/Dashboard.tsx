@@ -12,7 +12,7 @@ import { pointOccupationData, color } from "@/data/chart/piechartData";
 
 function Dashboard() {
   return (
-    <Dashboardbox>
+    <Wrapper>
       <Headerbox>
         <Summary
           title="접수 중인 주문"
@@ -77,13 +77,13 @@ function Dashboard() {
         </IndicatorTitlebox>
         <Linechart></Linechart>
       </Chartbox1>
-    </Dashboardbox>
+    </Wrapper>
   );
 }
 
 export default Dashboard;
 
-const Dashboardbox = styled.div`
+const Wrapper = styled.div`
   width: 100%;
   height: 100%;
 
