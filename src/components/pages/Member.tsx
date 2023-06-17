@@ -67,14 +67,14 @@ function Member() {
 
       <Content>
         <Fillter>
-          <BorderButton
-            width={76}
-            titles={dateFilter}
-            activeIndex={dateIndex}
-            handleButtonClick={setDate}
-          ></BorderButton>
-
           <Flexbox>
+            <BorderButton
+              width={76}
+              titles={dateFilter}
+              activeIndex={dateIndex}
+              handleButtonClick={setDate}
+            ></BorderButton>
+
             <Datebox>
               <DatePicker
                 locale={ko}
@@ -90,8 +90,7 @@ function Member() {
                   <DateInput activeIndex={dateFilterIndex} />
                 }
               />
-            </Datebox>
-            <Datebox>
+
               <DatePicker
                 locale={ko}
                 closeOnScroll={(e) => e.target === document}
@@ -108,25 +107,28 @@ function Member() {
                 }
               />
             </Datebox>
+
+            <Buttonbox>
+              <BorderButton
+                width={80}
+                titles={itemFilter}
+                activeIndex={filterIndex}
+                handleButtonClick={handleFilter}
+              ></BorderButton>
+            </Buttonbox>
           </Flexbox>
 
-          <Buttonbox>
-            <BorderButton
-              width={80}
-              titles={itemFilter}
-              activeIndex={filterIndex}
-              handleButtonClick={handleFilter}
-            ></BorderButton>
-          </Buttonbox>
-          <SearchInput width="150px" height="39px"></SearchInput>
+          <Flexbox>
+            <SearchInput></SearchInput>
 
-          <CustomSelect
-            width={90}
-            height={37}
-            optionData={eaOptions}
-            currentValue={currentEa}
-            setCurrentValue={setCurrentEa}
-          ></CustomSelect>
+            <CustomSelect
+              width={90}
+              height={37}
+              optionData={eaOptions}
+              currentValue={currentEa}
+              setCurrentValue={setCurrentEa}
+            ></CustomSelect>
+          </Flexbox>
         </Fillter>
 
         <MemberBoard
@@ -137,6 +139,7 @@ function Member() {
           handleOpenIndex={handleOpenIndex}
         ></MemberBoard>
       </Content>
+
       <MemberDetail
         onClose={handleDetailClose}
         isDetailOpen={isDetailOpen}
@@ -198,12 +201,11 @@ const Title = styled.div`
 const Fillter = styled.div`
   width: 100%;
   display: flex;
-  gap: 1rem;
   justify-content: space-between;
   align-items: center;
 
   .react-datepicker-wrapper {
-    width: 156px;
+    width: 10rem;
   }
   .react-datepicker__calendar-icon {
     fill: #bbbbcf;
@@ -216,10 +218,17 @@ const Fillter = styled.div`
 
 const Flexbox = styled.div`
   display: flex;
-  justify-content: space-between;
 `;
 
-const Datebox = styled.div``;
+const Datebox = styled.div`
+  margin-left: 1rem;
+  display: flex;
+`;
+
+const Buttonbox = styled.div`
+  margin-left: 1rem;
+  display: flex;
+`;
 
 interface inputProp {
   activeIndex: number;
@@ -227,7 +236,7 @@ interface inputProp {
 
 const DateInput = styled.input<inputProp>`
   box-sizing: border-box;
-  width: 156px;
+  width: 10rem;
   height: 37px;
   padding: 5px 10px;
   background: #fff;
@@ -248,9 +257,4 @@ const DateInput = styled.input<inputProp>`
   &:focus {
     outline: none;
   }
-`;
-
-const Buttonbox = styled.div`
-  margin-left: 24px;
-  display: flex;
 `;

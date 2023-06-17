@@ -75,6 +75,7 @@ const CustomSelect: React.FC<{
 export default CustomSelect;
 
 const SelectWrapper = styled.div<WidthOptionProps>`
+  margin-left: 1rem;
   box-sizing: border-box;
   border: 1px solid #bbbbcf;
 
