@@ -49,6 +49,12 @@ function RiderForm({ handleAddForm, isAddAppOpen }: AdminFormProp) {
     console.log(data);
   });
 
+  const [showModal, setShowModal] = useState(isAddAppOpen);
+
+  useEffect(() => {
+    setShowModal(isAddAppOpen);
+  }, [isAddAppOpen]);
+
   const [checkedList, setCheckedList] = useState<string[]>([]);
   const [isChecked, setIsChecked] = useState(false);
 
@@ -77,64 +83,69 @@ function RiderForm({ handleAddForm, isAddAppOpen }: AdminFormProp) {
   }, [checkedList]);
 
   return (
-    <FormWrapper
-      onClick={handleAddForm}
-      style={{ display: isAddAppOpen ? "flex" : "none" }}
-    >
-      <Modal onClick={(e) => e.stopPropagation()}>
-        <Formbox>
-          <Form onSubmit={onSubmit}>
-            <Titlebox>
-              <Title>기사를 등록합니다</Title>
-              <Flex>
-                <Canclebutton onClick={() => handleAddForm()}>
-                  취소
-                </Canclebutton>
-                <Submitbutton type="submit" value="+기사등록" />
-              </Flex>
-            </Titlebox>
+    <>
+      {isAddAppOpen && (
+        <FormWrapper showModal={showModal}>
+          <Modal showModal={showModal} onClick={(e) => e.stopPropagation()}>
+            <Formbox>
+              <Form onSubmit={onSubmit}>
+                <Titlebox>
+                  <Title>기사를 등록합니다</Title>
+                  <Flex>
+                    <Canclebutton onClick={() => handleAddForm()}>
+                      취소
+                    </Canclebutton>
+                    <Submitbutton type="submit" value="+기사등록" />
+                  </Flex>
+                </Titlebox>
 
-            <Divide></Divide>
+                <Divide></Divide>
 
-            <Flex>
-              <Thumbnail>
-                <Label>기사프로필</Label>
-                <Input type="file" {...register("img")} />
-              </Thumbnail>
-            </Flex>
+                <Flex>
+                  <Thumbnail>
+                    <Label>기사프로필</Label>
+                    <Input type="file" {...register("img")} />
+                  </Thumbnail>
+                </Flex>
 
-            <Flex>
-              <Thirdinputbox>
-                <Label>기사명</Label>
-                <Input type="text" {...register("version")} />
-              </Thirdinputbox>
+                <Flex>
+                  <Thirdinputbox>
+                    <Label>기사명</Label>
+                    <Input type="text" {...register("version")} />
+                  </Thirdinputbox>
 
-              <Thirdinputbox>
-                <Label>기사연락처</Label>
-                <Input type="text" {...register("number")} />
-              </Thirdinputbox>
+                  <Thirdinputbox>
+                    <Label>기사연락처</Label>
+                    <Input type="text" {...register("number")} />
+                  </Thirdinputbox>
 
-              <Thirdinputbox>
-                <Label>이메일</Label>
-                <Input type="text" {...register("code")} />
-              </Thirdinputbox>
-            </Flex>
+                  <Thirdinputbox>
+                    <Label>이메일</Label>
+                    <Input type="text" {...register("code")} />
+                  </Thirdinputbox>
+                </Flex>
 
-            <Flex>
-              <Oneinputbox>
-                <Label>활동지역</Label>
-                <Input type="text" {...register("korname")} />
-              </Oneinputbox>
-            </Flex>
-          </Form>
-        </Formbox>
-      </Modal>
-    </FormWrapper>
+                <Flex>
+                  <Oneinputbox>
+                    <Label>활동지역</Label>
+                    <Input type="text" {...register("korname")} />
+                  </Oneinputbox>
+                </Flex>
+              </Form>
+            </Formbox>
+          </Modal>
+        </FormWrapper>
+      )}
+    </>
   );
 }
 export default RiderForm;
 
-const FormWrapper = styled.div`
+interface WrapperProps {
+  showModal: boolean;
+}
+
+const FormWrapper = styled.div<WrapperProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,9 +157,9 @@ const FormWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
 `;
 
-const Modal = styled.div`
+const Modal = styled.div<WrapperProps>`
   width: 53%;
-  height: 35%;
+  height: 85%;
   background-color: white;
   padding: 20px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
@@ -156,6 +167,13 @@ const Modal = styled.div`
   justify-content: center;
 
   overflow-y: auto;
+
+  transition: 0.3s ease-in-out;
+  opacity: ${({ showModal }) => (showModal ? "1" : "0")};
+
+  transform: 0.3s ease-in-out;
+  transform: ${({ showModal }) =>
+    showModal ? "translateY(0%)" : "translateY(100%)"};
 `;
 
 const Form = styled.form`
@@ -270,6 +288,7 @@ const Greyfont4 = styled.div`
   color: #a8adc0;
   width: 180px;
   height: 30px;
+
   line-height: 100%;
   font-size: 16px;
   letter-spacing: -0.04em;

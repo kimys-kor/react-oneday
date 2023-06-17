@@ -52,6 +52,11 @@ function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
     console.log(data);
   });
 
+  const [activeButton1, setActiveButton1] = useState<number>(1);
+  const handleButtonClick1 = (id: number) => {
+    setActiveButton1(id);
+  };
+
   return (
     <Wrapper isDetailOpen={isDetailOpen}>
       <Modal isDetailOpen={isDetailOpen} onClick={(e) => e.stopPropagation()}>
@@ -135,10 +140,10 @@ function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
               <Titlebox>
                 <Buttonbox>
                   <BorderButton
-                    width={151}
-                    titles={["주문내역"]}
-                    activeIndex={activeIndex}
-                    handleButtonClick={handleButtonClick}
+                    title={"전체기간"}
+                    id={1}
+                    onClick={handleButtonClick1}
+                    activeId={activeButton1}
                   ></BorderButton>
                 </Buttonbox>
                 <CustomSelect
@@ -175,7 +180,7 @@ const Wrapper = styled.div<WrapperProps>`
   flex-direction: column;
   align-items: center;
   border-radius: 9px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
