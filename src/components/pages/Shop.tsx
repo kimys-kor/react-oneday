@@ -13,7 +13,7 @@ import { eaOptions } from "@/data/common";
 
 import ShopForm from "@components/Form/ShopForm";
 
-import BorderButton from "@/styles/BorderButton";
+import BorderButtonLX from "@/styles/BorderButtonLX";
 import {
   cityOptions,
   guOptions,
@@ -97,6 +97,11 @@ function Shop() {
     setAddAppOpen((prev) => !prev);
   };
 
+  const [activeButton1, setActiveButton1] = useState<number>(1);
+  const handleButtonClick1 = (id: number) => {
+    setActiveButton1(id);
+  };
+
   return (
     <Shopbox>
       <Headerbox>
@@ -107,35 +112,41 @@ function Shop() {
       <Content>
         <Layout>
           <Tabbox>
-            <BorderButton
-              width={152}
-              titles={["지역선택", "검색하기"]}
-              activeIndex={tabIndex}
-              handleButtonClick={handleTab}
-            ></BorderButton>
+            <BorderButtonLX
+              title={"지역선택"}
+              id={1}
+              onClick={handleButtonClick1}
+              activeId={activeButton1}
+            ></BorderButtonLX>
+            <BorderButtonLX
+              title={"검색하기"}
+              id={2}
+              onClick={handleButtonClick1}
+              activeId={activeButton1}
+            ></BorderButtonLX>
           </Tabbox>
           <Filterbox>
             {tabIndex == 0 ? (
               <Selectbox>
                 <CustomSelect
-                  width={200}
-                  height={53}
+                  width={13}
+                  height={2.5}
                   title={"지역"}
                   optionData={cityOptions}
                   currentValue={currentCity}
                   setCurrentValue={setCurrentCity}
                 ></CustomSelect>
                 <CustomSelect
-                  width={200}
-                  height={53}
+                  width={13}
+                  height={2.5}
                   title={"구"}
                   optionData={guOptions}
                   currentValue={currentGu}
                   setCurrentValue={setCurrentGu}
                 ></CustomSelect>
                 <CustomSelect
-                  width={200}
-                  height={53}
+                  width={13}
+                  height={2.5}
                   title={"동"}
                   optionData={dongOptions}
                   currentValue={currentDong}
@@ -143,8 +154,8 @@ function Shop() {
                 ></CustomSelect>
 
                 <CustomSelect
-                  width={200}
-                  height={53}
+                  width={13}
+                  height={2.5}
                   title={"상점선택"}
                   optionData={shopOptions}
                   currentValue={currentShop}
@@ -158,8 +169,8 @@ function Shop() {
           <Betweenbox>
             <Title>{}</Title>
             <CustomSelect
-              width={90}
-              height={37}
+              width={13}
+              height={2.5}
               optionData={eaOptions}
               currentValue={currentEa}
               setCurrentValue={setCurrentEa}

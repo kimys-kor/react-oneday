@@ -11,7 +11,7 @@ import { eaOptions } from "@/data/common";
 
 import ProductForm from "@components/Form/ProductForm";
 
-import BorderButton from "@/styles/BorderButton";
+import BorderButtonLX from "@/styles/BorderButtonLX";
 import {
   cityOptions,
   guOptions,
@@ -91,6 +91,11 @@ function Product() {
     console.log(data);
   });
 
+  const [activeButton1, setActiveButton1] = useState<number>(1);
+  const handleButtonClick1 = (id: number) => {
+    setActiveButton1(id);
+  };
+
   return (
     <Shopbox>
       <Headerbox>
@@ -101,34 +106,35 @@ function Product() {
       <Content>
         <Layout>
           <Tabbox>
-            <BorderButton
-              width={9.5}
+            <BorderButtonLX
               title={"지역선택"}
-              handleButtonClick={handleTab}
-            ></BorderButton>
+              id={1}
+              onClick={handleButtonClick1}
+              activeId={activeButton1}
+            ></BorderButtonLX>
           </Tabbox>
           <Filterbox>
             {tabIndex == 0 ? (
               <Selectbox>
                 <CustomSelect
-                  width={200}
-                  height={53}
+                  width={10}
+                  height={2.5}
                   title={"지역"}
                   optionData={cityOptions}
                   currentValue={currentCity}
                   setCurrentValue={setCurrentCity}
                 ></CustomSelect>
                 <CustomSelect
-                  width={200}
-                  height={53}
+                  width={10}
+                  height={2.5}
                   title={"구"}
                   optionData={guOptions}
                   currentValue={currentGu}
                   setCurrentValue={setCurrentGu}
                 ></CustomSelect>
                 <CustomSelect
-                  width={200}
-                  height={53}
+                  width={10}
+                  height={2.5}
                   title={"동"}
                   optionData={dongOptions}
                   currentValue={currentDong}
@@ -136,8 +142,8 @@ function Product() {
                 ></CustomSelect>
 
                 <CustomSelect
-                  width={220}
-                  height={53}
+                  width={10}
+                  height={2.5}
                   title={"상점선택"}
                   optionData={shopOptions}
                   currentValue={currentShop}

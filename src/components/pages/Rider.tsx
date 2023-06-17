@@ -123,8 +123,8 @@ function Rider() {
             <SearchInput></SearchInput>
 
             <CustomSelect
-              width={90}
-              height={37}
+              width={13}
+              height={2.5}
               optionData={eaOptions}
               currentValue={currentEa}
               setCurrentValue={setCurrentEa}

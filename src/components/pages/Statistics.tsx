@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import { ko } from "date-fns/esm/locale";
 
 import CustomSelect from "@/styles/CustomSelect";
-import BorderButton from "@/styles/BorderButton";
+import BorderButtonLX from "@/styles/BorderButtonLX";
 
 import { ReactComponent as Viewbar } from "@statics/images/statistics/viewbar.svg";
 import { ReactComponent as Viewnumber } from "@statics/images/statistics/viewnumber.svg";
@@ -74,28 +74,54 @@ function Statistics() {
     });
   };
 
+  const [activeButton1, setActiveButton1] = useState<number>(1);
+  const handleButtonClick1 = (id: number) => {
+    setActiveButton1(id);
+  };
+
+  const [activeButton2, setActiveButton2] = useState<number>(1);
+  const handleButtonClick2 = (id: number) => {
+    setActiveButton1(id);
+  };
+
+  const [activeButton3, setActiveButton3] = useState<number>(1);
+  const handleButtonClick3 = (id: number) => {
+    setActiveButton1(id);
+  };
+
+  const [activeButton4, setActiveButton4] = useState<number>(1);
+  const handleButtonClick4 = (id: number) => {
+    setActiveButton1(id);
+  };
+
   return (
     <Box>
       <Wrapper>
         <Layout>
           <Tabbox>
-            <BorderButton
-              width={152}
-              titles={titleStatistics}
-              activeIndex={statisticsIndex}
-              handleButtonClick={handleStatisticsIndex}
-            ></BorderButton>
+            <BorderButtonLX
+              title={"주문건수 통계"}
+              id={1}
+              onClick={handleButtonClick1}
+              activeId={activeButton1}
+            ></BorderButtonLX>
+            <BorderButtonLX
+              title={"주문금액 통계"}
+              id={2}
+              onClick={handleButtonClick1}
+              activeId={activeButton1}
+            ></BorderButtonLX>
           </Tabbox>
 
           {statisticsIndex == 0 && (
             <>
               <DateFilter>
-                <BorderButton
-                  width={152}
-                  title={dateFilter}
-                  activeIndex={dateIndex}
-                  handleButtonClick={handleDateIndex}
-                ></BorderButton>
+                <BorderButtonLX
+                  title={"전체"}
+                  id={1}
+                  onClick={handleButtonClick2}
+                  activeId={activeButton2}
+                ></BorderButtonLX>
               </DateFilter>
 
               <Fillter>
@@ -180,12 +206,18 @@ function Statistics() {
                   )}
 
                   <Searchbox>
-                    <BorderButton
-                      width={152}
-                      titles={searchFilter}
-                      activeIndex={searchIndex}
-                      handleButtonClick={handleSearchIndex}
-                    ></BorderButton>
+                    <BorderButtonLX
+                      title={"누적회원점유율"}
+                      id={1}
+                      onClick={handleButtonClick3}
+                      activeId={activeButton3}
+                    ></BorderButtonLX>
+                    <BorderButtonLX
+                      title={"누적적립금점유율"}
+                      id={2}
+                      onClick={handleButtonClick3}
+                      activeId={activeButton3}
+                    ></BorderButtonLX>
                   </Searchbox>
                   <Amount>기간통계 | 579,940</Amount>
                 </Datewrapper>
@@ -234,12 +266,18 @@ function Statistics() {
             <>
               <Fillter>
                 <Flexbox>
-                  <BorderButton
-                    width={152}
-                    titles={chartFilter}
-                    activeIndex={chartIndex}
-                    handleButtonClick={handleChartIndex}
-                  ></BorderButton>
+                  <BorderButtonLX
+                    title={"누적회원점유율"}
+                    id={1}
+                    onClick={handleButtonClick3}
+                    activeId={activeButton3}
+                  ></BorderButtonLX>
+                  <BorderButtonLX
+                    title={"누적적립금점유율"}
+                    id={2}
+                    onClick={handleButtonClick3}
+                    activeId={activeButton3}
+                  ></BorderButtonLX>
                 </Flexbox>
 
                 <Viewbox>

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 
-import BorderButton from "@/styles/BorderButton";
+import BorderButtonLX from "@/styles/BorderButtonLX";
 
 import { tabOrders, ordersData } from "@/data/common";
 import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anothericon.svg";
@@ -54,6 +54,18 @@ function Orders() {
     setOpenAnother(index);
   };
 
+  const tab = [
+    "주문 현황",
+    "일자별 주문 검색",
+    "미완료 주문 관리",
+    "사고 주문 관리",
+  ];
+
+  const [activeButton1, setActiveButton1] = useState<number>(1);
+  const handleButtonClick1 = (id: number) => {
+    setActiveButton1(id);
+  };
+
   return (
     <Box>
       <Headerbox>
@@ -64,12 +76,14 @@ function Orders() {
       <Wrapper>
         <Layout>
           <Tabbox>
-            <BorderButton
-              width={9.5}
-              titles={tabOrders}
-              activeIndex={tabIndex}
-              handleButtonClick={handleTab}
-            ></BorderButton>
+            {tab.map((item, index) => (
+              <BorderButtonLX
+                title={item}
+                id={index}
+                onClick={handleButtonClick1}
+                activeId={activeButton1}
+              ></BorderButtonLX>
+            ))}
           </Tabbox>
 
           {tabIndex == 0 && (

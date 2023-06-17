@@ -217,7 +217,7 @@ const Content = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   background-color: #fff;
   padding: 1.5rem 3rem;
 `;
@@ -229,9 +229,9 @@ const Title = styled.div`
 `;
 
 const Fillter = styled.div`
-  width: 100%;
+  max-width: 120rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   gap: 1rem;
 
