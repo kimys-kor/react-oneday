@@ -56,9 +56,14 @@ function Member() {
 
   const [currentEa, setCurrentEa] = useState(eaOptions[0].value);
 
-  const [activeButton, setActiveButton] = useState<number | null>(0);
-  const handleButtonClick = (id: number) => {
-    setActiveButton(id);
+  const [activeButton1, setActiveButton1] = useState<number>(1);
+  const handleButtonClick1 = (id: number) => {
+    setActiveButton1(id);
+  };
+
+  const [activeButton2, setActiveButton2] = useState<number>(1);
+  const handleButtonClick2 = (id: number) => {
+    setActiveButton2(id);
   };
 
   return (
@@ -69,13 +74,12 @@ function Member() {
 
       <Content>
         <Fillter>
-          <Flexbox>
+          <div className="flex gap-5">
             <BorderButton
-              width={4.8}
-              title={"전체"}
+              title={"전체기간"}
               id={1}
-              onClick={handleButtonClick}
-              activeId={activeButton}
+              onClick={handleButtonClick1}
+              activeId={activeButton1}
             ></BorderButton>
 
             <Datebox>
@@ -110,35 +114,54 @@ function Member() {
                 }
               />
             </Datebox>
+            <div className="flex w-80">
+              <BorderButton
+                title={"전체"}
+                id={1}
+                onClick={handleButtonClick2}
+                activeId={activeButton2}
+              ></BorderButton>
+              <BorderButton
+                title={"활성"}
+                id={2}
+                onClick={handleButtonClick2}
+                activeId={activeButton2}
+              ></BorderButton>
+              <BorderButton
+                title={"비활성"}
+                id={3}
+                onClick={handleButtonClick2}
+                activeId={activeButton2}
+              ></BorderButton>
+              <BorderButton
+                title={"휴면"}
+                id={4}
+                onClick={handleButtonClick2}
+                activeId={activeButton2}
+              ></BorderButton>
+            </div>
+          </div>
 
-            {/* <BorderButton
-              width={4.8}
-              titles={itemFilter}
-              activeIndex={filterIndex}
-              handleButtonClick={handleFilter}
-            ></BorderButton> */}
-          </Flexbox>
-
-          {/* <Flexbox>
+          <div className="flex gap-5">
             <SearchInput></SearchInput>
 
             <CustomSelect
-              width={8}
-              height={37}
+              width={6}
+              height={2.5}
               optionData={eaOptions}
               currentValue={currentEa}
               setCurrentValue={setCurrentEa}
             ></CustomSelect>
-          </Flexbox> */}
+          </div>
         </Fillter>
 
-        {/* <MemberBoard
+        <MemberBoard
           boardMenu={memberBoardTitle}
           boardData={memberData}
           handleDetailOpen={handleDetailOpen}
           openAnother={openAnother}
           handleOpenIndex={handleOpenIndex}
-        ></MemberBoard> */}
+        ></MemberBoard>
       </Content>
 
       {/* <MemberDetail
@@ -203,7 +226,7 @@ const Fillter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 3rem;
+  gap: 1rem;
 
   .react-datepicker-wrapper {
     width: 10rem;
@@ -215,16 +238,16 @@ const Fillter = styled.div`
     position: absolute;
     top: 3px;
   }
-`;
 
-const Flexbox = styled.div`
-  width: 100%;
-  display: flex;
-  gap: 1rem;
+  @media (max-width: 1530px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const Datebox = styled.div`
   display: flex;
+  width: 14rem;
 `;
 
 interface inputProp {
@@ -233,7 +256,7 @@ interface inputProp {
 
 const DateInput = styled.input<inputProp>`
   box-sizing: border-box;
-  width: 10rem;
+  width: 7rem;
   height: 2.3125rem;
   padding: 5px 10px;
   background: #fff;

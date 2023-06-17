@@ -46,7 +46,7 @@ const CustomSelect: React.FC<{
     >
       {title && (
         <Label>
-          <Greyfont1>{title}</Greyfont1>
+          <GreyFont1>{title}</GreyFont1>
           <Greyfont2>|</Greyfont2>
           {currentValue}
         </Label>
@@ -74,22 +74,22 @@ const CustomSelect: React.FC<{
 
 export default CustomSelect;
 
-const SelectWrapper = styled.div<WidthOptionProps>`
+interface SelectWrapperProps extends WidthOptionProps {
+  height: number;
+}
+
+const SelectWrapper = styled.div<SelectWrapperProps>`
   box-sizing: border-box;
   border: 1px solid #bbbbcf;
 
   position: relative;
-  width: ${({ width }) => width}rem;
 
-  height: ${({ height }) => height}px;
-  line-height: ${({ height }) => height}px;
+  min-width: ${({ width }) => width}rem;
+
+  height: ${({ height }) => height}rem;
+  line-height: ${({ height }) => height}rem;
 
   background-color: #fff;
-  font-size: 16px;
-  color: #1e2026;
-
-  text-overflow: ellipsis;
-  white-space: nowrap;
 
   cursor: pointer;
   &::before {
@@ -104,22 +104,54 @@ const SelectWrapper = styled.div<WidthOptionProps>`
 const Label = styled.label`
   margin-left: 4px;
   cursor: pointer;
-  color: #a8adc0;
+
+  font-weight: 600;
+  font-size: 14px;
+  color: #1e2026;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
-const Greyfont1 = styled.p`
+const BlackFont = styled.p`
+  display: inline;
+  color: ${({ color }) => color};
+  font-weight: 400;
+  margin-left: 18px;
+  margin-right: 13px;
+
+  font-weight: 600;
+  font-size: 14px;
+  color: #1e2026;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+const GreyFont1 = styled.p`
   display: inline;
   color: #a8adc0;
   font-weight: 400;
   margin-left: 18px;
   margin-right: 13px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
+
 const Greyfont2 = styled.p`
   display: inline;
   color: #a8adc0;
   font-weight: 400;
 
   margin-right: 11px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const SelectOptions = styled.ul<SelectOptionsProps>`
@@ -128,28 +160,33 @@ const SelectOptions = styled.ul<SelectOptionsProps>`
   list-style: none;
   box-sizing: border-box;
   border: 1px solid #dbddeb;
-  top: -18px;
+  top: -3px;
   left: -1px;
-  width: ${({ width }) => width}px;
+  width: ${({ width }) => width}rem;
   display: ${(props) => (props.show ? "block" : "none")};
   padding: 0;
   background-color: #fff;
 `;
+
 const Option = styled.li<SelectOptionsProps>`
   box-sizing: border-box;
   width: 100%;
   border-bottom: 0.5px solid #dbddeb;
   text-align: center;
-  height: ${({ height }) => height}px;
-  line-height: ${({ height }) => height}px;
-  font-size: 15px;
-  transition: background-color 0.2s ease-in;
+  height: ${({ height }) => height}rem;
+  line-height: ${({ height }) => height}rem;
+  border: 1px solid transparent;
+
+  font-weight: 600;
+  font-size: 14px;
+  color: #1e2026;
+
+  transition: background-color 0.01s ease-in;
   &:last-child {
     border-bottom: none;
   }
 
   &:hover {
-    background-color: #595959;
-    color: #fff;
+    border: 1px solid #ff6622;
   }
 `;
