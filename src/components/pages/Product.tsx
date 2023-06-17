@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-import CustomSelect from "@styles/selectbox/CustomSelect";
+import CustomSelect from "@/styles/CustomSelect";
 import SearchInput from "@components/common/SearchInput";
 
 import ProductDetail from "@components/details/ProductDetail";
@@ -11,7 +11,7 @@ import { eaOptions } from "@data/selectbox/selectboxData";
 
 import ProductForm from "@components/Form/ProductForm";
 
-import BorderButton from "@styles/button/BorderButton";
+import BorderButton from "@/styles/BorderButton";
 import {
   cityOptions,
   guOptions,

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-import CustomSelect from "@styles/selectbox/CustomSelect";
+import CustomSelect from "@/styles/CustomSelect";
 import SearchInput from "@components/common/SearchInput";
 
 import RiderDetail from "@components/details/RiderDetail";
@@ -11,7 +11,7 @@ import RiderForm from "@components/Form/RiderForm";
 
 import { dateFilter, itemFilter } from "@data/button/buttonData";
 import { riderBoardTitle, riderData } from "@/data/riders/riderData";
-import BorderButton from "@styles/button/BorderButton";
+import BorderButton from "@/styles/BorderButton";
 
 import DatePicker from "react-datepicker";
 import { ko } from "date-fns/esm/locale";

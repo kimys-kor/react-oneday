@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useForm, Resolver } from "react-hook-form";
 
-import Checkbox from "@/styles/checkbox/Checkbox";
+import Checkbox from "@/styles/Checkbox";
 
 type AppFormData = {
   id: string;

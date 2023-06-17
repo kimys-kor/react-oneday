@@ -75,12 +75,11 @@ const CustomSelect: React.FC<{
 export default CustomSelect;
 
 const SelectWrapper = styled.div<WidthOptionProps>`
-  margin-left: 1rem;
   box-sizing: border-box;
   border: 1px solid #bbbbcf;
 
   position: relative;
-  width: ${({ width }) => width}px;
+  width: ${({ width }) => width}rem;
 
   height: ${({ height }) => height}px;
   line-height: ${({ height }) => height}px;
@@ -89,7 +88,7 @@ const SelectWrapper = styled.div<WidthOptionProps>`
   font-family: "MinSans-Regular";
 
   font-size: 16px;
-  color: 1e2026;
+  color: #1e2026;
 
   text-overflow: ellipsis;
   white-space: nowrap;

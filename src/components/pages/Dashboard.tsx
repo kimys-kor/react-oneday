@@ -5,7 +5,7 @@ import Piechart from "@components/chart/Piechart";
 import Linechart from "@components/chart//Linechart";
 
 import Summary from "@components/common/Summary";
-import CustomSelect from "@/styles/selectbox/CustomSelect";
+import CustomSelect from "@/styles/CustomSelect";
 
 import { corpOptions, summaryList } from "@data/dashboard/dashboardData";
 import { pointOccupationData, color } from "@/data/chart/piechartData";
@@ -109,17 +109,6 @@ const Headerbox = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
   }
-`;
-
-const Selectbox = styled.div`
-  max-width: 30rem;
-  height: 3.3125rem;
-`;
-
-const Summarybox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 1.5rem;
 `;
 
 const Chartbox1 = styled.div`

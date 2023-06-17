@@ -35,9 +35,8 @@ const SearchInput: React.FC = () => {
 export default SearchInput;
 
 const InputContainer = styled.div`
-  margin-left: 1rem;
   position: relative;
-  width: 30rem;
+  width: 15rem;
   height: 2.4375rem;
 
   display: flex;

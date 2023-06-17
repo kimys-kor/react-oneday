@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import BorderButton from "@/styles/button/BorderButton";
-import CustomSelect from "@/styles/selectbox/CustomSelect";
+import BorderButton from "@/styles/BorderButton";
+import CustomSelect from "@/styles/CustomSelect";
 
 import { eaOptions } from "@/data/selectbox/selectboxData";
 import { shop } from "@/data/shop/shopData";

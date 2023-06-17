@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import BorderButton from "@styles/button/BorderButton";
+import BorderButton from "@/styles/BorderButton";
 
 import { eaOptions } from "@data/selectbox/selectboxData";
 import { product } from "@data/product/productData";

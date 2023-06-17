@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { css } from "styled-components";
 
-import CustomSelect from "@styles/selectbox/CustomSelect";
+import CustomSelect from "@/styles/CustomSelect";
 import SearchInput from "@components/common/SearchInput";
 import Loading from "@components/common/Loading";
 import MemberDetail from "@components/details/MemberDetail";
@@ -15,7 +15,7 @@ import {
 
 import { dateFilter, itemFilter } from "@data/button/buttonData";
 import { memberBoardTitle, memberData } from "@data/member/memberData";
-import BorderButton from "@styles/button/BorderButton";
+import BorderButton from "@/styles/BorderButton";
 
 import DatePicker from "react-datepicker";
 import { ko } from "date-fns/esm/locale";
@@ -69,7 +69,7 @@ function Member() {
         <Fillter>
           <Flexbox>
             <BorderButton
-              width={76}
+              width={4.8}
               titles={dateFilter}
               activeIndex={dateIndex}
               handleButtonClick={setDate}
@@ -110,7 +110,7 @@ function Member() {
 
             <Buttonbox>
               <BorderButton
-                width={80}
+                width={4.8}
                 titles={itemFilter}
                 activeIndex={filterIndex}
                 handleButtonClick={handleFilter}
@@ -118,17 +118,17 @@ function Member() {
             </Buttonbox>
           </Flexbox>
 
-          <Flexbox>
+          {/* <Flexbox>
             <SearchInput></SearchInput>
 
             <CustomSelect
-              width={90}
+              width={8}
               height={37}
               optionData={eaOptions}
               currentValue={currentEa}
               setCurrentValue={setCurrentEa}
             ></CustomSelect>
-          </Flexbox>
+          </Flexbox> */}
         </Fillter>
 
         <MemberBoard
@@ -192,7 +192,6 @@ const Content = styled.div`
 `;
 
 const Title = styled.div`
-  margin-left: 20px;
   font-size: 25px;
   display: flex;
   justify-content: space-between;
@@ -203,6 +202,7 @@ const Fillter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 3rem;
 
   .react-datepicker-wrapper {
     width: 10rem;
@@ -218,15 +218,14 @@ const Fillter = styled.div`
 
 const Flexbox = styled.div`
   display: flex;
+  gap: 1rem;
 `;
 
 const Datebox = styled.div`
-  margin-left: 1rem;
   display: flex;
 `;
 
 const Buttonbox = styled.div`
-  margin-left: 1rem;
   display: flex;
 `;
 
@@ -237,7 +236,7 @@ interface inputProp {
 const DateInput = styled.input<inputProp>`
   box-sizing: border-box;
   width: 10rem;
-  height: 37px;
+  height: 2.3125rem;
   padding: 5px 10px;
   background: #fff;
   border: 1px solid #bbbbcf;

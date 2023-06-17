@@ -32,13 +32,12 @@ function BorderButton({
 
 export default BorderButton;
 
-const Button = styled.div<ButtonProps>`
-  line-height: 37px;
+const Button = styled.button<ButtonProps>`
   text-align: center;
   font-size: 16px;
   font-weight: 300;
-  width: ${({ width }) => width}px;
-  height: 37px;
+  width: ${({ width }) => width}rem;
+  height: 2.3125rem;
 
   overflow: hidden;
   text-overflow: ellipsis;
