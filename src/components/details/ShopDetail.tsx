@@ -4,10 +4,10 @@ import styled from "styled-components";
 import BorderButton from "@/styles/BorderButton";
 import CustomSelect from "@/styles/CustomSelect";
 
-import { eaOptions } from "@/data/selectbox/selectboxData";
-import { shop } from "@/data/shop/shopData";
+import { eaOptions } from "@/data/common";
+import { shop } from "@/data/common";
 import ShopOrderBoard from "@/components/board/ShopOrderBoard";
-import { shopOrderBoardTitle, shopOrdertBoardData } from "@data/shop/shopData";
+import { shopOrderBoardTitle, shopOrdertBoardData } from "@/data/common";
 
 interface ShopDetailProps {
   onClose: () => void;

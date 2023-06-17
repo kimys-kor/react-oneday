@@ -8,8 +8,8 @@ import ShopDetail from "@components/details/ShopDetail";
 import ShopBoard from "@components/board/ShopBoard";
 import { useForm, Resolver } from "react-hook-form";
 
-import { shopData, shopBoardTitle } from "@data/shop/shopData";
-import { eaOptions } from "@data/selectbox/selectboxData";
+import { shopData, shopBoardTitle } from "@/data/common";
+import { eaOptions } from "@/data/common";
 
 import ShopForm from "@components/Form/ShopForm";
 
@@ -19,7 +19,7 @@ import {
   guOptions,
   dongOptions,
   shopOptions,
-} from "@data/selectbox/selectboxData";
+} from "@/data/common";
 import "react-datepicker/dist/react-datepicker.css";
 
 type FormData = {
@@ -152,7 +152,7 @@ function Shop() {
                 ></CustomSelect>
               </Selectbox>
             ) : (
-              <SearchInput width={"400px"} height={"53px"}></SearchInput>
+              <SearchInput></SearchInput>
             )}
           </Filterbox>
           <Betweenbox>

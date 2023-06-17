@@ -7,8 +7,7 @@ import Linechart from "@components/chart//Linechart";
 import Summary from "@components/common/Summary";
 import CustomSelect from "@/styles/CustomSelect";
 
-import { corpOptions, summaryList } from "@data/dashboard/dashboardData";
-import { pointOccupationData, color } from "@/data/chart/piechartData";
+import { pointOccupationData, color } from "@/data/chartdata/piechartData";
 
 function Dashboard() {
   return (

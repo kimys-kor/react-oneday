@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import BorderButton from "@/styles/BorderButton";
 
-import { tabOrders, ordersData } from "@data/orders/ordersData";
+import { tabOrders, ordersData } from "@/data/common";
 import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anothericon.svg";
 
 function Orders() {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { useUserStore } from "@data/status/status";
+import { useUserStore } from "@/data/status";
 import { useForm, Resolver } from "react-hook-form";
 
 import {
@@ -9,7 +9,7 @@ import {
   footertext1,
   footertext2,
   footertext3,
-} from "@/data/login/loginData";
+} from "@/data/common";
 
 import loginicon from "@images/login/loginicon.png";
 import logincontact from "@images/login/logincontact.png";

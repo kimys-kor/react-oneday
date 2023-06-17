@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 import BorderButton from "@/styles/BorderButton";
 
-import { eaOptions } from "@data/selectbox/selectboxData";
-import { product } from "@data/product/productData";
+import { eaOptions } from "@/data/common";
+import { product } from "@/data/common";
 
 interface ShopDetailProps {
   onClose: () => void;

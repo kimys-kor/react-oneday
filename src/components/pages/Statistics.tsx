@@ -19,18 +19,18 @@ import {
   chartFilter,
   yearOptions,
   monthOptions,
-} from "@/data/statistics/statisticsData";
+} from "@/data/common";
 
 import {
   horizontalData,
   horizontalModel,
-} from "@/data/chart/HorizontalchartData";
+} from "@/data/chartdata/HorizontalchartData";
 
 import {
   memberOccupationData,
   pointOccupationData,
   color,
-} from "@/data/chart/piechartData";
+} from "@/data/chartdata/piechartData";
 
 function Statistics() {
   const [statisticsIndex, setStatisticsIndex] = useState<number>(0);

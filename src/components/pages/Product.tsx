@@ -6,8 +6,8 @@ import SearchInput from "@components/common/SearchInput";
 
 import ProductDetail from "@components/details/ProductDetail";
 import { useForm, Resolver } from "react-hook-form";
-import { productData, productBoardTitle } from "@data/product/productData";
-import { eaOptions } from "@data/selectbox/selectboxData";
+import { productData, productBoardTitle } from "@/data/common";
+import { eaOptions } from "@/data/common";
 
 import ProductForm from "@components/Form/ProductForm";
 
@@ -17,7 +17,7 @@ import {
   guOptions,
   dongOptions,
   shopOptions,
-} from "@data/selectbox/selectboxData";
+} from "@/data/common";
 import "react-datepicker/dist/react-datepicker.css";
 import ProductBoard from "@components/board/ProductBoard";
 
@@ -146,7 +146,7 @@ function Product() {
                 ></CustomSelect>
               </Selectbox>
             ) : (
-              <SearchInput width={"400px"} height={"53px"}></SearchInput>
+              <SearchInput></SearchInput>
             )}
           </Filterbox>
 

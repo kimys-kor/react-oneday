@@ -6,11 +6,11 @@ import SearchInput from "@components/common/SearchInput";
 
 import RiderDetail from "@components/details/RiderDetail";
 import RiderBoard from "@components/board/RiderBoard";
-import { eaOptions } from "@data/selectbox/selectboxData";
+import { eaOptions } from "@/data/common";
 import RiderForm from "@components/Form/RiderForm";
 
-import { dateFilter, itemFilter } from "@data/button/buttonData";
-import { riderBoardTitle, riderData } from "@/data/riders/riderData";
+import { dateFilter, itemFilter } from "@/data/common";
+import { riderBoardTitle, riderData } from "@/data/common";
 import BorderButton from "@/styles/BorderButton";
 
 import DatePicker from "react-datepicker";
@@ -120,7 +120,7 @@ function Rider() {
                 handleButtonClick={handleFilter}
               ></BorderButton>
             </Buttonbox>
-            <SearchInput width="150px" height="39px"></SearchInput>
+            <SearchInput></SearchInput>
 
             <CustomSelect
               width={90}

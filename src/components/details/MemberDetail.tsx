@@ -4,14 +4,11 @@ import styled from "styled-components";
 import BorderButton from "@styles/BorderButton";
 import CustomSelect from "@styles/CustomSelect";
 import { useForm, Resolver } from "react-hook-form";
-import { eaOptions } from "@data/selectbox/selectboxData";
+import { eaOptions } from "@/data/common";
 
-import { member } from "@data/member/memberData";
+import { member } from "@/data/common";
 import MemberPointBoard from "@components/board/MemberPointBoard";
-import {
-  memberPointBoardTitle,
-  memberPointBoardData,
-} from "@data/member/memberData";
+import { memberPointBoardTitle, memberPointBoardData } from "@/data/common";
 
 type FormData = {
   savingPoint: number;

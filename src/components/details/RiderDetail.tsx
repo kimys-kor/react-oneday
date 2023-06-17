@@ -4,14 +4,11 @@ import styled from "styled-components";
 import BorderButton from "@/styles/BorderButton";
 import CustomSelect from "@/styles/CustomSelect";
 import { useForm, Resolver } from "react-hook-form";
-import { eaOptions } from "@/data/selectbox/selectboxData";
+import { eaOptions } from "@/data/common";
 
-import { rider } from "@/data/riders/riderData";
+import { rider } from "@/data/common";
 import RiderOrderBoard from "@/components/board/RiderOrderBoard";
-import {
-  riderOrderBoardTitle,
-  riderOrderBoardData,
-} from "@/data/riders/riderData";
+import { riderOrderBoardTitle, riderOrderBoardData } from "@/data/common";
 
 type FormData = {
   savingPoint: number;

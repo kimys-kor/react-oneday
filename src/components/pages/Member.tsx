@@ -7,14 +7,10 @@ import SearchInput from "@components/common/SearchInput";
 import Loading from "@components/common/Loading";
 import MemberDetail from "@components/details/MemberDetail";
 import MemberBoard from "@components/board/MemberBoard";
-import {
-  corpOptions,
-  appOptions,
-  eaOptions,
-} from "@/data/selectbox/selectboxData";
+import { corpOptions, appOptions, eaOptions } from "@/data/common";
 
-import { dateFilter, itemFilter } from "@data/button/buttonData";
-import { memberBoardTitle, memberData } from "@data/member/memberData";
+import { dateFilter, itemFilter } from "@/data/common";
+import { memberBoardTitle, memberData } from "@/data/common";
 import BorderButton from "@/styles/BorderButton";
 
 import DatePicker from "react-datepicker";
