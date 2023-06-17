@@ -47,11 +47,14 @@ input[type="number"] {
 body {
   margin: 0;
   background-color: #f4f5f9;
-  overflow-x: hidden;
 }
 
 a {
   width: 100%;
   color: inherit;
   text-decoration: none;
+}
+
+button {
+  all: unset;
 }

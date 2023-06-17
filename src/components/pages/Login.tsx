@@ -71,7 +71,7 @@ function Login() {
         <Form onSubmit={onSubmit}>
           <Titlebox>
             <Title>Admin Login to ONEDAY</Title>
-            <Divide>━━━━━━━━━━━━━</Divide>
+            <Divide></Divide>
           </Titlebox>
 
           <Input
