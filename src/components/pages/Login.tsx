@@ -224,6 +224,7 @@ const Divide = styled.div`
 `;
 
 const Rightbox = styled.div`
+  box-sizing: border-box;
   width: 50%;
   background-color: #fff;
 
