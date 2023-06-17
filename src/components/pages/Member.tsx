@@ -24,7 +24,7 @@ function Member() {
   const setDate = (index: number) => {
     setDateIndex(index === dateIndex ? null : index);
   };
-  // 헤더 상태필터
+  // 멤버 상태필터
   const [filterIndex, setFilterIndex] = useState<number | null>(0);
   const handleFilter = (index: number) => {
     setFilterIndex(index === filterIndex ? null : index);
@@ -104,14 +104,12 @@ function Member() {
               />
             </Datebox>
 
-            <Buttonbox>
-              <BorderButton
-                width={4.8}
-                titles={itemFilter}
-                activeIndex={filterIndex}
-                handleButtonClick={handleFilter}
-              ></BorderButton>
-            </Buttonbox>
+            <BorderButton
+              width={4.8}
+              titles={itemFilter}
+              activeIndex={filterIndex}
+              handleButtonClick={handleFilter}
+            ></BorderButton>
           </Flexbox>
 
           {/* <Flexbox>
@@ -136,11 +134,11 @@ function Member() {
         ></MemberBoard>
       </Content>
 
-      <MemberDetail
+      {/* <MemberDetail
         onClose={handleDetailClose}
         isDetailOpen={isDetailOpen}
         member={memberData[activeItem]}
-      />
+      /> */}
     </Wrapper>
   );
 }
@@ -218,10 +216,6 @@ const Flexbox = styled.div`
 `;
 
 const Datebox = styled.div`
-  display: flex;
-`;
-
-const Buttonbox = styled.div`
   display: flex;
 `;
 

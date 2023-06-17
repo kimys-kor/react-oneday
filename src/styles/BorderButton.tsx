@@ -1,11 +1,14 @@
 import styled, { css } from "styled-components";
 import { Dispatch, SetStateAction } from "react";
 
-import { BorderButtonProps, ButtonProps } from "@/data/buttonData";
-
 interface LiftedProps {
   activeIndex: number | null;
   handleButtonClick: (index: number) => void;
+}
+
+export interface BorderButtonProps {
+  titles: string[];
+  width: number;
 }
 
 function BorderButton({
@@ -15,7 +18,7 @@ function BorderButton({
   handleButtonClick,
 }: BorderButtonProps & LiftedProps) {
   return (
-    <>
+    <ButtonBox>
       {titles.map((title, index) => (
         <Button
           key={index}
@@ -26,18 +29,28 @@ function BorderButton({
           {title}
         </Button>
       ))}
-    </>
+    </ButtonBox>
   );
 }
 
 export default BorderButton;
 
+const ButtonBox = styled.div`
+  box-sizing: border-box;
+  transition: all 0.01s linear;
+`;
+
+export interface ButtonProps {
+  active: boolean;
+  width: number;
+}
+
 const Button = styled.button<ButtonProps>`
   text-align: center;
+
   font-size: 16px;
-  font-weight: 300;
   width: ${({ width }) => width}rem;
-  height: 2.3125rem;
+  height: 37px;
 
   overflow: hidden;
   text-overflow: ellipsis;
@@ -47,6 +60,12 @@ const Button = styled.button<ButtonProps>`
   background-color: #ffffff;
   cursor: pointer;
   margin-right: 0; // remove the margin on the last button
+  transition: all 0.1s linear;
+
+  &:hover {
+    border-color: #ff6622; // set border color to #ff6622 for active button
+    color: #ff6622;
+  }
 
   ${({ active }) =>
     active &&

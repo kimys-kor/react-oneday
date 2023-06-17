@@ -247,7 +247,6 @@ const Titlebox = styled.div`
 const Label = styled.div`
   color: #a8adc0;
   font-size: 16px;
-  font-family: "MinSans-Regular";
 `;
 
 const Title = styled.div`
@@ -271,8 +270,6 @@ const Greyfont4 = styled.div`
   color: #a8adc0;
   width: 180px;
   height: 30px;
-
-  font-family: "MinSans-Bold";
   line-height: 100%;
   font-size: 16px;
   letter-spacing: -0.04em;

@@ -175,7 +175,6 @@ const Footer = styled.div`
 
 const Footerfont1 = styled.p`
   margin: 0;
-  font-family: "minsans";
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 19px;
@@ -263,7 +262,6 @@ const Submitbutton = styled.input`
   border: none;
   height: 3.25rem;
   color: #fff;
-  font-family: "minsans";
   font-size: 0.875rem;
   letter-spacing: 0.2rem;
   background-color: #ff6622;

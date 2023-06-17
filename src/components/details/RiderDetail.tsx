@@ -218,7 +218,6 @@ const Headerbox = styled.div`
 const LeftButton = styled.div`
   line-height: 37px;
   text-align: center;
-  font-family: "MinSans-Regular";
   font-size: 16px;
   font-weight: 300;
   width: 151px;
@@ -320,7 +319,6 @@ const Greyfont1 = styled.div`
   height: 30px;
 
   line-height: 100%;
-  font-family: "MinSans-Bold";
   font-size: 16px;
   letter-spacing: -0.04em;
 `;
@@ -352,7 +350,6 @@ const PointInput = styled.input`
   border: 1px solid #bbbbcf;
 
   text-align: center;
-  font-family: "MinSans-Regular";
   font-size: 16px;
 `;
 

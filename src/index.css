@@ -1,35 +1,9 @@
 @font-face {
-  font-family: "pretendardB";
-  src: url("@statics/fonts/Pretendard-Bold.ttf");
-}
-@font-face {
-  font-family: "pretendardL";
-  src: url("@statics/fonts/Pretendard-Light.ttf");
-}
-@font-face {
-  font-family: "pretendardM";
-  src: url("@statics/fonts/Pretendard-Medium.ttf");
-}
-@font-face {
-  font-family: "pretendardSB";
-  src: url("@statics/fonts/Pretendard-SemiBold.ttf");
-}
-
-@font-face {
-  font-family: "MinSans-Bold";
-  src: url("@statics/fonts/MinSans-Bold.ttf");
-}
-@font-face {
   font-family: "MinSans-Regular";
-  src: url("@statics/fonts/MinSans-Regular.ttf");
-}
-@font-face {
-  font-family: "Montserrat-Bold";
-  src: url("@statics/fonts/Montserrat-Bold.ttf");
-}
-@font-face {
-  font-family: "Montserrat-Regular";
-  src: url("@statics/fonts/Montserrat-Regular.ttf");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -47,6 +21,7 @@ input[type="number"] {
 body {
   margin: 0;
   background-color: #f4f5f9;
+  font-family: "MinSans-Regular";
 }
 
 a {

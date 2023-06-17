@@ -153,16 +153,6 @@ export const accordionitems = [
   },
 ];
 
-export interface ButtonProps {
-  active: boolean;
-  width: number;
-}
-
-export interface BorderButtonProps {
-  titles: string[];
-  width: number;
-}
-
 export const dateFilter: Array<string> = ["전체"];
 
 export const itemFilter: Array<string> = ["전체", "활성", "비활성", "휴면"];

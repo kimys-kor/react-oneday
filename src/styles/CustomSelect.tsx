@@ -85,8 +85,6 @@ const SelectWrapper = styled.div<WidthOptionProps>`
   line-height: ${({ height }) => height}px;
 
   background-color: #fff;
-  font-family: "MinSans-Regular";
-
   font-size: 16px;
   color: #1e2026;
 
