@@ -127,6 +127,7 @@ function Member() {
               setCurrentValue={setCurrentEa}
             ></CustomSelect>
           </FilterContent>
+
           <MemberBoard
             boardMenu={memberBoardTitle}
             boardData={memberData}
@@ -199,14 +200,14 @@ const FilterContent = styled.div`
   align-items: center;
 
   .react-datepicker-wrapper {
-    width: 156px;
+    width: 9.75rem;
   }
   .react-datepicker__calendar-icon {
     fill: #bbbbcf;
   }
   .react-datepicker__calendar-icon {
     position: absolute;
-    top: 3px;
+    top: 0.1875rem;
   }
 `;
 
@@ -221,9 +222,9 @@ const Datebox = styled.div`
 
 const DateInput = styled.input`
   box-sizing: border-box;
-  width: 156px;
-  height: 37px;
-  padding: 5px 10px;
+  width: 9.75rem;
+  height: 2.3125rem;
+  padding: 0.3125rem 0.625rem;
   background: #fff;
   border: 1px solid #bbbbcf;
   font-size: 15px;

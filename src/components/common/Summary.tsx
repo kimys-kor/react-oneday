@@ -8,69 +8,45 @@ interface SummaryProps {
 
 function Summary({ title, subTitle1, subTitle2 }: SummaryProps) {
   return (
-    <SummaryContainer>
-      <SummaryTitle>
+    <Wrapper>
+      <Titlezone>
         <Titlebox>
           <Title>{title}</Title>
-          <SummaryDetail>자세히 </SummaryDetail>
+          <Detailbutton>자세히 </Detailbutton>
         </Titlebox>
-      </SummaryTitle>
-      <SummaryContent>
+      </Titlezone>
+      <Content>
         <SubTitle1>{subTitle1}</SubTitle1>
         <SubTitle2>{subTitle2}</SubTitle2>
-      </SummaryContent>
-    </SummaryContainer>
+      </Content>
+    </Wrapper>
   );
 }
 
-const SummaryContainer = styled.div`
+const Wrapper = styled.div`
   box-sizing: border-box;
-  width: 45rem;
+  width: 50rem;
   height: 9.3125rem;
   border: 1px solid #bbbbcf;
+  transition: all 0.01s linear;
+
+  &:hover {
+    border: 1px solid #ff6622;
+    box-shadow: 1px 1px 3px 1px rgba(241, 145, 35, 0.2);
+  }
+
+  @media (max-width: 1150px) {
+    width: auto;
+  }
 `;
 
-const SummaryTitle = styled.div`
+const Titlezone = styled.div`
   width: 100%;
   height: 3rem;
   font-size: 0.9375rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
-`;
-
-const SummaryContent = styled.div`
-  margin-top: 20px;
-  width: 100%;
-  text-align: center;
-`;
-
-const Title = styled.p`
-  font-family: "MinSans-Regular";
-  font-weight: 700;
-
-  overflow-x: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-`;
-
-const SubTitle1 = styled.p`
-  color: #7b829b;
-  font-size: 15px;
-
-  overflow-x: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-`;
-
-const SubTitle2 = styled.p`
-  margin-top: 10px;
-  color: #ff6622;
-  font-size: 20px;
-
-  overflow-x: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 `;
 
 const Titlebox = styled.div`
@@ -80,16 +56,42 @@ const Titlebox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  overflow: hidden;
 `;
 
-const SummaryDetail = styled.p`
-  font-size: 13px;
+const Content = styled.div`
+  margin-top: 1.25rem;
+  width: 100%;
+  text-align: center;
+`;
+
+const Title = styled.p`
+  font-weight: 700;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+const SubTitle1 = styled.p`
+  color: #7b829b;
+  font-size: 0.9375rem;
+`;
+
+const SubTitle2 = styled.p`
+  margin-top: 10px;
+  color: #ff6622;
+  font-size: 1.25rem;
+`;
+
+const Detailbutton = styled.p`
+  font-size: 0.8125rem;
   display: inline;
   color: #898ea1;
-
-  overflow-x: hidden;
-  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export default Summary;

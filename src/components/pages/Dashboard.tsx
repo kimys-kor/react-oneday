@@ -68,17 +68,15 @@ function Dashboard() {
         </Piecard>
       </Chartbox2>
 
-      <Chartbox3>
-        <Indicatorcard>
-          <IndicatorTitlebox>
-            <IndicatorTitle>
-              최근 일주일 신규 회원 현황<Greyfont>단위:1명</Greyfont>
-            </IndicatorTitle>
-            <Detailbutton>자세히 &gt;</Detailbutton>
-          </IndicatorTitlebox>
-          <Linechart></Linechart>
-        </Indicatorcard>
-      </Chartbox3>
+      <Chartbox1>
+        <IndicatorTitlebox>
+          <IndicatorTitle>
+            최근 일주일 신규 회원 현황<Greyfont>단위:1명</Greyfont>
+          </IndicatorTitle>
+          <Detailbutton>자세히 &gt;</Detailbutton>
+        </IndicatorTitlebox>
+        <Linechart></Linechart>
+      </Chartbox1>
     </Dashboardbox>
   );
 }
@@ -93,77 +91,75 @@ const Dashboardbox = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 9px;
+  gap: 0.75rem;
 `;
 
 const Headerbox = styled.div`
   width: 100%;
   display: flex;
-  box-sizing: border-box;
-  justify-content: space-between;
-  padding: 2rem;
+  padding: 1.5rem 2.5rem;
   gap: 1.5rem;
 
+  justify-content: space-between;
   background-color: #fff;
+
+  box-sizing: border-box;
+
+  @media (max-width: 1150px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
+  }
+`;
+
+const Selectbox = styled.div`
+  max-width: 30rem;
+  height: 3.3125rem;
+`;
+
+const Summarybox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
 `;
 
 const Chartbox1 = styled.div`
-  margin-top: 12px;
   box-sizing: border-box;
-  padding-left: 2rem;
-  padding-right: 2rem;
-
+  padding: 2.5rem;
   width: 100%;
-  height: 38.6875rem;
-
   background-color: #fff;
-`;
 
-const Indicatorcard = styled.div`
-  margin-top: 5px;
-  width: 90%;
-  height: 484px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `;
 
 const Chartbox2 = styled.div`
-  margin-top: 12px;
+  box-sizing: border-box;
+  padding: 2.5rem;
   width: 100%;
-  height: 38.6875rem;
-
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
   background-color: #fff;
-`;
 
-const Chartbox3 = styled.div`
-  margin-top: 12px;
-  width: 100%;
-  height: 39.6875rem;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
-  background-color: #fff;
-`;
-
-const Titlebox = styled.div`
-  width: 80%;
-  height: 100%;
-  border-bottom: 1px solid #bbbbcf;
-  display: flex;
-  align-items: center;
+  gap: 2%;
   justify-content: space-between;
 `;
 
-const SummaryDetail = styled.div`
-  font-size: 13px;
-  display: inline;
-  color: #898ea1;
+const Barcard = styled.div`
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
+
+const Piecard = styled.div`
+  width: 38%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `;
 
 const IndicatorTitlebox = styled.div`
-  margin-top: 50px;
-  margin-bottom: 36px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -171,24 +167,25 @@ const IndicatorTitlebox = styled.div`
 `;
 
 const IndicatorTitle = styled.div`
-  font-family: "MinSans-Regular";
-  font-weight: 900;
+  font-weight: 700;
   font-size: 17px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const Greyfont = styled.p`
   margin-left: 10px;
-  font-family: "MinSans-Regular";
   color: #7b829b;
   font-size: 14px;
   font-weight: 400;
-  line-height: 19px;
   display: inline;
 `;
 
-const Detailbutton = styled.div`
-  width: 82px;
-  height: 31px;
+const Detailbutton = styled.button`
+  width: 5.125rem;
+  height: 1.9375rem;
   background-color: #ff6622;
   color: #fff;
   display: flex;
@@ -196,14 +193,10 @@ const Detailbutton = styled.div`
   align-items: center;
   border-radius: 2px;
   cursor: pointer;
-`;
 
-const Barcard = styled.div`
-  width: 60%;
-  height: 484px;
-`;
-
-const Piecard = styled.div`
-  width: 27%;
-  height: 484px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;

@@ -61,9 +61,9 @@ function Login() {
           <Leftfont2>{text1}</Leftfont2>
           <Leftfont2>{text2}</Leftfont2>
           <Footer>
-            <Footerfonts1>{footertext1}</Footerfonts1>
-            <Footerfonts1>{footertext2}</Footerfonts1>
-            <Footerfonts2>{footertext3}</Footerfonts2>
+            <Footerfont1>{footertext1}</Footerfont1>
+            <Footerfont1>{footertext2}</Footerfont1>
+            <Footerfont2>{footertext3}</Footerfont2>
           </Footer>
         </Leftwrapper>
       </Leftbox>
@@ -110,7 +110,7 @@ const Layout = styled.div`
 `;
 
 const Auto = styled.div`
-  width: 50%;
+  padding-top: 0.75rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -118,6 +118,7 @@ const Auto = styled.div`
 
 const Flex = styled.div`
   display: flex;
+  gap: 0.5rem;
   justify-content: center;
   align-items: center;
 `;
@@ -133,6 +134,7 @@ const Leftbox = styled.div`
 `;
 
 const Leftwrapper = styled.div`
+  padding-top: 12rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -140,75 +142,85 @@ const Leftwrapper = styled.div`
 `;
 
 const Loginicon = styled.img`
-  width: 404px;
-  height: 404px;
+  width: 25.25rem;
+  height: 25.25rem;
 `;
 
-const Leftfont1 = styled.p`
-  font-size: 24px;
-  font-family: "Minsans-Regular";
-  font-weight: 400;
+const Leftfont1 = styled.h5`
+  font-size: 1.5rem;
+  font-weight: 500;
   line-height: 30px;
 
   color: #898ea1;
 `;
 
+const LeftSub = styled.div`
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+`;
+
 const Leftfont2 = styled.p`
-  font-size: 18px;
-  font-family: "Minsans-Regular";
-  font-weight: 400;
-  line-height: 28px;
   color: #898ea1;
-  margin: 0;
 `;
 
 const Footer = styled.div`
-  margin-top: 105px;
+  margin-top: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const Footerfonts1 = styled.p`
+const Footerfont1 = styled.p`
   margin: 0;
-  font-size: 14px;
-  font-family: "Minsans-Regular";
+  font-family: "minsans";
+  font-size: 0.875rem;
+  font-weight: 400;
   line-height: 19px;
   color: #a8adc0;
   letter-spacing: -0.04em;
 `;
 
-const Footerfonts2 = styled.p`
-  margin-top: 24px;
-  font-size: 14px;
-  font-family: "Minsans-Regular";
+const Footerfont2 = styled.p`
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+
   line-height: 19px;
-  color: #a8adc0;
+  color: #bbbbcf;
   letter-spacing: -0.04em;
 `;
 
 const Titlebox = styled.div`
-  width: 100%;
-  height: 37px;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
 `;
 
 const Title = styled.div`
-  line-height: 100%;
-  width: 260px;
+  width: 50%;
+
   color: #000;
-  font-size: 28px;
+  font-size: 1.45rem;
   font-weight: 700;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  @media (max-width: 1760px) {
+    width: 100%;
+  }
 `;
 
 const Divide = styled.div`
-  line-height: 100%;
-  margin-left: 10px;
+  width: 50%;
   color: #ff6622;
-  font-weight: 700;
+  border-bottom: 2px solid #ff6622;
+  @media (max-width: 1760px) {
+    display: none;
+  }
 `;
 
 const Rightbox = styled.div`
@@ -219,24 +231,20 @@ const Rightbox = styled.div`
 
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+
+  padding: 13rem;
 `;
 
 const Form = styled.form`
-  background-color: #fff;
-  width: 50%;
-  height: 300px;
-  border-radius: 6px;
-
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 1rem;
+  padding-top: 3.25rem;
 `;
 
 const Input = styled.input`
-  margin-top: 30px;
   width: 100%;
-  height: 52px;
+  height: 3.25rem;
   border: 1px solid #bbbbcf;
   background-color: #fff;
 
@@ -244,7 +252,6 @@ const Input = styled.input`
     font-size: 16px;
     font-weight: 400;
     color: #a8adc0;
-    font-family: "MinSans-Regular";
   }
   &::placeholder :last-child {
     font-weight: 400;
@@ -252,15 +259,13 @@ const Input = styled.input`
 `;
 
 const Submitbutton = styled.input`
-  margin-top: 30px;
   border: none;
-  width: 100%;
-  height: 52px;
+  height: 3.25rem;
   color: #fff;
-  font-size: 14px;
+  font-family: "minsans";
+  font-size: 0.875rem;
   letter-spacing: 0.2rem;
   background-color: #ff6622;
-  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -285,6 +290,10 @@ const AutoLogin = styled.input`
 const AutoLabel = styled.label`
   font-size: 15px;
   color: #898ea1;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const LoginContact = styled.img`
@@ -294,9 +303,12 @@ const LoginContact = styled.img`
 
 const LoginContactfont = styled.div`
   text-decoration: underline;
-  font-family: "Minsans-Regular";
   font-weight: 500;
   font-size: 15px;
   line-height: 20px;
   color: #898ea2;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
