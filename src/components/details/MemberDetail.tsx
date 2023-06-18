@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import BorderButton from "@styles/BorderButton";
@@ -28,13 +29,8 @@ const resolver: Resolver<FormData> = async (values) => {
   };
 };
 
-interface MemberDetailProps {
-  onClose: () => void;
-  isDetailOpen: boolean;
-  member: member | undefined;
-}
-
-function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
+function MemberDetail() {
+  const [member, setMember] = useState<member>();
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const handleButtonClick = (index: number) => {
     setActiveIndex(index === activeIndex ? null : index);
@@ -57,152 +53,135 @@ function MemberDetail({ onClose, isDetailOpen, member }: MemberDetailProps) {
     setActiveButton1(id);
   };
 
+  const navigate = useNavigate();
+
   return (
-    <Wrapper isDetailOpen={isDetailOpen}>
-      <Modal isDetailOpen={isDetailOpen} onClick={(e) => e.stopPropagation()}>
-        <Layout>
-          <Headerbox>
-            <Button onClick={onClose}>&lt;</Button>
-          </Headerbox>
+    <Wrapper>
+      <Layout>
+        <Headerbox>
+          <Button
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            &lt;
+          </Button>
+        </Headerbox>
 
-          <Content>
-            <Left>
-              <Titlebox>
-                <LeftButton>회원 정보</LeftButton>
-              </Titlebox>
-              <LeftContent>
-                <Row>
-                  <Greyfont1>상태</Greyfont1>
-                  <Blackfont1>{member?.status}</Blackfont1>
-                </Row>
-                <Row>
-                  <Greyfont1>고유 ID</Greyfont1>
-                  <Blackfont1>{member?.id}</Blackfont1>
-                </Row>
+        <Content>
+          <Left>
+            <Titlebox>
+              <LeftButton>회원 정보</LeftButton>
+            </Titlebox>
+            <LeftContent>
+              <Row>
+                <Greyfont1>상태</Greyfont1>
+                <Blackfont1>{member?.status}</Blackfont1>
+              </Row>
+              <Row>
+                <Greyfont1>고유 ID</Greyfont1>
+                <Blackfont1>{member?.id}</Blackfont1>
+              </Row>
 
-                <Row>
-                  <Greyfont1>핸드폰 번호</Greyfont1>
-                  <Blackfont1>{member?.phone}</Blackfont1>
-                </Row>
+              <Row>
+                <Greyfont1>핸드폰 번호</Greyfont1>
+                <Blackfont1>{member?.phone}</Blackfont1>
+              </Row>
 
-                <Row>
-                  <Greyfont1>이메일</Greyfont1>
+              <Row>
+                <Greyfont1>이메일</Greyfont1>
 
-                  <Blackfont1>{member?.email}</Blackfont1>
-                </Row>
+                <Blackfont1>{member?.email}</Blackfont1>
+              </Row>
 
-                <Row>
-                  <Greyfont1>닉네임</Greyfont1>
-                  <Blackfont1>{member?.nickname}</Blackfont1>
-                </Row>
-                <Row>
-                  <Greyfont1>최초 가입일</Greyfont1>
-                  <Blackfont1>{member?.creteadDt}</Blackfont1>
-                </Row>
-                <Row>
-                  <Greyfont1>최근 접속일</Greyfont1>
-                  <Blackfont1>{member?.lastloginDt}</Blackfont1>
-                </Row>
+              <Row>
+                <Greyfont1>닉네임</Greyfont1>
+                <Blackfont1>{member?.nickname}</Blackfont1>
+              </Row>
+              <Row>
+                <Greyfont1>최초 가입일</Greyfont1>
+                <Blackfont1>{member?.creteadDt}</Blackfont1>
+              </Row>
+              <Row>
+                <Greyfont1>최근 접속일</Greyfont1>
+                <Blackfont1>{member?.lastloginDt}</Blackfont1>
+              </Row>
 
-                <Divide></Divide>
+              <Divide></Divide>
 
-                <Row>
-                  <Greyfont1>총 주문 횟수</Greyfont1>
-                  <Blackfont1>{member?.orderCount}</Blackfont1>
-                </Row>
+              <Row>
+                <Greyfont1>총 주문 횟수</Greyfont1>
+                <Blackfont1>{member?.orderCount}</Blackfont1>
+              </Row>
 
-                <Row>
-                  <Greyfont1>총 주문 금액</Greyfont1>
-                  <Blackfont1>{member?.orderAmount}</Blackfont1>
-                </Row>
+              <Row>
+                <Greyfont1>총 주문 금액</Greyfont1>
+                <Blackfont1>{member?.orderAmount}</Blackfont1>
+              </Row>
 
-                <Divide></Divide>
+              <Divide></Divide>
 
-                <Row>
-                  <Greyfont1>현재 보유 포인트</Greyfont1>
-                  <Blackfont1>{member?.id}</Blackfont1>
-                </Row>
+              <Row>
+                <Greyfont1>현재 보유 포인트</Greyfont1>
+                <Blackfont1>{member?.id}</Blackfont1>
+              </Row>
 
-                <Row>
-                  <Form onSubmit={onSubmit}>
-                    <PointInput
-                      placeholder="적립 금액을 입력해 주세요..."
-                      type="number"
-                      {...register("savingPoint")}
-                    ></PointInput>
-                    <Submitbutton type="submit" value="적립" />
-                  </Form>
-                </Row>
-              </LeftContent>
-            </Left>
+              <Row>
+                <Form onSubmit={onSubmit}>
+                  <PointInput
+                    placeholder="적립 금액을 입력해 주세요..."
+                    type="number"
+                    {...register("savingPoint")}
+                  ></PointInput>
+                  <Submitbutton type="submit" value="적립" />
+                </Form>
+              </Row>
+            </LeftContent>
+          </Left>
 
-            <Right>
-              <Titlebox>
-                <Buttonbox>
-                  <BorderButton
-                    title={"전체기간"}
-                    id={1}
-                    onClick={handleButtonClick1}
-                    activeId={activeButton1}
-                  ></BorderButton>
-                </Buttonbox>
-                <CustomSelect
-                  width={90}
-                  height={37}
-                  optionData={eaOptions}
-                  currentValue={currentEa}
-                  setCurrentValue={setCurrentEa}
-                ></CustomSelect>
-              </Titlebox>
-              <RightContent>
-                <MemberPointBoard
-                  index={0}
-                  boardMenu={memberPointBoardTitle}
-                  boardData={memberPointBoardData}
-                ></MemberPointBoard>
-              </RightContent>
-            </Right>
-          </Content>
-        </Layout>
-      </Modal>
+          <Right>
+            <Titlebox>
+              <Buttonbox>
+                <BorderButton
+                  title={"전체기간"}
+                  id={1}
+                  onClick={handleButtonClick1}
+                  activeId={activeButton1}
+                ></BorderButton>
+              </Buttonbox>
+              <CustomSelect
+                width={7}
+                height={2}
+                optionData={eaOptions}
+                currentValue={currentEa}
+                setCurrentValue={setCurrentEa}
+              ></CustomSelect>
+            </Titlebox>
+            <RightContent>
+              <MemberPointBoard
+                index={0}
+                boardMenu={memberPointBoardTitle}
+                boardData={memberPointBoardData}
+              ></MemberPointBoard>
+            </RightContent>
+          </Right>
+        </Content>
+      </Layout>
     </Wrapper>
   );
 }
 
 export default MemberDetail;
 
-interface WrapperProps {
-  isDetailOpen: boolean;
-}
-
-const Wrapper = styled.div<WrapperProps>`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 9px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  gap: 0.75rem;
+
   background-color: #fff;
-
-  /* add transition and transform properties */
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  opacity: ${({ isDetailOpen }) => (isDetailOpen ? "1" : "0")};
-  transform: ${({ isDetailOpen }) =>
-    isDetailOpen ? "translateX(0%)" : "translateX(100%)"};
-`;
-
-const Modal = styled.div<WrapperProps>`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-
-  background-color: ${({ isDetailOpen }) =>
-    isDetailOpen ? "#fff" : "#3e4042"};
-  transition: opacity 1.5s ease-out;
+  min-height: 80rem;
 `;
 
 const Layout = styled.div`
@@ -228,7 +207,7 @@ const LeftButton = styled.div`
   width: 151px;
   height: 37px;
 
-  border: 1px solid #ff6622;
+  outline: 1px solid #ff6622;
   background-color: #ffffff;
   color: #ff6622;
   margin-right: 0;
@@ -270,14 +249,6 @@ const Titlebox = styled.div`
   justify-content: space-between;
 `;
 
-const RightContent = styled.div`
-  box-sizing: border-box;
-  margin-top: 20px;
-  width: 100%;
-
-  overflow: hidden;
-`;
-
 const Right = styled.div`
   width: 63%;
 `;
@@ -299,7 +270,7 @@ const Row = styled.div`
   width: 100%;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
 `;
 
 const Emailbox = styled.div`
@@ -307,7 +278,7 @@ const Emailbox = styled.div`
 `;
 
 const Iconbox = styled.div`
-  width: 20px;
+  margin-left: 50%;
   cursor: pointer;
   position: relative;
   top: -6px;
@@ -320,15 +291,51 @@ const Iconbox = styled.div`
 
 const Greyfont1 = styled.div`
   color: #a8adc0;
-  width: 120px;
+  width: 100px;
   height: 30px;
 
   line-height: 100%;
   font-size: 16px;
   letter-spacing: -0.04em;
+
+  &::after {
+    content: "|";
+    float: right;
+  }
+`;
+
+const Greyfont2 = styled.div`
+  color: #a8adc0;
+  width: 180px;
+  height: 30px;
+
+  line-height: 100%;
+  font-size: 16px;
+  letter-spacing: -0.04em;
+
+  &::after {
+    content: "|";
+    float: right;
+  }
+`;
+
+const Greyfont3 = styled.div`
+  color: #a8adc0;
+  width: 130px;
+  height: 30px;
+
+  line-height: 100%;
+  font-size: 16px;
+  letter-spacing: -0.04em;
+
+  &::after {
+    content: "|";
+    float: right;
+  }
 `;
 
 const Blackfont1 = styled.div`
+  margin-left: 16px;
   color: #43454b;
   height: 30px;
 
@@ -394,4 +401,10 @@ const Option = styled.div`
   &:hover {
     color: #ff6622;
   }
+`;
+
+const RightContent = styled.div`
+  box-sizing: border-box;
+  margin-top: 20px;
+  width: 100%;
 `;

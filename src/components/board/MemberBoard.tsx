@@ -4,10 +4,11 @@ import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anotheric
 
 import Paging from "@components/common/Paging";
 
+import { Link } from "react-router-dom";
+
 interface BoardProps {
   boardMenu: Array<string>;
   boardData: Array<any>;
-  handleDetailOpen: (index: number) => void;
   openAnother: number;
   handleOpenIndex: (index: number) => void;
 }
@@ -19,7 +20,6 @@ const setPage = function () {
 function MemberBoard({
   boardMenu,
   boardData,
-  handleDetailOpen,
   openAnother,
   handleOpenIndex,
 }: BoardProps) {
@@ -72,11 +72,9 @@ function MemberBoard({
                       handleOpenIndex(openAnother === index ? -1 : index)
                     }
                   >
-                    <Option onClick={() => handleDetailOpen(index)}>
-                      상세정보
-                    </Option>
-                    <Option>수정</Option>
-                    <Option>삭제</Option>
+                    <Link to={`/oneday/member/${item.id}`}>
+                      <Option>상세정보</Option>
+                    </Link>
                   </Optionbox>
                 )}
               </Iconbox>

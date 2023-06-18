@@ -11,7 +11,8 @@ export interface SidebarProps {
 }
 
 function Sidebar({ xPosition }: SidebarProps) {
-  const pathName = useLocation().pathname;
+  let pathName = useLocation().pathname;
+  let modifiedPathName = pathName.replace(/\/\d+$/, "");
 
   const navigate = useNavigate();
 
@@ -25,7 +26,7 @@ function Sidebar({ xPosition }: SidebarProps) {
     <Flexbox
       ref={side}
       style={{
-        width: "298px",
+        width: "18.625rem",
         height: "100vh",
         transform: `translatex(${-xPosition}px)`,
       }}
@@ -33,7 +34,7 @@ function Sidebar({ xPosition }: SidebarProps) {
       <Profile>
         <Avatar src={avatar1}></Avatar>
         <Info>
-          <p>admin-jth</p>
+          <p>admin-01</p>
           <Logout onClick={() => logOut()}>로그아웃</Logout>
         </Info>
       </Profile>
@@ -43,7 +44,7 @@ function Sidebar({ xPosition }: SidebarProps) {
           {item.map((menu, index2) => (
             <Link to={menu.path} key={index2}>
               <Menu>
-                <Box clicked={menu.pathname === pathName}>
+                <Box clicked={menu.pathname === modifiedPathName}>
                   {menu.logo}
                   <Font>{menu.name}</Font>
                 </Box>

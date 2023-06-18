@@ -34,16 +34,6 @@ function Member() {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(new Date());
 
-  // 디테일 모달 상태
-  const [isDetailOpen, setDetailOpen] = useState(false);
-  const handleDetailOpen = (index: number) => {
-    setDetailOpen(true);
-    console.log(index);
-  };
-  const handleDetailClose = () => {
-    setDetailOpen(false);
-  };
-
   // 멤버상세창 넘길 멤버
   const [activeItem, setActiveItem] = useState(0);
   // ...클릭시 설정팝업
@@ -165,7 +155,6 @@ function Member() {
         <MemberBoard
           boardMenu={memberBoardTitle}
           boardData={memberData}
-          handleDetailOpen={handleDetailOpen}
           openAnother={openAnother}
           handleOpenIndex={handleOpenIndex}
         ></MemberBoard>

@@ -47,7 +47,7 @@ const Wrapper = styled.div`
 
   position: fixed;
 
-  width: 298px;
+  width: 18.625rem;
   height: 100vh;
 `;
 
