@@ -69,7 +69,7 @@ function MemberDetail() {
 
       <section className="w-full flex flex-col gap-1 whitespace-nowrap overflow-hidden text-ellipsis">
         <div className="w-full flex">
-          <p className="w-1/6 pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+          <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
             이름
           </p>
           <div className="w-2/6 pl-1 flex items-center border-b-2">
@@ -79,14 +79,14 @@ function MemberDetail() {
             ></input>
           </div>
 
-          <p className="w-1/6 pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+          <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
             회원등급
           </p>
-          <p className="w-2/6 pl-1  px-2 border-b-2">vip</p>
+          <p className="w-2/6 min-w-fit pl-1  px-2 border-b-2">vip</p>
         </div>
 
         <div className="w-full flex">
-          <p className="w-1/6 pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+          <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
             이름
           </p>
           <div className="w-2/6 pl-1 flex items-center border-b-2">
@@ -96,14 +96,14 @@ function MemberDetail() {
             ></input>
           </div>
 
-          <p className="w-1/6 pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+          <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
             회원등급
           </p>
-          <p className="w-2/6 pl-1  px-2 border-b-2">vip</p>
+          <p className="w-2/6 min-w-fit pl-1  px-2 border-b-2">vip</p>
         </div>
 
         <div className="w-full flex">
-          <p className="w-1/6 pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+          <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
             이름
           </p>
           <div className="w-2/6 pl-1 flex items-center border-b-2">
@@ -113,10 +113,10 @@ function MemberDetail() {
             ></input>
           </div>
 
-          <p className="w-1/6 pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+          <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
             회원등급
           </p>
-          <p className="w-2/6 pl-1  px-2 border-b-2">vip</p>
+          <p className="w-2/6 min-w-fit pl-1  px-2 border-b-2">vip</p>
         </div>
       </section>
 
