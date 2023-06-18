@@ -50,17 +50,75 @@ function MemberDetail() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col w-full h-full p-16 gap-12 bg-[#fff]">
-      <div>
-        <button
-          className="p-2 border border-teal-300 w-8 text-center text-xs text-[#bbbbcf] hover:border-rose-500"
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          &lt;
-        </button>
-      </div>
+    <main className="flex flex-col w-full h-full p-4 gap-12 bg-[#fff]">
+      <button
+        className="p-2 border border-normal w-8 text-center text-xs 
+           hover:border-active
+           hover:text-active
+           "
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        &lt;
+      </button>
+
+      <h5 className="w-full p-2  text-black bg-amber-50 whitespace-nowrap overflow-hidden text-ellipsis">
+        회원 정보를 수정할 수 있습니다.
+      </h5>
+
+      <section className="w-full flex flex-col gap-1 whitespace-nowrap overflow-hidden text-ellipsis">
+        <div className="w-full flex">
+          <p className="w-1/6 pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+            이름
+          </p>
+          <div className="w-2/6 pl-1 flex items-center border-b-2">
+            <input
+              className="w-16 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
+              defaultValue={"안녕"}
+            ></input>
+          </div>
+
+          <p className="w-1/6 pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+            회원등급
+          </p>
+          <p className="w-2/6 pl-1  px-2 border-b-2">vip</p>
+        </div>
+
+        <div className="w-full flex">
+          <p className="w-1/6 pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+            이름
+          </p>
+          <div className="w-2/6 pl-1 flex items-center border-b-2">
+            <input
+              className="w-16 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
+              defaultValue={"안녕"}
+            ></input>
+          </div>
+
+          <p className="w-1/6 pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+            회원등급
+          </p>
+          <p className="w-2/6 pl-1  px-2 border-b-2">vip</p>
+        </div>
+
+        <div className="w-full flex">
+          <p className="w-1/6 pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+            이름
+          </p>
+          <div className="w-2/6 pl-1 flex items-center border-b-2">
+            <input
+              className="w-16 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
+              defaultValue={"안녕"}
+            ></input>
+          </div>
+
+          <p className="w-1/6 pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+            회원등급
+          </p>
+          <p className="w-2/6 pl-1  px-2 border-b-2">vip</p>
+        </div>
+      </section>
 
       <form onSubmit={onSubmit} className="flex">
         <input
@@ -77,7 +135,7 @@ function MemberDetail() {
           적립
         </button>
       </form>
-    </div>
+    </main>
   );
 }
 
