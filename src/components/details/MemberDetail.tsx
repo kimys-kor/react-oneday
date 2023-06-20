@@ -92,7 +92,7 @@ function MemberDetail() {
           <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
             적립금
           </p>
-          <div className="flex items-center w-2/6 gap-3 px-1 overflow-auto border-b-2">
+          <div className="flex items-center w-2/6 gap-3 px-1 truncate border-b-2">
             1,000
             <form onSubmit={onSubmit} className="flex ">
               <input
@@ -130,14 +130,14 @@ function MemberDetail() {
         </div>
 
         <div className="flex w-full">
-          <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
+          <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white ">
             가입일자
           </p>
-          <div className="flex items-center w-2/6 pl-1 border-b-2">
+          <div className="flex items-center w-2/6 pl-1 border-b-2 ">
             2023-06-20 17:13:00
           </div>
 
-          <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+          <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white ">
             최종방문일
           </p>
           <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">
