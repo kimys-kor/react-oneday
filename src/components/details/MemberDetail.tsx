@@ -60,11 +60,11 @@ function MemberDetail() {
         &lt;
       </button>
 
-      <h5 className="w-full p-2 overflow-hidden text-black bg-amber-50 whitespace-nowrap text-ellipsis">
+      <h5 className="w-full p-2 overflow-hidden text-black bg-amber-50 ">
         회원 정보를 수정할 수 있습니다.
       </h5>
 
-      <section className="flex flex-col w-full gap-1 overflow-hidden whitespace-nowrap text-ellipsis">
+      <section className="flex flex-col w-full gap-1 ">
         <div className="flex w-full ">
           <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
             이름
@@ -92,12 +92,12 @@ function MemberDetail() {
           <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
             적립금
           </p>
-          <div className="flex items-center justify-between w-2/6 px-1 border-b-2">
+          <div className="flex items-center w-2/6 gap-3 px-1 overflow-auto border-b-2">
             1,000
             <form onSubmit={onSubmit} className="flex ">
               <input
-                className="w-30 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
-                placeholder="적립 금액을 입력해 주세요..."
+                className="w-44 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
+                placeholder="적립 금액을 입력해 주세요."
                 type="number"
                 {...register("savingPoint")}
               ></input>
@@ -175,7 +175,7 @@ function MemberDetail() {
         </div>
       </section>
 
-      <section className="flex flex-col w-full gap-1 mt-4 overflow-hidden whitespace-nowrap text-ellipsis">
+      <section className="flex flex-col w-full gap-1 mt-4">
         <div className="flex w-full">
           <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
             회원 메모
