@@ -49,6 +49,8 @@ function MemberDetail() {
 
   const navigate = useNavigate();
 
+  const [tab, setTab] = useState<number>(1);
+
   return (
     <main className="flex flex-col w-full h-full p-4 gap-4 bg-[#fff]">
       <button
@@ -63,6 +65,24 @@ function MemberDetail() {
       <h5 className="w-full p-2 overflow-hidden text-black bg-amber-50 ">
         회원 정보를 수정할 수 있습니다.
       </h5>
+
+      <div className="min-w-fit">
+        <button className="w-24 text-lg shadow-[0px_1px_3px_0px_#dadce0]">
+          회원정보
+        </button>
+        <button className="w-28 text-lg shadow-[0px_1px_3px_0px_#dadce0]">
+          통합주문내역
+        </button>
+        <button className="w-24 text-lg shadow-[0px_1px_3px_0px_#dadce0]">
+          적립금내역
+        </button>
+        <button className="w-24 text-lg shadow-[0px_1px_3px_0px_#dadce0]">
+          예치금내역
+        </button>
+        <button className="w-24 text-lg shadow-[0px_1px_3px_0px_#dadce0]">
+          1:1문의내역
+        </button>
+      </div>
 
       <section className="flex flex-col w-full gap-1 ">
         <div className="flex w-full ">
@@ -176,11 +196,11 @@ function MemberDetail() {
       </section>
 
       <section className="flex flex-col w-full gap-1 mt-4">
-        <div className="flex w-full">
-          <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
+        <div className="flex w-full h-12 items-center justify-center">
+          <p className="w-1/6 h-12 leading-10 min-w-fit pl-1  bg-[#EFEFEF] border-b-white ">
             회원 메모
           </p>
-          <textarea className="w-5/6 h-6 pl-2 border shadow-[0px_1px_1px_0px_#dadce0_inset] focus:outline-none focus:shadow-none"></textarea>
+          <textarea className="w-5/6 pl-2 border shadow-[0px_1px_1px_0px_#dadce0_inset] focus:outline-none focus:shadow-none resize-none"></textarea>
         </div>
       </section>
     </main>
