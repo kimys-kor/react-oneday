@@ -66,20 +66,35 @@ function MemberDetail() {
         회원 정보를 수정할 수 있습니다.
       </h5>
 
-      <div className="min-w-fit">
-        <button className="w-24 text-lg shadow-[0px_1px_3px_0px_#dadce0]">
+      <div className="min-w-fit mt-4">
+        <button
+          className="w-24 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0]
+          hover:border-active hover:text-active "
+        >
           회원정보
         </button>
-        <button className="w-28 text-lg shadow-[0px_1px_3px_0px_#dadce0]">
+        <button
+          className="w-28 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0]  
+        hover:border-active hover:text-active  "
+        >
           통합주문내역
         </button>
-        <button className="w-24 text-lg shadow-[0px_1px_3px_0px_#dadce0]">
+        <button
+          className="w-24 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0]  
+        hover:border-active hover:text-active "
+        >
           적립금내역
         </button>
-        <button className="w-24 text-lg shadow-[0px_1px_3px_0px_#dadce0]">
+        <button
+          className="w-24 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0]  
+        hover:border-active hover:text-active "
+        >
           예치금내역
         </button>
-        <button className="w-24 text-lg shadow-[0px_1px_3px_0px_#dadce0]">
+        <button
+          className="w-28 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0]  
+        hover:border-active hover:text-active "
+        >
           1:1문의내역
         </button>
       </div>
