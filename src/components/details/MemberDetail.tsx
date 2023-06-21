@@ -10,6 +10,7 @@ import { eaOptions } from "@/data/common";
 import { member } from "@/data/common";
 import MemberPointBoard from "@components/board/MemberPointBoard";
 import { memberPointBoardTitle, memberPointBoardData } from "@/data/common";
+import { AiOutlineArrowLeft } from "react-icons/Ai";
 
 type FormData = {
   savingPoint: number;
@@ -59,7 +60,7 @@ function MemberDetail() {
           navigate(-1);
         }}
       >
-        &lt;
+        <AiOutlineArrowLeft size={14}></AiOutlineArrowLeft>
       </button>
 
       <h5 className="w-full p-2 overflow-hidden text-black bg-amber-50 ">
