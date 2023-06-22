@@ -157,7 +157,7 @@ function MemberDetail() {
                 1,000
                 <form onSubmit={onSubmit} className="flex ">
                   <input
-                    className="w-40 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset] text-[0.85rem]"
+                    className="w-36 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset] text-[0.82rem]"
                     placeholder="적립 금액을 입력해 주세요."
                     type="number"
                     {...register("savingPoint")}
@@ -261,7 +261,7 @@ function MemberDetail() {
 
           <div className="flex flex-row-reverse w-full">
             <button
-              className={`w-28 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] 
+              className={`w-24 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] 
               hover:text-active
               `}
             >
@@ -269,21 +269,120 @@ function MemberDetail() {
             </button>
           </div>
 
-          <section className="flex flex-col w-full gap-2 mt-4">
-            <div className="flex items-center justify-center w-full h-12">
-              <p className="w-1/6 h-12 leading-10 min-w-fit pl-1  bg-[#EFEFEF] border-b-white ">
-                회원 메모
-              </p>
-              <textarea className="w-5/6 pl-2 border shadow-[0px_1px_1px_0px_#dadce0_inset] focus:outline-none focus:shadow-none resize-none"></textarea>
-            </div>
-            <div className="flex flex-row-reverse w-full">
-              <button
-                className={`w-28 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] 
-          hover:text-active
-          `}
-              >
-                메모저장
-              </button>
+          <section className="flex w-full gap-2 mt-4">
+            <h6 className="w-2/12 leading-10 min-w-fit pl-1  bg-[#EFEFEF] border-b-white flex items-center">
+              회원 메모
+            </h6>
+
+            <div className="flex flex-col justify-between w-10/12 gap-5">
+              <div className="flex w-full">
+                <textarea className="w-11/12 h-12 pl-2 border shadow-[0px_1px_1px_0px_#dadce0_inset] focus:outline-none focus:shadow-none resize-none"></textarea>
+
+                <button
+                  className={`w-1/12 h-12 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] truncate
+                  hover:text-active
+                  `}
+                >
+                  메모저장
+                </button>
+              </div>
+
+              <div>
+                <div className="flex justify-between w-full gap-1">
+                  <div className="flex gap-3">
+                    <span className="">2023/06/23 11:51:26</span>
+                    <span className="text-[#ff4848] font-weight: bold">
+                      VIP 회원입니다
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3 text-sm">
+                    <p className="">mst-01</p>
+                    <button
+                      className="w-4 h-4 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                    hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                    >
+                      x
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex justify-between w-full gap-1">
+                  <div className="flex gap-3">
+                    <span className="">2023/06/23 11:51:26</span>
+                    <span className="text-[#ff4848] font-weight: bold">
+                      VIP 회원입니다
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3 text-sm">
+                    <p className="">mst-01</p>
+                    <button
+                      className="w-4 h-4 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                    hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                    >
+                      x
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex justify-between w-full gap-1">
+                  <div className="flex gap-3">
+                    <span className="">2023/06/23 11:51:26</span>
+                    <span className="text-[#ff4848] font-weight: bold">
+                      VIP 회원입니다
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3 text-sm">
+                    <p className="">mst-01</p>
+                    <button
+                      className="w-4 h-4 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                    hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                    >
+                      x
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex justify-between w-full gap-1">
+                  <div className="flex gap-3">
+                    <span className="">2023/06/23 11:51:26</span>
+                    <span className="text-[#ff4848] font-weight: bold">
+                      VIP 회원입니다
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3 text-sm">
+                    <p className="">mst-01</p>
+                    <button
+                      className="w-4 h-4 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                    hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                    >
+                      x
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex justify-between w-full gap-1">
+                  <div className="flex gap-3">
+                    <span className="">2023/06/23 11:51:26</span>
+                    <span className="text-[#ff4848] font-weight: bold">
+                      VIP 회원입니다
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3 text-sm">
+                    <p className="">mst-01</p>
+                    <button
+                      className="w-4 h-4 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                    hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                    >
+                      x
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
         </>
