@@ -70,7 +70,7 @@ function MemberDetail() {
         회원 정보를 수정할 수 있습니다.
       </h5>
 
-      <div className="min-w-fit mt-4">
+      <div className="mt-4 min-w-fit">
         <button
           onClick={() => setTab(1)}
           className={`w-24 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] ${
@@ -112,6 +112,7 @@ function MemberDetail() {
           예치금내역
         </button>
         <button
+          onClick={() => setTab(5)}
           className={`w-28 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] ${
             tab === 5
               ? "border-active text-active"
@@ -156,13 +157,13 @@ function MemberDetail() {
                 1,000
                 <form onSubmit={onSubmit} className="flex ">
                   <input
-                    className="w-44 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
+                    className="w-40 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset] text-[0.85rem]"
                     placeholder="적립 금액을 입력해 주세요."
                     type="number"
                     {...register("savingPoint")}
                   ></input>
                   <button
-                    className="w-16 h-3/5 bg-active text-[#fff]"
+                    className="w-[2.5rem] h-3/5 bg-active text-[#fff] text-[0.84rem]"
                     type="submit"
                     value="적립"
                   >
@@ -210,15 +211,25 @@ function MemberDetail() {
                 비밀번호
               </p>
               <div className="flex items-center w-2/6 pl-1 border-b-2">
-                2023-06-20 17:13:00
+                <button
+                  className="w-[6.8rem] h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                  hover:shadow-inner hover:text-purple-500 transition-all duration-200"
+                >
+                  임시비밀번호생성
+                </button>
               </div>
 
               <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
                 강제탈퇴
               </p>
-              <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">
-                2023-06-20 17:13:00
-              </p>
+              <div className="flex items-center w-2/6 pl-1 border-b-2">
+                <button
+                  className="w-[4rem] h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                  hover:shadow-inner hover:text-purple-500 transition-all duration-200"
+                >
+                  강제탈퇴
+                </button>
+              </div>
             </div>
             <div className="flex w-full">
               <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
@@ -238,7 +249,7 @@ function MemberDetail() {
           </section>
 
           <section className="flex flex-col w-full gap-1 mt-4">
-            <div className="flex w-full h-12 items-center justify-center">
+            <div className="flex items-center justify-center w-full h-12">
               <p className="w-1/6 h-12 leading-10 min-w-fit pl-1  bg-[#EFEFEF] border-b-white ">
                 회원 메모
               </p>
