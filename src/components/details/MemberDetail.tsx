@@ -163,9 +163,12 @@ function MemberDetail() {
                     {...register("savingPoint")}
                   ></input>
                   <button
-                    className="w-[2.5rem] h-3/5 bg-active text-[#fff] text-[0.84rem]"
+                    className="w-[2.5rem] h-3/5 bg-active text-[#fff] text-[0.84rem]
+                    shadow-md
+                    hover:bg-orange-600
+                    "
                     type="submit"
-                    value="적립"
+                    value="point"
                   >
                     적립
                   </button>
@@ -187,7 +190,15 @@ function MemberDetail() {
               <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
                 주문완료 상품/금액
               </p>
-              <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">vip</p>
+              <div className="flex items-center w-2/6 gap-1 gap-2 pl-1 border-b-2">
+                0 / 0 원
+                <button
+                  className="w-[6.8rem] h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                  hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                >
+                  임시비밀번호생성
+                </button>
+              </div>
             </div>
 
             <div className="flex w-full">
@@ -213,7 +224,7 @@ function MemberDetail() {
               <div className="flex items-center w-2/6 pl-1 border-b-2">
                 <button
                   className="w-[6.8rem] h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
-                  hover:shadow-inner hover:text-purple-500 transition-all duration-200"
+                  hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
                 >
                   임시비밀번호생성
                 </button>
@@ -225,7 +236,7 @@ function MemberDetail() {
               <div className="flex items-center w-2/6 pl-1 border-b-2">
                 <button
                   className="w-[4rem] h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
-                  hover:shadow-inner hover:text-purple-500 transition-all duration-200"
+                  hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
                 >
                   강제탈퇴
                 </button>
@@ -248,12 +259,31 @@ function MemberDetail() {
             </div>
           </section>
 
-          <section className="flex flex-col w-full gap-1 mt-4">
+          <div className="flex flex-row-reverse w-full">
+            <button
+              className={`w-28 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] 
+              hover:text-active
+              `}
+            >
+              회원정보저장
+            </button>
+          </div>
+
+          <section className="flex flex-col w-full gap-2 mt-4">
             <div className="flex items-center justify-center w-full h-12">
               <p className="w-1/6 h-12 leading-10 min-w-fit pl-1  bg-[#EFEFEF] border-b-white ">
                 회원 메모
               </p>
               <textarea className="w-5/6 pl-2 border shadow-[0px_1px_1px_0px_#dadce0_inset] focus:outline-none focus:shadow-none resize-none"></textarea>
+            </div>
+            <div className="flex flex-row-reverse w-full">
+              <button
+                className={`w-28 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] 
+          hover:text-active
+          `}
+              >
+                메모저장
+              </button>
             </div>
           </section>
         </>
