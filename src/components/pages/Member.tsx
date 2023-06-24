@@ -16,7 +16,7 @@ import BorderButton from "@/styles/BorderButton";
 import DatePicker from "react-datepicker";
 import { ko } from "date-fns/esm/locale";
 import "react-datepicker/dist/react-datepicker.css";
-import Summary from "../common/Summary";
+import { ReactComponent as SearchIcon } from "@statics/images/search/searchicon.svg";
 
 function Member() {
   const [dateFilterIndex, setDateFilterIndex] = useState<number>(0);
@@ -57,100 +57,72 @@ function Member() {
   };
 
   return (
-    <Wrapper>
+    <main className="flex flex-col items-center w-full h-full gap-3 rounded-2xl">
       <Headerbox>
         <Title>회원 관리</Title>
       </Headerbox>
 
       <Content>
-        <Fillter>
-          <div className="flex gap-5">
-            <BorderButton
-              title={"전체기간"}
-              id={1}
-              onClick={handleButtonClick1}
-              activeId={activeButton1}
-            ></BorderButton>
+        <div className="flex w-full gap-3">
+          <button
+            className="w-[5rem]  bg-[#FFA500] text-[#fff] text-[0.84rem] truncate
+                    shadow-md
+                    hover:bg-[#FF9526]
+                    "
+          >
+            전체기간
+          </button>
 
-            <Datebox>
-              <DatePicker
-                locale={ko}
-                closeOnScroll={(e) => e.target === document}
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-                selectsStart
-                startDate={startDate}
-                endDate={endDate}
-                dateFormat="yyyy-MM-dd"
-                customInput={
-                  // 날짜 뜨는 인풋 커스텀
-                  <DateInput
-                    onClick={() => handleButtonClick1(2)}
-                    activeId={activeButton1}
-                  />
-                }
-              />
+          <div className="flex">
+            <DatePicker
+              locale={ko}
+              closeOnScroll={(e) => e.target === document}
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              selectsStart
+              startDate={startDate}
+              endDate={endDate}
+              dateFormat="yyyy-MM-dd"
+              customInput={
+                // 날짜 뜨는 인풋 커스텀
+                <input
+                  className="box-border px-2 text-sm font-normal leading-9 text-center text-gray-500 bg-white border-[1px] border-gray-300 w-28"
+                  onClick={() => handleButtonClick1(2)}
+                />
+              }
+            />
 
-              <DatePicker
-                locale={ko}
-                closeOnScroll={(e) => e.target === document}
-                selected={endDate}
-                onChange={(date) => setEndDate(date)}
-                selectsEnd
-                startDate={startDate}
-                endDate={endDate}
-                minDate={startDate}
-                dateFormat="yyyy-MM-dd"
-                customInput={
-                  // 날짜 뜨는 인풋 커스텀
-                  <DateInput
-                    onClick={() => handleButtonClick1(2)}
-                    activeId={activeButton1}
-                  />
-                }
-              />
-            </Datebox>
+            <DatePicker
+              locale={ko}
+              closeOnScroll={(e) => e.target === document}
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+              selectsEnd
+              startDate={startDate}
+              endDate={endDate}
+              minDate={startDate}
+              dateFormat="yyyy-MM-dd"
+              customInput={
+                // 날짜 뜨는 인풋 커스텀
+                <input
+                  className="box-border px-2 text-sm font-normal leading-9 text-center text-gray-500 bg-white border-[1px] border-gray-300  w-28"
+                  onClick={() => handleButtonClick1(2)}
+                />
+              }
+            />
           </div>
 
-          <div className="flex w-80">
-            <BorderButton
-              title={"전체"}
-              id={1}
-              onClick={handleButtonClick2}
-              activeId={activeButton2}
-            ></BorderButton>
-            <BorderButton
-              title={"활성"}
-              id={2}
-              onClick={handleButtonClick2}
-              activeId={activeButton2}
-            ></BorderButton>
-            <BorderButton
-              title={"비활성"}
-              id={3}
-              onClick={handleButtonClick2}
-              activeId={activeButton2}
-            ></BorderButton>
-            <BorderButton
-              title={"휴면"}
-              id={4}
-              onClick={handleButtonClick2}
-              activeId={activeButton2}
-            ></BorderButton>
+          <div className="flex">
+            <input
+              className="w-36 border shadow-[0px_1px_1px_0px_#dadce0_inset] text-[0.82rem] truncate"
+              placeholder="검색어 입력"
+              type="text"
+            ></input>
+            <SearchIcon className="relative h-4/5 left-[-25px] hover:cursor-pointer "></SearchIcon>
           </div>
 
-          <div className="flex gap-5">
-            <SearchInput></SearchInput>
-
-            <CustomSelect
-              width={6}
-              height={2.5}
-              optionData={eaOptions}
-              currentValue={currentEa}
-              setCurrentValue={setCurrentEa}
-            ></CustomSelect>
-          </div>
-        </Fillter>
+          <CustomSelect options={eaOptions}></CustomSelect>
+        </div>
 
         <MemberBoard
           boardMenu={memberBoardTitle}
@@ -159,13 +131,7 @@ function Member() {
           handleOpenIndex={handleOpenIndex}
         ></MemberBoard>
       </Content>
-
-      {/* <MemberDetail
-        onClose={handleDetailClose}
-        isDetailOpen={isDetailOpen}
-        member={memberData[activeItem]}
-      /> */}
-    </Wrapper>
+    </main>
   );
 }
 

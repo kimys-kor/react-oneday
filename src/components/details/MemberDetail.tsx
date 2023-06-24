@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import { ko } from "date-fns/esm/locale";
 
 import BorderButton from "@styles/BorderButton";
-import CustomSelect from "@styles/CustomSelect";
+import CustomSelect from "@/styles/CustomSelect";
 import { useForm, Resolver } from "react-hook-form";
 import { eaOptions } from "@/data/common";
 

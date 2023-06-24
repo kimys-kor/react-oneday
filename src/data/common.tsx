@@ -199,12 +199,12 @@ export const appOptions: Array<appOption> = [
   { key: 3, value: "펫포션" },
 ];
 
-export const eaOptions: Array<eaOption> = [
-  { key: 0, value: "10개 씩" },
-  { key: 1, value: "20개 씩" },
-  { key: 2, value: "30개 씩" },
-  { key: 3, value: "40개 씩" },
-  { key: 4, value: "50개 씩" },
+export const eaOptions = [
+  { value: 10, label: "10개 씩" },
+  { value: 20, label: "20개 씩" },
+  { value: 30, label: "30개 씩" },
+  { value: 40, label: "40개 씩" },
+  { value: 50, label: "50개 씩" },
 ];
 
 export const text1 = "간편하게 클릭하나만으로";
