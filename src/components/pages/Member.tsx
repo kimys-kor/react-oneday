@@ -18,6 +18,10 @@ import { ko } from "date-fns/esm/locale";
 import "react-datepicker/dist/react-datepicker.css";
 import { ReactComponent as SearchIcon } from "@statics/images/search/searchicon.svg";
 
+import CustomDatePicker from "../common/DatePicker";
+
+import { GrSearch } from "react-icons/Gr";
+
 function Member() {
   const [dateFilterIndex, setDateFilterIndex] = useState<number>(0);
   // 헤더 날짜필터
@@ -31,8 +35,9 @@ function Member() {
     setFilterIndex(index === filterIndex ? null : index);
   };
   // 헤더 날짜 필터
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
-  const [endDate, setEndDate] = useState<Date | null>(new Date());
+  const today = new Date();
+  const [startDate, setStartDate] = useState<string>(today.toString());
+  const [endDate, setEndDate] = useState<string>(today.toString());
 
   // 멤버상세창 넘길 멤버
   const [activeItem, setActiveItem] = useState(0);
@@ -69,7 +74,7 @@ function Member() {
           </button>
 
           <div onClick={() => setActive(2)} className={`flex`}>
-            <DatePicker
+            {/* <DatePicker
               locale={ko}
               closeOnScroll={(e) => e.target === document}
               selected={startDate}
@@ -108,6 +113,12 @@ function Member() {
                   `}
                 />
               }
+            /> */}
+            <CustomDatePicker
+              startDate={startDate}
+              setStartDate={setStartDate}
+              endDate={endDate}
+              setEndDate={setEndDate}
             />
           </div>
 
@@ -117,7 +128,7 @@ function Member() {
               placeholder="검색어 입력"
               type="text"
             ></input>
-            <SearchIcon className="relative h-full left-[-1.5625rem] hover:cursor-pointer "></SearchIcon>
+            <GrSearch className="relative h-full left-[-1.5625rem] hover:cursor-pointer hover:fill-active"></GrSearch>
           </div>
         </div>
 
