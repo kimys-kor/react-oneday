@@ -45,34 +45,37 @@ function Member() {
   };
 
   const [currentEa, setCurrentEa] = useState(eaOptions[0]);
-  useEffect(() => console.log("하이하이", currentEa), [currentEa]);
 
-  const [activeButton1, setActiveButton1] = useState<number>(1);
-  const handleButtonClick1 = (id: number) => {
-    setActiveButton1(id);
-  };
-
-  const [activeButton2, setActiveButton2] = useState<number>(1);
-  const handleButtonClick2 = (id: number) => {
-    setActiveButton2(id);
-  };
+  const [active, setActive] = useState<number>(1);
+  useEffect(() => console.log("하이하이", active), [active]);
 
   return (
     <main className="flex flex-col items-center w-full h-full gap-3 rounded-2xl">
-      <Headerbox>
-        <Title>회원 관리</Title>
-      </Headerbox>
+      <h1 className="box-border flex w-full gap-6 px-6 py-4 bg-white text-[1.6rem]">
+        회원 관리
+      </h1>
 
-      <Content>
+      <section className="box-border flex flex-col items-start w-full p-6 bg-white h-85vh">
         <div className="flex w-full gap-3">
           <button
-            className="w-[5rem]  bg-[#FFA500] text-[#fff] text-[0.84rem] truncate
-                    shadow-md
-                    hover:bg-[#FF9526]
-                    "
+            onClick={() => setActive(1)}
+            className={`w-24 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] ${
+              active === 1
+                ? "border border-active text-active"
+                : "hover:border-active hover:text-active"
+            }`}
+          >
+            회원정보
+          </button>
+          {/* <button
+            onClick={() => setActive(1)}
+            className={`w-[5rem]  text-[0.84rem] truncate shadow-md
+            hover:text-[#FF9526]
+            ${active === 1 ? "border border-[#FFA500]}" : "bg-white"}
+            `}
           >
             전체기간
-          </button>
+          </button> */}
 
           <div className="flex">
             <DatePicker
@@ -88,7 +91,7 @@ function Member() {
                 // 날짜 뜨는 인풋 커스텀
                 <input
                   className="box-border px-2 text-sm font-normal leading-9 text-center text-gray-500 bg-white border-[1px] border-gray-300 w-28"
-                  onClick={() => handleButtonClick1(2)}
+                  onClick={() => setActive(2)}
                 />
               }
             />
@@ -107,7 +110,7 @@ function Member() {
                 // 날짜 뜨는 인풋 커스텀
                 <input
                   className="box-border px-2 text-sm font-normal leading-9 text-center text-gray-500 bg-white border-[1px] border-gray-300  w-28"
-                  onClick={() => handleButtonClick1(2)}
+                  onClick={() => setActive(2)}
                 />
               }
             />
@@ -115,13 +118,15 @@ function Member() {
 
           <div className="flex">
             <input
-              className="w-36 border shadow-[0px_1px_1px_0px_#dadce0_inset] text-[0.82rem] truncate"
+              className="w-[15rem] border shadow-[0px_1px_1px_0px_#dadce0_inset] text-[0.82rem] truncate"
               placeholder="검색어 입력"
               type="text"
             ></input>
             <SearchIcon className="relative h-full left-[-1.5625rem] hover:cursor-pointer "></SearchIcon>
           </div>
+        </div>
 
+        <div className="flex justify-end w-full">
           <CustomSelect
             options={eaOptions}
             setCurrent={setCurrentEa}
@@ -134,7 +139,7 @@ function Member() {
           openAnother={openAnother}
           handleOpenIndex={handleOpenIndex}
         ></MemberBoard>
-      </Content>
+      </section>
     </main>
   );
 }
@@ -152,7 +157,7 @@ const Wrapper = styled.div`
   gap: 0.75rem;
 `;
 
-const Headerbox = styled.div`
+const Headerbox = styled.h1`
   width: 100%;
   display: flex;
   padding: 1.5rem 2.5rem;
@@ -162,11 +167,6 @@ const Headerbox = styled.div`
   background-color: #fff;
 
   box-sizing: border-box;
-
-  @media (max-width: 1150px) {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
-  }
 `;
 
 const Content = styled.div`
