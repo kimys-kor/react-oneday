@@ -515,7 +515,7 @@ function MemberDetail() {
                 </h5>
 
                 <div>
-                  <div className="grid grid-cols-10 ">
+                  <div className="grid grid-cols-10 bg-[#EFEFEF]">
                     <div className="text-center"> 번호</div>
                     <div className="text-center"> 주문상태</div>
                     <div className="col-span-2 text-center"> 주문번호</div>
@@ -560,7 +560,7 @@ function MemberDetail() {
         <section className="flex flex-col w-full gap-1 ">
           <div className="flex flex-col w-full gap-10 ">
             <article>
-              <div className="flex justify-end gap-3">
+              <div className="flex justify-end gap-3 ">
                 <select className="w-28 border shadow-[1px_1px_1px_1px_#dadce0_inset]">
                   <option value="0">10개씩</option>
                   <option value="cancled">20개씩</option>
@@ -571,7 +571,7 @@ function MemberDetail() {
               </div>
 
               <div className="mt-5">
-                <div className="grid grid-cols-7 ">
+                <div className="grid grid-cols-7 bg-[#EFEFEF]">
                   <div className="text-center"> 번호</div>
                   <div className="text-center"> 제목</div>
                   <div className="text-center"> 회원</div>
