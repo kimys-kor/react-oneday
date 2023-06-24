@@ -59,25 +59,16 @@ function Member() {
         <div className="flex w-full gap-3">
           <button
             onClick={() => setActive(1)}
-            className={`w-24 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] ${
+            className={`w-[5rem]  text-[0.84rem] truncate shadow-[0px_1px_3px_0px_#dadce0] ${
               active === 1
                 ? "border border-active text-active"
                 : "hover:border-active hover:text-active"
             }`}
           >
-            회원정보
-          </button>
-          {/* <button
-            onClick={() => setActive(1)}
-            className={`w-[5rem]  text-[0.84rem] truncate shadow-md
-            hover:text-[#FF9526]
-            ${active === 1 ? "border border-[#FFA500]}" : "bg-white"}
-            `}
-          >
             전체기간
-          </button> */}
+          </button>
 
-          <div className="flex">
+          <div onClick={() => setActive(2)} className={`flex`}>
             <DatePicker
               locale={ko}
               closeOnScroll={(e) => e.target === document}
@@ -90,8 +81,10 @@ function Member() {
               customInput={
                 // 날짜 뜨는 인풋 커스텀
                 <input
-                  className="box-border px-2 text-sm font-normal leading-9 text-center text-gray-500 bg-white border-[1px] border-gray-300 w-28"
-                  onClick={() => setActive(2)}
+                  className={`box-border px-2 text-sm font-normal leading-9 text-center
+                  text-gray-500 bg-white border-[1px] border-gray-300  w-28
+                  "hover:border-active hover:text-active"
+                  `}
                 />
               }
             />
@@ -109,8 +102,10 @@ function Member() {
               customInput={
                 // 날짜 뜨는 인풋 커스텀
                 <input
-                  className="box-border px-2 text-sm font-normal leading-9 text-center text-gray-500 bg-white border-[1px] border-gray-300  w-28"
-                  onClick={() => setActive(2)}
+                  className={`box-border px-2 text-sm font-normal leading-9 text-center
+                  text-gray-500 bg-white border-[1px] border-gray-300  w-28
+                  "hover:border-active hover:text-active"
+                  `}
                 />
               }
             />
@@ -118,7 +113,7 @@ function Member() {
 
           <div className="flex">
             <input
-              className="w-[15rem] border shadow-[0px_1px_1px_0px_#dadce0_inset] text-[0.82rem] truncate"
+              className="w-[15rem] border shadow-[0px_1px_1px_0px_#dadce0_inset] text-[0.82rem] truncate rounded-lg"
               placeholder="검색어 입력"
               type="text"
             ></input>

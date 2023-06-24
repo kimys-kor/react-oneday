@@ -59,9 +59,6 @@ function MemberDetail() {
   const navigate = useNavigate();
 
   const [tab, setTab] = useState<number>(1);
-  const handleTab = (tab: number) => {
-    setTab(tab);
-  };
 
   const setPage = function () {
     console.log("온체인지");

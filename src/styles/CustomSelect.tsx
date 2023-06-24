@@ -21,8 +21,33 @@ const CustomSelect: React.FC<selectProps> = ({
     return null; // 또는 적절한 대체 컨텐츠를 반환할 수 있습니다.
   }
 
+  const customStyles = {
+    control: (provided: any) => ({
+      ...provided,
+      borderRadius: "4px",
+      height: "2rem",
+      border: "#ff622",
+      boxShadow: "none",
+      width: "9.5rem",
+      textAlign: "center",
+      "&:hover": {
+        borderColor: "#ff6622",
+      },
+    }),
+
+    option: (provided: any, state: any) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? "#fff" : "#fff",
+      color: state.isSelected ? "#ff6622" : "#333",
+    }),
+  };
+
   return (
     <Select
+      styles={customStyles}
+      options={options}
+      onChange={(option) => setCurrent(option)}
+      defaultValue={options[0]}
       theme={(theme) => ({
         ...theme,
         borderRadius: 0,
@@ -34,9 +59,6 @@ const CustomSelect: React.FC<selectProps> = ({
           primary25: "orange",
         },
       })}
-      options={options}
-      onChange={(option) => setCurrent(option)}
-      defaultValue={options[0]}
     />
   );
 };
