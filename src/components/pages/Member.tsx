@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { css } from "styled-components";
 
 import CustomSelect from "@/styles/CustomSelect";
@@ -44,7 +44,8 @@ function Member() {
     setOpenAnother(index);
   };
 
-  const [currentEa, setCurrentEa] = useState(eaOptions[0].value);
+  const [currentEa, setCurrentEa] = useState(eaOptions[0]);
+  useEffect(() => console.log("하이하이", currentEa), [currentEa]);
 
   const [activeButton1, setActiveButton1] = useState<number>(1);
   const handleButtonClick1 = (id: number) => {
@@ -118,10 +119,13 @@ function Member() {
               placeholder="검색어 입력"
               type="text"
             ></input>
-            <SearchIcon className="relative h-4/5 left-[-25px] hover:cursor-pointer "></SearchIcon>
+            <SearchIcon className="relative h-full left-[-1.5625rem] hover:cursor-pointer "></SearchIcon>
           </div>
 
-          <CustomSelect options={eaOptions}></CustomSelect>
+          <CustomSelect
+            options={eaOptions}
+            setCurrent={setCurrentEa}
+          ></CustomSelect>
         </div>
 
         <MemberBoard

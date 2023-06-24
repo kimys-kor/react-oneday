@@ -52,7 +52,7 @@ function Rider() {
     setOpenAnother(index);
   };
 
-  const [currentEa, setCurrentEa] = useState(eaOptions[0].value);
+  const [currentEa, setCurrentEa] = useState(eaOptions[0]);
 
   const [isAddAppOpen, setAddAppOpen] = useState(false);
   const handleAddForm = () => {
@@ -121,13 +121,9 @@ function Rider() {
               ></BorderButton> */}
             </Buttonbox>
             <SearchInput></SearchInput>
-
             <CustomSelect
-              width={13}
-              height={2.5}
-              optionData={eaOptions}
-              currentValue={currentEa}
-              setCurrentValue={setCurrentEa}
+              options={eaOptions}
+              setCurrent={setCurrentEa}
             ></CustomSelect>
           </Fillter>
 

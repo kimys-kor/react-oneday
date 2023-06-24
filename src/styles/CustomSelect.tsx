@@ -10,10 +10,16 @@ interface optionObj {
 
 interface selectProps {
   options: Array<optionObj>;
+  setCurrent: (value: any) => void;
 }
 
-const CustomSelect: React.FC<selectProps> = ({ options }: selectProps) => {
-  const [selectOnline, setSelectOnline] = useState(options[0]);
+const CustomSelect: React.FC<selectProps> = ({
+  options,
+  setCurrent,
+}: selectProps) => {
+  if (options === undefined) {
+    return null; // 또는 적절한 대체 컨텐츠를 반환할 수 있습니다.
+  }
 
   return (
     <Select
@@ -29,7 +35,7 @@ const CustomSelect: React.FC<selectProps> = ({ options }: selectProps) => {
         },
       })}
       options={options}
-      onChange={(e) => setSelectOnline}
+      onChange={(option) => setCurrent(option)}
       defaultValue={options[0]}
     />
   );

@@ -1,7 +1,6 @@
 import { ReactComponent as MemberIcon } from "@statics/images/sidebar/membericon.svg";
 import { ReactComponent as DashboardIcon } from "@statics/images/sidebar/dashboardicon.svg";
 import { ReactComponent as AppIcon } from "@statics/images/sidebar/appicon.svg";
-import { ReactComponent as GiftcardIcon } from "@statics/images/sidebar/giftcardicon.svg";
 import { ReactComponent as SavingIcon } from "@statics/images/sidebar/savingicon.svg";
 import { ReactComponent as ChartIcon } from "@statics/images/sidebar/charticon.svg";
 import { CiDeliveryTruck } from "react-icons/ci";
@@ -197,14 +196,6 @@ export const appOptions: Array<appOption> = [
   { key: 1, value: "모이리" },
   { key: 2, value: "프리수" },
   { key: 3, value: "펫포션" },
-];
-
-export const eaOptions = [
-  { value: 10, label: "10개 씩" },
-  { value: 20, label: "20개 씩" },
-  { value: 30, label: "30개 씩" },
-  { value: 40, label: "40개 씩" },
-  { value: 50, label: "50개 씩" },
 ];
 
 export const text1 = "간편하게 클릭하나만으로";
@@ -653,27 +644,35 @@ export interface WidthOptionProps {
   height: number;
 }
 
-export const cityOptions: Array<corpOption> = [{ key: 0, value: "광주광역시" }];
-
-export const guOptions: Array<corpOption> = [
-  { key: 0, value: "북구" },
-  { key: 1, value: "서구" },
-  { key: 2, value: "광산구" },
-  { key: 3, value: "남구" },
+export const eaOptions = [
+  { value: 10, label: "10개 씩" },
+  { value: 20, label: "20개 씩" },
+  { value: 30, label: "30개 씩" },
+  { value: 40, label: "40개 씩" },
+  { value: 50, label: "50개 씩" },
 ];
 
-export const dongOptions: Array<corpOption> = [
-  { key: 0, value: "동림동" },
-  { key: 1, value: "운암동" },
-  { key: 2, value: "오치동" },
-  { key: 3, value: "용봉동" },
+export const cityOptions = [{ value: 0, label: "광주광역시" }];
+
+export const guOptions = [
+  { value: 0, label: "북구" },
+  { value: 1, label: "서구" },
+  { value: 2, label: "광산구" },
+  { value: 3, label: "남구" },
 ];
 
-export const shopOptions: Array<corpOption> = [
-  { key: 0, value: "용만이네1" },
-  { key: 1, value: "용만이네2" },
-  { key: 2, value: "용만이네3" },
-  { key: 3, value: "용만이네4" },
+export const dongOptions = [
+  { value: 0, label: "동림동" },
+  { value: 1, label: "운암동" },
+  { value: 2, label: "오치동" },
+  { value: 3, label: "용봉동" },
+];
+
+export const shopOptions = [
+  { value: 0, label: "용만이네1" },
+  { value: 1, label: "용만이네2" },
+  { value: 2, label: "용만이네3" },
+  { value: 3, label: "용만이네4" },
 ];
 
 export const shoplocation: Array<String> = [
@@ -847,12 +846,6 @@ export const sidebarMenu: Array<Array<sidebarModel>> = [
       name: "상점 관리",
       path: "shop",
       pathname: "/oneday/shop",
-    },
-    {
-      logo: <GiftcardIcon color="#7B829B" size="26" />,
-      name: "상품 관리",
-      path: "product",
-      pathname: "/oneday/product",
     },
     {
       logo: <CiDeliveryTruck color="#7B829B" size="26" />,
