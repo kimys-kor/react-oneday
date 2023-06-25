@@ -27,7 +27,7 @@ const CustomSelect: React.FC<selectProps> = ({
       borderRadius: "4px",
       border: "#ff622",
       boxShadow: "none",
-      width: "7rem",
+      width: "9rem",
       height: "1rem",
       textAlign: "center",
       fontSize: "0.875rem",
