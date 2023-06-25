@@ -4,7 +4,6 @@ import { useState } from "react";
 import CustomSelect from "@/styles/CustomSelect";
 import SearchInput from "@components/common/SearchInput";
 
-import RiderDetail from "@components/details/RiderDetail";
 import RiderBoard from "@components/board/RiderBoard";
 import { eaOptions } from "@/data/common";
 
