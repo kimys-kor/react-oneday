@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import DatePicker from "react-datepicker";
-import { ko } from "date-fns/esm/locale";
-
-import BorderButton from "@styles/BorderButton";
-import CustomSelect from "@/styles/CustomSelect";
+import CustomDatePicker from "../common/DatePicker";
 import { useForm, Resolver } from "react-hook-form";
 import { eaOptions } from "@/data/common";
 
@@ -38,8 +34,11 @@ const resolver: Resolver<FormData> = async (values) => {
 function MemberDetail() {
   const [member, setMember] = useState<member>();
 
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
-  const [endDate, setEndDate] = useState<Date | null>(new Date());
+  // 헤더 날짜 필터
+  const today = new Date();
+  const [startDate, setStartDate] = useState<Date>(today);
+  const [endDate, setEndDate] = useState<Date>(today);
+  const [active, setActive] = useState<number>(1);
 
   const {
     register,
@@ -432,44 +431,18 @@ function MemberDetail() {
 
                     <div className="px-2 pl-1 min-w-fit">
                       <div className="flex w-40">
-                        <DatePicker
-                          locale={ko}
-                          closeOnScroll={(e) => e.target === document}
-                          selected={startDate}
-                          onChange={(date) => setStartDate(date)}
-                          selectsStart
-                          startDate={startDate}
-                          endDate={endDate}
-                          dateFormat="yyyy-MM-dd"
-                          customInput={
-                            // 날짜 뜨는 인풋 커스텀
-                            <input
-                              className="box-border px-2 text-sm font-normal leading-9 text-center text-gray-500 bg-white border-[1px] border-gray-300 h-7 w-28"
-                              type="text"
-                              onClick={() => handleButtonClick1(2)}
-                            />
-                          }
-                        />
-
-                        <DatePicker
-                          locale={ko}
-                          closeOnScroll={(e) => e.target === document}
-                          selected={endDate}
-                          onChange={(date) => setEndDate(date)}
-                          selectsEnd
-                          startDate={startDate}
-                          endDate={endDate}
-                          minDate={startDate}
-                          dateFormat="yyyy-MM-dd"
-                          customInput={
-                            // 날짜 뜨는 인풋 커스텀
-                            <input
-                              className="box-border px-2 text-sm font-normal leading-9 text-center text-gray-500 bg-white border-[1px] border-gray-300 h-7 w-28"
-                              type="text"
-                              onClick={() => handleButtonClick1(2)}
-                            />
-                          }
-                        />
+                        <div
+                          onClick={() => setActive(1)}
+                          className={`flex w-[14rem]`}
+                        >
+                          <CustomDatePicker
+                            startDate={startDate}
+                            setStartDate={setStartDate}
+                            endDate={endDate}
+                            setEndDate={setEndDate}
+                            active={active}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>

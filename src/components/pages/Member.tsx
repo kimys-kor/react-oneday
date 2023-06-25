@@ -32,7 +32,8 @@ function Member() {
   const today = new Date();
   const [startDate, setStartDate] = useState<Date>(today);
   const [endDate, setEndDate] = useState<Date>(today);
-  Date;
+  const [active, setActive] = useState<number>(1);
+
   // 멤버상세창 넘길 멤버
   const [activeItem, setActiveItem] = useState(0);
   // ...클릭시 설정팝업
@@ -44,10 +45,6 @@ function Member() {
   };
 
   const [currentEa, setCurrentEa] = useState(eaOptions[0]);
-
-  const [active, setActive] = useState<number>(1);
-  useEffect(() => console.log("하이하이", startDate), [startDate]);
-  useEffect(() => console.log("하이하이11", endDate), [endDate]);
 
   return (
     <main className="flex flex-col items-center w-full h-full gap-3 rounded-2xl">
