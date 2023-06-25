@@ -58,7 +58,7 @@ const CustomDatePicker = (props: IProps) => {
   ];
 
   return (
-    <Wrapper active={props.active}>
+    <Wrapper>
       <div className="flex justify-between items-center w-[13rem]">
         {/* 시작 날짜를 지정하는 데이트 피커 */}
         <DatePicker
@@ -120,6 +120,7 @@ const CustomDatePicker = (props: IProps) => {
                     </option>
                   ))}
                 </select>
+
                 <span>월</span>
               </div>
               {/* 다음 월로 이동하는 버튼 */}
@@ -134,16 +135,7 @@ const CustomDatePicker = (props: IProps) => {
               </button>
             </div>
           )}
-          customInput={
-            // 날짜 뜨는 인풋 커스텀
-            <input
-              className={`box-border px-2 text-sm font-normal leading-9 text-center
-              text-gray-500 bg-white border-[1px] border-gray-300  w-28
-              shadow-[0px_1px_3px_0px_#dadce0]
-              "hover:border-active hover:text-active"
-              `}
-            />
-          }
+          customInput={<Input active={props.active} />}
         />
 
         {/* 종료 날짜를 지정하는 데이트 피커 */}
@@ -219,13 +211,7 @@ const CustomDatePicker = (props: IProps) => {
           )}
           customInput={
             // 날짜 뜨는 인풋 커스텀
-            <input
-              className={`box-border px-2 text-sm font-normal leading-9 text-center
-              text-gray-500 bg-white border-[1px] border-gray-300  w-28
-              shadow-[0px_1px_3px_0px_#dadce0]
-              "hover:border-active hover:text-active"
-              `}
-            />
+            <Input active={props.active} />
           }
         />
       </div>
@@ -234,14 +220,8 @@ const CustomDatePicker = (props: IProps) => {
 };
 
 export default CustomDatePicker;
-interface activeprops {
-  active: number;
-}
-const Wrapper = styled.div<activeprops>`
-  .react-datepicker__input-container {
-    border: ${({ active }) => (active === 2 ? "#ff6622" : "")};
-  }
 
+const Wrapper = styled.div`
   .react-datepicker-ignore-onclickoutside {
     outline: none;
     border: 1px solid #ff6622 !important;
@@ -363,5 +343,36 @@ const Wrapper = styled.div<activeprops>`
     width: 11px;
     margin: 0 10px;
     color: #2b2b2b;
+  }
+`;
+
+interface inputProp {
+  active: number;
+}
+
+const Input = styled.input<inputProp>`
+  box-sizing: border-box;
+  width: 7rem;
+  height: 37px;
+  padding: 5px 10px;
+  background: #fff;
+  border: 1px solid #bbbbcf;
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
+  color: #bbbbcf;
+  line-height: 37px;
+  text-align: center;
+
+  box-shadow: 0px 1px 3px 0px #dadce0;
+
+  ${({ active }) =>
+    active == 2 &&
+    css`
+      border: 1px solid #ff6622;
+    `}
+
+  &:focus {
+    outline: none;
   }
 `;
