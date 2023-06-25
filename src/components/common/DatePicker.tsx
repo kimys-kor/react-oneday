@@ -13,12 +13,14 @@ import {
 } from "react-icons/bs";
 
 import styled from "styled-components";
+import { css } from "styled-components";
 
 interface IProps {
-  startDate: string;
-  setStartDate: Dispatch<SetStateAction<string>>;
-  endDate: string;
-  setEndDate: Dispatch<SetStateAction<string>>;
+  startDate: Date | null;
+  setStartDate: Dispatch<SetStateAction<Date>>;
+  endDate: Date | null;
+  setEndDate: Dispatch<SetStateAction<Date>>;
+  active: number;
 }
 
 const CustomDatePicker = (props: IProps) => {
@@ -56,17 +58,17 @@ const CustomDatePicker = (props: IProps) => {
   ];
 
   return (
-    <Wrapper>
+    <Wrapper active={props.active}>
       <div className="flex justify-between items-center w-[13rem]">
         {/* 시작 날짜를 지정하는 데이트 피커 */}
         <DatePicker
           locale={ko} // (월~일 부분) 한국어로 변환
           dateFormat="yyyy.MM.dd" // 선택된 날짜를 input box에 나타내는 형식
-          selected={new Date(props.startDate)}
-          onChange={(date) => props.setStartDate(date?.toISOString() ?? "")} // 선택한 날짜를 state에 저장
+          selected={props.startDate}
+          onChange={(date) => date && props.setStartDate(date)} // 선택한 날짜를 state에 저장
           selectsStart
-          startDate={new Date(props.startDate)}
-          endDate={new Date(props.endDate)}
+          startDate={props.startDate}
+          endDate={props.endDate}
           renderCustomHeader={({
             date,
             changeYear,
@@ -148,12 +150,12 @@ const CustomDatePicker = (props: IProps) => {
         <DatePicker
           locale={ko}
           dateFormat="yyyy.MM.dd"
-          selected={new Date(props.endDate)}
-          onChange={(date) => props.setStartDate(date?.toISOString() ?? "")}
+          selected={props.endDate}
+          onChange={(date) => date && props.setEndDate(date)}
           selectsEnd
-          startDate={new Date(props.startDate)}
-          endDate={new Date(props.endDate)}
-          minDate={new Date(props.startDate)}
+          startDate={props.startDate}
+          endDate={props.endDate}
+          minDate={props.startDate}
           renderCustomHeader={({
             date,
             changeYear,
@@ -232,11 +234,17 @@ const CustomDatePicker = (props: IProps) => {
 };
 
 export default CustomDatePicker;
+interface activeprops {
+  active: number;
+}
+const Wrapper = styled.div<activeprops>`
+  .react-datepicker__input-container {
+    border: ${({ active }) => (active === 2 ? "#ff6622" : "")};
+  }
 
-const Wrapper = styled.div`
   .react-datepicker-ignore-onclickoutside {
-    border: 1px solid #ff6622 !important;
     outline: none;
+    border: 1px solid #ff6622 !important;
   }
   .react-datepicker__triangle {
     display: none;

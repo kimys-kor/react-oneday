@@ -41,7 +41,7 @@ function MemberBoard({
   }, []);
 
   return (
-    <>
+    <div className="flex flex-col items-center w-full">
       <Table>
         <Title>
           {boardMenu.map((item, index) => (
@@ -83,14 +83,13 @@ function MemberBoard({
         ))}
       </Table>
       <Paging page={1} count={15} setPage={setPage}></Paging>
-    </>
+    </div>
   );
 }
 
 export default MemberBoard;
 
 const Table = styled.div`
-  margin-top: 50px;
   width: 100%;
   border: 1px solid #bbbbcf;
   box-sizing: border-box;
