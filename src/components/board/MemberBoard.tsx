@@ -44,20 +44,20 @@ function MemberBoard({
     <div className="flex flex-col items-center w-full">
       <Table>
         <Title>
-          {boardMenu.map((item, index) => (
-            <Td key={index}>{item}</Td>
+          {boardMenu.map((menu, index) => (
+            <Td key={index}>{menu}</Td>
           ))}
         </Title>
 
-        {boardData.map((item, index) => (
+        {boardData.map((member, index) => (
           <Tr key={index}>
-            <Td>{item.id}</Td>
-            <Td>{item.phone}</Td>
-            <Td>{item.email}</Td>
-            <Td>{item.nickname}</Td>
-            <Td>{item.creteadDt}</Td>
-            <Td>{item.point}</Td>
-            <Td>{item.status}</Td>
+            <Td>{member.id}</Td>
+            <Td>{member.phone}</Td>
+            <Td>{member.email}</Td>
+            <Td>{member.nickname}</Td>
+            <Td>{member.creteadDt}</Td>
+            <Td>{member.point}</Td>
+            <Td>{member.status}</Td>
             <Td>
               <Iconbox>
                 <AnotherIcon
@@ -72,7 +72,7 @@ function MemberBoard({
                       handleOpenIndex(openAnother === index ? -1 : index)
                     }
                   >
-                    <Link to={`/oneday/member/${item.id}`}>
+                    <Link to={`/oneday/member/${member.id}`}>
                       <Option>상세정보</Option>
                     </Link>
                   </Optionbox>

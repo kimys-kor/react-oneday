@@ -1,339 +1,569 @@
 import { useState } from "react";
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-import BorderButton from "@/styles/BorderButton";
-import CustomSelect from "@/styles/CustomSelect";
-
+import CustomDatePicker from "../common/DatePicker";
+import { useForm, Resolver } from "react-hook-form";
 import { eaOptions } from "@/data/common";
-import { shop } from "@/data/common";
-import ShopOrderBoard from "@/components/board/ShopOrderBoard";
-import { shopOrderBoardTitle, shopOrdertBoardData } from "@/data/common";
 
-interface ShopDetailProps {
-  onClose: () => void;
-  isDetailOpen: boolean;
-  shop: shop | undefined;
-}
+import { member } from "@/data/common";
+import MemberPointBoard from "@components/board/MemberPointBoard";
+import { memberPointBoardTitle, memberPointBoardData } from "@/data/common";
 
-function ShopDetail({ onClose, isDetailOpen, shop }: ShopDetailProps) {
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
-  const handleButtonClick = (index: number) => {
-    setActiveIndex(index === activeIndex ? null : index);
+import { AiOutlineArrowLeft } from "react-icons/Ai";
+import { HiOutlineChatBubbleLeft } from "react-icons/hi2";
+import Paging from "@components/common/Paging";
+
+type FormData = {
+  savingPoint: number;
+};
+
+const resolver: Resolver<FormData> = async (values) => {
+  return {
+    values: values.savingPoint ? values : {},
+    errors: !values.savingPoint
+      ? {
+          savingPoint: {
+            type: "required",
+            message: "This is required.",
+          },
+        }
+      : {},
+  };
+};
+
+function ShopDetail() {
+  const [member, setMember] = useState<member>();
+
+  // 헤더 날짜 필터
+  const today = new Date();
+  const [startDate, setStartDate] = useState<Date>(today);
+  const [endDate, setEndDate] = useState<Date>(today);
+  // 전체기간,날짜선택 active 효과 state
+  const [active, setActive] = useState<number>(1);
+  const [tab, setTab] = useState<number>(1);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({ resolver });
+
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
+
+  const navigate = useNavigate();
+
+  const setPage = function () {
+    console.log("온체인지");
   };
 
-  const [currentEa, setCurrentEa] = useState(eaOptions[0].value);
-
   return (
-    <Wrapper isDetailOpen={isDetailOpen}>
-      <Modal isDetailOpen={isDetailOpen} onClick={(e) => e.stopPropagation()}>
-        <Layout>
-          <Headerbox>
-            <Button onClick={onClose}>&lt;</Button>
-          </Headerbox>
+    <main className="flex flex-col w-full h-full p-4 gap-4 bg-[#fff]">
+      <button
+        className="w-8 p-2 text-xs text-center border border-normal hover:border-active hover:text-active "
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        <AiOutlineArrowLeft size={14}></AiOutlineArrowLeft>
+      </button>
 
-          <Content>
-            <Left>
-              <Titlebox>
-                <LeftButton>상점 정보</LeftButton>
-              </Titlebox>
-              <LeftContent>
-                <Row>
-                  <Greyfont1>고유 ID</Greyfont1>
-                  <Blackfont1>{shop?.id}</Blackfont1>
-                </Row>
-                <Row>
-                  <Greyfont1>매장명</Greyfont1>
-                  <Blackfont1>{shop?.shopName}</Blackfont1>
-                </Row>
+      <h5 className="w-full p-2 overflow-hidden text-black bg-amber-50 ">
+        상점 상세
+      </h5>
 
-                <Row>
-                  <Greyfont1>매장점주</Greyfont1>
-                  <Blackfont1>{shop?.owner}</Blackfont1>
-                </Row>
+      <div className="mt-4 min-w-fit">
+        <button
+          onClick={() => setTab(1)}
+          className={`w-24 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] ${
+            tab === 1
+              ? "border-active text-active"
+              : "hover:border-active hover:text-active"
+          }`}
+        >
+          상점정보
+        </button>
+        <button
+          onClick={() => setTab(2)}
+          className={`w-28 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] ${
+            tab === 2
+              ? "border-active text-active"
+              : "hover:border-active hover:text-active"
+          }`}
+        >
+          상점주문내역
+        </button>
+        <button
+          onClick={() => setTab(3)}
+          className={`w-28 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] ${
+            tab === 3
+              ? "border-active text-active"
+              : "hover:border-active hover:text-active"
+          }`}
+        >
+          상점상품관리
+        </button>
+      </div>
 
-                <Row>
-                  <Greyfont1>핸드폰</Greyfont1>
-                  <Blackfont1>{shop?.phone}</Blackfont1>
-                </Row>
+      {tab === 1 && (
+        <>
+          <section className="flex flex-col w-full gap-1 ">
+            <div className="flex w-full ">
+              <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
+                이름
+              </p>
+              <div className="flex items-center w-2/6 pl-1 border-b-2 min-w-30">
+                <input
+                  className="w-16 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
+                  defaultValue={"안녕"}
+                ></input>
+              </div>
 
-                <Row>
-                  <Greyfont1>이메일</Greyfont1>
-                  <Blackfont1>{shop?.email}</Blackfont1>
-                </Row>
-                <Row>
-                  <Greyfont1>최초 등록일</Greyfont1>
-                  <Blackfont1>{shop?.createdDt}</Blackfont1>
-                </Row>
+              <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+                회원등급
+              </p>
+              <div className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">
+                <select className="w-20 shadow-[0px_1px_1px_0px_#dadce0_inset]">
+                  <option value="플래티넘">플래티넘</option>
+                  <option value="골드">골드</option>
+                  <option value="실버">실버</option>
+                </select>
+              </div>
+            </div>
 
-                <Divide></Divide>
-                <Row>
-                  <Greyfont1>상품수</Greyfont1>
-                  <Blackfont1>{shop?.productNumber}</Blackfont1>
-                </Row>
+            <div className="flex w-full">
+              <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
+                적립금
+              </p>
+              <div className="flex items-center w-2/6 gap-3 px-1 truncate border-b-2">
+                1,000
+                <form onSubmit={onSubmit} className="flex ">
+                  <input
+                    className="w-36 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset] text-[0.82rem]"
+                    placeholder="적립 금액을 입력해 주세요."
+                    type="number"
+                    {...register("savingPoint")}
+                  ></input>
+                  <button
+                    className="w-[2.5rem] h-3/5 bg-active text-[#fff] text-[0.84rem]
+                    shadow-md
+                    hover:bg-orange-600
+                    "
+                    type="submit"
+                    value="point"
+                  >
+                    적립
+                  </button>
+                </form>
+              </div>
 
-                <Row>
-                  <Greyfont1>총주문건수</Greyfont1>
-                  <Blackfont1>{shop?.orderCount}</Blackfont1>
-                </Row>
-              </LeftContent>
-            </Left>
+              <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+                예치금
+              </p>
+              <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">1,000</p>
+            </div>
 
-            <Right>
-              <Titlebox>
-                <Buttonbox>
-                  <BorderButton
-                    width={151}
-                    titles={["주문내역"]}
-                    activeIndex={activeIndex}
-                    handleButtonClick={handleButtonClick}
-                  ></BorderButton>
-                </Buttonbox>
-                <CustomSelect
-                  width={90}
-                  height={37}
-                  optionData={eaOptions}
-                  currentValue={currentEa}
-                  setCurrentValue={setCurrentEa}
-                ></CustomSelect>
-              </Titlebox>
-              <RightContent>
-                <ShopOrderBoard
-                  index={0}
-                  boardMenu={shopOrderBoardTitle}
-                  boardData={shopOrdertBoardData}
-                ></ShopOrderBoard>
-              </RightContent>
-            </Right>
-          </Content>
-        </Layout>
-      </Modal>
-    </Wrapper>
+            <div className="flex w-full">
+              <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
+                누적총로그인
+              </p>
+              <div className="flex items-center w-2/6 pl-1 border-b-2">6</div>
+
+              <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+                주문완료 상품/금액
+              </p>
+              <div className="flex items-center w-2/6 gap-1 gap-2 pl-1 border-b-2">
+                0 / 0 원
+                <button
+                  className="w-[3rem] h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                  hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                >
+                  상세
+                </button>
+              </div>
+            </div>
+
+            <div className="flex w-full">
+              <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white ">
+                가입일자
+              </p>
+              <div className="flex items-center w-2/6 pl-1 border-b-2 ">
+                2023-06-20 17:13:00
+              </div>
+
+              <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white ">
+                최종방문일
+              </p>
+              <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">
+                2023-06-20 17:13:00
+              </p>
+            </div>
+
+            <div className="flex w-full">
+              <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
+                비밀번호
+              </p>
+              <div className="flex items-center w-2/6 pl-1 border-b-2">
+                <button
+                  className="w-[6.8rem] h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                  hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                >
+                  임시비밀번호생성
+                </button>
+              </div>
+
+              <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+                강제탈퇴
+              </p>
+              <div className="flex items-center w-2/6 pl-1 border-b-2">
+                <button
+                  className="w-[4rem] h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                  hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                >
+                  강제탈퇴
+                </button>
+              </div>
+            </div>
+            <div className="flex w-full">
+              <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
+                휴대폰
+              </p>
+              <div className="flex items-center w-2/6 pl-1 border-b-2">
+                010-1234-1234
+              </div>
+
+              <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+                이메일
+              </p>
+              <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">
+                wkek@naver.com
+              </p>
+            </div>
+          </section>
+
+          <div className="flex flex-row-reverse w-full">
+            <button
+              className={`w-24 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] 
+              hover:text-active
+              `}
+            >
+              회원정보저장
+            </button>
+          </div>
+
+          <section className="flex w-full gap-2 mt-4">
+            <h6 className="w-2/12 leading-10 min-w-fit pl-1  bg-[#EFEFEF] border-b-white flex items-center">
+              회원 메모
+            </h6>
+
+            <div className="flex flex-col justify-between w-10/12 gap-5">
+              <div className="flex w-full">
+                <textarea className="w-11/12 h-12 pl-2 border shadow-[0px_1px_1px_0px_#dadce0_inset] focus:outline-none focus:shadow-none resize-none"></textarea>
+
+                <button
+                  className={`w-1/12 h-12 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] truncate
+                  hover:text-active
+                  `}
+                >
+                  메모저장
+                </button>
+              </div>
+
+              <div>
+                <div className="flex justify-between w-full gap-1">
+                  <div className="flex gap-3">
+                    <span className="">2023/06/23 11:51:26</span>
+                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                  </div>
+
+                  <div className="flex items-center gap-3 text-sm">
+                    <p className="">mst-01</p>
+                    <button
+                      className="w-4 h-4 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                    hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                    >
+                      x
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex justify-between w-full gap-1">
+                  <div className="flex gap-3">
+                    <span className="">2023/06/23 11:51:26</span>
+                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                  </div>
+
+                  <div className="flex items-center gap-3 text-sm">
+                    <p className="">mst-01</p>
+                    <button
+                      className="w-4 h-4 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                    hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                    >
+                      x
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex justify-between w-full gap-1">
+                  <div className="flex gap-3">
+                    <span className="">2023/06/23 11:51:26</span>
+                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                  </div>
+
+                  <div className="flex items-center gap-3 text-sm">
+                    <p className="">mst-01</p>
+                    <button
+                      className="w-4 h-4 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                    hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                    >
+                      x
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex justify-between w-full gap-1">
+                  <div className="flex gap-3">
+                    <span className="">2023/06/23 11:51:26</span>
+                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                  </div>
+
+                  <div className="flex items-center gap-3 text-sm">
+                    <p className="">mst-01</p>
+                    <button
+                      className="w-4 h-4 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                    hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                    >
+                      x
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex justify-between w-full gap-1">
+                  <div className="flex gap-3">
+                    <span className="">2023/06/23 11:51:26</span>
+                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                  </div>
+
+                  <div className="flex items-center gap-3 text-sm">
+                    <p className="">mst-01</p>
+                    <button
+                      className="w-4 h-4 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                    hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                    >
+                      x
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {tab === 2 && (
+        <>
+          <section className="flex flex-col w-full gap-1 ">
+            <div className="flex flex-col w-full gap-10 ">
+              <article>
+                <div className="flex gap-3">
+                  <HiOutlineChatBubbleLeft size={20}></HiOutlineChatBubbleLeft>
+                  <span>주문 상품 내역</span>
+                </div>
+
+                <div className="mt-2 grid grid-cols-6 border-t-[1px] border-t-[#EFEFEF]">
+                  <div className="flex items-center justify-center w-full">
+                    <p className="truncate ">총 주문 상품</p>
+                  </div>
+                  <div className="flex items-center justify-center w-full">
+                    <p className="truncate">발송대기</p>
+                  </div>
+                  <div className="flex items-center justify-center w-full">
+                    <p className="truncate">주문완료</p>
+                  </div>
+                  <div className="flex items-center justify-center w-full">
+                    <p className="truncate">교환주문</p>
+                  </div>
+                  <div className="flex items-center justify-center w-full">
+                    <p className="truncate">주문취소</p>
+                  </div>
+                  <div className="flex items-center justify-center w-full">
+                    <p className="truncate">주문완료총금액</p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-6 bg-[#EFEFEF]">
+                  <div className="flex items-center justify-center w-full">
+                    <p className="truncate">555</p>
+                  </div>
+                  <div className="flex items-center justify-center w-full">
+                    <p className="truncate">185</p>
+                  </div>
+                  <div className="flex items-center justify-center w-full">
+                    <p className="truncate">224</p>
+                  </div>
+                  <div className="flex items-center justify-center w-full">
+                    <p className="truncate">25</p>
+                  </div>
+                  <div className="flex items-center justify-center w-full text-red-500">
+                    <p className="truncate">40</p>
+                  </div>
+                  <div className="flex items-center justify-center w-full">
+                    <p className="truncate">500,000</p>
+                  </div>
+                </div>
+              </article>
+
+              <article>
+                <div className="flex gap-3">
+                  <HiOutlineChatBubbleLeft size={20}></HiOutlineChatBubbleLeft>
+                  <span>통합 주문 조회</span>
+                </div>
+
+                <div className="mt-2 flex flex-col border-t-[1px] border-t-[#EFEFEF]">
+                  <div className="px-2 flex items-center w-full gap-10 bg-[#EFEFEF]">
+                    <p className="truncate ">기간검색</p>
+
+                    <div className="px-2 pl-1 min-w-fit">
+                      <div className="flex w-40">
+                        <div
+                          onClick={() => setActive(1)}
+                          className={`flex w-[14rem]`}
+                        >
+                          <CustomDatePicker
+                            startDate={startDate}
+                            setStartDate={setStartDate}
+                            endDate={endDate}
+                            setEndDate={setEndDate}
+                            active={active}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center w-full gap-10 px-2 mt-2 ">
+                    <p className="truncate ">검색조건</p>
+
+                    <div className="w-20 px-2 pl-1 min-w-fit">
+                      <select className="w-28 shadow-[0px_1px_1px_0px_#dadce0_inset]">
+                        <option value="0">주문상태</option>
+                        <option value="cancled">주문취소</option>
+                        <option value="completed">주문완료</option>
+                      </select>
+
+                      <select className="w-28 shadow-[0px_1px_1px_0px_#dadce0_inset]">
+                        <option value="0">결제방법</option>
+                        <option value="cancled">카드결제</option>
+                        <option value="completed">현금결제</option>
+                      </select>
+                    </div>
+
+                    <button
+                      className="w-[6.8rem] h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                      hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                    >
+                      검색
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article className="flex flex-col gap-5">
+                <div className="flex gap-3">
+                  <HiOutlineChatBubbleLeft size={20}></HiOutlineChatBubbleLeft>
+                  <span>주문 목록</span>
+                </div>
+
+                <h5 className="w-full p-2 overflow-hidden text-black bg-purple-50 ">
+                  검색된 개수 :453개
+                </h5>
+
+                <div>
+                  <div className="grid grid-cols-10 bg-[#EFEFEF]">
+                    <div className="text-center"> 번호</div>
+                    <div className="text-center"> 주문상태</div>
+                    <div className="col-span-2 text-center"> 주문번호</div>
+                    <div className="text-center"> 회원</div>
+                    <div className="text-center"> 배송</div>
+                    <div className="text-center"> 총금액</div>
+                    <div className="col-span-2 text-center"> 주문일자</div>
+                    <div className="text-center"> 결제방법</div>
+                  </div>
+
+                  <div className="grid grid-cols-10 ">
+                    <div className="text-center"> 453</div>
+                    <div className="text-center"> 주문접수</div>
+                    <div className="col-span-2 text-center"> 102030-19293</div>
+                    <div className="text-center"> kwekk@naver.com</div>
+                    <div className="text-center"> skdkfn</div>
+                    <div className="text-center"> 23,400</div>
+                    <div className="col-span-2 text-center"> 2023-05-30</div>
+                    <div className="text-center">선결제</div>
+                  </div>
+
+                  <div className="grid grid-cols-10 ">
+                    <div className="text-center"> 453</div>
+                    <div className="text-center"> 주문접수</div>
+                    <div className="col-span-2 text-center"> 102030-19293</div>
+                    <div className="text-center"> kwekk@naver.com</div>
+                    <div className="text-center"> skdkfn</div>
+                    <div className="text-center"> 23,400</div>
+                    <div className="col-span-2 text-center"> 2023-05-30</div>
+                    <div className="text-center">선결제</div>
+                  </div>
+
+                  <Paging page={1} count={15} setPage={setPage}></Paging>
+                </div>
+              </article>
+            </div>
+          </section>
+        </>
+      )}
+
+      {tab === 3 && (
+        <section className="flex flex-col w-full gap-1 ">
+          <div className="flex flex-col w-full gap-10 ">
+            <article>
+              <div className="flex justify-end gap-3 ">
+                <select className="w-28 border shadow-[1px_1px_1px_1px_#dadce0_inset]">
+                  <option value="0">10개씩</option>
+                  <option value="cancled">20개씩</option>
+                  <option value="completed">30개씩</option>
+                  <option value="completed">40개씩</option>
+                  <option value="completed">50개씩</option>
+                </select>
+              </div>
+
+              <div className="mt-5">
+                <div className="grid grid-cols-7 bg-[#EFEFEF]">
+                  <div className="text-center"> 번호</div>
+                  <div className="text-center"> 제목</div>
+                  <div className="text-center"> 회원</div>
+                  <div className="text-center"> 조회</div>
+                  <div className="col-span-2 text-center"> 작성일</div>
+                  <div className="text-center"> 게시</div>
+                </div>
+
+                <div>
+                  <div className="grid grid-cols-7 ">
+                    <div className="text-center"> 2323</div>
+                    <div className="text-center"> 상품문의</div>
+                    <div className="text-center"> wkjwkn@naver.com</div>
+                    <div className="text-center"> 0</div>
+                    <div className="col-span-2 text-center"> 2023-05-12</div>
+                    <div className="text-center text-blue-500"> [미노출]</div>
+                  </div>
+                </div>
+
+                <Paging page={1} count={15} setPage={setPage}></Paging>
+              </div>
+            </article>
+          </div>
+        </section>
+      )}
+    </main>
   );
 }
 
 export default ShopDetail;
-
-interface WrapperProps {
-  isDetailOpen: boolean;
-}
-
-const Wrapper = styled.div<WrapperProps>`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 9px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: #fff;
-
-  /* add transition and transform properties */
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  opacity: ${({ isDetailOpen }) => (isDetailOpen ? "1" : "0")};
-  transform: ${({ isDetailOpen }) =>
-    isDetailOpen ? "translateX(0%)" : "translateX(100%)"};
-`;
-
-const Modal = styled.div<WrapperProps>`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-
-  background-color: ${({ isDetailOpen }) =>
-    isDetailOpen ? "#fff" : "#3e4042"};
-  transition: opacity 1.5s ease-out;
-`;
-
-const Layout = styled.div`
-  width: 85%;
-`;
-
-const Headerbox = styled.div`
-  width: 100%;
-  height: 125px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-
-  border-bottom: 1px solid #bbbbcf;
-`;
-
-const LeftButton = styled.div`
-  line-height: 37px;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 300;
-  width: 151px;
-  height: 37px;
-
-  border: 1px solid #ff6622;
-  background-color: #ffffff;
-  color: #ff6622;
-  margin-right: 0;
-`;
-
-const Button = styled.div`
-  box-sizing: border-box;
-  border: 1px solid #bbbbcf;
-  width: 37px;
-  height: 37px;
-  background-color: #fff;
-  font-size: 20px;
-  line-height: 30px;
-  text-align: center;
-
-  cursor: pointer;
-  :hover {
-    border-color: #ff6622;
-    color: #ff6622;
-  }
-`;
-
-const Content = styled.div`
-  margin-top: 12px;
-  width: 100%;
-
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Left = styled.div`
-  width: 33%;
-`;
-
-const Titlebox = styled.div`
-  width: 100%;
-
-  display: flex;
-  justify-content: space-between;
-`;
-
-const RightContent = styled.div`
-  box-sizing: border-box;
-  margin-top: 20px;
-  width: 100%;
-
-  overflow: hidden;
-`;
-
-const Right = styled.div`
-  width: 63%;
-`;
-
-const Buttonbox = styled.div`
-  display: flex;
-`;
-
-const LeftContent = styled.div`
-  box-sizing: border-box;
-  margin-top: 20px;
-  width: 100%;
-  border: 1px solid #bbbbcf;
-  padding: 32px 36px 47px 36px;
-`;
-
-const Row = styled.div`
-  margin-top: 14px;
-  width: 100%;
-
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Emailbox = styled.div`
-  width: 60%;
-`;
-
-const Iconbox = styled.div`
-  width: 20px;
-  cursor: pointer;
-  position: relative;
-  top: -6px;
-
-  svg {
-    width: 20px;
-    height: 20px;
-  }
-`;
-
-const Greyfont1 = styled.div`
-  color: #a8adc0;
-  width: 120px;
-  height: 30px;
-
-  line-height: 100%;
-  font-size: 16px;
-  letter-spacing: -0.04em;
-`;
-
-const Blackfont1 = styled.div`
-  color: #43454b;
-  height: 30px;
-
-  line-height: 100%;
-  font-size: 16px;
-  letter-spacing: -0.04em;
-`;
-
-const Divide = styled.div`
-  width: 100%;
-  height: 17px;
-  border-bottom: 1px solid #e3e6f2;
-  margin-bottom: 32px;
-`;
-
-const Form = styled.form`
-  width: 100%;
-  height: 100%;
-  display: flex;
-`;
-
-const PointInput = styled.input`
-  width: 80%;
-  border: 1px solid #bbbbcf;
-
-  text-align: center;
-  font-size: 16px;
-`;
-
-const Submitbutton = styled.input`
-  border: none;
-  width: 20%;
-  height: 50px;
-  color: #fff;
-  font-size: 14px;
-  letter-spacing: 0.2rem;
-  background-color: #ff6622;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-`;
-
-const Optionbox = styled.div`
-  width: 99px;
-  height: 81px;
-  border: 1px solid #bbbbcf;
-  box-shadow: 0px 12px 12px rgba(30, 32, 38, 0.1);
-  text-align: center;
-  background-color: #fff;
-
-  position: absolute;
-  left: -80px;
-  z-index: 10;
-`;
-
-const Option = styled.div`
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  border-bottom: 1px solid #bbbbcf;
-
-  &:hover {
-    color: #ff6622;
-  }
-`;

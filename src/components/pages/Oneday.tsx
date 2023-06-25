@@ -12,6 +12,7 @@ import Statistics from "@/components/pages/Statistics";
 import Member from "@components/pages/Member";
 import Orders from "@components/pages/Orders";
 import MemberDetail from "../details/MemberDetail";
+import ShopDetail from "../details/ShopDetail";
 
 const Onedaybox = styled.div`
   width: 100%;
@@ -56,6 +57,7 @@ function Oneday() {
           <Route path="member" element={<Member />} />
           <Route path="member/:memberId" element={<MemberDetail />} />
           <Route path="shop" element={<Shop />} />
+          <Route path="shop/:shopId" element={<ShopDetail />} />
           <Route path="rider" element={<Rider />} />
           <Route path="orders" element={<Orders />} />
           <Route path="statistics" element={<Statistics />} />

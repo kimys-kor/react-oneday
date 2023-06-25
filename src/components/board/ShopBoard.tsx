@@ -5,6 +5,7 @@ import { useRef, useEffect } from "react";
 import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anothericon.svg";
 
 import Paging from "@components/common/Paging";
+import { Link } from "react-router-dom";
 
 interface BoardProps {
   boardMenu: Array<string>;
@@ -75,11 +76,11 @@ function ShopBoard({
                       handleOpenIndex(openAnother === index ? -1 : index)
                     }
                   >
-                    <Option onClick={() => handleDetailOpen(index)}>
-                      상세정보
-                    </Option>
-                    <Option>수정</Option>
-                    <Option>삭제</Option>
+                    <Link to={`/oneday/shop/${shop.id}`}>
+                      <Option>상세정보</Option>
+                      <Option>수정</Option>
+                      <Option>비활성화</Option>
+                    </Link>
                   </Optionbox>
                 )}
               </Iconbox>
