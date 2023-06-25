@@ -82,7 +82,10 @@ const CustomDatePicker = (props: IProps) => {
                 onClick={decreaseMonth}
                 disabled={prevMonthButtonDisabled}
               >
-                <BsArrowLeftCircleFill className="fill-white"></BsArrowLeftCircleFill>
+                <BsArrowLeftCircleFill
+                  size={18}
+                  className="fill-white"
+                ></BsArrowLeftCircleFill>
               </button>
 
               <div className="flex justify-between items-center w-[4rem]">
@@ -122,7 +125,10 @@ const CustomDatePicker = (props: IProps) => {
                 onClick={increaseMonth}
                 disabled={nextMonthButtonDisabled}
               >
-                <BsArrowRightCircleFill className="fill-white"></BsArrowRightCircleFill>
+                <BsArrowRightCircleFill
+                  size={18}
+                  className="fill-white"
+                ></BsArrowRightCircleFill>
               </button>
             </div>
           )}
@@ -152,7 +158,10 @@ const CustomDatePicker = (props: IProps) => {
                 onClick={decreaseMonth}
                 // disabled={prevMonthButtonDisabled}
               >
-                <BsArrowLeftCircleFill className="fill-white"></BsArrowLeftCircleFill>
+                <BsArrowLeftCircleFill
+                  size={18}
+                  className="fill-white"
+                ></BsArrowLeftCircleFill>
               </button>
 
               <div className="flex justify-between items-center w-[4rem]">
@@ -189,7 +198,10 @@ const CustomDatePicker = (props: IProps) => {
                 onClick={increaseMonth}
                 disabled={nextMonthButtonDisabled}
               >
-                <BsArrowRightCircleFill className="fill-white"></BsArrowRightCircleFill>
+                <BsArrowRightCircleFill
+                  size={18}
+                  className="fill-white"
+                ></BsArrowRightCircleFill>
               </button>
             </div>
           )}

@@ -3,9 +3,8 @@ import { useState, useEffect } from "react";
 import { css } from "styled-components";
 
 import CustomSelect from "@/styles/CustomSelect";
-import SearchInput from "@components/common/SearchInput";
+
 import Loading from "@components/common/Loading";
-import MemberDetail from "@components/details/MemberDetail";
 import MemberBoard from "@components/board/MemberBoard";
 import { corpOptions, appOptions, eaOptions } from "@/data/common";
 
@@ -13,14 +12,9 @@ import { itemFilter } from "@/data/common";
 import { memberBoardTitle, memberData } from "@/data/common";
 import BorderButton from "@/styles/BorderButton";
 
-import DatePicker from "react-datepicker";
-import { ko } from "date-fns/esm/locale";
-import "react-datepicker/dist/react-datepicker.css";
-import { ReactComponent as SearchIcon } from "@statics/images/search/searchicon.svg";
-
 import CustomDatePicker from "../common/DatePicker";
 
-import { GrSearch } from "react-icons/Gr";
+import { BiSearch } from "react-icons/bi";
 
 function Member() {
   const [dateFilterIndex, setDateFilterIndex] = useState<number>(0);
@@ -74,46 +68,6 @@ function Member() {
           </button>
 
           <div onClick={() => setActive(2)} className={`flex`}>
-            {/* <DatePicker
-              locale={ko}
-              closeOnScroll={(e) => e.target === document}
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              selectsStart
-              startDate={startDate}
-              endDate={endDate}
-              dateFormat="yyyy-MM-dd"
-              customInput={
-                // 날짜 뜨는 인풋 커스텀
-                <input
-                  className={`box-border px-2 text-sm font-normal leading-9 text-center
-                  text-gray-500 bg-white border-[1px] border-gray-300  w-28
-                  "hover:border-active hover:text-active"
-                  `}
-                />
-              }
-            />
-
-            <DatePicker
-              locale={ko}
-              closeOnScroll={(e) => e.target === document}
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
-              selectsEnd
-              startDate={startDate}
-              endDate={endDate}
-              minDate={startDate}
-              dateFormat="yyyy-MM-dd"
-              customInput={
-                // 날짜 뜨는 인풋 커스텀
-                <input
-                  className={`box-border px-2 text-sm font-normal leading-9 text-center
-                  text-gray-500 bg-white border-[1px] border-gray-300  w-28
-                  "hover:border-active hover:text-active"
-                  `}
-                />
-              }
-            /> */}
             <CustomDatePicker
               startDate={startDate}
               setStartDate={setStartDate}
@@ -128,7 +82,10 @@ function Member() {
               placeholder="검색어 입력"
               type="text"
             ></input>
-            <GrSearch className="relative h-full left-[-1.5625rem] hover:cursor-pointer hover:fill-active"></GrSearch>
+            <BiSearch
+              size={19}
+              className="relative h-full left-[-1.5625rem] hover:cursor-pointer hover:fill-active"
+            ></BiSearch>
           </div>
         </div>
 
