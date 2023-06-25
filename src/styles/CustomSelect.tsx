@@ -25,11 +25,13 @@ const CustomSelect: React.FC<selectProps> = ({
     control: (provided) => ({
       ...provided,
       borderRadius: "4px",
-      height: "2rem",
       border: "#ff622",
       boxShadow: "none",
-      width: "9.5rem",
+      width: "7rem",
+      height: "1rem",
       textAlign: "center",
+      fontSize: "0.875rem",
+      WebkitBoxShadow: "0px 1px 3px 0px #dadce0",
       "&:hover": {
         borderColor: "#ff6622",
       },
@@ -43,6 +45,7 @@ const CustomSelect: React.FC<selectProps> = ({
         ? "#ff6622"
         : "#fff",
       color: state.isSelected ? "#ff6622" : "#333",
+      fontSize: "0.85rem",
       "&:hover": {
         backgroundColor: state.isSelected ? "#fff" : "#ff6622",
         color: state.isSelected ? "#ff6622" : "#fff",

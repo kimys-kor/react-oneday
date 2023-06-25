@@ -258,6 +258,14 @@ const Wrapper = styled.div`
     text-align: center;
   }
 
+  .react-datepicker__month-container {
+    /* width: 300px;
+    height: 200px; */
+  }
+  .react-datepicker__month {
+    /* width: 100%; */
+  }
+
   .custom-react-datepicker__select-wrapper button {
     background-color: transparent;
     border: none;
@@ -304,8 +312,8 @@ const Wrapper = styled.div`
   }
   .react-datepicker__day-name,
   .react-datepicker__day {
-    width: 20px !important;
-    font-size: 8px;
+    width: 10% !important;
+    font-size: 12px;
     line-height: 14px !important;
     color: #7a7a7a !important;
   }

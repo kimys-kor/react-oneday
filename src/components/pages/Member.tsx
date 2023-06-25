@@ -82,7 +82,7 @@ function Member() {
               <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                 <BiSearch
                   size={19}
-                  className="cursor-pointer fill-slate-300"
+                  className="cursor-pointer fill-slate-300 hover:fill-active"
                   viewBox="0 0 20 20"
                 ></BiSearch>
               </span>
