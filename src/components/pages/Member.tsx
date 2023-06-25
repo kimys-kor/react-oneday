@@ -67,7 +67,7 @@ function Member() {
             전체기간
           </button>
 
-          <div onClick={() => setActive(2)} className={`flex`}>
+          <div onClick={() => setActive(2)} className={`flex w-[14rem]`}>
             <CustomDatePicker
               startDate={startDate}
               setStartDate={setStartDate}
@@ -82,12 +82,12 @@ function Member() {
               <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                 <BiSearch
                   size={19}
-                  className="fill-slate-300"
+                  className="cursor-pointer fill-slate-300"
                   viewBox="0 0 20 20"
                 ></BiSearch>
               </span>
               <input
-                className="block w-full py-2 pr-3 bg-white border rounded-md shadow-sm placeholder:italic placeholder:text-slate-400 border-slate-300 pl-9 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                className="block w-full py-2 pr-3 bg-white border rounded-md shadow-sm placeholder:italic placeholder:text-slate-400 border-slate-300 pl-9 focus:outline-none focus:border-active focus:ring-active focus:ring-1 sm:text-sm"
                 placeholder="검색어 입력"
                 type="text"
                 name="search"

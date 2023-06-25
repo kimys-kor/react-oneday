@@ -132,6 +132,16 @@ const CustomDatePicker = (props: IProps) => {
               </button>
             </div>
           )}
+          customInput={
+            // 날짜 뜨는 인풋 커스텀
+            <input
+              className={`box-border px-2 text-sm font-normal leading-9 text-center
+              text-gray-500 bg-white border-[1px] border-gray-300  w-28
+              shadow-[0px_1px_3px_0px_#dadce0]
+              "hover:border-active hover:text-active"
+              `}
+            />
+          }
         />
 
         {/* 종료 날짜를 지정하는 데이트 피커 */}
@@ -205,6 +215,16 @@ const CustomDatePicker = (props: IProps) => {
               </button>
             </div>
           )}
+          customInput={
+            // 날짜 뜨는 인풋 커스텀
+            <input
+              className={`box-border px-2 text-sm font-normal leading-9 text-center
+              text-gray-500 bg-white border-[1px] border-gray-300  w-28
+              shadow-[0px_1px_3px_0px_#dadce0]
+              "hover:border-active hover:text-active"
+              `}
+            />
+          }
         />
       </div>
     </Wrapper>
@@ -214,18 +234,6 @@ const CustomDatePicker = (props: IProps) => {
 export default CustomDatePicker;
 
 const Wrapper = styled.div`
-  .react-datepicker__input-container input {
-    width: 6.5rem;
-    height: 2rem;
-    padding: 5px 10px;
-    background: #f5f5f5;
-    border: 1px solid white;
-    border-radius: 5px;
-    font-size: 15px;
-    font-weight: 400;
-    text-align: center;
-    color: #2b2b2b;
-  }
   .react-datepicker-ignore-onclickoutside {
     border: 1px solid #ff6622 !important;
     outline: none;
