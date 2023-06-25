@@ -38,7 +38,9 @@ function MemberDetail() {
   const today = new Date();
   const [startDate, setStartDate] = useState<Date>(today);
   const [endDate, setEndDate] = useState<Date>(today);
+  // 전체기간,날짜선택 active 효과 state
   const [active, setActive] = useState<number>(1);
+  const [tab, setTab] = useState<number>(1);
 
   const {
     register,
@@ -50,14 +52,7 @@ function MemberDetail() {
     console.log(data);
   });
 
-  const [activeButton1, setActiveButton1] = useState<number>(1);
-  const handleButtonClick1 = (id: number) => {
-    setActiveButton1(id);
-  };
-
   const navigate = useNavigate();
-
-  const [tab, setTab] = useState<number>(1);
 
   const setPage = function () {
     console.log("온체인지");

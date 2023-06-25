@@ -21,6 +21,7 @@ import {
   shopOptions,
 } from "@/data/common";
 import "react-datepicker/dist/react-datepicker.css";
+import { BiSearch } from "react-icons/bi";
 
 type FormData = {
   shopName: string;
@@ -45,10 +46,7 @@ const resolver: Resolver<FormData> = async (values) => {
 };
 
 function Shop() {
-  const [tabIndex, setTabIndex] = useState<number>(0);
-  const handleTab = (index: number) => {
-    setTabIndex(index);
-  };
+  const [tab, setTab] = useState<number>(1);
 
   // 디테일 모달 상태
   const [isDetailOpen, setDetailOpen] = useState(false);
@@ -97,36 +95,60 @@ function Shop() {
     setAddAppOpen((prev) => !prev);
   };
 
-  const [activeButton1, setActiveButton1] = useState<number>(1);
-  const handleButtonClick1 = (id: number) => {
-    setActiveButton1(id);
-  };
-
   return (
-    <Shopbox>
-      <Headerbox>
-        <Title>상점 관리</Title>
-        <Addbutton onClick={handleAddForm}>상점 추가</Addbutton>
-      </Headerbox>
+    <main className="flex flex-col items-center w-full h-full gap-3 rounded-2xl">
+      <h1 className="box-border flex justify-between w-full gap-6 px-6 py-4 bg-white text-[1.6rem]">
+        상점 관리
+        <button
+          onClick={handleAddForm}
+          className="w-[5rem] bg-active text-[#fff] text-[0.84rem]
+                    shadow-md
+                    hover:bg-orange-600
+                    "
+          type="submit"
+          value="point"
+        >
+          상점 추가
+        </button>
+      </h1>
 
-      <Content>
-        <Layout>
-          <Tabbox>
-            <BorderButtonLX
-              title={"지역선택"}
-              id={1}
-              onClick={handleButtonClick1}
-              activeId={activeButton1}
-            ></BorderButtonLX>
-            <BorderButtonLX
-              title={"검색하기"}
-              id={2}
-              onClick={handleButtonClick1}
-              activeId={activeButton1}
-            ></BorderButtonLX>
-          </Tabbox>
-          <Filterbox>
-            {tabIndex == 0 ? (
+      <section className="box-border flex flex-col items-start w-full gap-5 p-6 bg-white h-85vh">
+        <div className="mt-4 min-w-fit">
+          <button
+            onClick={() => setTab(1)}
+            className={`w-24 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] ${
+              tab === 1
+                ? "border-active text-active"
+                : "hover:border-active hover:text-active"
+            }`}
+          >
+            상점목록
+          </button>
+          <button
+            onClick={() => setTab(2)}
+            className={`w-32 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] ${
+              tab === 2
+                ? "border-active text-active"
+                : "hover:border-active hover:text-active"
+            }`}
+          >
+            상점별 주문 순위
+          </button>
+          <button
+            onClick={() => setTab(3)}
+            className={`w-32 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] ${
+              tab === 3
+                ? "border-active text-active"
+                : "hover:border-active hover:text-active"
+            }`}
+          >
+            상점1:1문의
+          </button>
+        </div>
+
+        {tab === 1 && (
+          <article className="flex flex-col gap-3">
+            <Filterbox>
               <Selectbox>
                 <CustomSelect
                   options={cityOptions}
@@ -148,82 +170,61 @@ function Shop() {
                   setCurrent={setCurrentShop}
                 ></CustomSelect>
               </Selectbox>
-            ) : (
-              <SearchInput></SearchInput>
-            )}
-          </Filterbox>
-          <Betweenbox>
-            <Title>{}</Title>
-            <CustomSelect
-              options={eaOptions}
-              setCurrent={setCurrentEa}
-            ></CustomSelect>
-          </Betweenbox>
+            </Filterbox>
 
-          <ShopBoard
-            boardMenu={shopBoardTitle}
-            boardData={shopData}
-            handleDetailOpen={handleDetailOpen}
-            openAnother={openAnother}
-            handleOpenIndex={handleOpenIndex}
-          ></ShopBoard>
-        </Layout>
-      </Content>
-      <ShopDetail
-        onClose={handleDetailClose}
-        isDetailOpen={isDetailOpen}
-        shop={shopData[activeItem]}
-      />
+            <div className="flex justify-between w-full">
+              <label className="relative block">
+                <span className="sr-only">Search</span>
+                <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+                  <BiSearch
+                    size={19}
+                    className="cursor-pointer fill-slate-300 hover:fill-active"
+                    viewBox="0 0 20 20"
+                  ></BiSearch>
+                </span>
+                <input
+                  className="block w-full py-2 pr-3 bg-white border rounded-md shadow-sm placeholder:italic placeholder:text-slate-400 border-slate-300 pl-9 focus:outline-none focus:border-active focus:ring-active focus:ring-1 sm:text-sm"
+                  placeholder="검색어 입력"
+                  type="text"
+                  name="search"
+                />
+              </label>
+              <CustomSelect
+                options={eaOptions}
+                setCurrent={setCurrentEa}
+              ></CustomSelect>
+            </div>
+
+            <ShopBoard
+              boardMenu={shopBoardTitle}
+              boardData={shopData}
+              handleDetailOpen={handleDetailOpen}
+              openAnother={openAnother}
+              handleOpenIndex={handleOpenIndex}
+            ></ShopBoard>
+          </article>
+        )}
+
+        {tab === 2 && <div>준비중입니다</div>}
+        {tab === 3 && <div>준비중입니다</div>}
+      </section>
 
       {/* 상점등록 모달 */}
       <ShopForm
         isAddAppOpen={isAddAppOpen}
         handleAddForm={handleAddForm}
       ></ShopForm>
-    </Shopbox>
+    </main>
   );
 }
 
 export default Shop;
-
-const Shopbox = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 9px;
-`;
-
-const Headerbox = styled.div`
-  box-sizing: border-box;
-  padding-right: 50px;
-  width: 100%;
-  height: 125px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fff;
-`;
 
 const Title = styled.div`
   margin-left: 20px;
   font-size: 25px;
   display: flex;
   justify-content: space-between;
-`;
-
-const Content = styled.div`
-  margin-top: 12px;
-  width: 100%;
-  min-height: 1000px;
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fff;
 `;
 
 const Layout = styled.div`
@@ -380,7 +381,6 @@ const Addbutton = styled.div`
 
 const Filterbox = styled.div`
   width: 100%;
-  margin-top: 50px;
 `;
 
 const Selectbox = styled.div`
