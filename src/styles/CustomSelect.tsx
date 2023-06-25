@@ -21,8 +21,8 @@ const CustomSelect: React.FC<selectProps> = ({
     return null; // 또는 적절한 대체 컨텐츠를 반환할 수 있습니다.
   }
 
-  const customStyles = {
-    control: (provided: any) => ({
+  const customStyles: StylesConfig = {
+    control: (provided) => ({
       ...provided,
       borderRadius: "4px",
       height: "2rem",
@@ -35,10 +35,18 @@ const CustomSelect: React.FC<selectProps> = ({
       },
     }),
 
-    option: (provided: any, state: any) => ({
+    option: (provided, state) => ({
       ...provided,
-      backgroundColor: state.isSelected ? "#fff" : "#fff",
+      backgroundColor: state.isSelected
+        ? "#fff"
+        : state.isFocused
+        ? "#ff6622"
+        : "#fff",
       color: state.isSelected ? "#ff6622" : "#333",
+      "&:hover": {
+        backgroundColor: state.isSelected ? "#fff" : "#ff6622",
+        color: state.isSelected ? "#ff6622" : "#fff",
+      },
     }),
   };
 
