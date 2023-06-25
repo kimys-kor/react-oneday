@@ -52,7 +52,7 @@ function Member() {
   const [currentEa, setCurrentEa] = useState(eaOptions[0]);
 
   const [active, setActive] = useState<number>(1);
-  useEffect(() => console.log("하이하이", active), [active]);
+  useEffect(() => console.log("하이하이", startDate), [startDate]);
 
   return (
     <main className="flex flex-col items-center w-full h-full gap-3 rounded-2xl">

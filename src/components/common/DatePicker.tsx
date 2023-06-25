@@ -5,6 +5,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/locale";
 import { getMonth, getYear } from "date-fns";
 
+import {
+  BsArrowLeft,
+  BsArrowRight,
+  BsArrowLeftCircleFill,
+  BsArrowRightCircleFill,
+} from "react-icons/bs";
+
 import styled from "styled-components";
 
 interface IProps {
@@ -15,9 +22,6 @@ interface IProps {
 }
 
 const CustomDatePicker = (props: IProps) => {
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
-  const [endDate, setEndDate] = useState<Date | null>(new Date());
-
   // 연도 선택 select box에 보여질 데이터 : range(시작 연도, 끝 연도, 연도 간격)
 
   // 월 선택 select box에 보여질 데이터
@@ -36,12 +40,33 @@ const CustomDatePicker = (props: IProps) => {
     "12",
   ];
 
+  const currentYear = new Date().getFullYear();
+  const years = [
+    currentYear - 5,
+    currentYear - 4,
+    currentYear - 3,
+    currentYear - 2,
+    currentYear - 1,
+    currentYear,
+    currentYear + 1,
+    currentYear + 2,
+    currentYear + 3,
+    currentYear + 4,
+    currentYear + 5,
+  ];
+
   return (
     <Wrapper>
-      <div className="custom-react-datepicker__wrapper">
-        <span className="custom-react-datepicker__label-span">일자</span>
+      <div className="flex justify-between items-center w-[13rem]">
         {/* 시작 날짜를 지정하는 데이트 피커 */}
         <DatePicker
+          locale={ko} // (월~일 부분) 한국어로 변환
+          dateFormat="yyyy.MM.dd" // 선택된 날짜를 input box에 나타내는 형식
+          selected={new Date(props.startDate)}
+          onChange={(date) => props.setStartDate(date?.toISOString() ?? "")} // 선택한 날짜를 state에 저장
+          selectsStart
+          startDate={new Date(props.startDate)}
+          endDate={new Date(props.endDate)}
           renderCustomHeader={({
             date,
             changeYear,
@@ -51,25 +76,32 @@ const CustomDatePicker = (props: IProps) => {
             prevMonthButtonDisabled,
             nextMonthButtonDisabled,
           }) => (
-            <div className="custom-react-datepicker__select-wrapper">
+            <div className="px-4 flex justify-between items-center w-[13rem] h-[2.25rem]">
               {/* 이전 월로 이동하는 버튼 */}
               <button
                 onClick={decreaseMonth}
                 disabled={prevMonthButtonDisabled}
               >
-                <img src="/datePicker/decreaseMonth.png" />
+                <BsArrowLeftCircleFill className="fill-white"></BsArrowLeftCircleFill>
               </button>
-              <div className="custom-react-datepicker__select-item">
+
+              <div className="flex justify-between items-center w-[4rem]">
                 {/* 연도 선택 select box */}
                 <select
                   value={getYear(date)}
                   onChange={({ target: { value } }) =>
                     changeYear(Number(value))
                   }
-                ></select>
+                >
+                  {years.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
                 <span>년</span>
               </div>
-              <div className="custom-react-datepicker__select-item">
+              <div className="flex justify-between items-center w-[3rem]">
                 {/* 월 선택 select box */}
                 <select
                   value={months[getMonth(date)]}
@@ -90,21 +122,22 @@ const CustomDatePicker = (props: IProps) => {
                 onClick={increaseMonth}
                 disabled={nextMonthButtonDisabled}
               >
-                <img src="/datePicker/increaseMonth.png" />
+                <BsArrowRightCircleFill className="fill-white"></BsArrowRightCircleFill>
               </button>
             </div>
           )}
-          locale={ko} // (월~일 부분) 한국어로 변환
-          dateFormat="yyyy.MM.dd" // 선택된 날짜를 input box에 나타내는 형식
-          selected={new Date(props.startDate)}
-          onChange={(date) => setStartDate(date)} // 선택한 날짜를 state에 저장
-          selectsStart
-          startDate={new Date(props.startDate)}
-          endDate={new Date(props.endDate)}
         />
-        <span className="custom-react-datepicker__split-span">~</span>
+
         {/* 종료 날짜를 지정하는 데이트 피커 */}
         <DatePicker
+          locale={ko}
+          dateFormat="yyyy.MM.dd"
+          selected={new Date(props.endDate)}
+          onChange={(date) => props.setStartDate(date?.toISOString() ?? "")}
+          selectsEnd
+          startDate={new Date(props.startDate)}
+          endDate={new Date(props.endDate)}
+          minDate={new Date(props.startDate)}
           renderCustomHeader={({
             date,
             changeYear,
@@ -114,23 +147,30 @@ const CustomDatePicker = (props: IProps) => {
             prevMonthButtonDisabled,
             nextMonthButtonDisabled,
           }) => (
-            <div className="custom-react-datepicker__select-wrapper">
+            <div className="px-4 flex justify-between items-center w-[13rem] h-[2.25rem]">
               <button
                 onClick={decreaseMonth}
-                disabled={prevMonthButtonDisabled}
+                // disabled={prevMonthButtonDisabled}
               >
-                <img src="/datePicker/decreaseMonth.png" />
+                <BsArrowLeftCircleFill className="fill-white"></BsArrowLeftCircleFill>
               </button>
-              <div className="custom-react-datepicker__select-item">
+
+              <div className="flex justify-between items-center w-[4rem]">
                 <select
                   value={getYear(date)}
                   onChange={({ target: { value } }) =>
                     changeYear(Number(value))
                   }
-                ></select>
+                >
+                  {years.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
                 <span>년</span>
               </div>
-              <div className="custom-react-datepicker__select-item">
+              <div className="flex justify-between items-center w-[3rem]">
                 <select
                   value={months[getMonth(date)]}
                   onChange={({ target: { value } }) =>
@@ -149,18 +189,10 @@ const CustomDatePicker = (props: IProps) => {
                 onClick={increaseMonth}
                 disabled={nextMonthButtonDisabled}
               >
-                <img src="/datePicker/increaseMonth.png" />
+                <BsArrowRightCircleFill className="fill-white"></BsArrowRightCircleFill>
               </button>
             </div>
           )}
-          locale={ko}
-          dateFormat="yyyy.MM.dd"
-          selected={new Date(props.endDate)}
-          onChange={(date) => setStartDate(date)}
-          selectsEnd
-          startDate={new Date(props.startDate)}
-          endDate={new Date(props.endDate)}
-          minDate={new Date(props.startDate)}
         />
       </div>
     </Wrapper>
@@ -170,21 +202,9 @@ const CustomDatePicker = (props: IProps) => {
 export default CustomDatePicker;
 
 const Wrapper = styled.div`
-  .custom-react-datepicker__wrapper {
-    display: flex;
-    font-display: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 272px;
-  }
-  .custom-react-datepicker__label-span {
-    font-size: 15px;
-    width: 100%;
-    color: #2b2b2b;
-  }
   .react-datepicker__input-container input {
-    width: 82px;
-    height: 19px;
+    width: 6.5rem;
+    height: 2rem;
     padding: 5px 10px;
     background: #f5f5f5;
     border: 1px solid white;
@@ -195,7 +215,7 @@ const Wrapper = styled.div`
     color: #2b2b2b;
   }
   .react-datepicker-ignore-onclickoutside {
-    border: 1px solid #6400ff !important;
+    border: 1px solid #ff6622 !important;
     outline: none;
   }
   .react-datepicker__triangle {
@@ -207,24 +227,17 @@ const Wrapper = styled.div`
     border-radius: 4px;
   }
   .react-datepicker-wrapper {
-    width: 102px;
+    width: 152px;
   }
   .react-datepicker__header {
     height: 36px !important;
     padding: 0 !important;
-    background-color: #6400ff !important;
+    background-color: #ff6622 !important;
     border: none !important;
     position: relative;
     text-align: center;
   }
-  .custom-react-datepicker__select-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 198px;
-    height: 36px;
-  }
+
   .custom-react-datepicker__select-wrapper button {
     background-color: transparent;
     border: none;
@@ -289,20 +302,19 @@ const Wrapper = styled.div`
   }
   .react-datepicker__day--in-selecting-range,
   .react-datepicker__day--in-range {
-    background-color: #6400ff !important;
+    background-color: #ff6622 !important;
     border-radius: 7px !important;
     color: white !important;
   }
   .react-datepicker__day--keyboard-selected {
-    background-color: white !important;
-    color: #2b2b2b !important;
+    color: white !important;
   }
   .react-datepicker__day--today {
     background-color: white;
     color: #2b2b2b;
   }
   .react-datepicker__day--range-start {
-    background-color: #6400ff !important;
+    background-color: #ff6622 !important;
     border-radius: 7px !important;
     color: white !important;
   }
