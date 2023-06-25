@@ -78,9 +78,9 @@ function ShopBoard({
                   >
                     <Link to={`/oneday/shop/${shop.id}`}>
                       <Option>상세정보</Option>
-                      <Option>수정</Option>
-                      <Option>비활성화</Option>
                     </Link>
+                    <Option>수정</Option>
+                    <Option>비활성화</Option>
                   </Optionbox>
                 )}
               </Iconbox>
