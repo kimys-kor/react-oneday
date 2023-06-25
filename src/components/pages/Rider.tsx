@@ -134,11 +134,6 @@ function Rider() {
           ></RiderBoard>
         </Layout>
       </Content>
-      <RiderDetail
-        onClose={handleDetailClose}
-        isDetailOpen={isDetailOpen}
-        rider={riderData[activeItem]}
-      />
     </Memberbox>
   );
 }
