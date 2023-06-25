@@ -77,15 +77,22 @@ function Member() {
           </div>
 
           <div className="flex">
-            <input
-              className="w-[15rem] border shadow-[0px_1px_1px_0px_#dadce0_inset] text-[0.82rem] truncate rounded-lg"
-              placeholder="검색어 입력"
-              type="text"
-            ></input>
-            <BiSearch
-              size={19}
-              className="relative h-full left-[-1.5625rem] hover:cursor-pointer hover:fill-active"
-            ></BiSearch>
+            <label className="relative block">
+              <span className="sr-only">Search</span>
+              <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+                <BiSearch
+                  size={19}
+                  className="fill-slate-300"
+                  viewBox="0 0 20 20"
+                ></BiSearch>
+              </span>
+              <input
+                className="block w-full py-2 pr-3 bg-white border rounded-md shadow-sm placeholder:italic placeholder:text-slate-400 border-slate-300 pl-9 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                placeholder="검색어 입력"
+                type="text"
+                name="search"
+              />
+            </label>
           </div>
         </div>
 
