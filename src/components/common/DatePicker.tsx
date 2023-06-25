@@ -14,6 +14,7 @@ import {
 
 import styled from "styled-components";
 import { css } from "styled-components";
+import { color } from "../../data/chartdata/piechartData";
 
 interface IProps {
   startDate: Date | null;
@@ -212,6 +213,13 @@ const CustomDatePicker = (props: IProps) => {
           customInput={
             // 날짜 뜨는 인풋 커스텀
             <Input active={props.active} />
+            // <input
+            //   className={`box-border px-2 text-sm font-normal leading-9 text-center
+            //   text-gray-500 bg-white border-[1px] border-gray-300  w-28
+            //   shadow-[0px_1px_3px_0px_#dadce0]
+            //   "hover:border-active hover:text-active"
+            //   `}
+            // />
           }
         />
       </div>
@@ -360,7 +368,6 @@ const Input = styled.input<inputProp>`
   font-size: 15px;
   font-weight: 400;
   text-align: center;
-  color: #bbbbcf;
   line-height: 37px;
   text-align: center;
 
@@ -370,6 +377,8 @@ const Input = styled.input<inputProp>`
     active == 2 &&
     css`
       border: 1px solid #ff6622;
+      outline: none;
+      color: #ff6622;
     `}
 
   &:focus {
