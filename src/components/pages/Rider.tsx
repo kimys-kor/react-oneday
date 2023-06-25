@@ -7,7 +7,6 @@ import SearchInput from "@components/common/SearchInput";
 import RiderDetail from "@components/details/RiderDetail";
 import RiderBoard from "@components/board/RiderBoard";
 import { eaOptions } from "@/data/common";
-import RiderForm from "@components/Form/RiderForm";
 
 import { dateFilter, itemFilter } from "@/data/common";
 import { riderBoardTitle, riderData } from "@/data/common";
@@ -141,11 +140,6 @@ function Rider() {
         isDetailOpen={isDetailOpen}
         rider={riderData[activeItem]}
       />
-
-      <RiderForm
-        isAddAppOpen={isAddAppOpen}
-        handleAddForm={handleAddForm}
-      ></RiderForm>
     </Memberbox>
   );
 }

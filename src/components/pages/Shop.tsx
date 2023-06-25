@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import CustomSelect from "@/styles/CustomSelect";
 import SearchInput from "@components/common/SearchInput";
@@ -10,7 +10,7 @@ import { useForm, Resolver } from "react-hook-form";
 
 import { shopData, shopBoardTitle } from "@/data/common";
 
-import ShopForm from "@components/Form/ShopForm";
+import ShopModal from "@/components/modal/ShopModal";
 
 import BorderButtonLX from "@/styles/BorderButtonLX";
 import {
@@ -24,6 +24,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { BiSearch } from "react-icons/bi";
 
 type FormData = {
+  id: number;
   shopName: string;
   businessNumber: number;
   ownerName: string;
@@ -33,10 +34,10 @@ type FormData = {
 
 const resolver: Resolver<FormData> = async (values) => {
   return {
-    values: values.shopName ? values : {},
-    errors: !values.shopName
+    values: values.id ? values : {},
+    errors: !values.id
       ? {
-          shopName: {
+          id: {
             type: "required",
             message: "This is required.",
           },
@@ -69,11 +70,6 @@ function Shop() {
   };
 
   // 상점 추가 팝업 상태
-  const [isAddShopOpen, setAddShopOpen] = useState(false);
-  const handleAddShop = () => {
-    setAddShopOpen((prev) => !prev);
-  };
-
   const [currentEa, setCurrentEa] = useState(eaOptions[0]);
   const [currentCity, setCurrentCity] = useState(cityOptions[0]);
   const [currentGu, setCurrentGu] = useState(guOptions[0]);
@@ -85,22 +81,25 @@ function Shop() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({ resolver });
-
   const onSubmit = handleSubmit((data) => {
+    setIsLoading(true);
     console.log(data);
   });
 
-  const [isAddAppOpen, setAddAppOpen] = useState(false);
-  const handleAddForm = () => {
-    setAddAppOpen((prev) => !prev);
+  // 상점 추가 모달
+  const [isModalOpen, setModalOpen] = useState(false);
+  const handleModal = () => {
+    setModalOpen((prev) => !prev);
   };
+
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <main className="flex flex-col items-center w-full h-full gap-3 rounded-2xl">
       <h1 className="box-border flex justify-between w-full gap-6 px-6 py-4 bg-white text-[1.6rem]">
         상점 관리
         <button
-          onClick={handleAddForm}
+          onClick={handleModal}
           className="w-[5rem] bg-active text-[#fff] text-[0.84rem]
                     shadow-md
                     hover:bg-orange-600
@@ -210,10 +209,14 @@ function Shop() {
       </section>
 
       {/* 상점등록 모달 */}
-      <ShopForm
-        isAddAppOpen={isAddAppOpen}
-        handleAddForm={handleAddForm}
-      ></ShopForm>
+      <ShopModal
+        disabled={isLoading}
+        isOpen={isModalOpen}
+        title="상점추가"
+        actionLabel="Continue"
+        onClose={handleModal}
+        onSubmit={onSubmit}
+      />
     </main>
   );
 }

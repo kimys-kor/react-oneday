@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { IoMdClose } from "react-icons/io";
+
 import { useForm, Resolver } from "react-hook-form";
 
 import Checkbox from "@/styles/Checkbox";
@@ -20,118 +22,116 @@ type AppFormData = {
   appstore: string;
 };
 
-const resolver: Resolver<AppFormData> = async (values) => {
-  return {
-    values: values.id ? values : {},
-    errors: !values.id
-      ? {
-          id: {
-            type: "required",
-            message: "This is required.",
-          },
-        }
-      : {},
-  };
-};
-
-interface AdminFormProp {
-  handleAddForm: () => void;
-  isAddAppOpen: boolean;
+interface ModalProps {
+  isOpen?: boolean;
+  onClose: () => void;
+  onSubmit: () => void;
+  title?: string;
+  actionLabel: string;
+  disabled?: boolean;
+  secondaryAction?: () => void;
+  secondaryActionLabel?: string;
 }
 
-function ProductForm({ handleAddForm, isAddAppOpen }: AdminFormProp) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<AppFormData>({ resolver });
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
-  });
-
-  const [checkedList, setCheckedList] = useState<string[]>([]);
-  const [isChecked, setIsChecked] = useState(false);
-
-  const checkedItemHandler = (value: string, isChecked: boolean) => {
-    if (isChecked) {
-      setCheckedList((prev) => [...prev, value]);
-      return;
-    }
-    if (!isChecked && checkedList.includes(value)) {
-      setCheckedList(checkedList.filter((item) => item !== value));
-      return;
-    }
-    return;
-  };
-
-  const checkHandler = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
-  ) => {
-    const isChecked = e.target.checked;
-    checkedItemHandler(value, isChecked);
-  };
+const ShopForm: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  onSubmit,
+  title,
+  disabled,
+  secondaryAction,
+  secondaryActionLabel,
+}) => {
+  const [showModal, setShowModal] = useState(isOpen);
 
   useEffect(() => {
-    console.log(checkedList);
-  }, [checkedList]);
+    setShowModal(isOpen);
+  }, [isOpen]);
+
+  const handleClose = useCallback(() => {
+    if (disabled) {
+      return;
+    }
+
+    setShowModal(false);
+    setTimeout(() => {
+      onClose();
+    }, 300);
+  }, [onClose, disabled]);
+
+  const handleSubmit = useCallback(() => {
+    if (disabled) {
+      return;
+    }
+
+    onSubmit();
+  }, [onSubmit, disabled]);
+
+  const handleSecondaryAction = useCallback(() => {
+    if (disabled || !secondaryAction) {
+      return;
+    }
+
+    secondaryAction();
+  }, [secondaryAction, disabled]);
+
+  if (!isOpen) {
+    return null;
+  }
 
   return (
-    <FormWrapper
-      onClick={handleAddForm}
-      style={{ display: isAddAppOpen ? "flex" : "none" }}
-    >
-      <Modal onClick={(e) => e.stopPropagation()}>
-        <Formbox>
-          <Form onSubmit={onSubmit}>
-            <Titlebox>
-              <Title>상품을 추가합니다</Title>
-              <Flex>
-                <Canclebutton onClick={() => handleAddForm()}>
-                  취소
-                </Canclebutton>
-                <Submitbutton type="submit" value="+상품등록" />
-              </Flex>
-            </Titlebox>
-
-            <Divide></Divide>
-
-            <Flex>
-              <Thumbnail>
-                <Label>썸네일</Label>
-                <Input type="file" {...register("img")} />
-              </Thumbnail>
-            </Flex>
-
-            <Flex>
-              <Secondinputbox>
-                <Label>선택상점</Label>
-                <Input type="text" {...register("version")} />
-              </Secondinputbox>
-
-              <Secondinputbox>
-                <Label>상품명</Label>
-                <Input type="text" {...register("number")} />
-              </Secondinputbox>
-            </Flex>
-
-            <Flex>
-              <Secondinputbox>
-                <Label>가격</Label>
-                <Input type="text" {...register("code")} />
-              </Secondinputbox>
-              <Secondinputbox>
-                <Label>재고수량</Label>
-                <Input type="text" {...register("korname")} />
-              </Secondinputbox>
-            </Flex>
-          </Form>
-        </Formbox>
-      </Modal>
-    </FormWrapper>
+    <>
+      <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none bg-neutral-800/70">
+        <div className="relative w-full h-full mx-auto my-6 md:w-4/6 lg:w-3/6 xl:w-2/5 lg:h-auto md:h-auto">
+          {/*content*/}
+          <div
+            className={`
+            translate
+            duration-300
+            h-full
+            ${showModal ? "translate-y-0" : "translate-y-full"}
+            ${showModal ? "opacity-100" : "opacity-0"}
+          `}
+          >
+            <div className="relative flex flex-col w-full h-full bg-white border-0 rounded-lg shadow-lg outline-none translate lg:h-auto md:h-auto focus:outline-none">
+              {/*header*/}
+              <div
+                className="
+                flex 
+                items-center 
+                p-6
+                rounded-t
+                justify-center
+                relative
+                border-b-[1px]
+                "
+              >
+                <button
+                  className="absolute p-1 transition border-0 hover:opacity-70 left-9"
+                  onClick={handleClose}
+                >
+                  <IoMdClose size={18} />
+                </button>
+                <div className="text-lg font-semibold">{title}</div>
+              </div>
+              {/*body*/}
+              <div className="relative flex-auto p-6"></div>
+              {/*footer*/}
+              <div className="flex flex-col gap-2 p-6">
+                <div className="flex flex-row items-center w-full gap-4 ">
+                  {secondaryAction && secondaryActionLabel && <button />}
+                  <button disabled={disabled} onClick={handleSubmit} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
-}
-export default ProductForm;
+};
+
+export default ShopForm;
 
 const FormWrapper = styled.div`
   display: flex;
