@@ -74,6 +74,7 @@ function MemberBoard({
                   >
                     <Link to={`/oneday/member/${member.id}`}>
                       <Option>상세정보</Option>
+                      <Option>비활성화</Option>
                     </Link>
                   </Optionbox>
                 )}
