@@ -1,11 +1,53 @@
-import { ReactComponent as MemberIcon } from "@statics/images/sidebar/membericon.svg";
-import { ReactComponent as DashboardIcon } from "@statics/images/sidebar/dashboardicon.svg";
-import { ReactComponent as AppIcon } from "@statics/images/sidebar/appicon.svg";
-import { ReactComponent as SavingIcon } from "@statics/images/sidebar/savingicon.svg";
-import { ReactComponent as ChartIcon } from "@statics/images/sidebar/charticon.svg";
-import { CiDeliveryTruck } from "react-icons/ci";
+import { RxDashboard } from "react-icons/rx";
+import { HiOutlineUser } from "react-icons/hi";
+import { BsShop } from "react-icons/bs";
+import { BsTruck } from "react-icons/bs";
+import { BiSpreadsheet, BiBarChartAlt2 } from "react-icons/bi";
 
 import { ReactNode } from "react";
+
+export const sidebarMenu: Array<Array<sidebarModel>> = [
+  [
+    {
+      logo: (
+        <RxDashboard className="color-[#7B829B] hover:color-active" size="26" />
+      ),
+      name: "대시보드",
+      path: "dashboard",
+      pathname: "/oneday/dashboard",
+    },
+    {
+      logo: <HiOutlineUser size="26" />,
+      name: "회원 관리",
+      path: "member",
+      pathname: "/oneday/member",
+    },
+    {
+      logo: <BsShop size="26" />,
+      name: "상점 관리",
+      path: "shop",
+      pathname: "/oneday/shop",
+    },
+    {
+      logo: <BsTruck size="26" />,
+      name: "기사 관리",
+      path: "rider",
+      pathname: "/oneday/rider",
+    },
+    {
+      logo: <BiSpreadsheet size="26" />,
+      name: "주문현황",
+      path: "orders",
+      pathname: "/oneday/orders",
+    },
+    {
+      logo: <BiBarChartAlt2 size="26" />,
+      name: "정산",
+      path: "statistics",
+      pathname: "/oneday/statistics",
+    },
+  ],
+];
 
 export interface appOption {
   key: number;
@@ -826,47 +868,6 @@ export interface SidebarProps {
 export interface BoxProps {
   clicked: boolean;
 }
-
-export const sidebarMenu: Array<Array<sidebarModel>> = [
-  [
-    {
-      logo: <DashboardIcon color="#7B829B" size="26" />,
-      name: "대시보드",
-      path: "dashboard",
-      pathname: "/oneday/dashboard",
-    },
-    {
-      logo: <MemberIcon color="#7B829B" size="26" />,
-      name: "회원 관리",
-      path: "member",
-      pathname: "/oneday/member",
-    },
-    {
-      logo: <AppIcon color="#7B829B" size="26" />,
-      name: "상점 관리",
-      path: "shop",
-      pathname: "/oneday/shop",
-    },
-    {
-      logo: <CiDeliveryTruck color="#7B829B" size="26" />,
-      name: "기사 관리",
-      path: "rider",
-      pathname: "/oneday/rider",
-    },
-    {
-      logo: <SavingIcon color="#7B829B" size="26" />,
-      name: "주문현황",
-      path: "orders",
-      pathname: "/oneday/orders",
-    },
-    {
-      logo: <ChartIcon color="#7B829B" size="26" />,
-      name: "정산",
-      path: "statistics",
-      pathname: "/oneday/statistics",
-    },
-  ],
-];
 
 export interface summaryProps {
   title: string;

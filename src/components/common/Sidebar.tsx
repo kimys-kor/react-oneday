@@ -77,11 +77,12 @@ const Box = styled.div<BoxProps>`
   align-items: center;
 
   transition: 0.3s ease-in-out;
+  color: #7b829b;
+
   &:hover {
     transform: translateX(1rem);
 
     svg {
-      fill: #ff6622;
       color: #ff6622;
       transition: transform 0.2s ease-in-out;
     }
@@ -96,7 +97,6 @@ const Box = styled.div<BoxProps>`
       color: #ff6622;
 
       svg {
-        fill: #ff6622;
         color: #ff6622;
       }
 
