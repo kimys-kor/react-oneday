@@ -78,7 +78,7 @@ const Box = styled.div<BoxProps>`
 
   transition: 0.3s ease-in-out;
   &:hover {
-    transform: translateX(1em);
+    transform: translateX(1rem);
 
     svg {
       fill: #ff6622;
