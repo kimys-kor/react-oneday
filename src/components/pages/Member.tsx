@@ -86,7 +86,7 @@ function Member() {
                 ></BiSearch>
               </span>
               <input
-                className="block w-full py-2 pr-3 bg-white border border-gray-300 rounded-md shadow-sm border- pl-9 placeholder:text-slate-400 focus:outline-none focus:border-active focus:ring-active sm:text-sm"
+                className="block w-full py-2 pr-3 bg-white border rounded-md shadow-sm placeholder:italic placeholder:text-slate-400 border-slate-300 pl-9 focus:outline-none focus:border-active focus:ring-active focus:ring-1 sm:text-sm"
                 placeholder="검색어 입력"
                 type="text"
                 name="search"

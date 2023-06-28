@@ -111,7 +111,7 @@ function ShopDetail() {
           <section className="flex flex-col w-full gap-1 ">
             <div className="flex w-full ">
               <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
-                이름
+                상점명
               </p>
               <div className="flex items-center w-2/6 pl-1 border-b-2 min-w-30">
                 <input
@@ -121,60 +121,43 @@ function ShopDetail() {
               </div>
 
               <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
-                회원등급
+                상점상태
               </p>
               <div className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">
                 <select className="w-20 shadow-[0px_1px_1px_0px_#dadce0_inset]">
-                  <option value="플래티넘">플래티넘</option>
-                  <option value="골드">골드</option>
-                  <option value="실버">실버</option>
+                  <option value="플래티넘">활성</option>
+                  <option value="골드">비활성</option>
                 </select>
               </div>
             </div>
 
             <div className="flex w-full">
               <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
-                적립금
+                총주문횟수
               </p>
               <div className="flex items-center w-2/6 gap-3 px-1 truncate border-b-2">
-                1,000
-                <form onSubmit={onSubmit} className="flex ">
-                  <input
-                    className="w-36 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset] text-[0.82rem]"
-                    placeholder="적립 금액을 입력해 주세요."
-                    type="number"
-                    {...register("savingPoint")}
-                  ></input>
-                  <button
-                    className="w-[2.5rem] h-3/5 bg-active text-[#fff] text-[0.84rem]
-                    shadow-md
-                    hover:bg-orange-600
-                    "
-                    type="submit"
-                    value="point"
-                  >
-                    적립
-                  </button>
-                </form>
+                2400
               </div>
 
               <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
-                예치금
+                등록상품수
               </p>
               <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">1,000</p>
             </div>
 
             <div className="flex w-full">
               <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
-                누적총로그인
+                점주님
               </p>
-              <div className="flex items-center w-2/6 pl-1 border-b-2">6</div>
+              <div className="flex items-center w-2/6 pl-1 border-b-2">
+                김영승
+              </div>
 
               <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
-                주문완료 상품/금액
+                누적완료 주문금액
               </p>
               <div className="flex items-center w-2/6 gap-1 gap-2 pl-1 border-b-2">
-                0 / 0 원
+                1234523 원
                 <button
                   className="w-[3rem] h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
                   hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
@@ -202,27 +185,17 @@ function ShopDetail() {
 
             <div className="flex w-full">
               <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
-                비밀번호
+                상점카테고리
               </p>
               <div className="flex items-center w-2/6 pl-1 border-b-2">
-                <button
-                  className="w-[6.8rem] h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
-                  hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
-                >
-                  임시비밀번호생성
-                </button>
+                생활/잡화
               </div>
 
               <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
-                강제탈퇴
+                사업자번호
               </p>
               <div className="flex items-center w-2/6 pl-1 border-b-2">
-                <button
-                  className="w-[4rem] h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
-                  hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
-                >
-                  강제탈퇴
-                </button>
+                121-12-12-12
               </div>
             </div>
             <div className="flex w-full">
@@ -248,13 +221,13 @@ function ShopDetail() {
               hover:text-active
               `}
             >
-              회원정보저장
+              상점정보저장
             </button>
           </div>
 
           <section className="flex w-full gap-2 mt-4">
             <h6 className="w-2/12 leading-10 min-w-fit pl-1  bg-[#EFEFEF] border-b-white flex items-center">
-              회원 메모
+              상점 메모
             </h6>
 
             <div className="flex flex-col justify-between w-10/12 gap-5">
@@ -274,7 +247,7 @@ function ShopDetail() {
                 <div className="flex justify-between w-full gap-1">
                   <div className="flex gap-3">
                     <span className="">2023/06/23 11:51:26</span>
-                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                    <span className=" font-weight: bold">VIP 상점입니다</span>
                   </div>
 
                   <div className="flex items-center gap-3 text-sm">
@@ -291,7 +264,7 @@ function ShopDetail() {
                 <div className="flex justify-between w-full gap-1">
                   <div className="flex gap-3">
                     <span className="">2023/06/23 11:51:26</span>
-                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                    <span className=" font-weight: bold">VIP 상점입니다</span>
                   </div>
 
                   <div className="flex items-center gap-3 text-sm">
@@ -308,7 +281,7 @@ function ShopDetail() {
                 <div className="flex justify-between w-full gap-1">
                   <div className="flex gap-3">
                     <span className="">2023/06/23 11:51:26</span>
-                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                    <span className=" font-weight: bold">VIP 상점입니다</span>
                   </div>
 
                   <div className="flex items-center gap-3 text-sm">
@@ -325,7 +298,7 @@ function ShopDetail() {
                 <div className="flex justify-between w-full gap-1">
                   <div className="flex gap-3">
                     <span className="">2023/06/23 11:51:26</span>
-                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                    <span className=" font-weight: bold">VIP 상점입니다</span>
                   </div>
 
                   <div className="flex items-center gap-3 text-sm">
@@ -342,7 +315,7 @@ function ShopDetail() {
                 <div className="flex justify-between w-full gap-1">
                   <div className="flex gap-3">
                     <span className="">2023/06/23 11:51:26</span>
-                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                    <span className=" font-weight: bold">VIP 상점입니다</span>
                   </div>
 
                   <div className="flex items-center gap-3 text-sm">
