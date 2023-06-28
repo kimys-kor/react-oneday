@@ -23,7 +23,8 @@ function Sidebar({ xPosition }: SidebarProps) {
   };
 
   return (
-    <Flexbox
+    <div
+      className="fixed flex flex-col bg-white"
       ref={side}
       style={{
         width: "18.625rem",
@@ -31,86 +32,53 @@ function Sidebar({ xPosition }: SidebarProps) {
         transform: `translatex(${-xPosition}px)`,
       }}
     >
-      <Profile>
-        <Avatar src={avatar1}></Avatar>
-        <Info>
+      <div className="h-[9rem] flex items-center p-8">
+        <img className="w-16 h-16 rounded-[50%]" src={avatar1}></img>
+        <div className="ml-[0.625rem] text-[1.0625rem] font-normal">
           <p>admin-01</p>
-          <Logout onClick={() => logOut()}>로그아웃</Logout>
-        </Info>
-      </Profile>
+          <p
+            className="text-gray-400 underline cursor-pointer underline-offset-4 hover:text-black"
+            onClick={() => logOut()}
+          >
+            로그아웃
+          </p>
+        </div>
+      </div>
 
       {sidebarMenu.map((item, index1) => (
-        <Wrapper key={index1}>
+        <div className="flex flex-col py-8 border-t-[1.5px]" key={index1}>
           {item.map((menu, index2) => (
             <Link to={menu.path} key={index2}>
-              <Menu>
+              <div className="box-border pl-10 border border-transparent">
                 <Box clicked={menu.pathname === modifiedPathName}>
                   {menu.logo}
-                  <Font>{menu.name}</Font>
+                  <p className="color-[#7b829b] text-[1.15rem] font-medium">
+                    {menu.name}
+                  </p>
                 </Box>
-              </Menu>
+              </div>
             </Link>
           ))}
-        </Wrapper>
+        </div>
       ))}
-    </Flexbox>
+    </div>
   );
 }
 
 export default Sidebar;
 
-const Flexbox = styled.div`
-  transition: 0.19s ease;
+export interface BoxProps {
+  clicked: boolean;
+}
+const Box = styled.div<BoxProps>`
+  height: 3.75rem;
   display: flex;
-  flex-direction: column;
-  background-color: #fff;
-
-  position: fixed;
-`;
-
-const Profile = styled.div`
-  height: 9rem;
-  display: flex;
+  gap: 0.75rem;
   align-items: center;
-  padding: 2rem;
-`;
 
-const Avatar = styled.img`
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-`;
-const Info = styled.div`
-  margin-left: 0.625rem;
-  font-size: 1.0625rem;
-  font-weight: 400;
-`;
-
-const Logout = styled.p`
-  cursor: pointer;
-  text-decoration: underline;
-
-  color: #898ea2;
-`;
-
-const Wrapper = styled.div`
-  border-top: 1.5px solid #e3e6f2;
-  padding: 2rem 0;
-
-  display: flex;
-  flex-direction: column;
-`;
-
-const Menu = styled.div`
-  box-sizing: border-box;
-  padding-left: 2.5rem;
-
-  cursor: pointer;
-  transition: cubic-bezier(0.165, 0.84, 0.44, 1);
-  border: 1px solid transparent;
-
+  transition: 0.3s ease-in-out;
   &:hover {
-    transform: scale(1.03);
+    transform: translateX(1em);
 
     svg {
       fill: #ff6622;
@@ -121,15 +89,6 @@ const Menu = styled.div`
       color: #ff6622;
     }
   }
-`;
-export interface BoxProps {
-  clicked: boolean;
-}
-const Box = styled.div<BoxProps>`
-  height: 3.75rem;
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
 
   ${({ clicked }) =>
     clicked &&
@@ -145,10 +104,4 @@ const Box = styled.div<BoxProps>`
         color: #ff6622;
       }
     `}
-`;
-
-const Font = styled.p`
-  color: #7b829b;
-  font-size: 1.15rem;
-  font-weight: 500;
 `;
