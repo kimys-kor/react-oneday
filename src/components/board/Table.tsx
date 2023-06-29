@@ -8,15 +8,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-type Person = {
-  firstName: string;
-  lastName: string;
-  age: number;
-  visits: number;
-  status: string;
-  progress: number;
-};
-
 type ReactTableProps<T extends Object> = {
   data: T[];
   columns: ColumnDef<T>[];
