@@ -38,7 +38,7 @@ const Pagingbox = styled.div`
   .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 15px;
+    gap: 0.35rem;
   }
 
   ul {
@@ -48,9 +48,8 @@ const Pagingbox = styled.div`
 
   ul.pagination li {
     display: inline-block;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #e2e2e2;
+    width: 1.875rem;
+    height: 1.875rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,37 +57,40 @@ const Pagingbox = styled.div`
   }
 
   ul.pagination li:first-child {
-    border-radius: 5px 0 0 5px;
+    /* border-radius: 50%; */
   }
 
   ul.pagination li:last-child {
-    border-radius: 0 5px 5px 0;
+    /* border-radius: 50%; */
   }
 
   ul.pagination li a {
     text-decoration: none;
-    color: #337ab7;
+    color: black;
+    width: 1.875rem;
+    height: 1.875rem;
     font-size: 1rem;
     display: flex;
     justify-content: center;
-  }
-
-  ul.pagination li.active a {
-    color: white;
+    align-items: center;
   }
 
   ul.pagination li.active {
-    background-color: #337ab7;
+    border-radius: 50%;
+    background-color: #ebebeb;
+    color: black;
   }
 
   ul.pagination li a:hover,
   ul.pagination li a.active {
-    color: blue;
+    border-radius: 50%;
+    background-color: #ebebeb;
+    color: black;
   }
 
   .page-selection {
-    width: 48px;
-    height: 30px;
+    width: 3rem;
+    height: 1.875rem;
     color: #337ab7;
   }
 `;
