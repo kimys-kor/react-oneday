@@ -37,7 +37,7 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
               {headerGroup.headers.map((header) => (
                 <th
                   key={header.id}
-                  className="p-2 font-bold bg-[#c7d9ec] text-center"
+                  className="p-2 font-bold bg-[#e5eef8] text-center"
                 >
                   {header.isPlaceholder
                     ? null
@@ -54,7 +54,7 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
           {table.getRowModel().rows.map((row, index) => (
             <tr
               key={row.id}
-              className={index % 2 === 0 ? "bg-white" : "bg-[#e5eef8]"}
+              className={index % 2 === 0 ? "bg-white" : "bg-[#EFF3FB]"}
             >
               {row.getVisibleCells().map((cell) => (
                 <td key={cell.id} className="p-2 text-center">
