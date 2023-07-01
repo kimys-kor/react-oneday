@@ -29,7 +29,7 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
   };
 
   return (
-    <div className="p-2 w-full">
+    <div className="p-2 w-full flex flex-col gap-10">
       <table className="w-full ">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -65,7 +65,7 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
           ))}
         </tbody>
       </table>
-      <div className="h-4" />
+
       <Paging page={1} count={15} setPage={setPage}></Paging>
     </div>
   );
