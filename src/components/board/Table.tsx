@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import type { ColumnDef } from "@tanstack/react-table";
-
 import {
   createColumnHelper,
   flexRender,
@@ -24,13 +23,16 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
   });
 
   return (
-    <div className="p-2 W-full">
-      <table className="w-full">
+    <div className="p-2 w-full">
+      <table className="w-full ">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id}>
+                <th
+                  key={header.id}
+                  className="p-2 font-bold bg-[#c7d9ec] text-center"
+                >
                   {header.isPlaceholder
                     ? null
                     : flexRender(
@@ -43,10 +45,13 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
           ))}
         </thead>
         <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
+          {table.getRowModel().rows.map((row, index) => (
+            <tr
+              key={row.id}
+              className={index % 2 === 0 ? "bg-white" : "bg-[#e5eef8]"}
+            >
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
+                <td key={cell.id} className="p-2 text-center">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}
@@ -55,7 +60,10 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
         </tbody>
       </table>
       <div className="h-4" />
-      <button onClick={() => rerender()} className="p-2 border">
+      <button
+        onClick={() => rerender()}
+        className="p-2 border rounded bg-blue-500 text-white"
+      >
         Rerender
       </button>
     </div>

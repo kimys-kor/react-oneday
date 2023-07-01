@@ -271,6 +271,7 @@ export interface member {
   orderCount: number;
   orderAmount: number;
   point: number;
+  another?: any;
 }
 
 export const memberData: member[] = [
