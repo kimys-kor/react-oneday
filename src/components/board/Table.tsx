@@ -7,6 +7,8 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
+import Paging from "../common/Paging";
+
 type ReactTableProps<T extends Object> = {
   data: T[];
   columns: ColumnDef<T>[];
@@ -21,6 +23,10 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
+  const setPage = function () {
+    console.log("온체인지");
+  };
 
   return (
     <div className="p-2 w-full">
@@ -60,12 +66,7 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
         </tbody>
       </table>
       <div className="h-4" />
-      <button
-        onClick={() => rerender()}
-        className="p-2 border rounded bg-blue-500 text-white"
-      >
-        Rerender
-      </button>
+      <Paging page={1} count={15} setPage={setPage}></Paging>
     </div>
   );
 };
