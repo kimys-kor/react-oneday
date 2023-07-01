@@ -18,16 +18,7 @@ import { BiSearch } from "react-icons/bi";
 
 import { createColumnHelper } from "@tanstack/react-table";
 import { ColumnDef } from "@tanstack/react-table";
-import Table from "../board/Table";
-
-interface Person {
-  firstName: string;
-  lastName: string;
-  age: number;
-  visits: number;
-  status: string;
-  progress: number;
-}
+import MemberTable from "../board/MemberTable";
 
 const columnHelper = createColumnHelper<member>();
 
@@ -42,7 +33,6 @@ const columns: ColumnDef<member>[] = [
   columnHelper.accessor("orderCount", { header: "주문횟수" }),
   columnHelper.accessor("orderAmount", { header: "주문액" }),
   columnHelper.accessor("point", { header: "보유포인트" }),
-  columnHelper.accessor("another", { header: "더보기" }),
 ] as ColumnDef<member>[];
 
 function Member() {
@@ -62,16 +52,6 @@ function Member() {
   const [startDate, setStartDate] = useState<Date>(today);
   const [endDate, setEndDate] = useState<Date>(today);
   const [active, setActive] = useState<number>(1);
-
-  // 멤버상세창 넘길 멤버
-  const [activeItem, setActiveItem] = useState(0);
-  // ...클릭시 설정팝업
-  const [openAnother, setOpenAnother] = useState(-1);
-  // ...클릭시 팝업,멤버인덱스 설정
-  const handleOpenIndex = (index: number) => {
-    setActiveItem(openAnother);
-    setOpenAnother(index);
-  };
 
   const [currentEa, setCurrentEa] = useState(eaOptions[0]);
 
@@ -131,13 +111,7 @@ function Member() {
           ></CustomSelect>
         </div>
 
-        <Table data={memberData} columns={columns}></Table>
-        {/* <MemberBoard
-          boardMenu={memberBoardTitle}
-          boardData={memberData}
-          openAnother={openAnother}
-          handleOpenIndex={handleOpenIndex}
-        ></MemberBoard> */}
+        <MemberTable data={memberData} columns={columns}></MemberTable>
       </section>
     </main>
   );

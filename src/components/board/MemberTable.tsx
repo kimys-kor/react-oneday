@@ -8,6 +8,7 @@ import {
 } from "@tanstack/react-table";
 
 import Paging from "../common/Paging";
+import { Link } from "react-router-dom";
 
 type ReactTableProps<T extends Object> = {
   data: T[];
@@ -47,6 +48,9 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
                       )}
                 </th>
               ))}
+              <th className="p-2 font-bold bg-[#e5eef8] text-center">
+                상세정보
+              </th>
             </tr>
           ))}
         </thead>
@@ -61,6 +65,16 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}
+              <td className="p-2 text-center">
+                <Link to={`/oneday/member/${row.original.id}`}>
+                  <button
+                    className="rounded-md p-1 h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                  hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                  >
+                    상세정보
+                  </button>
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>

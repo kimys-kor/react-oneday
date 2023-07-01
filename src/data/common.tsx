@@ -257,7 +257,6 @@ export const memberBoardTitle = [
   "가입일",
   "보유 포인트",
   "상태",
-  "상세 정보",
 ];
 
 export interface member {
@@ -271,13 +270,12 @@ export interface member {
   orderCount: number;
   orderAmount: number;
   point: number;
-  another?: any;
 }
 
 export const memberData: member[] = [
   {
     status: "정상",
-    id: 0,
+    id: 1,
     phone: "01012345678",
     email: "wwkwk@naver.com",
     nickname: "부끄러운어피치",
@@ -289,7 +287,7 @@ export const memberData: member[] = [
   },
   {
     status: "정상",
-    id: 1,
+    id: 10,
     phone: "01012345678",
     email: "wwkwk@naver.com",
     nickname: "라이언과함께",
@@ -301,7 +299,7 @@ export const memberData: member[] = [
   },
   {
     status: "정상",
-    id: 2,
+    id: 122,
     phone: "01012345678",
     email: "wwkwk@naver.com",
     nickname: "콜라좋아",
