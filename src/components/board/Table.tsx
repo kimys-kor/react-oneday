@@ -24,8 +24,8 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
   });
 
   return (
-    <div className="p-2">
-      <table>
+    <div className="p-2 W-full">
+      <table className="w-full">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
