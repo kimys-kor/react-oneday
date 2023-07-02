@@ -36,32 +36,63 @@ const ShopModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
-      <Input
-        id="email"
-        label="Email"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-      />
+      <Heading title="상점을 등록 합니다" />
       <Input
         id="name"
-        label="Name"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-      />
-      <Input
-        id="password"
-        label="Password"
+        label="상점명"
         type="password"
         disabled={isLoading}
         register={register}
         errors={errors}
         required
       />
+      <Input
+        id="businessNumber"
+        label="사업자번호"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+      <Input
+        id="contactNumber"
+        label="연락처"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+
+      <Input
+        id="ownerName"
+        label="점주명"
+        type="password"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+      <Input
+        id="shopDescription"
+        label="상점설명"
+        type="password"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+      <div className="mt-3">
+        <p>상점 사진 선택</p>
+        <div className="flex items-center space-x-6">
+          {/* <img className="object-cover w-16 h-16 rounded-full" src="" /> */}
+          <label className="block">
+            <input
+              type="file"
+              className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 "
+            />
+          </label>
+        </div>
+      </div>
     </div>
   );
 
@@ -100,10 +131,9 @@ const ShopModal = () => {
       onClose={shopModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       disabled={isLoading}
-      title="Register"
+      title="상점 등록"
       body={bodyContent}
-      footer={footerContent}
-      actionLabel="Continue"
+      actionLabel="등록 하기"
     />
   );
 };

@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { sidebarMenu } from "@/data/common";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
-import avatar1 from "@images/sidebar/avatar/avatar1.png";
+import RxAvatar from "react-icons/rx";
 
 export interface SidebarProps {
   xPosition: number;
@@ -33,7 +33,7 @@ function Sidebar({ xPosition }: SidebarProps) {
       }}
     >
       <div className="h-[9rem] flex items-center p-8">
-        <img className="w-16 h-16 rounded-[50%]" src={avatar1}></img>
+        <RxAvatar></RxAvatar>
         <div className="ml-[0.625rem] text-[1.0625rem] font-normal">
           <p>admin-01</p>
           <p
@@ -85,6 +85,18 @@ const Box = styled.div<BoxProps>`
     svg {
       color: #ff6622;
       transition: transform 0.2s ease-in-out;
+      /* animation: bounce 1s infinite;
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(-25%);
+          animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+        50% {
+          transform: translateY(0);
+          animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+      } */
     }
     p {
       color: #ff6622;
