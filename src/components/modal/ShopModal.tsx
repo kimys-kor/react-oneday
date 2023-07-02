@@ -66,7 +66,7 @@ const ShopModal = () => {
   );
 
   const footerContent = (
-    <div className="flex flex-col gap-4 mt-3">
+    <div className="flex flex-col gap-2 p-6">
       <hr />
       <Button
         outline
@@ -96,14 +96,14 @@ const ShopModal = () => {
 
   return (
     <Modal
-      disabled={isLoading}
       isOpen={shopModal.isOpen}
-      title="Register"
-      actionLabel="Continue"
       onClose={shopModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
+      disabled={isLoading}
+      title="Register"
       body={bodyContent}
       footer={footerContent}
+      actionLabel="Continue"
     />
   );
 };
