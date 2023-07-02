@@ -10,9 +10,9 @@ import { useForm, Resolver } from "react-hook-form";
 
 import { shopData, shopBoardTitle } from "@/data/common";
 
+import useShopModal from "@/components/hooks/useShopModal";
 import ShopModal from "@/components/modal/ShopModal";
 
-import BorderButtonLX from "@/styles/BorderButtonLX";
 import {
   eaOptions,
   cityOptions,
@@ -23,29 +23,6 @@ import {
 import "react-datepicker/dist/react-datepicker.css";
 import { BiSearch } from "react-icons/bi";
 
-type FormData = {
-  id: number;
-  shopName: string;
-  businessNumber: number;
-  ownerName: string;
-  shopAddress: string;
-  shopContact: number;
-};
-
-const resolver: Resolver<FormData> = async (values) => {
-  return {
-    values: values.id ? values : {},
-    errors: !values.id
-      ? {
-          id: {
-            type: "required",
-            message: "This is required.",
-          },
-        }
-      : {},
-  };
-};
-
 function Shop() {
   const [tab, setTab] = useState<number>(1);
 
@@ -55,6 +32,7 @@ function Shop() {
     setDetailOpen(true);
     console.log(index);
   };
+
   const handleDetailClose = () => {
     setDetailOpen(false);
   };
@@ -76,30 +54,15 @@ function Shop() {
   const [currentDong, setCurrentDong] = useState(dongOptions[0]);
   const [currentShop, setCurrentShop] = useState("");
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({ resolver });
-  const onSubmit = handleSubmit((data) => {
-    setIsLoading(true);
-    console.log(data);
-  });
-
   // 상점 추가 모달
-  const [isModalOpen, setModalOpen] = useState(false);
-  const handleModal = () => {
-    setModalOpen((prev) => !prev);
-  };
-
-  const [isLoading, setIsLoading] = useState(false);
+  const shopModal = useShopModal();
 
   return (
     <main className="flex flex-col items-center w-full h-full gap-3 rounded-2xl">
       <h1 className="box-border flex justify-between w-full gap-6 px-6 py-4 bg-white text-[1.6rem]">
         상점 관리
         <button
-          onClick={handleModal}
+          onClick={shopModal.onOpen}
           className="w-[5rem] bg-active text-[#fff] text-[0.84rem]
                     shadow-md
                     hover:bg-orange-600
@@ -209,14 +172,7 @@ function Shop() {
       </section>
 
       {/* 상점등록 모달 */}
-      <ShopModal
-        disabled={isLoading}
-        isOpen={isModalOpen}
-        title="상점추가"
-        actionLabel="Continue"
-        onClose={handleModal}
-        onSubmit={onSubmit}
-      />
+      <ShopModal />
     </main>
   );
 }

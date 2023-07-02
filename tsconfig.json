@@ -5,6 +5,7 @@
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@common/*": ["./src/components/common/*"],
+      "@hooks/*": ["./src/components/hooks/*"],
       "@data/*": ["./src/data/*"],
       "@models/*": ["./src/models/*"],
       "@pages/*": ["./src/pages/*"],

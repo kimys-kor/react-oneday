@@ -31,7 +31,7 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
   };
 
   return (
-    <div className="p-2 w-full flex flex-col gap-10">
+    <div className="flex flex-col w-full gap-10 p-2">
       <table className="w-full ">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -39,7 +39,7 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
               {headerGroup.headers.map((header) => (
                 <th
                   key={header.id}
-                  className="p-2 font-bold bg-[#e5eef8] text-center"
+                  className="p-2 font-normal bg-[#e5eef8] text-center"
                 >
                   {header.isPlaceholder
                     ? null
@@ -49,7 +49,9 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
                       )}
                 </th>
               ))}
-              <th className="p-2 font-bold bg-[#e5eef8] text-center">더보기</th>
+              <th className="p-2 font-normal bg-[#e5eef8] text-center">
+                더보기
+              </th>
             </tr>
           ))}
         </thead>
@@ -68,7 +70,12 @@ const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
                 ))}
                 <td>
                   <Link to={`/oneday/member/${rowData.id}`}>
-                    <button>상세정보</button>
+                    <button
+                      className="p-1 rounded-md text-[0.8rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
+                  hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
+                    >
+                      상세정보
+                    </button>
                   </Link>
                 </td>
               </tr>
