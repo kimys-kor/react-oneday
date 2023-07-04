@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { IoMdClose } from "react-icons/io";
 
 import Button from "@/styles/Button";
@@ -11,7 +17,7 @@ interface ModalProps {
   title?: string;
   body?: React.ReactElement;
   footer?: React.ReactElement;
-  actionLabel: string;
+  setView: Dispatch<SetStateAction<number>>;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -22,7 +28,7 @@ const Modal: React.FC<ModalProps> = ({
   body,
   footer,
   disabled,
-  actionLabel,
+  setView,
 }) => {
   const [showModal, setShowModal] = useState(isOpen);
 
@@ -36,8 +42,10 @@ const Modal: React.FC<ModalProps> = ({
     }
 
     setShowModal(false);
+
     setTimeout(() => {
       onClose();
+      setView(1);
     }, 300);
   }, [onClose, disabled]);
 
@@ -61,7 +69,7 @@ const Modal: React.FC<ModalProps> = ({
           className={`
             translate
             duration-300
-            h-full
+            overflow-y-auto
             ${showModal ? "translate-y-0" : "translate-y-full"}
             ${showModal ? "opacity-100" : "opacity-0"}
           `}
@@ -91,14 +99,6 @@ const Modal: React.FC<ModalProps> = ({
             {/*body*/}
             <div className="relative flex-auto p-6">{body}</div>
 
-            {/*footer*/}
-            <div className="flex flex-col gap-2 p-6">
-              <Button
-                disabled={disabled}
-                label={actionLabel}
-                onClick={handleSubmit}
-              />
-            </div>
             {footer}
           </div>
         </div>

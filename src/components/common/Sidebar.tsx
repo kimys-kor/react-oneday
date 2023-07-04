@@ -3,9 +3,7 @@ import styled, { css } from "styled-components";
 
 import { sidebarMenu } from "@/data/common";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-
-import RxAvatar from "react-icons/rx";
-
+import avatar1 from "@images/sidebar/avatar/avatar1.png";
 export interface SidebarProps {
   xPosition: number;
 }
@@ -33,7 +31,7 @@ function Sidebar({ xPosition }: SidebarProps) {
       }}
     >
       <div className="h-[9rem] flex items-center p-8">
-        <RxAvatar></RxAvatar>
+        <img className="w-16 h-16 rounded-[50%]" src={avatar1}></img>
         <div className="ml-[0.625rem] text-[1.0625rem] font-normal">
           <p>admin-01</p>
           <p

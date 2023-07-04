@@ -1,0 +1,86 @@
+import React, { useState, useRef } from "react";
+
+const UploadImages: React.FC = () => {
+  const [images, setImages] = useState<File[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    const files = Array.from(event.dataTransfer.files);
+    setImages((prevImages) => [...prevImages, ...files]);
+  };
+
+  const handleImageRemove = (index: number) => {
+    setImages((prevImages) => {
+      const updatedImages = [...prevImages];
+      updatedImages.splice(index, 1);
+      return updatedImages;
+    });
+  };
+
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      const files = Array.from(event.target.files);
+      setImages((prevImages) => [...prevImages, ...files]);
+    }
+  };
+
+  const handleButtonClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  return (
+    <div className="container py-4 mx-auto">
+      <div
+        className="p-4 border-2 border-gray-400 border-dashed"
+        onDragOver={(event) => event.preventDefault()}
+        onDrop={handleDrop}
+      >
+        <p className="mb-4 text-lg font-bold">Drag and Drop Images Here</p>
+        {images.length > 0 ? (
+          <div className="flex flex-wrap">
+            {images.map((image, index) => (
+              <div key={index} className="w-1/4 p-2">
+                <div className="relative">
+                  <img
+                    src={URL.createObjectURL(image)}
+                    alt={`Image ${index + 1}`}
+                    className="object-cover w-full h-32"
+                  />
+                  <button
+                    className="absolute top-0 right-0 p-2 text-white bg-red-500 rounded-full"
+                    onClick={() => handleImageRemove(index)}
+                  >
+                    X
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>No images uploaded</p>
+        )}
+      </div>
+      <div className="mt-4">
+        <input
+          type="file"
+          accept="image/*"
+          multiple
+          ref={fileInputRef}
+          style={{ display: "none" }}
+          onChange={handleFileSelect}
+        />
+        <button
+          className="px-4 py-2 text-white bg-blue-500 rounded"
+          onClick={handleButtonClick}
+        >
+          Select Images
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default UploadImages;
