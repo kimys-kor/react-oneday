@@ -62,10 +62,10 @@ const ShopModal = () => {
     zipcode: number;
     fullAddress: string;
     restAddress: string;
-    profile: File;
+    profile: File | null;
   }
 
-  const [secondData, setSecondData] = useState<Object>({
+  const [secondData, setSecondData] = useState<SecondData>({
     zipcode: 0,
     fullAddress: "",
     restAddress: "",
@@ -79,7 +79,7 @@ const ShopModal = () => {
   };
 
   const [zipcode, setZipcode] = useState<number>(0);
-  const [fullAddress, setFullAddress] = useState<String>("");
+  const [fullAddress, setFullAddress] = useState<string>("");
 
   useEffect(() => {
     console.log(zipcode, fullAddress);
@@ -160,6 +160,7 @@ const ShopModal = () => {
 
               <div>
                 <input
+                  type="text"
                   placeholder="상세주소"
                   className="w-2/3 h-10 border border-black rounded-md"
                   defaultValue={fullAddress}
