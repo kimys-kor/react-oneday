@@ -151,7 +151,7 @@ const ShopModal = () => {
                 ></input>
                 <button
                   onClick={() => setView(3)}
-                  className="p-2 font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                  className="p-2 font-semibold text-white bg-purple-500 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75"
                 >
                   우편번호 검색
                 </button>
@@ -169,14 +169,14 @@ const ShopModal = () => {
               <UploadImages></UploadImages>
             </div>
 
-            <div className="flex gap-2 p-6">
-              <Button
-                disabled={isLoading}
-                label={"이전"}
-                onClick={() => {
-                  setView(1);
-                }}
-              />
+            <div className="flex gap-2">
+              <button
+                onClick={() => setView(1)}
+                className="w-[100%] outline outline-2 p-2 font-semibold text-black bg-white rounded-lg shadow-md hover:bg-gray-200 focus:ring-2  focus:ring-opacity-75"
+              >
+                이전
+              </button>
+
               <Button disabled={isLoading} label={"다음"} onClick={onSubmit} />
             </div>
           </div>

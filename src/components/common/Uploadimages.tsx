@@ -34,12 +34,12 @@ const UploadImages: React.FC = () => {
   return (
     <div className="container py-4 mx-auto">
       <div
-        className="p-4 border-2 border-gray-400 border-dashed"
+        className="p-4 text-center border-2 border-gray-400 border-dashed"
         onDragOver={(event) => event.preventDefault()}
         onDrop={handleDrop}
       >
         <p className="mb-4 text-lg font-bold">Drag and Drop Images Here</p>
-        {images.length > 0 ? (
+        {images.length > 0 && (
           <div className="flex flex-wrap">
             {images.map((image, index) => (
               <div key={index} className="w-1/4 p-2">
@@ -59,11 +59,9 @@ const UploadImages: React.FC = () => {
               </div>
             ))}
           </div>
-        ) : (
-          <p>No images uploaded</p>
         )}
       </div>
-      <div className="mt-4">
+      <div className="mt-4 ">
         <input
           type="file"
           accept="image/*"
@@ -73,10 +71,10 @@ const UploadImages: React.FC = () => {
           onChange={handleFileSelect}
         />
         <button
-          className="px-4 py-2 text-white bg-blue-500 rounded"
+          className="px-4 py-2 text-white bg-purple-500 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75"
           onClick={handleButtonClick}
         >
-          Select Images
+          이미지 첨부
         </button>
       </div>
     </div>
