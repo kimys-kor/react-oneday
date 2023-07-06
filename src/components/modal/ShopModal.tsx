@@ -148,6 +148,7 @@ const ShopModal = () => {
                 <input
                   placeholder="우편번호"
                   className="w-1/3 h-10 border border-black rounded-md"
+                  defaultValue={zipcode}
                 ></input>
                 <button
                   onClick={() => setView(3)}
@@ -161,6 +162,7 @@ const ShopModal = () => {
                 <input
                   placeholder="상세주소"
                   className="w-2/3 h-10 border border-black rounded-md"
+                  defaultValue={fullAddress}
                 ></input>
               </div>
             </div>
@@ -172,7 +174,7 @@ const ShopModal = () => {
             <div className="flex gap-2">
               <button
                 onClick={() => setView(1)}
-                className="w-[100%] outline outline-2 p-2 font-semibold text-black bg-white rounded-lg shadow-md hover:bg-gray-200 focus:ring-2  focus:ring-opacity-75"
+                className="w-[100%] p-2 font-semibold text-black bg-gray-200 rounded-lg shadow-md hover:bg-gray-300 focus:ring-2  focus:ring-opacity-75"
               >
                 이전
               </button>
