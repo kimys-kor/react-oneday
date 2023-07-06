@@ -152,7 +152,7 @@ const ShopModal = () => {
                 ></input>
                 <button
                   onClick={() => setView(3)}
-                  className="p-2 font-semibold text-white bg-purple-500 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75"
+                  className="p-1 text-xs text-white bg-purple-500 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75"
                 >
                   우편번호 검색
                 </button>

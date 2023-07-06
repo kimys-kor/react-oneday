@@ -14,7 +14,6 @@ import {
 
 import styled from "styled-components";
 import { css } from "styled-components";
-import { color } from "../../data/chartdata/piechartData";
 
 interface IProps {
   startDate: Date | null;

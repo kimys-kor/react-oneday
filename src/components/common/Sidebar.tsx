@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 import { sidebarMenu } from "@/data/common";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import avatar1 from "@images/sidebar/avatar/avatar1.png";
+
 export interface SidebarProps {
   xPosition: number;
 }

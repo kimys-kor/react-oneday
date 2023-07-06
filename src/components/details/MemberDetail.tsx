@@ -3,11 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import CustomDatePicker from "../common/DatePicker";
 import { useForm, Resolver } from "react-hook-form";
-import { eaOptions } from "@/data/common";
 
 import { member } from "@/data/common";
-import MemberPointBoard from "@components/board/MemberPointBoard";
-import { memberPointBoardTitle, memberPointBoardData } from "@/data/common";
 
 import { AiOutlineArrowLeft } from "react-icons/Ai";
 import { HiOutlineChatBubbleLeft } from "react-icons/hi2";
