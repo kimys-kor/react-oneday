@@ -586,7 +586,7 @@ export const riderData: rider[] = [
     status: "정상",
     phone: "01012345678",
     email: "123123@naver.com",
-    name: "부끄러운어피치",
+    name: "라이더1",
     creteadDt: "2020-03-01",
     lastorderDt: "2023-04-17",
     orderCount: 2645,
@@ -598,7 +598,7 @@ export const riderData: rider[] = [
     id: 1,
     phone: "01012345678",
     email: "wwkwk@naver.com",
-    name: "라이언과함께",
+    name: "라이더2",
     creteadDt: "2020-03-01",
     lastorderDt: "2023-04-17",
     orderCount: 2645,
@@ -610,7 +610,7 @@ export const riderData: rider[] = [
     id: 2,
     phone: "01012345678",
     email: "wwkwk@naver.com",
-    name: "콜라좋아",
+    name: "라이더3",
     creteadDt: "2020-03-01",
     lastorderDt: "2023-04-17",
     orderCount: 2645,
@@ -745,6 +745,7 @@ export interface shop {
   createdDt: string;
   productNumber: number;
   orderCount: number;
+  businessNumber: string;
 }
 
 export const shopData: shop[] = [
@@ -757,6 +758,7 @@ export const shopData: shop[] = [
     createdDt: "2020-03-01",
     productNumber: 2040,
     orderCount: 2645,
+    businessNumber: "102-19293-122",
   },
   {
     id: 1,
@@ -767,6 +769,7 @@ export const shopData: shop[] = [
     createdDt: "2020-03-01",
     productNumber: 2040,
     orderCount: 2645,
+    businessNumber: "102-19293-122",
   },
   {
     id: 2,
@@ -777,6 +780,7 @@ export const shopData: shop[] = [
     createdDt: "2020-03-01",
     productNumber: 2040,
     orderCount: 2645,
+    businessNumber: "102-19293-122",
   },
 ];
 

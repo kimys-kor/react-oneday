@@ -9,17 +9,14 @@ import {
 
 import Paging from "../common/Paging";
 import { Link } from "react-router-dom";
-import { member } from "@/data/common";
+import { shop } from "@/data/common";
 
 type ReactTableProps<T extends Object> = {
   data: T[];
   columns: ColumnDef<T>[];
 };
 
-const MemberTable = <T extends object>({
-  data,
-  columns,
-}: ReactTableProps<T>) => {
+const ShopTable = <T extends object>({ data, columns }: ReactTableProps<T>) => {
   const rerender = React.useReducer(() => ({}), {})[1];
 
   // useReactTable로 테이블 구조 정의
@@ -60,7 +57,7 @@ const MemberTable = <T extends object>({
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row, index) => {
-            const rowData = row.original as member; // Cast row.original to the appropriate type
+            const rowData = row.original as shop;
             return (
               <tr
                 key={row.id}
@@ -92,4 +89,4 @@ const MemberTable = <T extends object>({
   );
 };
 
-export default MemberTable;
+export default ShopTable;

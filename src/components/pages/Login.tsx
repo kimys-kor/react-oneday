@@ -154,13 +154,6 @@ const Leftfont1 = styled.h5`
   color: #898ea1;
 `;
 
-const LeftSub = styled.div`
-  padding-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-`;
-
 const Leftfont2 = styled.p`
   color: #898ea1;
 `;

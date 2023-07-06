@@ -9,14 +9,14 @@ import {
 
 import Paging from "../common/Paging";
 import { Link } from "react-router-dom";
-import { member } from "@/data/common";
+import { rider } from "@/data/common";
 
 type ReactTableProps<T extends Object> = {
   data: T[];
   columns: ColumnDef<T>[];
 };
 
-const MemberTable = <T extends object>({
+const RiderTable = <T extends object>({
   data,
   columns,
 }: ReactTableProps<T>) => {
@@ -60,7 +60,7 @@ const MemberTable = <T extends object>({
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row, index) => {
-            const rowData = row.original as member; // Cast row.original to the appropriate type
+            const rowData = row.original as rider;
             return (
               <tr
                 key={row.id}
@@ -92,4 +92,4 @@ const MemberTable = <T extends object>({
   );
 };
 
-export default MemberTable;
+export default RiderTable;

@@ -1,19 +1,9 @@
-import styled from "styled-components";
-import { useState, useEffect } from "react";
-import { css } from "styled-components";
+import { useState } from "react";
+
+import { eaOptions, member, memberData } from "@/data/common";
 
 import CustomSelect from "@/styles/CustomSelect";
-
-import Loading from "@components/common/Loading";
-import MemberBoard from "@components/board/MemberBoard";
-import { corpOptions, appOptions, eaOptions } from "@/data/common";
-
-import { itemFilter } from "@/data/common";
-import { member, memberData } from "@/data/common";
-import BorderButton from "@/styles/BorderButton";
-
 import CustomDatePicker from "../common/DatePicker";
-
 import { BiSearch } from "react-icons/bi";
 
 import { createColumnHelper } from "@tanstack/react-table";
@@ -36,12 +26,6 @@ const columns: ColumnDef<member>[] = [
 ] as ColumnDef<member>[];
 
 function Member() {
-  const [dateFilterIndex, setDateFilterIndex] = useState<number>(0);
-  // 헤더 날짜필터
-  const [dateIndex, setDateIndex] = useState<number | null>(0);
-  const setDate = (index: number) => {
-    setDateIndex(index === dateIndex ? null : index);
-  };
   // 멤버 상태필터
   const [filterIndex, setFilterIndex] = useState<number | null>(0);
   const handleFilter = (index: number) => {

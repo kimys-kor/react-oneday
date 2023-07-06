@@ -1,14 +1,7 @@
 import styled from "styled-components";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 import CustomSelect from "@/styles/CustomSelect";
-import SearchInput from "@components/common/SearchInput";
-
-import ShopDetail from "@components/details/ShopDetail";
-import ShopBoard from "@components/board/ShopBoard";
-import { useForm, Resolver } from "react-hook-form";
-
-import { shopData, shopBoardTitle } from "@/data/common";
 
 import useShopModal from "@/components/hooks/useShopModal";
 import ShopModal from "@/components/modal/ShopModal";
@@ -19,33 +12,32 @@ import {
   guOptions,
   dongOptions,
   shopOptions,
+  shop,
+  shopData,
 } from "@/data/common";
-import "react-datepicker/dist/react-datepicker.css";
+
 import { BiSearch } from "react-icons/bi";
+
+import { createColumnHelper } from "@tanstack/react-table";
+import { ColumnDef } from "@tanstack/react-table";
+import ShopTable from "../board/ShopTable";
+
+const columnHelper = createColumnHelper<shop>();
+
+const columns: ColumnDef<shop>[] = [
+  columnHelper.accessor("id", { header: "아이디" }),
+  columnHelper.accessor("shopName", { header: "가게명" }),
+  columnHelper.accessor("owner", { header: "점주명" }),
+  columnHelper.accessor("phone", { header: "핸드폰" }),
+  columnHelper.accessor("email", { header: "이메일" }),
+  columnHelper.accessor("createdDt", { header: "가게등록일" }),
+  columnHelper.accessor("productNumber", { header: "상품수" }),
+  columnHelper.accessor("orderCount", { header: "주문횟수" }),
+  columnHelper.accessor("businessNumber", { header: "사업자번호" }),
+] as ColumnDef<shop>[];
 
 function Shop() {
   const [tab, setTab] = useState<number>(1);
-
-  // 디테일 모달 상태
-  const [isDetailOpen, setDetailOpen] = useState(false);
-  const handleDetailOpen = (index: number) => {
-    setDetailOpen(true);
-    console.log(index);
-  };
-
-  const handleDetailClose = () => {
-    setDetailOpen(false);
-  };
-
-  // 멤버상세창 넘길 멤버
-  const [activeItem, setActiveItem] = useState(0);
-  // ...클릭시 설정팝업
-  const [openAnother, setOpenAnother] = useState(-1);
-  // ...클릭시 팝업,상점인덱스 설정
-  const handleOpenIndex = (index: number) => {
-    setActiveItem(openAnother);
-    setOpenAnother(index);
-  };
 
   // 상점 추가 팝업 상태
   const [currentEa, setCurrentEa] = useState(eaOptions[0]);
@@ -109,7 +101,7 @@ function Shop() {
         </div>
 
         {tab === 1 && (
-          <article className="flex flex-col gap-3">
+          <article className="flex flex-col w-full gap-3">
             <Filterbox>
               <Selectbox>
                 <CustomSelect
@@ -157,13 +149,7 @@ function Shop() {
               ></CustomSelect>
             </div>
 
-            <ShopBoard
-              boardMenu={shopBoardTitle}
-              boardData={shopData}
-              handleDetailOpen={handleDetailOpen}
-              openAnother={openAnother}
-              handleOpenIndex={handleOpenIndex}
-            ></ShopBoard>
+            <ShopTable data={shopData} columns={columns}></ShopTable>
           </article>
         )}
 

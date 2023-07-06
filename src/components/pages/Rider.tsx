@@ -1,255 +1,113 @@
-import styled from "styled-components";
 import { useState } from "react";
 
 import CustomSelect from "@/styles/CustomSelect";
-import SearchInput from "@components/common/SearchInput";
+import CustomDatePicker from "../common/DatePicker";
+import { BiSearch } from "react-icons/bi";
 
-import RiderBoard from "@components/board/RiderBoard";
-import { eaOptions } from "@/data/common";
+import { eaOptions, rider, riderData } from "@/data/common";
 
-import { dateFilter, itemFilter } from "@/data/common";
-import { riderBoardTitle, riderData } from "@/data/common";
-import BorderButton from "@/styles/BorderButton";
+import { createColumnHelper } from "@tanstack/react-table";
+import { ColumnDef } from "@tanstack/react-table";
+import RiderTable from "../board/RiderTable";
 
-import DatePicker from "react-datepicker";
-import { ko } from "date-fns/esm/locale";
-import "react-datepicker/dist/react-datepicker.css";
+import useRiderModal from "../hooks/useRiderModal";
+
+const columnHelper = createColumnHelper<rider>();
+
+const columns: ColumnDef<rider>[] = [
+  columnHelper.accessor("id", { header: "아이디" }),
+  columnHelper.accessor("status", { header: "상태" }),
+  columnHelper.accessor("phone", { header: "핸드폰" }),
+  columnHelper.accessor("email", { header: "이메일" }),
+  columnHelper.accessor("name", { header: "라이더명" }),
+  columnHelper.accessor("lastorderDt", { header: "최근배달수행일" }),
+  columnHelper.accessor("orderCount", { header: "총배달수행건수" }),
+  columnHelper.accessor("orderAmount", { header: "총배달수행금액" }),
+  columnHelper.accessor("point", { header: "포인트" }),
+] as ColumnDef<rider>[];
 
 function Rider() {
-  // 헤더 날짜필터
-  const [dateIndex, setDateIndex] = useState<number | null>(0);
-  const setDate = (index: number) => {
-    setDateIndex(index === dateIndex ? null : index);
-  };
-  // 헤더 상태필터
-  const [filterIndex, setFilterIndex] = useState<number | null>(0);
-  const handleFilter = (index: number) => {
-    setFilterIndex(index === filterIndex ? null : index);
-  };
   // 헤더 날짜 필터
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
-  const [endDate, setEndDate] = useState<Date | null>(new Date());
-
-  // 디테일 모달 상태
-  const [isDetailOpen, setDetailOpen] = useState(false);
-  const handleDetailOpen = (index: number) => {
-    setDetailOpen(true);
-    console.log(index);
-  };
-  const handleDetailClose = () => {
-    setDetailOpen(false);
-  };
-
-  // 멤버상세창 넘길 멤버
-  const [activeItem, setActiveItem] = useState(0);
-  // ...클릭시 설정팝업
-  const [openAnother, setOpenAnother] = useState(-1);
-  // ...클릭시 팝업,멤버인덱스 설정
-  const handleOpenIndex = (index: number) => {
-    setActiveItem(openAnother);
-    setOpenAnother(index);
-  };
+  const today = new Date();
+  const [startDate, setStartDate] = useState<Date>(today);
+  const [endDate, setEndDate] = useState<Date>(today);
+  const [active, setActive] = useState<number>(1);
 
   const [currentEa, setCurrentEa] = useState(eaOptions[0]);
 
-  const [isAddAppOpen, setAddAppOpen] = useState(false);
-  const handleAddForm = () => {
-    setAddAppOpen((prev) => !prev);
-  };
+  const riderModal = useRiderModal();
 
   return (
-    <Memberbox>
-      <Headerbox>
-        <Title>기사 관리</Title>
-        <Addbutton onClick={handleAddForm}>기사 둥록</Addbutton>
-      </Headerbox>
+    <main className="flex flex-col items-center w-full h-full gap-3 rounded-2xl">
+      <h1 className="box-border flex justify-between w-full gap-6 px-6 py-4 bg-white text-[1.6rem]">
+        기사 관리
+        <button
+          onClick={riderModal.onOpen}
+          className="w-[5rem] bg-active text-[#fff] text-[0.84rem]
+                    shadow-md
+                    hover:bg-orange-600
+                    "
+          type="submit"
+          value="point"
+        >
+          기사 추가
+        </button>
+      </h1>
 
-      <Content>
-        <Layout>
-          <Fillter>
-            {/* <BorderButton
-              width={76}
-              title={"전체"}
-              activeIndex={dateIndex}
-              handleButtonClick={setDate}
-            ></BorderButton> */}
+      <section className="box-border flex flex-col items-start w-full gap-5 p-6 bg-white h-85vh">
+        <div className="flex w-full gap-3">
+          <button
+            onClick={() => setActive(1)}
+            className={`w-[5rem]  text-[0.84rem] truncate shadow-[0px_1px_3px_0px_#dadce0] ${
+              active === 1
+                ? "border border-active text-active"
+                : "border border-[#e5e7eb] hover:border-active hover:text-active"
+            }`}
+          >
+            전체기간
+          </button>
 
-            <Flexbox>
-              <Datebox>
-                <DatePicker
-                  locale={ko}
-                  closeOnScroll={(e) => e.target === document}
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  selectsStart
-                  startDate={startDate}
-                  endDate={endDate}
-                  dateFormat="yyyy-MM-dd"
-                  customInput={
-                    // 날짜 뜨는 인풋 커스텀
-                    <DateInput />
-                  }
-                />
-              </Datebox>
-              <Datebox>
-                <DatePicker
-                  locale={ko}
-                  closeOnScroll={(e) => e.target === document}
-                  selected={endDate}
-                  onChange={(date) => setEndDate(date)}
-                  selectsEnd
-                  startDate={startDate}
-                  endDate={endDate}
-                  minDate={startDate}
-                  dateFormat="yyyy-MM-dd"
-                  customInput={
-                    // 날짜 뜨는 인풋 커스텀
-                    <DateInput />
-                  }
-                />
-              </Datebox>
-            </Flexbox>
+          <div onClick={() => setActive(2)} className={`flex w-[14rem]`}>
+            <CustomDatePicker
+              startDate={startDate}
+              setStartDate={setStartDate}
+              endDate={endDate}
+              setEndDate={setEndDate}
+              active={active}
+            />
+          </div>
 
-            <Buttonbox>
-              {/* <BorderButton
-                width={80}
-                titles={itemFilter}
-                activeIndex={filterIndex}
-                handleButtonClick={handleFilter}
-              ></BorderButton> */}
-            </Buttonbox>
-            <SearchInput></SearchInput>
-            <CustomSelect
-              options={eaOptions}
-              setCurrent={setCurrentEa}
-            ></CustomSelect>
-          </Fillter>
+          <div className="flex">
+            <label className="relative block">
+              <span className="sr-only">Search</span>
+              <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+                <BiSearch
+                  size={19}
+                  className="cursor-pointer fill-slate-300 hover:fill-active"
+                  viewBox="0 0 20 20"
+                ></BiSearch>
+              </span>
+              <input
+                className="block w-full py-2 pr-3 bg-white border rounded-md shadow-sm placeholder:italic placeholder:text-slate-400 border-slate-300 pl-9 focus:outline-none focus:border-active focus:ring-active focus:ring-1 sm:text-sm"
+                placeholder="검색어 입력"
+                type="text"
+                name="search"
+              />
+            </label>
+          </div>
+        </div>
 
-          <RiderBoard
-            boardMenu={riderBoardTitle}
-            boardData={riderData}
-            handleDetailOpen={handleDetailOpen}
-            openAnother={openAnother}
-            handleOpenIndex={handleOpenIndex}
-          ></RiderBoard>
-        </Layout>
-      </Content>
-    </Memberbox>
+        <div className="flex justify-end w-full">
+          <CustomSelect
+            options={eaOptions}
+            setCurrent={setCurrentEa}
+          ></CustomSelect>
+        </div>
+
+        <RiderTable data={riderData} columns={columns}></RiderTable>
+      </section>
+    </main>
   );
 }
 
 export default Rider;
-
-const Memberbox = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 9px;
-`;
-
-const Headerbox = styled.div`
-  box-sizing: border-box;
-  padding-right: 50px;
-  width: 100%;
-  height: 125px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fff;
-`;
-
-const Title = styled.div`
-  margin-left: 20px;
-  font-size: 25px;
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Content = styled.div`
-  margin-top: 12px;
-  width: 100%;
-  min-height: 1000px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fff;
-`;
-
-const Layout = styled.div`
-  box-sizing: border-box;
-  margin-top: 54px;
-  width: 95%;
-`;
-
-const Fillter = styled.div`
-  max-width: 130rem;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 1rem;
-
-  .react-datepicker-wrapper {
-    width: 10rem;
-  }
-  .react-datepicker__calendar-icon {
-    fill: #bbbbcf;
-  }
-  .react-datepicker__calendar-icon {
-    position: absolute;
-    top: 3px;
-  }
-
-  @media (max-width: 1530px) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-`;
-
-const Flexbox = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Datebox = styled.div`
-  margin-left: 12px;
-`;
-
-const DateInput = styled.input`
-  box-sizing: border-box;
-  width: 156px;
-  height: 37px;
-  padding: 5px 10px;
-  background: #fff;
-  border: 1px solid #bbbbcf;
-  font-size: 15px;
-  font-weight: 400;
-  text-align: center;
-  color: #bbbbcf;
-  line-height: 37px;
-  text-align: center;
-`;
-
-const Buttonbox = styled.div`
-  margin-left: 24px;
-  display: flex;
-`;
-
-const Addbutton = styled.div`
-  width: 183px;
-  height: 37px;
-  color: #fff;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.2rem;
-  background-color: #ff6622;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: 1px solid transparent;
-  &:hover {
-    background-color: #f1520e;
-  }
-`;
