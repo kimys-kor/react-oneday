@@ -91,16 +91,6 @@ function MemberDetail() {
         >
           통합주문내역
         </button>
-        <button
-          onClick={() => setTab(3)}
-          className={`w-28 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] ${
-            tab === 3
-              ? "border-active text-active"
-              : "hover:border-active hover:text-active"
-          }`}
-        >
-          1:1문의내역
-        </button>
       </div>
 
       {tab === 1 && (
@@ -516,48 +506,6 @@ function MemberDetail() {
             </div>
           </section>
         </>
-      )}
-
-      {tab === 3 && (
-        <section className="flex flex-col w-full gap-1 ">
-          <div className="flex flex-col w-full gap-10 ">
-            <article>
-              <div className="flex justify-end gap-3 ">
-                <select className="w-28 border shadow-[1px_1px_1px_1px_#dadce0_inset]">
-                  <option value="0">10개씩</option>
-                  <option value="cancled">20개씩</option>
-                  <option value="completed">30개씩</option>
-                  <option value="completed">40개씩</option>
-                  <option value="completed">50개씩</option>
-                </select>
-              </div>
-
-              <div className="mt-5">
-                <div className="grid grid-cols-7 bg-[#EFEFEF]">
-                  <div className="text-center"> 번호</div>
-                  <div className="text-center"> 제목</div>
-                  <div className="text-center"> 회원</div>
-                  <div className="text-center"> 조회</div>
-                  <div className="col-span-2 text-center"> 작성일</div>
-                  <div className="text-center"> 게시</div>
-                </div>
-
-                <div>
-                  <div className="grid grid-cols-7 ">
-                    <div className="text-center"> 2323</div>
-                    <div className="text-center"> 상품문의</div>
-                    <div className="text-center"> wkjwkn@naver.com</div>
-                    <div className="text-center"> 0</div>
-                    <div className="col-span-2 text-center"> 2023-05-12</div>
-                    <div className="text-center text-blue-500"> [미노출]</div>
-                  </div>
-                </div>
-
-                <Paging page={1} count={15} setPage={setPage}></Paging>
-              </div>
-            </article>
-          </div>
-        </section>
       )}
     </main>
   );
