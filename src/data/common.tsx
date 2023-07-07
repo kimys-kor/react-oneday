@@ -2,7 +2,12 @@ import { RxDashboard } from "react-icons/rx";
 import { HiOutlineUser } from "react-icons/hi";
 import { BsShop } from "react-icons/bs";
 import { BsTruck } from "react-icons/bs";
-import { BiSpreadsheet, BiBarChartAlt2 } from "react-icons/bi";
+import {
+  BiSpreadsheet,
+  BiBarChartAlt2,
+  BiMessageAltError,
+  BiMessageEdit,
+} from "react-icons/bi";
 
 import { ReactNode } from "react";
 
@@ -33,6 +38,12 @@ export const sidebarMenu: Array<Array<sidebarModel>> = [
       name: "기사 관리",
       path: "rider",
       pathname: "/oneday/rider",
+    },
+    {
+      logo: <BiMessageEdit size="26" />,
+      name: "상점 문의",
+      path: "question",
+      pathname: "/oneday/question",
     },
     {
       logo: <BiSpreadsheet size="26" />,

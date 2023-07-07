@@ -72,7 +72,7 @@ const RiderTable = <T extends object>({
                   </td>
                 ))}
                 <td>
-                  <Link to={`/oneday/member/${rowData.id}`}>
+                  <Link to={`/oneday/rider/${rowData.id}`}>
                     <button
                       className="p-1 rounded-md text-[0.8rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
                   hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
