@@ -75,7 +75,7 @@ function Orders() {
 
       <Wrapper>
         <Layout>
-          <Tabbox>
+          <div className="flex gap-[1px]">
             {tab.map((item, index) => (
               <BorderButtonLX
                 title={item}
@@ -84,7 +84,7 @@ function Orders() {
                 activeId={activeButton1}
               ></BorderButtonLX>
             ))}
-          </Tabbox>
+          </div>
 
           {tabIndex == 0 && (
             <>
