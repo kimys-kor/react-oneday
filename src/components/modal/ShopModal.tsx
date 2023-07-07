@@ -59,36 +59,37 @@ const ShopModal = () => {
   const [firstData, setFirstData] = useState<Object>();
 
   interface SecondData {
-    zipcode: number;
+    zipcode: string;
     fullAddress: string;
     restAddress: string;
     profile: File | null;
   }
 
   const [secondData, setSecondData] = useState<SecondData>({
-    zipcode: 0,
+    zipcode: "",
     fullAddress: "",
     restAddress: "",
     profile: null,
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
+  const onSubmitFirst: SubmitHandler<FieldValues> = (data) => {
     setView(2);
     setFirstData(data);
   };
 
-  const [zipcode, setZipcode] = useState<number>(0);
+  const [zipcode, setZipcode] = useState<string>("");
   const [fullAddress, setFullAddress] = useState<string>("");
 
   useEffect(() => {
     console.log(zipcode, fullAddress);
   }, [zipcode, fullAddress]);
 
+  const onSubmitSecond: SubmitHandler<FieldValues> = (data) => {};
+
   const bodyContent = (
     <div className="flex flex-col gap-4">
       {view == 1 && (
-        <form onSubmit={onSubmit} className="flex flex-col gap-4">
+        <form onSubmit={onSubmitFirst} className="flex flex-col gap-4">
           <Input
             id="name"
             label="상점명"
@@ -136,7 +137,7 @@ const ShopModal = () => {
             required
           />
 
-          <Button disabled={isLoading} label={"다음"} onClick={onSubmit} />
+          <Button disabled={isLoading} label={"다음"} onClick={onSubmitFirst} />
         </form>
       )}
 
@@ -180,7 +181,11 @@ const ShopModal = () => {
                 이전
               </button>
 
-              <Button disabled={isLoading} label={"다음"} onClick={onSubmit} />
+              <Button
+                disabled={isLoading}
+                label={"다음"}
+                onClick={onSubmitSecond}
+              />
             </div>
           </div>
         </div>
@@ -238,7 +243,7 @@ const ShopModal = () => {
     <Modal
       isOpen={shopModal.isOpen}
       onClose={shopModal.onClose}
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmitFirst)}
       disabled={isLoading}
       title="상점 등록"
       body={bodyContent}

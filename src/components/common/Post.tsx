@@ -25,7 +25,7 @@ import { Dispatch, SetStateAction } from "react";
 
 interface postProps {
   setView: Dispatch<SetStateAction<number>>;
-  setZipcode: Dispatch<SetStateAction<number>>;
+  setZipcode: Dispatch<SetStateAction<string>>;
   setFullAddress: Dispatch<SetStateAction<string>>;
 }
 
