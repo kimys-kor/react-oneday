@@ -47,7 +47,7 @@ export const sidebarMenu: Array<Array<sidebarModel>> = [
     },
     {
       logo: <BiSpreadsheet size="26" />,
-      name: "주문현황",
+      name: "주문관리",
       path: "orders",
       pathname: "/oneday/orders",
     },
@@ -360,13 +360,6 @@ export const memberPointBoardData: memberPoint[] = [
     orderProducts: "가구",
     orderAmount: 204000,
   },
-];
-
-export const tabOrders: string[] = [
-  "주문 현황",
-  "일자별 주문 검색",
-  "미완료 주문 관리",
-  "사고 주문 관리",
 ];
 
 export interface orders {

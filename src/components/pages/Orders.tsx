@@ -3,73 +3,21 @@ import styled from "styled-components";
 
 import BorderButtonLX from "@/styles/BorderButtonLX";
 
-import { tabOrders, ordersData } from "@/data/common";
+import { ordersData } from "@/data/common";
 import { ReactComponent as AnotherIcon } from "@statics/images/anothericon.svg";
 
 function Orders() {
+  const tab = ["주문 현황", "일자별 주문 검색"];
+
   const [tabIndex, setTabIndex] = useState<number>(0);
-  const handleTab = (index: number) => {
-    setTabIndex(index);
-  };
-
-  const [anotherIndex, setAnotherIndex] = useState(-1);
-  const handleOpenIndex = (index: number) => {
-    setActiveApp(anotherIndex);
-    setAnotherIndex(index);
-  };
-
-  const optionRef = useRef<HTMLDivElement>(null);
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      optionRef.current &&
-      !optionRef.current.contains(event.target as Node)
-    ) {
-      handleOpenIndex(-1);
-    }
-  };
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  const [isDetailOpen, setDetailOpen] = useState(false);
-  const handleDetail = (index: number) => {
-    setDetailOpen(true);
-    console.log(index);
-  };
-  const handleDetailClose = () => {
-    setDetailOpen(false);
-  };
-
-  const [isAddAppOpen, setAddAppOpen] = useState(false);
-  const handleAddForm = () => {
-    setAddAppOpen((prev) => !prev);
-  };
-  const [activeApp, setActiveApp] = useState(0);
-
-  const [openAnother, setOpenAnother] = useState(-1);
-  const handleAnother = (index: number) => {
-    setOpenAnother(index);
-  };
-
-  const tab = [
-    "주문 현황",
-    "일자별 주문 검색",
-    "미완료 주문 관리",
-    "사고 주문 관리",
-  ];
-
-  const [activeButton1, setActiveButton1] = useState<number>(1);
-  const handleButtonClick1 = (id: number) => {
-    setActiveButton1(id);
+  const handleTab = (id: number) => {
+    setTabIndex(id);
   };
 
   return (
     <Box>
       <Headerbox>
-        <Title>주문 현황</Title>
+        <Title>주문 관리</Title>
         {/* <Addbutton onClick={handleAddShop}>상점 추가</Addbutton> */}
       </Headerbox>
 
@@ -80,8 +28,8 @@ function Orders() {
               <BorderButtonLX
                 title={item}
                 id={index}
-                onClick={handleButtonClick1}
-                activeId={activeButton1}
+                onClick={handleTab}
+                activeId={tabIndex}
               ></BorderButtonLX>
             ))}
           </div>
@@ -116,33 +64,13 @@ function Orders() {
                   </Flex>
 
                   <Iconbox>
-                    <AnotherIcon
-                      onClick={() =>
-                        handleOpenIndex(anotherIndex === index ? -1 : index)
-                      }
-                    />
-                    {anotherIndex === index && (
-                      <Optionbox
-                        ref={optionRef}
-                        onClick={() =>
-                          handleOpenIndex(anotherIndex === index ? -1 : index)
-                        }
-                      >
-                        <Option onClick={() => handleDetail(index)}>
-                          상세정보
-                        </Option>
-                        <Option>수정</Option>
-                        <Option>삭제</Option>
-                      </Optionbox>
-                    )}
+                    <AnotherIcon />
                   </Iconbox>
                 </Appbox>
               ))}
             </>
           )}
           {tabIndex == 1 && <></>}
-          {tabIndex == 2 && <></>}
-          {tabIndex == 3 && <></>}
         </Layout>
       </Wrapper>
     </Box>

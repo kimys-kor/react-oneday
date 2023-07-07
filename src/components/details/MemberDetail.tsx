@@ -472,7 +472,7 @@ function MemberDetail() {
                     <div className="text-center"> 주문상태</div>
                     <div className="col-span-2 text-center"> 주문번호</div>
                     <div className="text-center"> 회원</div>
-                    <div className="text-center"> 배송</div>
+                    <div className="text-center"> 라이더</div>
                     <div className="text-center"> 총금액</div>
                     <div className="col-span-2 text-center"> 주문일자</div>
                     <div className="text-center"> 결제방법</div>

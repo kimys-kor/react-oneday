@@ -89,7 +89,7 @@ function RiderDetail() {
               : "hover:border-active hover:text-active"
           }`}
         >
-          주문수행정보
+          배달수행정보
         </button>
       </div>
 
@@ -98,67 +98,36 @@ function RiderDetail() {
           <section className="flex flex-col w-full gap-1 ">
             <div className="flex w-full ">
               <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
-                이름
+                라이더명
               </p>
               <div className="flex items-center w-2/6 pl-1 border-b-2 min-w-30">
                 <input
                   className="w-16 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
-                  defaultValue={"안녕"}
+                  defaultValue={"김영승"}
                 ></input>
               </div>
 
               <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
-                회원등급
+                핸드폰
               </p>
-              <div className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">
-                <select className="w-20 shadow-[0px_1px_1px_0px_#dadce0_inset]">
-                  <option value="플래티넘">플래티넘</option>
-                  <option value="골드">골드</option>
-                  <option value="실버">실버</option>
-                </select>
+              <div className="flex items-center w-2/6 pl-1 border-b-2 min-w-30">
+                <input
+                  className="w-32 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
+                  defaultValue={"0101111111"}
+                ></input>
               </div>
             </div>
 
             <div className="flex w-full">
               <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
-                적립금
+                이메일
               </p>
-              <div className="flex items-center w-2/6 gap-3 px-1 truncate border-b-2">
-                1,000
-                <form onSubmit={onSubmit} className="flex ">
-                  <input
-                    className="w-36 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset] text-[0.82rem]"
-                    placeholder="적립 금액을 입력해 주세요."
-                    type="number"
-                    {...register("savingPoint")}
-                  ></input>
-                  <button
-                    className="w-[2.5rem] h-3/5 bg-active text-[#fff] text-[0.84rem]
-                    shadow-md
-                    hover:bg-orange-600
-                    "
-                    type="submit"
-                    value="point"
-                  >
-                    적립
-                  </button>
-                </form>
+              <div className="flex items-center w-2/6 pl-1 border-b-2">
+                2k2k@naver.com
               </div>
 
               <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
-                예치금
-              </p>
-              <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">1,000</p>
-            </div>
-
-            <div className="flex w-full">
-              <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
-                누적총로그인
-              </p>
-              <div className="flex items-center w-2/6 pl-1 border-b-2">6</div>
-
-              <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
-                주문완료 상품/금액
+                배달완료 상품/금액
               </p>
               <div className="flex items-center w-2/6 gap-1 gap-2 pl-1 border-b-2">
                 0 / 0 원
@@ -180,7 +149,7 @@ function RiderDetail() {
               </div>
 
               <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white ">
-                최종방문일
+                최종 배달수행일
               </p>
               <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">
                 2023-06-20 17:13:00
@@ -188,6 +157,16 @@ function RiderDetail() {
             </div>
 
             <div className="flex w-full">
+              <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
+                라이더 아이디
+              </p>
+              <div className="flex items-center w-2/6 pl-1 border-b-2">
+                <input
+                  className="w-32 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
+                  defaultValue={"wkwkwk"}
+                ></input>
+              </div>
+
               <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
                 비밀번호
               </p>
@@ -199,49 +178,22 @@ function RiderDetail() {
                   임시비밀번호생성
                 </button>
               </div>
-
-              <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
-                강제탈퇴
-              </p>
-              <div className="flex items-center w-2/6 pl-1 border-b-2">
-                <button
-                  className="w-[4rem] h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
-                  hover:shadow-inner hover:bg-gray-200 transition-all duration-200"
-                >
-                  강제탈퇴
-                </button>
-              </div>
-            </div>
-            <div className="flex w-full">
-              <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
-                휴대폰
-              </p>
-              <div className="flex items-center w-2/6 pl-1 border-b-2">
-                010-1234-1234
-              </div>
-
-              <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
-                이메일
-              </p>
-              <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">
-                wkek@naver.com
-              </p>
             </div>
           </section>
 
           <div className="flex flex-row-reverse w-full">
             <button
-              className={`w-24 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] 
+              className={`w-28 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] 
               hover:text-active
               `}
             >
-              회원정보저장
+              라이더정보저장
             </button>
           </div>
 
           <section className="flex w-full gap-2 mt-4">
             <h6 className="w-2/12 leading-10 min-w-fit pl-1  bg-[#EFEFEF] border-b-white flex items-center">
-              회원 메모
+              라이더 메모
             </h6>
 
             <div className="flex flex-col justify-between w-10/12 gap-5">
@@ -355,27 +307,27 @@ function RiderDetail() {
               <article>
                 <div className="flex gap-3">
                   <HiOutlineChatBubbleLeft size={20}></HiOutlineChatBubbleLeft>
-                  <span>주문 상품 내역</span>
+                  <span>배달 수행 내역</span>
                 </div>
 
                 <div className="mt-2 grid grid-cols-6 border-t-[1px] border-t-[#EFEFEF]">
                   <div className="flex items-center justify-center w-full">
-                    <p className="truncate ">총 주문 상품</p>
+                    <p className="truncate ">총 수행 상품</p>
                   </div>
                   <div className="flex items-center justify-center w-full">
-                    <p className="truncate">발송대기</p>
+                    <p className="truncate">수행완료</p>
                   </div>
                   <div className="flex items-center justify-center w-full">
-                    <p className="truncate">주문완료</p>
-                  </div>
-                  <div className="flex items-center justify-center w-full">
-                    <p className="truncate">교환주문</p>
+                    <p className="truncate">수행진행</p>
                   </div>
                   <div className="flex items-center justify-center w-full">
                     <p className="truncate">주문취소</p>
                   </div>
                   <div className="flex items-center justify-center w-full">
-                    <p className="truncate">주문완료총금액</p>
+                    <p className="truncate">취소율</p>
+                  </div>
+                  <div className="flex items-center justify-center w-full">
+                    <p className="truncate">수행완료총금액</p>
                   </div>
                 </div>
 
@@ -393,7 +345,7 @@ function RiderDetail() {
                     <p className="truncate">25</p>
                   </div>
                   <div className="flex items-center justify-center w-full text-red-500">
-                    <p className="truncate">40</p>
+                    <p className="truncate">40%</p>
                   </div>
                   <div className="flex items-center justify-center w-full">
                     <p className="truncate">500,000</p>
@@ -435,14 +387,8 @@ function RiderDetail() {
                     <div className="w-20 px-2 pl-1 min-w-fit">
                       <select className="w-28 shadow-[0px_1px_1px_0px_#dadce0_inset]">
                         <option value="0">주문상태</option>
-                        <option value="cancled">주문취소</option>
-                        <option value="completed">주문완료</option>
-                      </select>
-
-                      <select className="w-28 shadow-[0px_1px_1px_0px_#dadce0_inset]">
-                        <option value="0">결제방법</option>
-                        <option value="cancled">카드결제</option>
-                        <option value="completed">현금결제</option>
+                        <option value="cancled">배달취소</option>
+                        <option value="completed">배달완료</option>
                       </select>
                     </div>
 
@@ -459,7 +405,7 @@ function RiderDetail() {
               <article className="flex flex-col gap-5">
                 <div className="flex gap-3">
                   <HiOutlineChatBubbleLeft size={20}></HiOutlineChatBubbleLeft>
-                  <span>주문 목록</span>
+                  <span>배달 수행 목록</span>
                 </div>
 
                 <h5 className="w-full p-2 overflow-hidden text-black bg-purple-50 ">
@@ -472,7 +418,7 @@ function RiderDetail() {
                     <div className="text-center"> 주문상태</div>
                     <div className="col-span-2 text-center"> 주문번호</div>
                     <div className="text-center"> 회원</div>
-                    <div className="text-center"> 배송</div>
+                    <div className="text-center"> 라이더</div>
                     <div className="text-center"> 총금액</div>
                     <div className="col-span-2 text-center"> 주문일자</div>
                     <div className="text-center"> 결제방법</div>
