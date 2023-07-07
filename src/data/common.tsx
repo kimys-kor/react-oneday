@@ -727,6 +727,28 @@ export const shopOptions = [
   { value: 3, label: "용만이네4" },
 ];
 
+export const yearOptions = [
+  { value: 1, label: "2023" },
+  { value: 2, label: "2022" },
+  { value: 3, label: "2021" },
+  { value: 4, label: "2020" },
+];
+
+export const monthOptions = [
+  { value: 1, label: "01" },
+  { value: 2, label: "02" },
+  { value: 3, label: "03" },
+  { value: 4, label: "04" },
+  { value: 4, label: "05" },
+  { value: 4, label: "06" },
+  { value: 4, label: "07" },
+  { value: 4, label: "08" },
+  { value: 4, label: "09" },
+  { value: 4, label: "10" },
+  { value: 4, label: "11" },
+  { value: 4, label: "12" },
+];
+
 export const shoplocation: Array<String> = [
   "전체",
   "남구",
@@ -894,25 +916,3 @@ export const titleStatistics = ["주문건수 통계", "주문금액 통계"];
 export const searchFilter = ["전체", "주문완료", "주문취소"];
 
 export const chartFilter = ["누적회원점유율", "누적적립금점유율"];
-
-export const yearOptions = [
-  { key: 1, value: 2023 },
-  { key: 2, value: 2022 },
-  { key: 3, value: 2021 },
-  { key: 4, value: 2020 },
-];
-
-export const monthOptions = [
-  { key: 1, value: "01" },
-  { key: 2, value: "02" },
-  { key: 3, value: "03" },
-  { key: 4, value: "04" },
-  { key: 4, value: "05" },
-  { key: 4, value: "06" },
-  { key: 4, value: "07" },
-  { key: 4, value: "08" },
-  { key: 4, value: "09" },
-  { key: 4, value: "10" },
-  { key: 4, value: "11" },
-  { key: 4, value: "12" },
-];

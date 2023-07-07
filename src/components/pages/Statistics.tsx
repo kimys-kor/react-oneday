@@ -160,20 +160,12 @@ function Statistics() {
                     <>
                       <Flexbox>
                         <CustomSelect
-                          width={10}
-                          height={2.5}
-                          title={"연도"}
-                          optionData={yearOptions}
-                          currentValue={currentYear}
-                          setCurrentValue={setCurrentYear}
+                          options={yearOptions}
+                          setCurrent={setCurrentYear}
                         ></CustomSelect>
                         <CustomSelect
-                          width={10}
-                          height={2.5}
-                          title={"월"}
-                          optionData={monthOptions}
-                          currentValue={currentMonth}
-                          setCurrentValue={setCurrentMonth}
+                          options={monthOptions}
+                          setCurrent={setCurrentMonth}
                         ></CustomSelect>
                       </Flexbox>
                     </>
