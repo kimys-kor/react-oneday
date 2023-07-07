@@ -4,7 +4,7 @@ import styled from "styled-components";
 import BorderButtonLX from "@/styles/BorderButtonLX";
 
 import { tabOrders, ordersData } from "@/data/common";
-import { ReactComponent as AnotherIcon } from "@statics/images/sidebar/anothericon.svg";
+import { ReactComponent as AnotherIcon } from "@statics/images/anothericon.svg";
 
 function Orders() {
   const [tabIndex, setTabIndex] = useState<number>(0);

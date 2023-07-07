@@ -11,8 +11,8 @@ import {
   footertext3,
 } from "@/data/common";
 
-import loginicon from "@images/login/loginicon.png";
-import logincontact from "@images/login/logincontact.png";
+import loginicon from "@images/loginicon.png";
+import logincontact from "@images/logincontact.png";
 import { useNavigate } from "react-router-dom";
 
 type FormData = {

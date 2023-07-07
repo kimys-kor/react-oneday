@@ -6,8 +6,8 @@ import { ko } from "date-fns/esm/locale";
 import CustomSelect from "@/styles/CustomSelect";
 import BorderButtonLX from "@/styles/BorderButtonLX";
 
-import { ReactComponent as Viewbar } from "@statics/images/statistics/viewbar.svg";
-import { ReactComponent as Viewnumber } from "@statics/images/statistics/viewnumber.svg";
+import { ReactComponent as Viewbar } from "@statics/images/viewbar.svg";
+import { ReactComponent as Viewnumber } from "@statics/images/viewnumber.svg";
 
 import Piechart from "@components/chart/Piechart";
 import HorizontalBarchart from "@components/chart/HorizontalBarchart";
