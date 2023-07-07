@@ -7,8 +7,6 @@ import {
 } from "react";
 import { IoMdClose } from "react-icons/io";
 
-import Button from "@/styles/Button";
-
 interface ModalProps {
   isOpen?: boolean;
   onClose: () => void;
@@ -17,7 +15,7 @@ interface ModalProps {
   title?: string;
   body?: React.ReactElement;
   footer?: React.ReactElement;
-  setView: Dispatch<SetStateAction<number>>;
+  setView?: Dispatch<SetStateAction<number>>;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -45,7 +43,9 @@ const Modal: React.FC<ModalProps> = ({
 
     setTimeout(() => {
       onClose();
-      setView(1);
+      if (setView) {
+        setView(1);
+      }
     }, 300);
   }, [onClose, disabled]);
 

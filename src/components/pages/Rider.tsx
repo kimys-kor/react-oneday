@@ -11,6 +11,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import RiderTable from "../board/RiderTable";
 
 import useRiderModal from "../hooks/useRiderModal";
+import RiderModal from "@/components/modal/RiderModal";
 
 const columnHelper = createColumnHelper<rider>();
 
@@ -106,6 +107,8 @@ function Rider() {
 
         <RiderTable data={riderData} columns={columns}></RiderTable>
       </section>
+
+      <RiderModal />
     </main>
   );
 }

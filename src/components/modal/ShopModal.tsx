@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { AiFillGithub } from "react-icons/Ai";
 import { FcGoogle } from "react-icons/fc";
-import { useCallback, useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
@@ -10,12 +10,9 @@ import useShopModal from "@/components/hooks/useShopModal";
 
 import Modal from "./Modal";
 import Input from "@/styles/Input";
-import Heading from "@/styles/Heading";
 import Button from "@/styles/Button";
 import Post from "../common/Post";
 import UploadImages from "../common/Uploadimages";
-
-import { AiOutlineArrowLeft } from "react-icons/Ai";
 
 const ShopModal = () => {
   const shopModal = useShopModal();
