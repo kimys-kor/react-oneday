@@ -321,6 +321,19 @@ export const memberData: member[] = [
     point: 2700,
   },
 ];
+export interface board {
+  id: number;
+  title: string;
+  writer: string;
+  createdDt: string;
+}
+
+export const boardData: board[] = [
+  { id: 4, title: "제목4", writer: "상점4", createdDt: "2023-04-17" },
+  { id: 3, title: "제목3", writer: "상점3", createdDt: "2023-04-17" },
+  { id: 2, title: "제목2", writer: "상점2", createdDt: "2023-04-17" },
+  { id: 1, title: "제목1", writer: "상점1", createdDt: "2023-04-17" },
+];
 
 export const memberPointBoardTitle = [
   "주문번호",

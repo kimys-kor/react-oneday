@@ -15,6 +15,7 @@ import MemberDetail from "../details/MemberDetail";
 import ShopDetail from "../details/ShopDetail";
 import RiderDetail from "../details/RiderDetail";
 import Question from "./Question";
+import QuestionDetail from "../details/QuestionDetail";
 
 const Onedaybox = styled.div`
   width: 100%;
@@ -63,6 +64,7 @@ function Oneday() {
           <Route path="rider" element={<Rider />} />
           <Route path="rider/:riderId" element={<RiderDetail />} />
           <Route path="question" element={<Question />} />
+          <Route path="question/:quetionId" element={<QuestionDetail />} />
           <Route path="orders" element={<Orders />} />
           <Route path="statistics" element={<Statistics />} />
         </Routes>
