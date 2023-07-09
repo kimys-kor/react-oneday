@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 import { boardData } from "@/data/common";
 
 const QuestionTable = () => {
-  const title = ["No", "제목", "글쓴이", "작성시간"];
-
   const setPage = function () {
     console.log("온체인지");
   };
@@ -17,11 +15,10 @@ const QuestionTable = () => {
       <table className="w-full ">
         <thead>
           <tr className="w-full h-10 text-lg text-left border-t border-slate-950">
-            {title.map((title, index) => (
-              <th key={index} className="p-2">
-                {title}
-              </th>
-            ))}
+            <th className="p-2 text-center">NO</th>
+            <th className="p-2">제목</th>
+            <th className="p-2 text-center">글쓴이</th>
+            <th className="p-2 text-center">작성시간</th>
           </tr>
         </thead>
         <tbody>
@@ -31,18 +28,25 @@ const QuestionTable = () => {
                 key={data.id}
                 className="h-2 text-left border-t border-b border-slate-300 hover:bg-[#F3F3F3]"
               >
-                <td className="p-2 text-lg ">{data.id}</td>
+                <td className="p-2 text-[1rem] text-center">{data.id}</td>
 
-                <td className="p-2 text-lg  w-[60%]">
-                  <Link
-                    to={`/oneday/question/${data.id}`}
-                    className="cursor-pointer"
-                  >
-                    {data.title}
-                  </Link>
+                <td className="p-2 text-[1rem]  w-[60%] ">
+                  <div className="flex justify-between w-full">
+                    <Link
+                      to={`/oneday/question/${data.id}`}
+                      className="cursor-pointer"
+                    >
+                      {data.title}
+                    </Link>
+                    <div className="w-[80px] px-1 border text-sm text-purple-500 text-center flex items-center justify-center">
+                      답변대기
+                    </div>
+                  </div>
                 </td>
-                <td className="p-2 text-lg">{data.writer}</td>
-                <td className="p-2 text-lg">{data.createdDt}</td>
+                <td className="p-2 text-[1rem] text-center">{data.writer}</td>
+                <td className="p-2 text-[1rem] text-center">
+                  {data.createdDt}
+                </td>
               </tr>
             );
           })}
