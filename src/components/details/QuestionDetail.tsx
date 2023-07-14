@@ -67,6 +67,8 @@ function QuestionDetail() {
           </div>
         </article>
       </section>
+
+      <QuestionTable></QuestionTable>
     </main>
   );
 }
