@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { useUserStore } from "@/data/status";
 import { useForm, Resolver } from "react-hook-form";

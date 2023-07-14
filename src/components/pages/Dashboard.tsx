@@ -5,7 +5,6 @@ import Piechart from "@components/chart/Piechart";
 import Linechart from "@components/chart//Linechart";
 
 import Summary from "@components/common/Summary";
-import CustomSelect from "@/styles/CustomSelect";
 
 import { pointOccupationData, color } from "@/data/chartdata/piechartData";
 

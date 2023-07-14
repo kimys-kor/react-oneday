@@ -1,10 +1,12 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 import BorderButtonLX from "@/styles/BorderButtonLX";
 
 import { ordersData } from "@/data/common";
 import { ReactComponent as AnotherIcon } from "@statics/images/anothericon.svg";
+
+import Summary from "../common/Summary";
 
 function Orders() {
   const tab = ["주문 현황", "일자별 주문 검색"];
@@ -98,16 +100,6 @@ const Headerbox = styled.div`
   background-color: #fff;
 `;
 
-const Selectbox = styled.div`
-  margin-left: 68px;
-  width: 586px;
-
-  display: flex;
-  gap: 36px;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
 const Wrapper = styled.div`
   margin-top: 12px;
   width: 100%;
@@ -123,11 +115,6 @@ const Wrapper = styled.div`
 const Layout = styled.div`
   margin-top: 54px;
   width: 91%;
-`;
-
-const Tabbox = styled.div`
-  height: 70px;
-  display: flex;
 `;
 
 const Appbox = styled.div`
@@ -150,10 +137,6 @@ const Flex = styled.div`
   justify-content: space-between;
 `;
 
-const Flexbox = styled(Flex)`
-  width: 100%;
-`;
-
 const Iconbox = styled.div`
   box-sizing: border-box;
 
@@ -165,11 +148,6 @@ const Iconbox = styled.div`
     width: 20px;
     height: 20px;
   }
-`;
-
-const Img = styled.img`
-  width: 60px;
-  height: 60px;
 `;
 
 const Info = styled.div`
@@ -210,70 +188,6 @@ const Detailbox = styled.div`
 
 const Detail = styled.span`
   margin-top: 16px;
-`;
-
-const Optionbox = styled.div`
-  width: 99px;
-
-  border: 1px solid #bbbbcf;
-  box-shadow: 0px 12px 12px rgba(30, 32, 38, 0.1);
-  text-align: center;
-  background-color: #fff;
-
-  position: relative;
-  left: -80px;
-  z-index: 10;
-`;
-
-const Option = styled.div`
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  border-bottom: 1px solid #bbbbcf;
-
-  &:hover {
-    color: #ff6622;
-  }
-`;
-
-const AppContent = styled.span`
-  display: flex;
-  gap: 1.5rem;
-`;
-
-const Inputbox = styled.span`
-  margin-top: 10px;
-  width: 107px;
-`;
-
-const Input = styled.input`
-  width: 100%;
-  height: 28px;
-  text-align: center;
-
-  border: 1px solid #7b829b;
-  &:focus {
-    outline: none;
-  }
-`;
-
-const Submitbutton = styled.input`
-  border: none;
-  width: 85px;
-  height: 37px;
-  color: #fff;
-  font-size: 14px;
-  letter-spacing: 0.2rem;
-  background-color: #ff6622;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  &:hover {
-    background-color: #fff;
-    color: #ff6622;
-    border: 1px solid #ff6622;
-  }
 `;
 
 interface statusProps {

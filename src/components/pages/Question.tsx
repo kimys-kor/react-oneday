@@ -1,7 +1,5 @@
-import React from "react";
 import QuestionTable from "../board/QuestionTable";
 
-import { board, boardData } from "@/data/common";
 
 function Question() {
   return (

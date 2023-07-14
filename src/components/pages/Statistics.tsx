@@ -12,14 +12,7 @@ import { ReactComponent as Viewnumber } from "@statics/images/viewnumber.svg";
 import Piechart from "@components/chart/Piechart";
 import HorizontalBarchart from "@components/chart/HorizontalBarchart";
 
-import {
-  titleStatistics,
-  dateFilter,
-  searchFilter,
-  chartFilter,
-  yearOptions,
-  monthOptions,
-} from "@/data/common";
+import { yearOptions, monthOptions } from "@/data/common";
 
 import {
   horizontalData,
