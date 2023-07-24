@@ -99,7 +99,7 @@ function ShopDetail() {
               : "hover:border-active hover:text-active"
           }`}
         >
-          1:1문의내역
+          상품관리
         </button>
       </div>
 
@@ -132,8 +132,11 @@ function ShopDetail() {
               <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
                 사업자번호
               </p>
-              <div className="flex items-center w-2/6 pl-1 border-b-2">
-                6121-2-12123
+              <div className="flex items-center w-2/6 pl-1 border-b-2 min-w-30">
+                <input
+                  className="w-[80%] h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
+                  defaultValue={"102-3929"}
+                ></input>
               </div>
 
               <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
@@ -159,9 +162,14 @@ function ShopDetail() {
               </div>
 
               <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white ">
-                상점 카테고리
+                상점 소개
               </p>
-              <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">생활/잡화</p>
+              <div className="flex items-center w-2/6 pl-1 border-b-2 min-w-30">
+                <input
+                  className="w-[80%] h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
+                  defaultValue={"생활용품 판매점입니다"}
+                ></input>
+              </div>
             </div>
 
             <div className="flex w-full">
@@ -192,16 +200,12 @@ function ShopDetail() {
               <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
                 휴대폰
               </p>
-              <div className="flex items-center w-2/6 pl-1 border-b-2">
-                010-1234-1234
+              <div className="flex items-center w-5/6 pl-1 border-b-2">
+                <input
+                  className="w-52 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
+                  defaultValue={"102-3929"}
+                ></input>
               </div>
-
-              <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
-                이메일
-              </p>
-              <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">
-                wkek@naver.com
-              </p>
             </div>
           </section>
 
@@ -217,27 +221,15 @@ function ShopDetail() {
 
           <section className="flex w-full gap-2 mt-4">
             <h6 className="w-2/12 leading-10 min-w-fit pl-1  bg-[#EFEFEF] border-b-white flex items-center">
-              상점 메모
+              상점 리뷰
             </h6>
 
             <div className="flex flex-col justify-between w-10/12 gap-5">
-              <div className="flex w-full">
-                <textarea className="w-11/12 h-12 pl-2 border shadow-[0px_1px_1px_0px_#dadce0_inset] focus:outline-none focus:shadow-none resize-none"></textarea>
-
-                <button
-                  className={`w-1/12 h-12 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] truncate
-                  hover:text-active
-                  `}
-                >
-                  메모저장
-                </button>
-              </div>
-
               <div>
                 <div className="flex justify-between w-full gap-1">
                   <div className="flex gap-3">
                     <span className="">2023/06/23 11:51:26</span>
-                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                    <span className=" font-weight: bold">너무 맛있어요~</span>
                   </div>
 
                   <div className="flex items-center gap-3 text-sm">
@@ -254,7 +246,7 @@ function ShopDetail() {
                 <div className="flex justify-between w-full gap-1">
                   <div className="flex gap-3">
                     <span className="">2023/06/23 11:51:26</span>
-                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                    <span className=" font-weight: bold">너무 맛있어요~</span>
                   </div>
 
                   <div className="flex items-center gap-3 text-sm">
@@ -271,7 +263,7 @@ function ShopDetail() {
                 <div className="flex justify-between w-full gap-1">
                   <div className="flex gap-3">
                     <span className="">2023/06/23 11:51:26</span>
-                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                    <span className=" font-weight: bold">너무 맛있어요~</span>
                   </div>
 
                   <div className="flex items-center gap-3 text-sm">
@@ -288,7 +280,7 @@ function ShopDetail() {
                 <div className="flex justify-between w-full gap-1">
                   <div className="flex gap-3">
                     <span className="">2023/06/23 11:51:26</span>
-                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                    <span className=" font-weight: bold">너무 맛있어요~</span>
                   </div>
 
                   <div className="flex items-center gap-3 text-sm">
@@ -305,7 +297,7 @@ function ShopDetail() {
                 <div className="flex justify-between w-full gap-1">
                   <div className="flex gap-3">
                     <span className="">2023/06/23 11:51:26</span>
-                    <span className=" font-weight: bold">VIP 회원입니다</span>
+                    <span className=" font-weight: bold">너무 맛있어요~</span>
                   </div>
 
                   <div className="flex items-center gap-3 text-sm">

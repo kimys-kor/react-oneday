@@ -29,7 +29,6 @@ const columns: ColumnDef<shop>[] = [
   columnHelper.accessor("shopName", { header: "가게명" }),
   columnHelper.accessor("owner", { header: "점주명" }),
   columnHelper.accessor("phone", { header: "핸드폰" }),
-  columnHelper.accessor("email", { header: "이메일" }),
   columnHelper.accessor("createdDt", { header: "가게등록일" }),
   columnHelper.accessor("productNumber", { header: "상품수" }),
   columnHelper.accessor("orderCount", { header: "주문횟수" }),
@@ -88,16 +87,6 @@ function Shop() {
           >
             상점별 주문 순위
           </button>
-          <button
-            onClick={() => setTab(3)}
-            className={`w-32 p-1 text-[1rem] shadow-[0px_1px_3px_0px_#dadce0] ${
-              tab === 3
-                ? "border-active text-active"
-                : "hover:border-active hover:text-active"
-            }`}
-          >
-            상점1:1문의
-          </button>
         </div>
 
         {tab === 1 && (
@@ -154,7 +143,6 @@ function Shop() {
         )}
 
         {tab === 2 && <div>준비중입니다</div>}
-        {tab === 3 && <div>준비중입니다</div>}
       </section>
 
       {/* 상점등록 모달 */}

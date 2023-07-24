@@ -146,9 +146,11 @@ function MemberDetail() {
               </div>
 
               <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
-                예치금
+                이메일
               </p>
-              <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">1,000</p>
+              <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">
+                wkek@naver.com
+              </p>
             </div>
 
             <div className="flex w-full">
@@ -216,16 +218,9 @@ function MemberDetail() {
               <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
                 휴대폰
               </p>
-              <div className="flex items-center w-2/6 pl-1 border-b-2">
+              <div className="flex items-center w-5/6 pl-1 border-b-2">
                 010-1234-1234
               </div>
-
-              <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
-                이메일
-              </p>
-              <p className="w-2/6 px-2 pl-1 border-b-2 min-w-fit">
-                wkek@naver.com
-              </p>
             </div>
           </section>
 
@@ -355,7 +350,7 @@ function MemberDetail() {
               <article>
                 <div className="flex gap-3">
                   <HiOutlineChatBubbleLeft size={20}></HiOutlineChatBubbleLeft>
-                  <span>주문 상품 내역</span>
+                  <span>주문 상품 통계</span>
                 </div>
 
                 <div className="mt-2 grid grid-cols-6 border-t-[1px] border-t-[#EFEFEF]">

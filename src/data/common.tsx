@@ -780,7 +780,6 @@ export interface shop {
   shopName: string;
   owner: string;
   phone: string;
-  email: string;
   createdDt: string;
   productNumber: number;
   orderCount: number;
@@ -793,7 +792,6 @@ export const shopData: shop[] = [
     shopName: "용만이네상점1",
     owner: "김영승",
     phone: "01012345678",
-    email: "wwkwk@naver.com",
     createdDt: "2020-03-01",
     productNumber: 2040,
     orderCount: 2645,
@@ -804,7 +802,6 @@ export const shopData: shop[] = [
     shopName: "용만이네상점2",
     owner: "김영승",
     phone: "01012345678",
-    email: "wwkwk@naver.com",
     createdDt: "2020-03-01",
     productNumber: 2040,
     orderCount: 2645,
@@ -815,7 +812,6 @@ export const shopData: shop[] = [
     shopName: "용만이네상점3",
     owner: "김영승",
     phone: "01012345678",
-    email: "wwkwk@naver.com",
     createdDt: "2020-03-01",
     productNumber: 2040,
     orderCount: 2645,

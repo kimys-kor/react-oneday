@@ -26,16 +26,16 @@ const Barchart = () => {
          * chart에 사용될 데이터
          */
         data={[
-          { bottle: "4/15", cola: 1200 },
-          { bottle: "4/14", cidar: 2000 },
-          { bottle: "4/13", fanta: 3100 },
-          { bottle: "4/12", milkis: 3100 },
-          { bottle: "4/11", sunup: 3200 },
+          { bottle: "4/15", 1: 1200 },
+          { bottle: "4/14", 2: 2000 },
+          { bottle: "4/13", 3: 3100 },
+          { bottle: "4/12", 4: 3100 },
+          { bottle: "4/11", 5: 3200 },
         ]}
         /**
          * chart에 보여질 데이터 key (측정되는 값)
          */
-        keys={["cola", "cidar", "fanta", "milkis", "sunup"]}
+        keys={["1", "2", "3", "4", "5"]}
         /**
          * keys들을 그룹화하는 index key (분류하는 값)
          */
