@@ -39,12 +39,12 @@ export const sidebarMenu: Array<Array<sidebarModel>> = [
       path: "rider",
       pathname: "/oneday/rider",
     },
-    {
-      logo: <BiMessageEdit size="26" />,
-      name: "상점 문의",
-      path: "question",
-      pathname: "/oneday/question",
-    },
+    // {
+    //   logo: <BiMessageEdit size="26" />,
+    //   name: "상점 문의",
+    //   path: "question",
+    //   pathname: "/oneday/question",
+    // },
     {
       logo: <BiSpreadsheet size="26" />,
       name: "주문관리",

@@ -200,10 +200,20 @@ function ShopDetail() {
               <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
                 휴대폰
               </p>
-              <div className="flex items-center w-5/6 pl-1 border-b-2">
+              <div className="flex items-center w-2/6 pl-1 border-b-2">
                 <input
                   className="w-52 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
                   defaultValue={"102-3929"}
+                ></input>
+              </div>
+
+              <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
+                주소
+              </p>
+              <div className="flex items-center w-2/6 pl-1 border-b-2">
+                <input
+                  className="w-52 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
+                  defaultValue={"광주광역시 북구 운암동"}
                 ></input>
               </div>
             </div>
@@ -491,23 +501,21 @@ function ShopDetail() {
               </div>
 
               <div className="mt-5">
-                <div className="grid grid-cols-7 bg-[#EFEFEF]">
-                  <div className="text-center"> 번호</div>
-                  <div className="text-center"> 제목</div>
-                  <div className="text-center"> 회원</div>
-                  <div className="text-center"> 조회</div>
-                  <div className="col-span-2 text-center"> 작성일</div>
-                  <div className="text-center"> 게시</div>
+                <div className="grid grid-cols-6 bg-[#EFEFEF]">
+                  <div className="text-center"> 상품ID</div>
+                  <div className="text-center"> 상품카테고리</div>
+                  <div className="col-span-2 text-center"> 상품명</div>
+                  <div className="text-center"> 가격</div>
+                  <div className=" text-center"> 재고</div>
                 </div>
 
                 <div>
-                  <div className="grid grid-cols-7 ">
-                    <div className="text-center"> 2323</div>
-                    <div className="text-center"> 상품문의</div>
-                    <div className="text-center"> wkjwkn@naver.com</div>
-                    <div className="text-center"> 0</div>
-                    <div className="col-span-2 text-center"> 2023-05-12</div>
-                    <div className="text-center text-blue-500"> [미노출]</div>
+                  <div className="grid grid-cols-6 ">
+                    <div className="text-center"> 1</div>
+                    <div className="text-center"> 생활/잡화</div>
+                    <div className="col-span-2 text-center">주방용 수세미</div>
+                    <div className="text-center"> 3000</div>
+                    <div className="text-center">40</div>
                   </div>
                 </div>
 

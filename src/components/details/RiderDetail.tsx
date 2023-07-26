@@ -157,20 +157,10 @@ function RiderDetail() {
             </div>
 
             <div className="flex w-full">
-              <p className="w-1/6 min-w-fit pl-1 min-w-10 bg-[#EFEFEF] border-b-white">
-                라이더 아이디
-              </p>
-              <div className="flex items-center w-2/6 pl-1 border-b-2">
-                <input
-                  className="w-32 h-4/5 border shadow-[0px_1px_1px_0px_#dadce0_inset]"
-                  defaultValue={"wkwkwk"}
-                ></input>
-              </div>
-
               <p className="w-1/6 min-w-fit pl-1  bg-[#EFEFEF] border-b-white">
                 비밀번호
               </p>
-              <div className="flex items-center w-2/6 pl-1 border-b-2">
+              <div className="flex items-center w-5/6 pl-1 border-b-2">
                 <button
                   className="w-[6.8rem] h-5/6 text-[0.9rem] border border-gray-300 shadow-sm flex flex-col items-center justify-center
                   hover:shadow-inner hover:bg-gray-200 transition-all duration-200"

@@ -21,9 +21,6 @@ const columns: ColumnDef<rider>[] = [
   columnHelper.accessor("phone", { header: "핸드폰" }),
   columnHelper.accessor("email", { header: "이메일" }),
   columnHelper.accessor("name", { header: "라이더명" }),
-  columnHelper.accessor("lastorderDt", { header: "최근배달수행일" }),
-  columnHelper.accessor("orderCount", { header: "총배달수행건수" }),
-  columnHelper.accessor("orderAmount", { header: "총배달수행금액" }),
   columnHelper.accessor("point", { header: "포인트" }),
 ] as ColumnDef<rider>[];
 
