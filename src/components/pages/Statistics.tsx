@@ -24,16 +24,12 @@ import {
   pointOccupationData,
   color,
 } from "@/data/chartdata/piechartData";
+import BorderButton from "@/styles/BorderButton";
 
 function Statistics() {
   const [statisticsIndex, setStatisticsIndex] = useState<number>(0);
   const handleStatisticsIndex = (index: number) => {
     setStatisticsIndex(index);
-  };
-
-  const [dateIndex, setDateIndex] = useState<number>(0);
-  const handleDateIndex = (index: number) => {
-    setDateIndex(index);
   };
 
   const [searchIndex, setSearchIndex] = useState<number>(0);
@@ -53,9 +49,6 @@ function Statistics() {
 
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(new Date());
-
-  const [currentYear, setCurrentYear] = useState(yearOptions[0].value);
-  const [currentMonth, setCurrentMonth] = useState(monthOptions[0].value);
 
   const formatAmounts = (data: Array<horizontalModel>) => {
     return data.map((item) => {
@@ -108,30 +101,9 @@ function Statistics() {
 
           {statisticsIndex == 0 && (
             <>
-              <DateFilter>
-                <BorderButtonLX
-                  title={"일별"}
-                  id={0}
-                  onClick={handleDateIndex}
-                  activeId={dateIndex}
-                ></BorderButtonLX>
-                <BorderButtonLX
-                  title={"월별"}
-                  id={1}
-                  onClick={handleDateIndex}
-                  activeId={dateIndex}
-                ></BorderButtonLX>
-                <BorderButtonLX
-                  title={"기간별"}
-                  id={2}
-                  onClick={handleDateIndex}
-                  activeId={dateIndex}
-                ></BorderButtonLX>
-              </DateFilter>
-
               <Fillter>
                 <Datewrapper>
-                  {dateIndex == 0 && (
+                  <>
                     <Datebox>
                       <DatePicker
                         locale={ko}
@@ -148,81 +120,47 @@ function Statistics() {
                         }
                       />
                     </Datebox>
-                  )}
-                  {dateIndex == 1 && (
-                    <>
-                      <Flexbox>
-                        <CustomSelect
-                          options={yearOptions}
-                          setCurrent={setCurrentYear}
-                        ></CustomSelect>
-                        <CustomSelect
-                          options={monthOptions}
-                          setCurrent={setCurrentMonth}
-                        ></CustomSelect>
-                      </Flexbox>
-                    </>
-                  )}
-                  {dateIndex == 2 && (
-                    <>
-                      <Datebox>
-                        <DatePicker
-                          locale={ko}
-                          closeOnScroll={(e) => e.target === document}
-                          selected={startDate}
-                          onChange={(date) => setStartDate(date)}
-                          selectsStart
-                          startDate={startDate}
-                          endDate={endDate}
-                          dateFormat="yyyy-MM-dd"
-                          customInput={
-                            // 날짜 뜨는 인풋 커스텀
-                            <Input />
-                          }
-                        />
-                      </Datebox>
-                      ~
-                      <Datebox>
-                        <DatePicker
-                          locale={ko}
-                          closeOnScroll={(e) => e.target === document}
-                          selected={endDate}
-                          onChange={(date) => setEndDate(date)}
-                          selectsEnd
-                          startDate={startDate}
-                          endDate={endDate}
-                          minDate={startDate}
-                          dateFormat="yyyy-MM-dd"
-                          customInput={
-                            // 날짜 뜨는 인풋 커스텀
-                            <Input />
-                          }
-                        />
-                      </Datebox>
-                    </>
-                  )}
+                    ~
+                    <Datebox>
+                      <DatePicker
+                        locale={ko}
+                        closeOnScroll={(e) => e.target === document}
+                        selected={endDate}
+                        onChange={(date) => setEndDate(date)}
+                        selectsEnd
+                        startDate={startDate}
+                        endDate={endDate}
+                        minDate={startDate}
+                        dateFormat="yyyy-MM-dd"
+                        customInput={
+                          // 날짜 뜨는 인풋 커스텀
+                          <Input />
+                        }
+                      />
+                    </Datebox>
+                  </>
 
                   <Searchbox>
-                    <BorderButtonLX
+                    <BorderButton
                       title={"전체"}
                       id={0}
                       onClick={handleSearchIndex}
                       activeId={searchIndex}
-                    ></BorderButtonLX>
-                    <BorderButtonLX
+                    ></BorderButton>
+                    <BorderButton
                       title={"주문완료"}
                       id={1}
                       onClick={handleSearchIndex}
                       activeId={searchIndex}
-                    ></BorderButtonLX>
-                    <BorderButtonLX
+                    ></BorderButton>
+                    <BorderButton
                       title={"주문취소"}
                       id={2}
                       onClick={handleSearchIndex}
                       activeId={searchIndex}
-                    ></BorderButtonLX>
+                    ></BorderButton>
                   </Searchbox>
-                  <Amount>기간통계 | 579,940</Amount>
+                  <Amount>기간통계 | 235건</Amount>
                 </Datewrapper>
               </Fillter>
 
@@ -265,86 +203,109 @@ function Statistics() {
               </Content>
             </>
           )}
+
           {statisticsIndex == 1 && (
             <>
               <Fillter>
-                <Flexbox>
-                  <BorderButtonLX
-                    title={"누적회원점유율"}
-                    id={0}
-                    onClick={handleChartIndex}
-                    activeId={chartIndex}
-                  ></BorderButtonLX>
-                  <BorderButtonLX
-                    title={"누적적립금점유율"}
-                    id={1}
-                    onClick={handleChartIndex}
-                    activeId={chartIndex}
-                  ></BorderButtonLX>
-                </Flexbox>
+                <Datewrapper>
+                  <>
+                    <Datebox>
+                      <DatePicker
+                        locale={ko}
+                        closeOnScroll={(e) => e.target === document}
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}
+                        selectsStart
+                        startDate={startDate}
+                        endDate={endDate}
+                        dateFormat="yyyy-MM-dd"
+                        customInput={
+                          // 날짜 뜨는 인풋 커스텀
+                          <Input />
+                        }
+                      />
+                    </Datebox>
+                    ~
+                    <Datebox>
+                      <DatePicker
+                        locale={ko}
+                        closeOnScroll={(e) => e.target === document}
+                        selected={endDate}
+                        onChange={(date) => setEndDate(date)}
+                        selectsEnd
+                        startDate={startDate}
+                        endDate={endDate}
+                        minDate={startDate}
+                        dateFormat="yyyy-MM-dd"
+                        customInput={
+                          // 날짜 뜨는 인풋 커스텀
+                          <Input />
+                        }
+                      />
+                    </Datebox>
+                  </>
 
-                <Viewbox>
-                  <View
-                    onClick={() => handleViewIndex(0)}
-                    active={viewIndex == 0}
-                  >
-                    <Viewbar color="#BBBBCF"></Viewbar>
-                  </View>
-                  <View
-                    onClick={() => handleViewIndex(1)}
-                    active={viewIndex == 1}
-                  >
-                    <Viewnumber color="#BBBBCF"></Viewnumber>
-                  </View>
-                </Viewbox>
+                  <Searchbox>
+                    <BorderButton
+                      title={"전체"}
+                      id={0}
+                      onClick={handleSearchIndex}
+                      activeId={searchIndex}
+                    ></BorderButton>
+                    <BorderButton
+                      title={"주문완료"}
+                      id={1}
+                      onClick={handleSearchIndex}
+                      activeId={searchIndex}
+                    ></BorderButton>
+                    <BorderButton
+                      title={"주문취소"}
+                      id={2}
+                      onClick={handleSearchIndex}
+                      activeId={searchIndex}
+                    ></BorderButton>
+                  </Searchbox>
+                  <Amount>기간통계 | 579,940</Amount>
+                </Datewrapper>
               </Fillter>
 
-              {viewIndex == 0 ? (
-                <Content>
-                  {chartIndex == 0 ? (
-                    <Board>
-                      <Row>
-                        <Appname2>구분</Appname2>
-                        <Occupation>점유율</Occupation>
-                        <Number>회원수</Number>
+              <Viewbox>
+                <View
+                  onClick={() => handleViewIndex(0)}
+                  active={viewIndex == 0}
+                >
+                  <Viewbar color="#BBBBCF"></Viewbar>
+                </View>
+                <View
+                  onClick={() => handleViewIndex(1)}
+                  active={viewIndex == 1}
+                >
+                  <Viewnumber color="#BBBBCF"></Viewnumber>
+                </View>
+              </Viewbox>
+
+              <Content>
+                {viewIndex == 0 ? (
+                  <HorizontalBarchart></HorizontalBarchart>
+                ) : (
+                  <Board>
+                    <Row>
+                      <Appname>구분</Appname>
+                      <Amountmoney>적립금액</Amountmoney>
+                    </Row>
+                    <Row style={{ backgroundColor: "#F4F5F9" }}>
+                      <Appname>총합</Appname>
+                      <Amountmoney>579,940</Amountmoney>
+                    </Row>
+                    {horizontalData.map((item, index) => (
+                      <Row key={index}>
+                        <Appname>{item.apps}</Appname>
+                        <Amountmoney>{item.amount}</Amountmoney>
                       </Row>
-                      {memberOccupationData.map((item, index) => (
-                        <Row key={index}>
-                          <Appname2>{item.id}</Appname2>
-                          <Occupation>{item.occupation}</Occupation>
-                          <Number>{item.value}</Number>
-                        </Row>
-                      ))}
-                    </Board>
-                  ) : (
-                    <Board>
-                      <Row>
-                        <Appname2>구분</Appname2>
-                        <Occupation>점유율</Occupation>
-                        <Number>적립금</Number>
-                      </Row>
-                      {pointOccupationData.map((item, index) => (
-                        <Row key={index}>
-                          <Appname2>{item.id}</Appname2>
-                          <Occupation>{item.occupation}</Occupation>
-                          <Number>{item.value}</Number>
-                        </Row>
-                      ))}
-                    </Board>
-                  )}
-                </Content>
-              ) : (
-                <ServiceContent>
-                  <Piechart
-                    Data={
-                      chartIndex == 0
-                        ? memberOccupationData
-                        : pointOccupationData
-                    }
-                    color={color}
-                  ></Piechart>
-                </ServiceContent>
-              )}
+                    ))}
+                  </Board>
+                )}
+              </Content>
             </>
           )}
         </Layout>

@@ -12,13 +12,16 @@ function BorderButton({ title, id, onClick, activeId }: BorderButtonProps) {
   const isActive = id === activeId;
   const borderColor = isActive ? "border-active" : "border-normal";
   const fontColor = isActive ? "text-active" : "text-normal";
+  const zIndex = isActive ? "z-10" : "z-1";
 
   return (
     <button
-      className={`text-base font-light w-20 h-10 overflow-hidden whitespace-nowrap border bg-white cursor-pointer
-      hover:text-active hover:border-active
+      className={`text-base font-light w-20 h-10 overflow-hidden whitespace-nowrap outline outline-1 bg-white cursor-pointer
+      hover:text-active hover:outline-active hover:z-10
       ${borderColor}
-      ${fontColor}`}
+      ${fontColor}
+      ${zIndex}
+      `}
       onClick={() => onClick(id)}
     >
       {title}
