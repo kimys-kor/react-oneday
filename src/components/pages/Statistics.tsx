@@ -25,6 +25,7 @@ import {
   color,
 } from "@/data/chartdata/piechartData";
 import BorderButton from "@/styles/BorderButton";
+import CustomDatePicker from "../common/DatePicker";
 
 function Statistics() {
   const [statisticsIndex, setStatisticsIndex] = useState<number>(0);
@@ -47,8 +48,9 @@ function Statistics() {
     setViewIndex(index);
   };
 
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
-  const [endDate, setEndDate] = useState<Date | null>(new Date());
+  const today = new Date();
+  const [startDate, setStartDate] = useState<Date>(today);
+  const [endDate, setEndDate] = useState<Date>(today);
 
   const formatAmounts = (data: Array<horizontalModel>) => {
     return data.map((item) => {
@@ -104,40 +106,13 @@ function Statistics() {
               <Fillter>
                 <Datewrapper>
                   <>
-                    <Datebox>
-                      <DatePicker
-                        locale={ko}
-                        closeOnScroll={(e) => e.target === document}
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
-                        selectsStart
-                        startDate={startDate}
-                        endDate={endDate}
-                        dateFormat="yyyy-MM-dd"
-                        customInput={
-                          // 날짜 뜨는 인풋 커스텀
-                          <Input />
-                        }
-                      />
-                    </Datebox>
-                    ~
-                    <Datebox>
-                      <DatePicker
-                        locale={ko}
-                        closeOnScroll={(e) => e.target === document}
-                        selected={endDate}
-                        onChange={(date) => setEndDate(date)}
-                        selectsEnd
-                        startDate={startDate}
-                        endDate={endDate}
-                        minDate={startDate}
-                        dateFormat="yyyy-MM-dd"
-                        customInput={
-                          // 날짜 뜨는 인풋 커스텀
-                          <Input />
-                        }
-                      />
-                    </Datebox>
+                    <CustomDatePicker
+                      startDate={startDate}
+                      setStartDate={setStartDate}
+                      endDate={endDate}
+                      setEndDate={setEndDate}
+                      active={0}
+                    />
                   </>
 
                   <Searchbox>
@@ -209,40 +184,13 @@ function Statistics() {
               <Fillter>
                 <Datewrapper>
                   <>
-                    <Datebox>
-                      <DatePicker
-                        locale={ko}
-                        closeOnScroll={(e) => e.target === document}
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
-                        selectsStart
-                        startDate={startDate}
-                        endDate={endDate}
-                        dateFormat="yyyy-MM-dd"
-                        customInput={
-                          // 날짜 뜨는 인풋 커스텀
-                          <Input />
-                        }
-                      />
-                    </Datebox>
-                    ~
-                    <Datebox>
-                      <DatePicker
-                        locale={ko}
-                        closeOnScroll={(e) => e.target === document}
-                        selected={endDate}
-                        onChange={(date) => setEndDate(date)}
-                        selectsEnd
-                        startDate={startDate}
-                        endDate={endDate}
-                        minDate={startDate}
-                        dateFormat="yyyy-MM-dd"
-                        customInput={
-                          // 날짜 뜨는 인풋 커스텀
-                          <Input />
-                        }
-                      />
-                    </Datebox>
+                    <CustomDatePicker
+                      startDate={startDate}
+                      setStartDate={setStartDate}
+                      endDate={endDate}
+                      setEndDate={setEndDate}
+                      active={0}
+                    />
                   </>
 
                   <Searchbox>

@@ -59,7 +59,7 @@ const CustomDatePicker = (props: IProps) => {
 
   return (
     <Wrapper>
-      <div className="flex justify-between items-center w-[13rem]">
+      <div className="flex justify-between items-center w-[13rem] ">
         {/* 시작 날짜를 지정하는 데이트 피커 */}
         <DatePicker
           locale={ko} // (월~일 부분) 한국어로 변환
@@ -363,7 +363,7 @@ const Input = styled.input<inputProp>`
   height: 37px;
   padding: 5px 10px;
   background: #fff;
-  border: 1px solid #bbbbcf;
+  outline: 1px solid #bbbbcf;
   font-size: 15px;
   font-weight: 400;
   text-align: center;
@@ -372,11 +372,13 @@ const Input = styled.input<inputProp>`
 
   box-shadow: 0px 1px 3px 0px #dadce0;
 
+  color: #bbbbcf;
+
   ${({ active }) =>
     active == 2 &&
     css`
-      border: 1px solid #ff6622;
-      outline: none;
+      border: none;
+      outline: 1px solid #ff6622;
       color: #ff6622;
     `}
 
