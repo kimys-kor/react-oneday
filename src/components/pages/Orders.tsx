@@ -6,8 +6,6 @@ import BorderButtonLX from "@/styles/BorderButtonLX";
 import { ordersData } from "@/data/common";
 import { ReactComponent as AnotherIcon } from "@statics/images/anothericon.svg";
 
-import Summary from "../common/Summary";
-
 function Orders() {
   const tab = ["주문 현황", "일자별 주문 검색"];
 

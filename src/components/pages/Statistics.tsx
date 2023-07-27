@@ -1,29 +1,18 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
-import DatePicker from "react-datepicker";
-import { ko } from "date-fns/esm/locale";
 
-import CustomSelect from "@/styles/CustomSelect";
 import BorderButtonLX from "@/styles/BorderButtonLX";
 
 import { ReactComponent as Viewbar } from "@statics/images/viewbar.svg";
 import { ReactComponent as Viewnumber } from "@statics/images/viewnumber.svg";
 
-import Piechart from "@components/chart/Piechart";
 import HorizontalBarchart from "@components/chart/HorizontalBarchart";
-
-import { yearOptions, monthOptions } from "@/data/common";
 
 import {
   horizontalData,
   horizontalModel,
 } from "@/data/chartdata/HorizontalchartData";
 
-import {
-  memberOccupationData,
-  pointOccupationData,
-  color,
-} from "@/data/chartdata/piechartData";
 import BorderButton from "@/styles/BorderButton";
 import CustomDatePicker from "../common/DatePicker";
 
@@ -36,11 +25,6 @@ function Statistics() {
   const [searchIndex, setSearchIndex] = useState<number>(0);
   const handleSearchIndex = (index: number) => {
     setSearchIndex(index);
-  };
-
-  const [chartIndex, setChartIndex] = useState<number>(0);
-  const handleChartIndex = (index: number) => {
-    setChartIndex(index);
   };
 
   const [viewIndex, setViewIndex] = useState<number>(0);
@@ -60,26 +44,6 @@ function Statistics() {
         amount: formattedAmount,
       };
     });
-  };
-
-  const [activeButton1, setActiveButton1] = useState<number>(1);
-  const handleButtonClick1 = (id: number) => {
-    setActiveButton1(id);
-  };
-
-  const [activeButton2, setActiveButton2] = useState<number>(1);
-  const handleButtonClick2 = (id: number) => {
-    setActiveButton1(id);
-  };
-
-  const [activeButton3, setActiveButton3] = useState<number>(1);
-  const handleButtonClick3 = (id: number) => {
-    setActiveButton1(id);
-  };
-
-  const [activeButton4, setActiveButton4] = useState<number>(1);
-  const handleButtonClick4 = (id: number) => {
-    setActiveButton1(id);
   };
 
   return (

@@ -19,7 +19,7 @@ const HorizontalBarchart = () => {
       }}
     >
       <ResponsiveBar
-        colors={["#FF6622"]}
+        colors={["#FF6622", "#FFDC22", "#06E9A5", "#22AFFF", "#6922FF"]}
         data={horizontalData}
         keys={["amount"]}
         indexBy="apps"
