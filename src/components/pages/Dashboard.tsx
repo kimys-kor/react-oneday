@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import styled from "styled-components";
 import Barchart from "@components/chart/Barchart";
 
@@ -7,8 +9,13 @@ import Linechart from "@components/chart//Linechart";
 import Summary from "@components/common/Summary";
 
 import { pointOccupationData, color } from "@/data/chartdata/piechartData";
+import axios from "axios";
 
 function Dashboard() {
+  // useEffect(() => {
+  //   axios.
+  // });
+
   return (
     <Wrapper>
       <Headerbox>

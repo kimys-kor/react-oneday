@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 import Sidebar from "@common/Sidebar";
 
+import ClientOnly from "@common/ClientOnly";
 import Dashboard from "@components/pages/Dashboard";
 import Shop from "@components/pages/Shop";
 import Rider from "@components/pages/Rider";
@@ -47,7 +48,7 @@ function Oneday() {
   }
 
   return (
-    <>
+    <ClientOnly>
       <Sidebar xPosition={xPosition}></Sidebar>
 
       <Onedaybox
@@ -69,7 +70,7 @@ function Oneday() {
           <Route path="statistics" element={<Statistics />} />
         </Routes>
       </Onedaybox>
-    </>
+    </ClientOnly>
   );
 }
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useUserStore } from "@/data/status";
 import { useForm, Resolver } from "react-hook-form";
+import { useAuthStore } from "../globalState/useAuthStore";
 
 import {
   text1,
@@ -13,6 +14,8 @@ import {
 import loginicon from "@images/loginicon.png";
 import logincontact from "@images/logincontact.png";
 import { useNavigate } from "react-router-dom";
+import axios, { AxiosResponse, AxiosResponseHeaders } from "axios";
+import { toast } from "react-hot-toast";
 
 type FormData = {
   email: string;
@@ -37,7 +40,7 @@ function Login() {
   const navigate = useNavigate();
 
   const { isLoggedIn, setIsLoggedIn } = useUserStore();
-  console.log(isLoggedIn);
+  const { accessToken, setAccessToken } = useAuthStore();
 
   const {
     register,
@@ -47,8 +50,21 @@ function Login() {
 
   const onSubmit = handleSubmit((data) => {
     setIsLoggedIn(true);
-    console.log(data);
-    navigate("/oneday/dashboard");
+
+    axios
+      .post("/user/login", data, {
+        headers: { "Content-Type": `application/json` },
+      })
+      .then((res: AxiosResponse) => {
+        const head: AxiosResponseHeaders = res.headers as AxiosResponseHeaders;
+        let jwtToken = head.get("Authorization") as string;
+        setAccessToken(jwtToken);
+        sessionStorage.setItem("is_logged", "true");
+        navigate("/oneday/dashboard");
+      })
+      .catch((error) => {
+        toast.error("로그인에 실패 하였습니다.");
+      });
   });
 
   return (
